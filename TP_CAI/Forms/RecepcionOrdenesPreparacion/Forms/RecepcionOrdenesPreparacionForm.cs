@@ -7,19 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP_CAI.Archivos.Forms.BaseForm;
+using TP_CAI.Archivos.Usuario.Entidad;
 
 namespace TP_CAI.Archivos.RecepcionOrdenesPreparacion.Forms
 {
-    public partial class RecepcionOrdenesPreparacionForm : Form
+    public partial class RecepcionOrdenesPreparacionForm : BaseForm
     {
-        public RecepcionOrdenesPreparacionForm()
+        public RecepcionOrdenesPreparacionForm(UsuarioEntidad usuario) : base(usuario)
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

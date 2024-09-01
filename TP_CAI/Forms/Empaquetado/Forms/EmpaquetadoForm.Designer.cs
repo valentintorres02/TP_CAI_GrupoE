@@ -39,7 +39,6 @@
             label1.Size = new Size(81, 15);
             label1.TabIndex = 0;
             label1.Text = "Empaquetado";
-            label1.Click += label1_Click;
             // 
             // EmpaquetadoForm
             // 
