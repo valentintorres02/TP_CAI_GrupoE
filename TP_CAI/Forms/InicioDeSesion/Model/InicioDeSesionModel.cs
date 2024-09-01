@@ -1,7 +1,7 @@
 ﻿using TP_CAI.Archivos.Usuario;
 using TP_CAI.Archivos.Validaciones;
 
-namespace TP_CAI.Forms.InicioDeSesion.Model
+namespace TP_CAI.Archivos.Usuario.Entidad
 {
     internal class InicioDeSesionModel
     {

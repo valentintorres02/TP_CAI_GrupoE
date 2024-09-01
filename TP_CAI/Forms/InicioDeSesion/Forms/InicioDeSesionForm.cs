@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TP_CAI.Forms.InicioDeSesion.Model;
+using TP_CAI.Archivos.Usuario.Entidad;
 using TP_CAI.Archivos.Validaciones;
 
-namespace TP_CAI.Forms.InicioDeSesion.Forms
+namespace TP_CAI.Archivos.Usuario.Forms
 {
     public partial class InicioDeSesionForm : Form
     {

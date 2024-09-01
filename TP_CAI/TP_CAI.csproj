@@ -9,7 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Forms\PantallaPrincipal\Model\" />
+    <Folder Include="Forms\Despacho\Model\" />
+    <Folder Include="Forms\Empaquetado\Model\" />
+    <Folder Include="Forms\GeneracionOrdenesSeleccion\Model\" />
+    <Folder Include="Forms\RecepcionOrdenesPreparacion\Model\" />
   </ItemGroup>
 
 </Project>

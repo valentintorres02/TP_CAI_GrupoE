@@ -1,4 +1,4 @@
-﻿namespace TP_CAI.Forms.InicioDeSesion.Forms
+﻿namespace TP_CAI.Archivos.Usuario.Forms
 {
     partial class InicioDeSesionForm
     {

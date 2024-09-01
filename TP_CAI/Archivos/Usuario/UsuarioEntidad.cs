@@ -1,6 +1,4 @@
-﻿using TP_CAI.Archivos.Usuario;
-
-namespace TP_CAI.Forms.InicioDeSesion.Model
+﻿namespace TP_CAI.Archivos.Usuario.Entidad
 {
     public class UsuarioEntidad
     {
