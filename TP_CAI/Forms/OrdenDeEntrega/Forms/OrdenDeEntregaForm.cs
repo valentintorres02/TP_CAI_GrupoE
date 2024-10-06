@@ -24,7 +24,6 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
 
         private void OrdenDeEntregaForm_Load(object sender, EventArgs e)
         {
-            OrdenesPreparacionGridView.AllowUserToAddRows = false; // Deshabilitar agregar filas manualmente
             OrdenesPreparacionGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             // Agregar una columna de checkboxes para selección múltiple
