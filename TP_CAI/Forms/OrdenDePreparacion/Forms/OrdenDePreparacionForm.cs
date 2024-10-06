@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TP_CAI.Archivos.Empaquetado.Forms
+namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 {
-    public partial class EmpaquetadoForm : Form
+    public partial class OrdenDePreparacionForm : Form
     {
-        public EmpaquetadoForm()
+        public OrdenDePreparacionForm()
         {
             InitializeComponent();
         }
+
     }
 }

@@ -28,33 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            NombreUsuarioLabel = new Label();
-            RolLabel = new Label();
             RolUsuario = new Label();
             NombreUsuario = new Label();
             RecepcionOrdenesPreparacionButton = new Button();
             GeneracionOrdenesSeleccionButton = new Button();
             DespachoButton = new Button();
             EmpaquetadoButton = new Button();
+            button1 = new Button();
             SuspendLayout();
-            // 
-            // NombreUsuarioLabel
-            // 
-            NombreUsuarioLabel.AutoSize = true;
-            NombreUsuarioLabel.Location = new Point(12, 9);
-            NombreUsuarioLabel.Name = "NombreUsuarioLabel";
-            NombreUsuarioLabel.Size = new Size(116, 15);
-            NombreUsuarioLabel.TabIndex = 0;
-            NombreUsuarioLabel.Text = "Nombre de Usuario: ";
-            // 
-            // RolLabel
-            // 
-            RolLabel.AutoSize = true;
-            RolLabel.Location = new Point(12, 27);
-            RolLabel.Name = "RolLabel";
-            RolLabel.Size = new Size(30, 15);
-            RolLabel.TabIndex = 1;
-            RolLabel.Text = "Rol: ";
             // 
             // RolUsuario
             // 
@@ -74,7 +55,7 @@
             // 
             // RecepcionOrdenesPreparacionButton
             // 
-            RecepcionOrdenesPreparacionButton.Location = new Point(12, 68);
+            RecepcionOrdenesPreparacionButton.Location = new Point(12, 12);
             RecepcionOrdenesPreparacionButton.Name = "RecepcionOrdenesPreparacionButton";
             RecepcionOrdenesPreparacionButton.Size = new Size(226, 45);
             RecepcionOrdenesPreparacionButton.TabIndex = 4;
@@ -84,7 +65,7 @@
             // 
             // GeneracionOrdenesSeleccionButton
             // 
-            GeneracionOrdenesSeleccionButton.Location = new Point(12, 131);
+            GeneracionOrdenesSeleccionButton.Location = new Point(12, 63);
             GeneracionOrdenesSeleccionButton.Name = "GeneracionOrdenesSeleccionButton";
             GeneracionOrdenesSeleccionButton.Size = new Size(226, 45);
             GeneracionOrdenesSeleccionButton.TabIndex = 5;
@@ -94,7 +75,7 @@
             // 
             // DespachoButton
             // 
-            DespachoButton.Location = new Point(12, 257);
+            DespachoButton.Location = new Point(12, 216);
             DespachoButton.Name = "DespachoButton";
             DespachoButton.Size = new Size(226, 45);
             DespachoButton.TabIndex = 7;
@@ -104,7 +85,7 @@
             // 
             // EmpaquetadoButton
             // 
-            EmpaquetadoButton.Location = new Point(12, 194);
+            EmpaquetadoButton.Location = new Point(12, 114);
             EmpaquetadoButton.Name = "EmpaquetadoButton";
             EmpaquetadoButton.Size = new Size(226, 45);
             EmpaquetadoButton.TabIndex = 6;
@@ -112,19 +93,27 @@
             EmpaquetadoButton.UseVisualStyleBackColor = true;
             EmpaquetadoButton.Click += EmpaquetadoButton_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(12, 165);
+            button1.Name = "button1";
+            button1.Size = new Size(226, 45);
+            button1.TabIndex = 8;
+            button1.Text = "Empaquetado";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // PantallaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(250, 339);
+            ClientSize = new Size(250, 331);
+            Controls.Add(button1);
             Controls.Add(DespachoButton);
             Controls.Add(EmpaquetadoButton);
             Controls.Add(GeneracionOrdenesSeleccionButton);
             Controls.Add(RecepcionOrdenesPreparacionButton);
             Controls.Add(RolUsuario);
             Controls.Add(NombreUsuario);
-            Controls.Add(RolLabel);
-            Controls.Add(NombreUsuarioLabel);
             Name = "PantallaPrincipalForm";
             Text = "PantallaPrincipalForm";
             Load += PantallaPrincipalForm_Load;
@@ -133,14 +122,12 @@
         }
 
         #endregion
-
-        private Label NombreUsuarioLabel;
-        private Label RolLabel;
         private Label RolUsuario;
         private Label NombreUsuario;
         private Button RecepcionOrdenesPreparacionButton;
         private Button GeneracionOrdenesSeleccionButton;
         private Button DespachoButton;
         private Button EmpaquetadoButton;
+        private Button button1;
     }
 }
