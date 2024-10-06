@@ -44,6 +44,7 @@
             LimpiarButton.TabIndex = 15;
             LimpiarButton.Text = "Limpiar";
             LimpiarButton.UseVisualStyleBackColor = true;
+            LimpiarButton.Click += LimpiarButton_Click;
             // 
             // VolverAlMenuButton
             // 

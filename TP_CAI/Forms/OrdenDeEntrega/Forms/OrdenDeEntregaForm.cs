@@ -119,5 +119,17 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
                 this.Close();
             }
         }
+
+        private void LimpiarButton_Click(object sender, EventArgs e)
+        {
+            {
+                // Recorrer todas las filas del DataGridView
+                foreach (DataGridViewRow row in OrdenesPreparacionGridView.Rows)
+                {
+                    // Desmarcar el checkbox en la primera columna
+                    row.Cells[0].Value = false;
+                }
+            }
+        }
     }
 }
