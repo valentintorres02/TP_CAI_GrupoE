@@ -21,6 +21,7 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
         {
             OrdenesPreparacionGridView.AllowUserToAddRows = false; // Deshabilitar agregar filas manualmente
             OrdenesPreparacionGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            OrdenesPreparacionGridView.MultiSelect = false;
 
             // Agregar una columna de checkboxes para selección múltiple
             DataGridViewCheckBoxColumn chkCol = new DataGridViewCheckBoxColumn();
@@ -34,12 +35,12 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
             OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
 
             // Agregar algunas filas como ejemplo
-            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Media", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Media", "Seleccionada");
-            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Alta", "Despachada");
-            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Baja", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Alta", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Alta", "Pendiente");
+            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Media", "En Preparación");
+            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Media", "En Preparación");
+            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Alta", "En Preparación");
+            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Baja", "En Preparación");
+            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Alta", "En Preparación");
+            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Alta", "En Preparación");
 
 
             GenerarOrdenButton.Enabled = false; // El botón empieza deshabilitado
@@ -56,10 +57,32 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
         // Evento para habilitar el botón si hay al menos un checkbox seleccionado
         private void Dgv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            // Verificar si la columna es la de los checkboxes (columna 0 en este caso)
-            if (e.ColumnIndex == 0)
+            // Verificar si la celda modificada es de la columna de CheckBox (asumamos que es la columna 0)
+            if (e.ColumnIndex == 0 && OrdenesPreparacionGridView.Rows[e.RowIndex].Cells[e.ColumnIndex] is DataGridViewCheckBoxCell)
             {
-                VerificarSeleccion();
+                // Si la celda fue seleccionada (true)
+                if ((bool)OrdenesPreparacionGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == true)
+                {
+                    // Desmarcar todos los demás CheckBoxes en la misma columna
+                    foreach (DataGridViewRow row in OrdenesPreparacionGridView.Rows)
+                    {
+                        if (row.Index != e.RowIndex)
+                        {
+                            row.Cells[0].Value = false; // Desmarcar
+                        }
+                    }
+
+                    // Habilitar el botón cuando un checkbox esté seleccionado
+                    GenerarOrdenButton.Enabled = true;
+                }
+                else
+                {
+                    // Verificar si aún queda algún checkbox seleccionado
+                    bool algunSeleccionado = OrdenesPreparacionGridView.Rows.Cast<DataGridViewRow>()
+                        .Any(r => (bool)r.Cells[0].Value == true);
+
+                    GenerarOrdenButton.Enabled = algunSeleccionado;
+                }
             }
         }
 
@@ -96,7 +119,7 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-            "Tienes una Órden de Preparación en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
+            "Tienes una Órden de Empaquetado en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
             "Advertencia",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Warning);
