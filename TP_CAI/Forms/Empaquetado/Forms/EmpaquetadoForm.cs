@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -119,6 +120,13 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
+            bool excepcion = true;
+
+            if (excepcion)
+            {
+                MessageBox.Show("El Empaquetado no pudo ser registrado correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
+            }
+
             MessageBox.Show("Se registró correctamente el empaquetado de la orden de preparación ID 0009");
         }
 

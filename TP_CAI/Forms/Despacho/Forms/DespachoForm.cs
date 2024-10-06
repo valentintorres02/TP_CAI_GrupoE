@@ -20,6 +20,13 @@ namespace TP_CAI.Archivos.Despacho.Forms
 
         private void GenerarRemitoYDespacharButton_Click(object sender, EventArgs e)
         {
+            bool excepcion = true;
+
+            if (excepcion)
+            {
+                MessageBox.Show("“El registro de despacho no pudo ser creado correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
+            }
+
             MessageBox.Show("Se generó correctamente el remito N°1405 y se registró correctamente el despacho de las órdenes de preparación.");
         }
 

@@ -216,6 +216,14 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void CrearOrdenButton_Click(object sender, EventArgs e)
         {
+            bool excepcion = true;
+
+            if(excepcion)
+            {
+                MessageBox.Show("La Orden de Preparación no pudo ser creada correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
+            }
+
+
             bool isDniCompleto = !string.IsNullOrWhiteSpace(DniTransportistaTextBox.Text);
             bool isPrioridadSeleccionada = PrioridadComboBox.SelectedIndex != -1; // -1 indica que no hay selección
 

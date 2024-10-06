@@ -119,8 +119,13 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
-            // des-comentar esto para mostrar la excepcion
-            //MessageBox.Show("Ya existe una orden de selección para las órdenes de preparación seleccionadas.");
+            bool excepcion = true;
+
+            if (excepcion)
+            {
+                MessageBox.Show("La Orden de Selección no pudo ser creada correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
+            }
+
             MessageBox.Show("La orden de selección ID 0014 se generó correctamente.");
         }
 

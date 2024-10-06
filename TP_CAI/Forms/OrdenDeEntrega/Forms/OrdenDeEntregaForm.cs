@@ -20,6 +20,13 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
+            bool excepcion = true;
+
+            if (excepcion)
+            {
+                MessageBox.Show("La Orden de Entrega no pudo ser creada correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
+            }
+
             MessageBox.Show("Se registró correctamente la órden de entrega ID 0003");
         }
 
