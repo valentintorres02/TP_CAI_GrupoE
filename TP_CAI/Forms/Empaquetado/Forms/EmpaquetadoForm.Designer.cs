@@ -51,7 +51,7 @@
             VolverAlMenuButton.Name = "VolverAlMenuButton";
             VolverAlMenuButton.Size = new Size(144, 23);
             VolverAlMenuButton.TabIndex = 9;
-            VolverAlMenuButton.Text = "Volver al menú principal";
+            VolverAlMenuButton.Text = "Volver al Menú Principal";
             VolverAlMenuButton.UseVisualStyleBackColor = true;
             // 
             // OrdenesPreparacionGridView

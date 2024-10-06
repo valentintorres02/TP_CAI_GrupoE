@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP_CAI.Archivos.PantallaPrincipal.Forms;
 
 namespace TP_CAI.Forms.OrdenDeEntrega.Forms
 {
@@ -100,10 +101,23 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-          "Tienes una Órden de Entrega en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
-          "Advertencia",
-          MessageBoxButtons.YesNo,
-          MessageBoxIcon.Warning);
+                "Tienes una Órden de Entrega en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
+                "Advertencia",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            // Si el usuario selecciona "Sí"
+            if (result == DialogResult.Yes)
+            {
+                // Crear una nueva instancia del formulario de menú principal
+                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+
+                // Mostrar el formulario de menú principal
+                pantallaPrincipalForm.Show();
+
+                // Cerrar el formulario actual
+                this.Close();
+            }
         }
     }
 }

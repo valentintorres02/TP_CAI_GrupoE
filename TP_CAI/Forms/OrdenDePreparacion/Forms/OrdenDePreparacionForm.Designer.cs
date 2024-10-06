@@ -33,7 +33,7 @@
             comboBox2 = new ComboBox();
             label3 = new Label();
             ContinuarButton = new Button();
-            button2 = new Button();
+            VolverAlMenuButton = new Button();
             ProductosGroup = new GroupBox();
             EliminarProductoButton = new Button();
             label6 = new Label();
@@ -101,14 +101,15 @@
             ContinuarButton.UseVisualStyleBackColor = true;
             ContinuarButton.Click += ContinuarButton_Click;
             // 
-            // button2
+            // VolverAlMenuButton
             // 
-            button2.Location = new Point(12, 345);
-            button2.Name = "button2";
-            button2.Size = new Size(153, 23);
-            button2.TabIndex = 6;
-            button2.Text = "Volver al Menú Principal";
-            button2.UseVisualStyleBackColor = true;
+            VolverAlMenuButton.Location = new Point(12, 345);
+            VolverAlMenuButton.Name = "VolverAlMenuButton";
+            VolverAlMenuButton.Size = new Size(153, 23);
+            VolverAlMenuButton.TabIndex = 6;
+            VolverAlMenuButton.Text = "Volver al Menú Principal";
+            VolverAlMenuButton.UseVisualStyleBackColor = true;
+            VolverAlMenuButton.Click += VolverAlMenuButton_Click;
             // 
             // ProductosGroup
             // 
@@ -268,7 +269,7 @@
             Controls.Add(CrearOrdenButton);
             Controls.Add(InfoOrdenGroup);
             Controls.Add(ProductosGroup);
-            Controls.Add(button2);
+            Controls.Add(VolverAlMenuButton);
             Controls.Add(ContinuarButton);
             Controls.Add(label3);
             Controls.Add(comboBox2);
@@ -291,7 +292,7 @@
         private ComboBox comboBox2;
         private Label label3;
         private Button ContinuarButton;
-        private Button button2;
+        private Button VolverAlMenuButton;
         private GroupBox ProductosGroup;
         private Label label4;
         private ListView ProductosDisponiblesListView;

@@ -70,7 +70,7 @@
             VolverAlMenuButton.Name = "VolverAlMenuButton";
             VolverAlMenuButton.Size = new Size(144, 23);
             VolverAlMenuButton.TabIndex = 4;
-            VolverAlMenuButton.Text = "Volver al menú principal";
+            VolverAlMenuButton.Text = "Volver al Menú Principal";
             VolverAlMenuButton.UseVisualStyleBackColor = true;
             VolverAlMenuButton.Click += VolverAlMenuButton_Click;
             // 
