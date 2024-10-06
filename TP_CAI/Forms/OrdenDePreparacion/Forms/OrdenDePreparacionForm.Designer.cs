@@ -57,7 +57,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "GrupoE S.R.L. CUIT 20-44444444-4. " });
+            comboBox1.Items.AddRange(new object[] { "GrupoE S.R.L. CUIT 20-44444444-4. ", "C.A.I S.A. CUIT 20-55555555-5" });
             comboBox1.Location = new Point(12, 26);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(387, 23);
@@ -75,7 +75,7 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Deposito ID 5. Av. Cordoba 21211, CABA." });
+            comboBox2.Items.AddRange(new object[] { "Deposito ID 5. Av. Cordoba 21211, CABA.", "Deposito ID 7. Belgrano 120, Córdoba." });
             comboBox2.Location = new Point(405, 26);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(306, 23);

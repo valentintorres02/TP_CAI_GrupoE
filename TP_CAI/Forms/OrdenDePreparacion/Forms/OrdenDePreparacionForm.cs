@@ -89,7 +89,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
         private void CantidadTextBox_TextChanged(object sender, EventArgs e)
         {
             // Verificar si el valor ingresado es un número válido
-            if (int.TryParse(CantidadTextBox.Text, out int cantidad) && cantidad > 0)
+            if (int.TryParse(CantidadTextBox.Text, out int cantidad))
             {
                 AgregarProductoButton.Enabled = true; // Habilitar el botón si es un número positivo
             }
@@ -101,6 +101,15 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void ContinuarButton_Click(object sender, EventArgs e)
         {
+            if(comboBox1.SelectedIndex != 0)
+            {
+                MessageBox.Show("No hay productos en existencia para el cliente C.A.I S.A en el depósito ID 7. Por favor intente con otro cliente u otro depósito.");
+            } else
+            {
+
+          
+
+
             ProductosGroup.Enabled = true;
 
             ListViewItem item1 = new ListViewItem(new[] { "1", "Remeras", "10" });
@@ -118,19 +127,37 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             ProductosDisponiblesListView.Items.Add(item1);
             ProductosDisponiblesListView.Items.Add(item2);
             ProductosDisponiblesListView.Items.Add(item3);
+            }
         }
 
         private void AgregarProductoButton_Click(object sender, EventArgs e)
         {
+            int.TryParse(CantidadTextBox.Text, out int cantidad1);
+            ListViewItem itemSeleccionado = ProductosDisponiblesListView.SelectedItems[0];
+
+            // Obtener los valores de las columnas (ID y Descripción) del item seleccionado
+            string id = itemSeleccionado.SubItems[0].Text;  // Columna ID
+            string descripcion = itemSeleccionado.SubItems[1].Text;  // Columna Descripción
+            string cantidadItem= itemSeleccionado.SubItems[2].Text;  // Columna Descripción
+
+            int.TryParse(cantidadItem, out int cantidad2);
+
+            if (cantidad1 > cantidad2)
+            {
+                MessageBox.Show("No pueden agregarse a la órden de preparación " + cantidad1 + " unidades del producto " + descripcion + " ya que solo se cuentan con " + cantidadItem + " unidades. Por favor intente con un valor igual o menor a " + cantidadItem);
+                return;
+            }
+
+            if(cantidad1 < 1)
+            {
+                MessageBox.Show("No pueden agregarse a la órden de preparación " + cantidad1 + " unidades del producto " + descripcion + " ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a " + cantidadItem + " pero mayor que 0.");
+                return;
+            }
+
+
             // Verificar si hay un elemento seleccionado en la lista original (listView1)
             if (ProductosDisponiblesListView.SelectedItems.Count > 0 && int.TryParse(CantidadTextBox.Text, out int cantidad) && cantidad > 0)
             {
-                // Obtener el elemento seleccionado
-                ListViewItem itemSeleccionado = ProductosDisponiblesListView.SelectedItems[0];
-
-                // Obtener los valores de las columnas (ID y Descripción) del item seleccionado
-                string id = itemSeleccionado.SubItems[0].Text;  // Columna ID
-                string descripcion = itemSeleccionado.SubItems[1].Text;  // Columna Descripción
 
                 // Crear un nuevo ListViewItem con los valores y la cantidad especificada
                 ListViewItem nuevoItem = new ListViewItem(new[] { id, descripcion, cantidad.ToString() });
