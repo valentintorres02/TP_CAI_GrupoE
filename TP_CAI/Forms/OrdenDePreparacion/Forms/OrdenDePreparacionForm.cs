@@ -222,13 +222,37 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             if (!isPrioridadSeleccionada)
             {
                 MessageBox.Show("Por favor complete el campo Prioridad.");
-            } else if(!isDniCompleto) {
-                MessageBox.Show("Por favor complete el campo DNI Transportista.");
-            } else
-            {
-
-            MessageBox.Show("Orden Creada Satisfactoriamente\". ID de Orden: 004. Fecha de emisión: 06/10/2024 14:50hs");
+                return;
             }
+
+            if (!isDniCompleto)
+            {
+                MessageBox.Show("Por favor complete el campo DNI Transportista.");
+                return;
+            }
+
+            // Validar el formato del DNI
+            string dniText = DniTransportistaTextBox.Text;
+            if (!int.TryParse(dniText, out _))
+            {
+                MessageBox.Show("El DNI de Transportista debe ser un número válido. Por favor ingrese un valor correcto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dniText.Length < 7)
+            {
+                MessageBox.Show("El DNI de Transportista debe tener como mínimo 7 dígitos. Por favor ingrese un valor correcto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dniText.Length > 8)
+            {
+                MessageBox.Show("El DNI de Transportista debe tener como máximo 8 dígitos. Por favor ingrese un valor correcto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Si todo es válido, continuar con la creación de la orden
+            MessageBox.Show("Orden Creada Satisfactoriamente. ID de Orden: 004. Fecha de emisión: 06/10/2024 14:50hs");
 
         }
 
