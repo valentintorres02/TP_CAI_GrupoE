@@ -1,4 +1,3 @@
-using TP_CAI.Archivos.Usuario.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 
 namespace TP_CAI
@@ -15,7 +14,6 @@ namespace TP_CAI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
                 
-            InicioDeSesionForm inicioDeSesionForm = new InicioDeSesionForm();
 
             Application.Run(new PantallaPrincipalForm());
         }
