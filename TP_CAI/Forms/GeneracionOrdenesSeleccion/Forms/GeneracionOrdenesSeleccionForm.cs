@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP_CAI.Archivos.Forms.BaseForm;
+using TP_CAI.Archivos.Usuario.Entidad;
 
-namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
+namespace TP_CAI.Archivos.GeneracionOrdenesSeleccion.Forms
 {
-    public partial class OrdenDeSeleccionForm : Form
+    public partial class GeneracionOrdenesSeleccionForm : BaseForm
     {
-        public OrdenDeSeleccionForm()
+        public GeneracionOrdenesSeleccionForm(UsuarioEntidad usuario) : base(usuario)
         {
             InitializeComponent();
         }

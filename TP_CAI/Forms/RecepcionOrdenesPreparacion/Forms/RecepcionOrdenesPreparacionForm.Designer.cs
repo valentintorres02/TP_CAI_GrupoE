@@ -1,6 +1,6 @@
-﻿namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
+﻿namespace TP_CAI.Archivos.RecepcionOrdenesPreparacion.Forms
 {
-    partial class OrdenDePreparacionForm
+    partial class RecepcionOrdenesPreparacionForm
     {
         /// <summary>
         /// Required designer variable.
