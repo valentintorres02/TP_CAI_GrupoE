@@ -17,10 +17,7 @@ namespace TP_CAI
                 
             InicioDeSesionForm inicioDeSesionForm = new InicioDeSesionForm();
 
-            if (inicioDeSesionForm.ShowDialog() == DialogResult.OK)
-            {
-                Application.Run(new PantallaPrincipalForm(inicioDeSesionForm.usuario));
-            }
+            Application.Run(new PantallaPrincipalForm());
         }
     }
 }

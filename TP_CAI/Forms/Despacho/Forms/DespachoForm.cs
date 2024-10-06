@@ -7,14 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TP_CAI.Archivos.Forms.BaseForm;
-using TP_CAI.Archivos.Usuario.Entidad;
 
 namespace TP_CAI.Archivos.Despacho.Forms
 {
-    public partial class DespachoForm : BaseForm
+    public partial class DespachoForm : Form
     {
-        public DespachoForm(UsuarioEntidad usuario) : base(usuario)
+        public DespachoForm()
         {
             InitializeComponent();
         }

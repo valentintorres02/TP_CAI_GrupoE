@@ -1,6 +1,6 @@
-﻿namespace TP_CAI.Archivos.GeneracionOrdenesSeleccion.Forms
+﻿namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
 {
-    partial class GeneracionOrdenesSeleccionForm
+    partial class OrdenDeSeleccionForm
     {
         /// <summary>
         /// Required designer variable.

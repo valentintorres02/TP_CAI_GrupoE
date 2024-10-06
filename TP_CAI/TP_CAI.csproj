@@ -11,8 +11,8 @@
   <ItemGroup>
     <Folder Include="Forms\Despacho\Model\" />
     <Folder Include="Forms\Empaquetado\Model\" />
-    <Folder Include="Forms\GeneracionOrdenesSeleccion\Model\" />
-    <Folder Include="Forms\RecepcionOrdenesPreparacion\Model\" />
+    <Folder Include="Forms\OrdenDeSeleccion\Model\" />
+    <Folder Include="Forms\OrdenDePreparacion\Model\" />
   </ItemGroup>
 
 </Project>
