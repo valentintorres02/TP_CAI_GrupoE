@@ -82,6 +82,7 @@
             LimpiarButton.TabIndex = 5;
             LimpiarButton.Text = "Limpiar";
             LimpiarButton.UseVisualStyleBackColor = true;
+            LimpiarButton.Click += LimpiarButton_Click;
             // 
             // OrdenDeSeleccionForm
             // 

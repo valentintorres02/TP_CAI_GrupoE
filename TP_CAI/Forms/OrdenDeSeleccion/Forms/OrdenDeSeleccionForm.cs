@@ -123,5 +123,15 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
             //MessageBox.Show("Ya existe una orden de selección para las órdenes de preparación seleccionadas.");
             MessageBox.Show("La orden de selección ID 0014 se generó correctamente.");
         }
+
+        private void LimpiarButton_Click(object sender, EventArgs e)
+        {
+            // Recorrer todas las filas del DataGridView
+            foreach (DataGridViewRow row in OrdenesPreparacionGridView.Rows)
+            {
+                // Desmarcar el checkbox en la primera columna
+                row.Cells[0].Value = false;
+            }
+        }
     }
 }
