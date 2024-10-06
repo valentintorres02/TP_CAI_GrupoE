@@ -117,31 +117,31 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
             LimpiarButton.Enabled = alMenosUnoSeleccionado;
         }
 
-        private void VolverAlMenuButton_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-                "Tienes un Empaquetado en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
-                "Advertencia",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            // Si el usuario selecciona "Sí"
-            if (result == DialogResult.Yes)
-            {
-                // Crear una nueva instancia del formulario de menú principal
-                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
-
-                // Mostrar el formulario de menú principal
-                pantallaPrincipalForm.Show();
-
-                // Cerrar el formulario actual
-                this.Close();
-            }
-        }
-
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Se registró correctamente el empaquetado de la orden de preparación ID 0009");
+        }
+
+        private void VolverAlMenuButton_Click(object sender, EventArgs e)
+        {
+                DialogResult result = MessageBox.Show(
+                    "Tienes una Órden de Preparación en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
+                    "Advertencia",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                // Si el usuario selecciona "Sí"
+                if (result == DialogResult.Yes)
+                {
+                    // Crear una nueva instancia del formulario de menú principal
+                    PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+
+                    // Mostrar el formulario de menú principal
+                    pantallaPrincipalForm.Show();
+
+                    // Cerrar el formulario actual
+                    this.Close();
+            }
         }
     }
 }

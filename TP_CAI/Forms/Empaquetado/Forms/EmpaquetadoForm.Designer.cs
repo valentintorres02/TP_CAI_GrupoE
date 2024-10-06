@@ -53,6 +53,7 @@
             VolverAlMenuButton.TabIndex = 9;
             VolverAlMenuButton.Text = "Volver al Menú Principal";
             VolverAlMenuButton.UseVisualStyleBackColor = true;
+            VolverAlMenuButton.Click += VolverAlMenuButton_Click;
             // 
             // OrdenesPreparacionGridView
             // 
