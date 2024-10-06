@@ -46,7 +46,7 @@
             InfoOrdenGroup = new GroupBox();
             label8 = new Label();
             label7 = new Label();
-            textBox2 = new TextBox();
+            DniTransportistaTextBox = new TextBox();
             PrioridadComboBox = new ComboBox();
             CrearOrdenButton = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -207,7 +207,7 @@
             // 
             InfoOrdenGroup.Controls.Add(label8);
             InfoOrdenGroup.Controls.Add(label7);
-            InfoOrdenGroup.Controls.Add(textBox2);
+            InfoOrdenGroup.Controls.Add(DniTransportistaTextBox);
             InfoOrdenGroup.Controls.Add(PrioridadComboBox);
             InfoOrdenGroup.Location = new Point(12, 250);
             InfoOrdenGroup.Name = "InfoOrdenGroup";
@@ -234,12 +234,12 @@
             label7.TabIndex = 10;
             label7.Text = "Prioridad";
             // 
-            // textBox2
+            // DniTransportistaTextBox
             // 
-            textBox2.Location = new Point(272, 40);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(280, 23);
-            textBox2.TabIndex = 8;
+            DniTransportistaTextBox.Location = new Point(272, 40);
+            DniTransportistaTextBox.Name = "DniTransportistaTextBox";
+            DniTransportistaTextBox.Size = new Size(280, 23);
+            DniTransportistaTextBox.TabIndex = 8;
             // 
             // PrioridadComboBox
             // 
@@ -305,7 +305,7 @@
         private GroupBox InfoOrdenGroup;
         private Label label8;
         private Label label7;
-        private TextBox textBox2;
+        private TextBox DniTransportistaTextBox;
         private ComboBox PrioridadComboBox;
         private Button CrearOrdenButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;

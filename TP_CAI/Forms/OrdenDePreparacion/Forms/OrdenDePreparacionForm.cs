@@ -189,7 +189,20 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void CrearOrdenButton_Click(object sender, EventArgs e)
         {
+            bool isDniCompleto = !string.IsNullOrWhiteSpace(DniTransportistaTextBox.Text);
+            bool isPrioridadSeleccionada = PrioridadComboBox.SelectedIndex != -1; // -1 indica que no hay selección
+
+            if (!isPrioridadSeleccionada)
+            {
+                MessageBox.Show("Por favor complete el campo Prioridad.");
+            } else if(!isDniCompleto) {
+                MessageBox.Show("Por favor complete el campo DNI Transportista.");
+            } else
+            {
+
             MessageBox.Show("Orden Creada Satisfactoriamente\". ID de Orden: 004. Fecha de emisión: 06/10/2024 14:50hs");
+            }
+
         }
 
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
