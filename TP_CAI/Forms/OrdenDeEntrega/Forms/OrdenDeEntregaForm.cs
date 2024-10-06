@@ -27,24 +27,8 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
         {
             OrdenesPreparacionGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            // Agregar una columna de checkboxes para selección múltiple
-            DataGridViewCheckBoxColumn chkCol = new DataGridViewCheckBoxColumn();
-            chkCol.HeaderText = "Seleccionar";
-            OrdenesPreparacionGridView.Columns.Add(chkCol);
+            SeleccionarTransporistaComboBox.SelectedIndexChanged += SeleccionarTransporistaComboBox_SelectedIndexChanged;
 
-            // Agregar otras columnas
-            OrdenesPreparacionGridView.Columns.Add("Columna1", "ID Orden");
-            OrdenesPreparacionGridView.Columns.Add("Columna2", "CUIT/CUIL Cliente");
-            OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
-            OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
-
-            // Agregar algunas filas como ejemplo
-            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Media", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Media", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Alta", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Baja", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Alta", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Alta", "Preparada");
 
 
             GenerarOrdenButton.Enabled = false; // El botón empieza deshabilitado
@@ -56,6 +40,12 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
             // Suscribirse al evento CurrentCellDirtyStateChanged para hacer que el valor del checkbox
             // se detecte inmediatamente al hacer clic.
             OrdenesPreparacionGridView.CurrentCellDirtyStateChanged += Dgv_CurrentCellDirtyStateChanged;
+        }
+
+        private void SeleccionarTransporistaComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Habilitar el botón si hay una selección válida en el ComboBox
+            SeleccionarButton.Enabled = SeleccionarTransporistaComboBox.SelectedIndex != -1; // -1 indica que no hay selección
         }
 
         // Evento para habilitar el botón si hay al menos un checkbox seleccionado
@@ -130,6 +120,31 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
                     row.Cells[0].Value = false;
                 }
             }
+        }
+
+        private void SeleccionarButton_Click(object sender, EventArgs e)
+        {
+            // Agregar una columna de checkboxes para selección múltiple
+            DataGridViewCheckBoxColumn chkCol = new DataGridViewCheckBoxColumn();
+            chkCol.HeaderText = "Seleccionar";
+            OrdenesPreparacionGridView.Columns.Add(chkCol);
+
+            // Agregar otras columnas
+            OrdenesPreparacionGridView.Columns.Add("Columna1", "ID Orden");
+            OrdenesPreparacionGridView.Columns.Add("Columna2", "CUIT/CUIL Cliente");
+            OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
+            OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
+
+            // Agregar algunas filas como ejemplo
+            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Media", "Preparada");
+            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Media", "Preparada");
+            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Alta", "Preparada");
+            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Baja", "Preparada");
+            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Alta", "Preparada");
+            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Alta", "Preparada");
+
+            OrdenesGroupBox.Enabled = true;
+            OrdenesPreparacionGridView.Enabled = true;
         }
     }
 }

@@ -32,13 +32,17 @@
             VolverAlMenuButton = new Button();
             OrdenesPreparacionGridView = new DataGridView();
             GenerarOrdenButton = new Button();
-            label1 = new Label();
+            SeleccionarTransporistaComboBox = new ComboBox();
+            label2 = new Label();
+            SeleccionarButton = new Button();
+            OrdenesGroupBox = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)OrdenesPreparacionGridView).BeginInit();
+            OrdenesGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // LimpiarButton
             // 
-            LimpiarButton.Location = new Point(12, 221);
+            LimpiarButton.Location = new Point(6, 212);
             LimpiarButton.Name = "LimpiarButton";
             LimpiarButton.Size = new Size(75, 23);
             LimpiarButton.TabIndex = 15;
@@ -48,7 +52,7 @@
             // 
             // VolverAlMenuButton
             // 
-            VolverAlMenuButton.Location = new Point(12, 273);
+            VolverAlMenuButton.Location = new Point(12, 329);
             VolverAlMenuButton.Name = "VolverAlMenuButton";
             VolverAlMenuButton.Size = new Size(144, 23);
             VolverAlMenuButton.TabIndex = 14;
@@ -59,45 +63,79 @@
             // OrdenesPreparacionGridView
             // 
             OrdenesPreparacionGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            OrdenesPreparacionGridView.Location = new Point(12, 31);
+            OrdenesPreparacionGridView.Enabled = false;
+            OrdenesPreparacionGridView.Location = new Point(6, 22);
             OrdenesPreparacionGridView.Name = "OrdenesPreparacionGridView";
-            OrdenesPreparacionGridView.Size = new Size(580, 184);
+            OrdenesPreparacionGridView.Size = new Size(568, 184);
             OrdenesPreparacionGridView.TabIndex = 13;
             // 
             // GenerarOrdenButton
             // 
-            GenerarOrdenButton.Location = new Point(93, 221);
+            GenerarOrdenButton.Location = new Point(87, 210);
             GenerarOrdenButton.Name = "GenerarOrdenButton";
-            GenerarOrdenButton.Size = new Size(499, 25);
+            GenerarOrdenButton.Size = new Size(487, 25);
             GenerarOrdenButton.TabIndex = 12;
-            GenerarOrdenButton.Text = "Agregar a orden de entrega";
+            GenerarOrdenButton.Text = "Crear orden de entrega";
             GenerarOrdenButton.UseVisualStyleBackColor = true;
             GenerarOrdenButton.Click += GenerarOrdenButton_Click;
             // 
-            // label1
+            // SeleccionarTransporistaComboBox
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(12, 7);
-            label1.Name = "label1";
-            label1.Size = new Size(257, 21);
-            label1.TabIndex = 11;
-            label1.Text = "Seleccionar órdenes de preparación";
+            SeleccionarTransporistaComboBox.FormattingEnabled = true;
+            SeleccionarTransporistaComboBox.Items.AddRange(new object[] { "DNI Transportista: 44444444", "DNI Transportista: 55555555", "DNI Transportista: 33333333" });
+            SeleccionarTransporistaComboBox.Location = new Point(12, 28);
+            SeleccionarTransporistaComboBox.Name = "SeleccionarTransporistaComboBox";
+            SeleccionarTransporistaComboBox.Size = new Size(427, 23);
+            SeleccionarTransporistaComboBox.TabIndex = 16;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 10);
+            label2.Name = "label2";
+            label2.Size = new Size(137, 15);
+            label2.TabIndex = 17;
+            label2.Text = "Seleccionar Transportista";
+            // 
+            // SeleccionarButton
+            // 
+            SeleccionarButton.Enabled = false;
+            SeleccionarButton.Location = new Point(445, 28);
+            SeleccionarButton.Name = "SeleccionarButton";
+            SeleccionarButton.Size = new Size(147, 23);
+            SeleccionarButton.TabIndex = 18;
+            SeleccionarButton.Text = "Seleccionar";
+            SeleccionarButton.UseVisualStyleBackColor = true;
+            SeleccionarButton.Click += SeleccionarButton_Click;
+            // 
+            // OrdenesGroupBox
+            // 
+            OrdenesGroupBox.Controls.Add(OrdenesPreparacionGridView);
+            OrdenesGroupBox.Controls.Add(LimpiarButton);
+            OrdenesGroupBox.Controls.Add(GenerarOrdenButton);
+            OrdenesGroupBox.Enabled = false;
+            OrdenesGroupBox.Location = new Point(12, 57);
+            OrdenesGroupBox.Name = "OrdenesGroupBox";
+            OrdenesGroupBox.Size = new Size(580, 248);
+            OrdenesGroupBox.TabIndex = 19;
+            OrdenesGroupBox.TabStop = false;
+            OrdenesGroupBox.Text = "Ordenes de Preparación";
             // 
             // OrdenDeEntregaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(607, 303);
-            Controls.Add(LimpiarButton);
+            ClientSize = new Size(607, 364);
+            Controls.Add(OrdenesGroupBox);
+            Controls.Add(SeleccionarButton);
+            Controls.Add(label2);
+            Controls.Add(SeleccionarTransporistaComboBox);
             Controls.Add(VolverAlMenuButton);
-            Controls.Add(OrdenesPreparacionGridView);
-            Controls.Add(GenerarOrdenButton);
-            Controls.Add(label1);
             Name = "OrdenDeEntregaForm";
             Text = "Crear Orden de Entrega";
             Load += OrdenDeEntregaForm_Load;
             ((System.ComponentModel.ISupportInitialize)OrdenesPreparacionGridView).EndInit();
+            OrdenesGroupBox.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -108,6 +146,9 @@
         private Button VolverAlMenuButton;
         private DataGridView OrdenesPreparacionGridView;
         private Button GenerarOrdenButton;
-        private Label label1;
+        private ComboBox SeleccionarTransporistaComboBox;
+        private Label label2;
+        private Button SeleccionarButton;
+        private GroupBox OrdenesGroupBox;
     }
 }
