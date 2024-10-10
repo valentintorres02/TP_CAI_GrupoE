@@ -3,14 +3,15 @@
 Grupo E
 
 Miembros:
-904497 López, Pablo Martín
-904562 Perez Pistarini, María Belén
-905326 Fiorella D'Alessandro
-⁠901462 Caprotta Jeremías
-⁠907524 Peña María Belén
-903887 Torres Valentin
-901209 Federico Sasson
-⁠899530 Cassani Pedro (Lider)
+
+- 904497 López, Pablo Martín
+- 904562 Perez Pistarini, María Belén
+- 905326 Fiorella D'Alessandro
+- ⁠901462 Caprotta Jeremías
+- ⁠907524 Peña María Belén
+- 903887 Torres Valentin
+- 901209 Federico Sasson
+- ⁠899530 Cassani Pedro (Lider)
 
 ## Requerimientos
 
