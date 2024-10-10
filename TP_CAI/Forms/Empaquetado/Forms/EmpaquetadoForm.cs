@@ -33,19 +33,20 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
             // Agregar otras columnas
             OrdenesPreparacionGridView.Columns.Add("Columna1", "ID Orden");
             OrdenesPreparacionGridView.Columns.Add("Columna2", "CUIT/CUIL Cliente");
-            //OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
+            OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
             OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
 
             // Agregar algunas filas como ejemplo
-            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Pendiente de Seleccion");
-            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Pendiente de Seleccion");
-            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Pendiente de Seleccion");
-            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Pendiente de Seleccion");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Pendiente de Seleccion");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Pendiente de Seleccion");
+            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Media", "En Preparación");
+            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Media", "En Preparación");
+            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Alta", "En Preparación");
+            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Baja", "En Preparación");
+            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Alta", "En Preparación");
+            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Alta", "En Preparación");
 
 
             GenerarOrdenButton.Enabled = false; // El botón empieza deshabilitado
+            LimpiarButton.Enabled = false;
 
             // Suscribirse al evento CellValueChanged para detectar cambios en el checkbox
             OrdenesPreparacionGridView.CellValueChanged += Dgv_CellValueChanged;
@@ -119,23 +120,23 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
-            bool excepcion = true;
+            bool excepcion = false;
 
             if (excepcion)
             {
-                MessageBox.Show("La seleccion de la Orden de Seleccion no pudo ser registrada correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
+                MessageBox.Show("El Empaquetado no pudo ser registrado correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
             }
 
-            MessageBox.Show("Se seleccionó correctamente la selección de la orden de selección ID 0009");
+            MessageBox.Show("Se registró correctamente el empaquetado de la orden de preparación ID 0009");
         }
 
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                "Tienes una Órden de Seleccion en proceso. Si sales se perderá el progreso y la órden no será seleccionada, ¿deseas salir?",
-                "Advertencia",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
+                     "Tienes una Órden de Preparación en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
+                     "Advertencia",
+                     MessageBoxButtons.YesNo,
+                     MessageBoxIcon.Warning);
 
             // Si el usuario selecciona "Sí"
             if (result == DialogResult.Yes)

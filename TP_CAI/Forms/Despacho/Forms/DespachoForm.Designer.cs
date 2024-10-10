@@ -62,7 +62,6 @@
             OrdenesPreparacionGridView.Enabled = false;
             OrdenesPreparacionGridView.Location = new Point(12, 87);
             OrdenesPreparacionGridView.Name = "OrdenesPreparacionGridView";
-            OrdenesPreparacionGridView.ReadOnly = true;
             OrdenesPreparacionGridView.Size = new Size(640, 184);
             OrdenesPreparacionGridView.TabIndex = 14;
             // 

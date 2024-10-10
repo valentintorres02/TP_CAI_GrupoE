@@ -9,20 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 
-namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
+namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
 {
-    public partial class OrdenDeSeleccionForm : Form
+    public partial class GestionOrdenSeleccionForm : Form
     {
-        public OrdenDeSeleccionForm()
+        public GestionOrdenSeleccionForm()
         {
             InitializeComponent();
         }
 
-        private void OrdenDeSeleccionForm_Load(object sender, EventArgs e)
+        private void GestionOrdenSeleccionForm_Load(object sender, EventArgs e)
         {
 
             OrdenesPreparacionGridView.AllowUserToAddRows = false; // Deshabilitar agregar filas manualmente
             OrdenesPreparacionGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            OrdenesPreparacionGridView.MultiSelect = false;
 
             // Agregar una columna de checkboxes para selección múltiple
             DataGridViewCheckBoxColumn chkCol = new DataGridViewCheckBoxColumn();
@@ -32,20 +33,19 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
             // Agregar otras columnas
             OrdenesPreparacionGridView.Columns.Add("Columna1", "ID Orden");
             OrdenesPreparacionGridView.Columns.Add("Columna2", "CUIT/CUIL Cliente");
-            OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
+            //OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
             OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
 
             // Agregar algunas filas como ejemplo
-            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Media", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Media", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Alta", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Baja", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Alta", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Alta", "Pendiente");
+            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Pendiente de Seleccion");
+            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Pendiente de Seleccion");
+            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Pendiente de Seleccion");
+            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Pendiente de Seleccion");
+            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Pendiente de Seleccion");
+            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Pendiente de Seleccion");
 
 
             GenerarOrdenButton.Enabled = false; // El botón empieza deshabilitado
-            LimpiarButton.Enabled = false;
 
             // Suscribirse al evento CellValueChanged para detectar cambios en el checkbox
             OrdenesPreparacionGridView.CellValueChanged += Dgv_CellValueChanged;
@@ -58,10 +58,32 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
         // Evento para habilitar el botón si hay al menos un checkbox seleccionado
         private void Dgv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            // Verificar si la columna es la de los checkboxes (columna 0 en este caso)
-            if (e.ColumnIndex == 0)
+            // Verificar si la celda modificada es de la columna de CheckBox (asumamos que es la columna 0)
+            if (e.ColumnIndex == 0 && OrdenesPreparacionGridView.Rows[e.RowIndex].Cells[e.ColumnIndex] is DataGridViewCheckBoxCell)
             {
-                VerificarSeleccion();
+                // Si la celda fue seleccionada (true)
+                if ((bool)OrdenesPreparacionGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == true)
+                {
+                    // Desmarcar todos los demás CheckBoxes en la misma columna
+                    foreach (DataGridViewRow row in OrdenesPreparacionGridView.Rows)
+                    {
+                        if (row.Index != e.RowIndex)
+                        {
+                            row.Cells[0].Value = false; // Desmarcar
+                        }
+                    }
+
+                    // Habilitar el botón cuando un checkbox esté seleccionado
+                    GenerarOrdenButton.Enabled = true;
+                }
+                else
+                {
+                    // Verificar si aún queda algún checkbox seleccionado
+                    bool algunSeleccionado = OrdenesPreparacionGridView.Rows.Cast<DataGridViewRow>()
+                        .Any(r => (bool)r.Cells[0].Value == true);
+
+                    GenerarOrdenButton.Enabled = algunSeleccionado;
+                }
             }
         }
 
@@ -95,10 +117,22 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
             LimpiarButton.Enabled = alMenosUnoSeleccionado;
         }
 
+        private void GenerarOrdenButton_Click(object sender, EventArgs e)
+        {
+            bool excepcion = false;
+
+            if (excepcion)
+            {
+                MessageBox.Show("La seleccion de la Orden de Seleccion no pudo ser registrada correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
+            }
+
+            MessageBox.Show("Se seleccionó correctamente la selección de la orden de selección ID 0009");
+        }
+
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                "Tienes una Órden de Selección en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
+                "Tienes una Órden de Seleccion en proceso. Si sales se perderá el progreso y la órden no será seleccionada, ¿deseas salir?",
                 "Advertencia",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
@@ -117,26 +151,33 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
             }
         }
 
-        private void GenerarOrdenButton_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            bool excepcion = false;
 
-            if (excepcion)
-            {
-                MessageBox.Show("La Orden de Selección no pudo ser creada correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
-            }
-
-            MessageBox.Show("La orden de selección ID 0014 se generó correctamente.");
         }
 
-        private void LimpiarButton_Click(object sender, EventArgs e)
+        private void VolverAlMenuButton_Click_1(object sender, EventArgs e)
         {
-            // Recorrer todas las filas del DataGridView
-            foreach (DataGridViewRow row in OrdenesPreparacionGridView.Rows)
+            DialogResult result = MessageBox.Show(
+              "Tienes una Órden de Seleccion en proceso. Si sales se perderá el progreso y la órden no será seleccionada, ¿deseas salir?",
+              "Advertencia",
+              MessageBoxButtons.YesNo,
+              MessageBoxIcon.Warning);
+
+            // Si el usuario selecciona "Sí"
+            if (result == DialogResult.Yes)
             {
-                // Desmarcar el checkbox en la primera columna
-                row.Cells[0].Value = false;
+                // Crear una nueva instancia del formulario de menú principal
+                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+
+                // Mostrar el formulario de menú principal
+                pantallaPrincipalForm.Show();
+
+                // Cerrar el formulario actual
+                this.Close();
             }
         }
     }
+
+
 }

@@ -6,6 +6,7 @@ using TP_CAI.Archivos.OrdenDeSeleccion.Forms;
 using TP_CAI.Archivos.OrdenDePreparacion.Forms;
 using TP_CAI.Forms.OrdenDeEntrega.Forms;
 using TP_CAI.Forms.PantallaPrincipal.Model;
+using TP_CAI.Forms.GestionOrdenSeleccion.Forms;
 
 namespace TP_CAI.Archivos.PantallaPrincipal.Forms
 {
@@ -57,5 +58,11 @@ namespace TP_CAI.Archivos.PantallaPrincipal.Forms
             despachoForm.Show();
         }
 
+        private void GestionOrdenSeleccionButton_Click(object sender, EventArgs e)
+        {
+            GestionOrdenSeleccionForm gestionOrdenSeleccionForm= new GestionOrdenSeleccionForm();
+            this.Hide();
+            gestionOrdenSeleccionForm.Show();
+        }
     }
 }

@@ -216,7 +216,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void CrearOrdenButton_Click(object sender, EventArgs e)
         {
-            bool excepcion = true;
+            bool excepcion = false;
 
             if(excepcion)
             {

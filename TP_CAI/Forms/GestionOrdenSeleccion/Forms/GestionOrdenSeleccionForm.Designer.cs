@@ -1,6 +1,6 @@
-﻿namespace TP_CAI.Archivos.Empaquetado.Forms
+﻿namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
 {
-    partial class EmpaquetadoForm
+    partial class GestionOrdenSeleccionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,66 +38,64 @@
             // 
             // LimpiarButton
             // 
-            LimpiarButton.Location = new Point(12, 220);
+            LimpiarButton.Location = new Point(12, 223);
             LimpiarButton.Name = "LimpiarButton";
             LimpiarButton.Size = new Size(75, 23);
-            LimpiarButton.TabIndex = 10;
+            LimpiarButton.TabIndex = 15;
             LimpiarButton.Text = "Limpiar";
             LimpiarButton.UseVisualStyleBackColor = true;
             // 
             // VolverAlMenuButton
             // 
-            VolverAlMenuButton.Location = new Point(12, 272);
+            VolverAlMenuButton.Location = new Point(12, 275);
             VolverAlMenuButton.Name = "VolverAlMenuButton";
             VolverAlMenuButton.Size = new Size(144, 23);
-            VolverAlMenuButton.TabIndex = 9;
+            VolverAlMenuButton.TabIndex = 14;
             VolverAlMenuButton.Text = "Volver al Menú Principal";
             VolverAlMenuButton.UseVisualStyleBackColor = true;
-            VolverAlMenuButton.Click += VolverAlMenuButton_Click;
+            VolverAlMenuButton.Click += VolverAlMenuButton_Click_1;
             // 
             // OrdenesPreparacionGridView
             // 
             OrdenesPreparacionGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            OrdenesPreparacionGridView.Location = new Point(12, 30);
+            OrdenesPreparacionGridView.Location = new Point(12, 33);
             OrdenesPreparacionGridView.Name = "OrdenesPreparacionGridView";
             OrdenesPreparacionGridView.RowHeadersWidth = 62;
             OrdenesPreparacionGridView.Size = new Size(580, 184);
-            OrdenesPreparacionGridView.TabIndex = 8;
+            OrdenesPreparacionGridView.TabIndex = 13;
             // 
             // GenerarOrdenButton
             // 
-            GenerarOrdenButton.Location = new Point(93, 220);
+            GenerarOrdenButton.Location = new Point(93, 223);
             GenerarOrdenButton.Name = "GenerarOrdenButton";
             GenerarOrdenButton.Size = new Size(499, 25);
-            GenerarOrdenButton.TabIndex = 7;
-            GenerarOrdenButton.Text = "Empaquetar";
+            GenerarOrdenButton.TabIndex = 12;
+            GenerarOrdenButton.Text = "Seleccionar";
             GenerarOrdenButton.UseVisualStyleBackColor = true;
-            GenerarOrdenButton.Click += GenerarOrdenButton_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(12, 6);
+            label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(257, 21);
-            label1.TabIndex = 6;
-            label1.Text = "Seleccionar órdenes de preparación";
-            label1.Click += label1_Click;
+            label1.Size = new Size(237, 21);
+            label1.TabIndex = 11;
+            label1.Text = "Seleccionar órdenes de selección";
             // 
-            // EmpaquetadoForm
+            // GestionOrdenSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(606, 303);
+            ClientSize = new Size(604, 314);
             Controls.Add(LimpiarButton);
             Controls.Add(VolverAlMenuButton);
             Controls.Add(OrdenesPreparacionGridView);
             Controls.Add(GenerarOrdenButton);
             Controls.Add(label1);
-            Name = "EmpaquetadoForm";
-            Text = "Empaquetar";
-            Load += EmpaquetadoForm_Load;
+            Name = "GestionOrdenSeleccionForm";
+            Text = "GestionOrdenSeleccionForm";
+            Load += GestionOrdenSeleccionForm_Load;
             ((System.ComponentModel.ISupportInitialize)OrdenesPreparacionGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();

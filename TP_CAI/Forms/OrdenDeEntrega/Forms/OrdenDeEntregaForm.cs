@@ -20,7 +20,7 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
-            bool excepcion = true;
+            bool excepcion = false;
 
             if (excepcion)
             {

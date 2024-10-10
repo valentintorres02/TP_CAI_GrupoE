@@ -20,7 +20,7 @@ namespace TP_CAI.Archivos.Despacho.Forms
 
         private void GenerarRemitoYDespacharButton_Click(object sender, EventArgs e)
         {
-            bool excepcion = true;
+            bool excepcion = false;
 
             if (excepcion)
             {
