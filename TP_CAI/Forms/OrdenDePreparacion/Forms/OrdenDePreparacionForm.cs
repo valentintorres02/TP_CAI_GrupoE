@@ -99,12 +99,6 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void ContinuarButton_Click(object sender, EventArgs e)
         {
-            if (ClienteCombobox.SelectedIndex != 0)
-            {
-                MessageBox.Show("No hay productos en existencia para el cliente C.A.I S.A en el depósito ID 7. Por favor intente con otro cliente u otro depósito.");
-            }
-            else
-            {
                 ProductosGroup.Enabled = true;
 
                 // Limpiar las columnas antes de agregar nuevas
@@ -133,7 +127,6 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
                     ProductosDisponiblesListView.Items.Add(item);
                 }
-            }
         }
 
         private void ActualizarListViewDisponibles()

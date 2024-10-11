@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
+using TP_CAI.Forms.GestionOrdenSeleccion.Model;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 
 namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
@@ -122,7 +123,46 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("La orden de selección ID 0014 se generó correctamente.");
+            try
+            {
+                // todo: implementar logica
+                string documentoCliente = "20-44444444-4"; // Esto debe ser obtenido del formulario
+
+                string mensaje = _ordenDeSeleccionModel.CrearOrden(documentoCliente);
+
+                // Mostrar el mensaje de éxito
+                MessageBox.Show(mensaje);
+
+               
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores inesperados
+                MessageBox.Show("La Orden de Selección no pudo ser creada correctamente. Por favor intente de nuevo o contacte al área de sistemas.\n" + ex.Message);
+            }
+            finally
+            {
+                LimpiarFormulario();
+                EliminarOrdenesSeleccionadas();
+            }
+        }
+
+
+        private void LimpiarFormulario()
+        {
+            // Recorrer todas las filas del DataGridView
+            foreach (DataGridViewRow row in OrdenesPreparacionGridView.Rows)
+            {
+                // Desmarcar el checkbox en la primera columna
+                row.Cells[0].Value = false;
+            }
+
+            // También puedes restablecer otros controles de formulario aquí, si es necesario
+        }
+
+        private void EliminarOrdenesSeleccionadas()
+        {
+           //
         }
 
         private void LimpiarButton_Click(object sender, EventArgs e)

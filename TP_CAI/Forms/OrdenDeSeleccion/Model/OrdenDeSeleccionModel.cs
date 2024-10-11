@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Windows.Forms;
+using TP_CAI.Forms.GestionOrdenSeleccion.Model;
 
 namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 {
 
     internal class OrdenDeSeleccionModel
     {
-        public int DniTransportista { get; set; }
-
         // Obtener las ordenes como una lista de OrdenPreparacion
         public List<OrdenPreparacion> ObtenerOrdenes()
         {
@@ -27,6 +26,18 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 
             // Devolver la lista de ordenes
             return ordenes;
+        }
+
+        public string CrearOrden(string documentoCliente)
+        {
+            // Generar un ID único 
+            int nuevoId = 1;
+
+            // Crear una nueva instancia de OrdenPreparacion
+            var nuevaOrden = new OrdenSeleccion(nuevoId, documentoCliente, EstadoOrdenSeleccionEnum.PendienteDeSeleccion);
+
+            // Retornar un mensaje de éxito
+            return $"La orden de selección ID {nuevaOrden.Id} se generó correctamente";
         }
     }
 }
