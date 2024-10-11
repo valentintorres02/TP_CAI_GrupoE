@@ -9,14 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
+using TP_CAI.Forms.Empaquetado.Model;
+using TP_CAI.Forms.GestionOrdenSeleccion.Model;
 
 namespace TP_CAI.Archivos.Empaquetado.Forms
 {
     public partial class EmpaquetadoForm : Form
     {
+        private EmpaquetadoModel _empaquetadoModel;
+
         public EmpaquetadoForm()
         {
             InitializeComponent();
+            _empaquetadoModel = new EmpaquetadoModel();
         }
 
         private void EmpaquetadoForm_Load(object sender, EventArgs e)
@@ -120,13 +125,6 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
-            bool excepcion = false;
-
-            if (excepcion)
-            {
-                MessageBox.Show("El Empaquetado no pudo ser registrado correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
-            }
-
             MessageBox.Show("Se registró correctamente el empaquetado de la orden de preparación ID 0009");
         }
 

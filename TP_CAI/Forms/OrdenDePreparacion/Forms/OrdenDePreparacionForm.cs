@@ -8,15 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
+using TP_CAI.Forms.OrdenDePreparacion.Model;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 {
     public partial class OrdenDePreparacionForm : Form
     {
+        private OrdenDePreparacionModel _ordenDePreparacionModel;
+
         public OrdenDePreparacionForm()
         {
             InitializeComponent();
+            _ordenDePreparacionModel = new OrdenDePreparacionModel();
         }
 
         private void OrdenDePreparacionForm_Load(object sender, EventArgs e)
@@ -106,8 +110,6 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 MessageBox.Show("No hay productos en existencia para el cliente C.A.I S.A en el depósito ID 7. Por favor intente con otro cliente u otro depósito.");
             } else
             {
-
-          
 
 
             ProductosGroup.Enabled = true;
@@ -216,14 +218,6 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void CrearOrdenButton_Click(object sender, EventArgs e)
         {
-            bool excepcion = false;
-
-            if(excepcion)
-            {
-                MessageBox.Show("La Orden de Preparación no pudo ser creada correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
-            }
-
-
             bool isDniCompleto = !string.IsNullOrWhiteSpace(DniTransportistaTextBox.Text);
             bool isPrioridadSeleccionada = PrioridadComboBox.SelectedIndex != -1; // -1 indica que no hay selección
 
@@ -241,21 +235,11 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
             // Validar el formato del DNI
             string dniText = DniTransportistaTextBox.Text;
-            if (!int.TryParse(dniText, out _))
-            {
-                MessageBox.Show("El DNI de Transportista debe ser un número válido. Por favor ingrese un valor correcto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            string errorDni = _ordenDePreparacionModel.ValidarDniTransportista(dniText);
 
-            if (dniText.Length < 7)
+            if(errorDni != null)
             {
-                MessageBox.Show("El DNI de Transportista debe tener como mínimo 7 dígitos. Por favor ingrese un valor correcto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (dniText.Length > 8)
-            {
-                MessageBox.Show("El DNI de Transportista debe tener como máximo 8 dígitos. Por favor ingrese un valor correcto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(errorDni);
                 return;
             }
 

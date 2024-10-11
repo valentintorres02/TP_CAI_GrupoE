@@ -8,25 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
+using TP_CAI.Forms.Empaquetado.Model;
+using TP_CAI.Forms.OrdenDeEntrega.Model;
 
 namespace TP_CAI.Forms.OrdenDeEntrega.Forms
 {
     public partial class OrdenDeEntregaForm : Form
     {
+        private OrdenDeEntregaModel _ordenDeEntregaModel;
+
         public OrdenDeEntregaForm()
         {
             InitializeComponent();
+            _ordenDeEntregaModel = new OrdenDeEntregaModel();
         }
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
-            bool excepcion = false;
-
-            if (excepcion)
-            {
-                MessageBox.Show("La Orden de Entrega no pudo ser creada correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
-            }
-
             MessageBox.Show("Se registró correctamente la órden de entrega ID 0003");
         }
 

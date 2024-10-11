@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
+using TP_CAI.Forms.GestionOrdenSeleccion.Model;
+using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 
 namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
 {
     public partial class GestionOrdenSeleccionForm : Form
     {
+        private GestionOrdenSeleccionModel _gestionOrdenSeleccionModel;
         public GestionOrdenSeleccionForm()
         {
             InitializeComponent();
+            _gestionOrdenSeleccionModel = new GestionOrdenSeleccionModel();
         }
 
         private void GestionOrdenSeleccionForm_Load(object sender, EventArgs e)
@@ -119,12 +123,6 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
-            bool excepcion = false;
-
-            if (excepcion)
-            {
-                MessageBox.Show("La seleccion de la Orden de Seleccion no pudo ser registrada correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
-            }
 
             MessageBox.Show("Se seleccionó correctamente la selección de la orden de selección ID 0009");
         }

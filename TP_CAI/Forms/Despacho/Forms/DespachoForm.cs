@@ -8,25 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
+using TP_CAI.Forms.Despacho.Model;
+using TP_CAI.Forms.OrdenDeEntrega.Model;
 
 namespace TP_CAI.Archivos.Despacho.Forms
 {
     public partial class DespachoForm : Form
     {
+        private DespachoModel _despachoModel;
+
         public DespachoForm()
         {
             InitializeComponent();
+            _despachoModel = new DespachoModel();
         }
 
         private void GenerarRemitoYDespacharButton_Click(object sender, EventArgs e)
         {
-            bool excepcion = false;
-
-            if (excepcion)
-            {
-                MessageBox.Show("“El registro de despacho no pudo ser creado correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
-            }
-
             MessageBox.Show("Se generó correctamente el remito N°1405 y se registró correctamente el despacho de las órdenes de preparación.");
         }
 

@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
+using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 
 namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
 {
     public partial class OrdenDeSeleccionForm : Form
     {
+        private OrdenDeSeleccionModel _ordenDeSeleccionModel;
+
         public OrdenDeSeleccionForm()
         {
             InitializeComponent();
+            _ordenDeSeleccionModel = new OrdenDeSeleccionModel();
         }
 
         private void OrdenDeSeleccionForm_Load(object sender, EventArgs e)
@@ -119,13 +123,6 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
-            bool excepcion = false;
-
-            if (excepcion)
-            {
-                MessageBox.Show("La Orden de Selección no pudo ser creada correctamente. Por favor intente de nuevo o contacte al área de sistemas.");
-            }
-
             MessageBox.Show("La orden de selección ID 0014 se generó correctamente.");
         }
 
