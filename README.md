@@ -38,11 +38,3 @@ https://github.com/valentintorres02/TP_CAI
 5. Para correr el programa, click en el botón verde "TP_CAI"
    ![image](https://i.imgur.com/qshxNwV.png)
 
-## Usuarios
-
-| Usuario          | Contraseña       |
-| ---------------- | ---------------- |
-| admin            | admin            |
-| jefedeposito     | jefedeposito     |
-| operariodeposito | operariodeposito |
-| cliente          | cliente          |
