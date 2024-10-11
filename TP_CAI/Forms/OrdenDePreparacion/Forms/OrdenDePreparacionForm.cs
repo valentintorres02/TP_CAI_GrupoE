@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 using TP_CAI.Forms.OrdenDePreparacion.Model;
+using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
@@ -25,13 +26,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void OrdenDePreparacionForm_Load(object sender, EventArgs e)
         {
-            // Desactivar el botón al cargar el formulario
-            ContinuarButton.Enabled = false;
-
-            // Desactivar el contenedor de Productos
-            ProductosGroup.Enabled = false;
-
-            InfoOrdenGroup.Enabled = false;
+            ResetearFormulario();
 
             // Registrar los eventos SelectedIndexChanged de los ComboBox
             ClienteCombobox.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);
@@ -48,10 +43,6 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
             ProductosDisponiblesListView.FullRowSelect = true;
             ProductosAgregadosListView.FullRowSelect = true;
-
-            CargarProductosDisponibles();
-
-
 
         }
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,38 +99,41 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void ContinuarButton_Click(object sender, EventArgs e)
         {
-            if(ClienteCombobox.SelectedIndex != 0)
+            if (ClienteCombobox.SelectedIndex != 0)
             {
                 MessageBox.Show("No hay productos en existencia para el cliente C.A.I S.A en el depósito ID 7. Por favor intente con otro cliente u otro depósito.");
-            } else
+            }
+            else
             {
+                ProductosGroup.Enabled = true;
 
-            ProductosGroup.Enabled = true;
+                // Limpiar las columnas antes de agregar nuevas
+                ProductosDisponiblesListView.Columns.Clear();
+                ProductosAgregadosListView.Columns.Clear();
 
-            ProductosDisponiblesListView.Columns.Add("ID", 70); // Ancho de la columna 50
-            ProductosDisponiblesListView.Columns.Add("Descripción", 170);
-            ProductosDisponiblesListView.Columns.Add("Unidades disponibles", 100);
+                // Agregar columnas a la lista de productos disponibles
+                ProductosDisponiblesListView.Columns.Add("ID", 70); // Ancho de la columna 70
+                ProductosDisponiblesListView.Columns.Add("Descripción", 170);
+                ProductosDisponiblesListView.Columns.Add("Unidades disponibles", 100);
 
-            ProductosAgregadosListView.Columns.Add("ID", 70); // Ancho de la columna 50
-            ProductosAgregadosListView.Columns.Add("Descripción", 170);
-            ProductosAgregadosListView.Columns.Add("Unidades agregadas", 100);
+                // Agregar columnas a la lista de productos agregados
+                ProductosAgregadosListView.Columns.Add("ID", 70); // Ancho de la columna 70
+                ProductosAgregadosListView.Columns.Add("Descripción", 170);
+                ProductosAgregadosListView.Columns.Add("Unidades agregadas", 100);
 
-
-                ListViewItem[] items = _ordenDePreparacionModel.CargarElementos();
-
-
-                foreach (var item in items)
+                // Mapear productos disponibles a la lista
+                foreach (var producto in _ordenDePreparacionModel.ProductosDisponibles)
                 {
+                    ListViewItem item = new ListViewItem(new[]
+                    {
+                producto.Id,
+                producto.Descripcion,
+                producto.Cantidad.ToString()
+            });
+
                     ProductosDisponiblesListView.Items.Add(item);
                 }
             }
-        }
-
-        private void CargarProductosDisponibles()
-        {
-            _ordenDePreparacionModel.CargarElementosDisponibles();
-
-            ActualizarListViewDisponibles();
         }
 
         private void ActualizarListViewDisponibles()
@@ -147,59 +141,53 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             ProductosDisponiblesListView.Items.Clear();
             foreach (var producto in _ordenDePreparacionModel.ProductosDisponibles)
             {
-                ListViewItem item = new ListViewItem(new[] { producto.Id, producto.Descripcion, producto.UnidadesDisponibles.ToString() });
+                ListViewItem item = new ListViewItem(new[] { producto.Id, producto.Descripcion, producto.Cantidad.ToString() });
                 ProductosDisponiblesListView.Items.Add(item);
             }
         }
 
         private void AgregarProductoButton_Click(object sender, EventArgs e)
         {
+            if (ProductosDisponiblesListView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Por favor, selecciona un producto.");
+                return;
+            }
+
             int.TryParse(CantidadTextBox.Text, out int cantidad1);
             ListViewItem itemSeleccionado = ProductosDisponiblesListView.SelectedItems[0];
 
-            // Obtener los valores de las columnas (ID y Descripción) del item seleccionado
             string id = itemSeleccionado.SubItems[0].Text;  // Columna ID
             string descripcion = itemSeleccionado.SubItems[1].Text;  // Columna Descripción
-            string cantidadItem = itemSeleccionado.SubItems[2].Text;  // Columna Descripción
+            int.TryParse(itemSeleccionado.SubItems[2].Text, out int cantidad2);  // Cantidad disponible
 
-            int.TryParse(cantidadItem, out int cantidad2);
+            string? errorCantidad = _ordenDePreparacionModel.AgregarProducto(id, descripcion, cantidad1, cantidad2);
 
-            string errorCantidad = _ordenDePreparacionModel.ValidarCantidades(cantidad1, cantidad2, descripcion, cantidadItem);
-
-            if(errorCantidad  != null)
+            if (errorCantidad != null)
             {
                 MessageBox.Show(errorCantidad);
                 return;
             }
 
+            // Crear un nuevo ListViewItem con los valores y la cantidad especificada
+            ListViewItem nuevoItem = new ListViewItem(new[] { id, descripcion, cantidad1.ToString() });
 
-            // Verificar si hay un elemento seleccionado en la lista original (listView1)
-            if (ProductosDisponiblesListView.SelectedItems.Count > 0 && int.TryParse(CantidadTextBox.Text, out int cantidad) && cantidad > 0)
-            {
-                // Crear un nuevo ListViewItem con los valores y la cantidad especificada
-                ListViewItem nuevoItem = new ListViewItem(new[] { id, descripcion, cantidad.ToString() });
+            // Agregar el nuevo item a la lista de productos agregados (ProductosAgregadosListView)
+            ProductosAgregadosListView.Items.Add(nuevoItem);
 
-                // Agregar el nuevo item a la lista de productos agregados (ProductosAgregadosListView)
-                ProductosAgregadosListView.Items.Add(nuevoItem);
+            // Eliminar el item de la lista original (ProductosDisponiblesListView)
+            ProductosDisponiblesListView.Items.Remove(itemSeleccionado);
 
-                // Eliminar el item de la lista original (listView1)
-                ProductosDisponiblesListView.Items.Remove(itemSeleccionado);
+            // Limpiar el campo de cantidad
+            CantidadTextBox.Clear();
 
-                // Limpiar el campo de cantidad
-                CantidadTextBox.Clear();
+            // Habilitar los campos que estaban deshabilitados
+            CantidadTextBox.Enabled = true;
+            EliminarProductoButton.Enabled = true; // Habilitar el botón de eliminar
+            InfoOrdenGroup.Enabled = true; // Habilitar el grupo de información de la orden
 
-                // Habilitar los campos que estaban deshabilitados
-                CantidadTextBox.Enabled = true;
-                EliminarProductoButton.Enabled = true; // Habilitar el botón de eliminar
-                InfoOrdenGroup.Enabled = true; // Habilitar el grupo de información de la orden
-
-                // Deshabilitar el botón nuevamente
-                AgregarProductoButton.Enabled = false;
-            }
-            else
-            {
-                MessageBox.Show("Por favor, selecciona un producto y una cantidad válida.");
-            }
+            // Deshabilitar el botón nuevamente
+            AgregarProductoButton.Enabled = false;
 
             // Habilitar el botón de crear orden
             CrearOrdenButton.Enabled = true;
@@ -210,7 +198,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             ProductosAgregadosListView.Items.Clear();
             foreach (var producto in _ordenDePreparacionModel.ProductosAgregados)
             {
-                ListViewItem item = new ListViewItem(new[] { producto.Id, producto.Descripcion, producto.UnidadesDisponibles.ToString() });
+                ListViewItem item = new ListViewItem(new[] { producto.Id, producto.Descripcion, producto.Cantidad.ToString() });
                 ProductosAgregadosListView.Items.Add(item);
             }
         }
@@ -233,32 +221,51 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void CrearOrdenButton_Click(object sender, EventArgs e)
         {
-            bool isPrioridadSeleccionada = PrioridadComboBox.SelectedIndex != -1; // -1 indica que no hay selección
-
-            // validar prioridad
-            string errorPrioridad = _ordenDePreparacionModel.ValidarPrioridad(isPrioridadSeleccionada);
-
-
-            if (errorPrioridad != null)
+            try
             {
-                MessageBox.Show(errorPrioridad);
-                return;
+                bool isPrioridadSeleccionada = PrioridadComboBox.SelectedIndex != -1; // -1 indica que no hay selección
+
+                // Validar prioridad
+                string errorPrioridad = _ordenDePreparacionModel.ValidarPrioridad(isPrioridadSeleccionada);
+
+                if (errorPrioridad != null)
+                {
+                    MessageBox.Show(errorPrioridad);
+                    return;
+                }
+
+                // Validar el formato del DNI
+                string dniText = DniTransportistaTextBox.Text;
+                string errorDni = _ordenDePreparacionModel.ValidarDniTransportista(dniText);
+
+                if (errorDni != null)
+                {
+                    MessageBox.Show(errorDni);
+                    return;
+                }
+
+                // Obtener los valores necesarios para la creación de la orden
+                string documentoCliente = "12345678"; // Aquí debes obtenerlo del formulario
+                string nombreCliente = "Cliente Ejemplo"; // Aquí debes obtenerlo del formulario
+                int dniTransportista = int.Parse(dniText);
+                PrioridadEnum prioridad = (PrioridadEnum)PrioridadComboBox.SelectedIndex; // Ajustar según tu enumeración
+
+                // Si todo es válido, continuar con la creación de la orden
+                string mensaje = _ordenDePreparacionModel.CrearOrden(documentoCliente, nombreCliente, dniTransportista, prioridad);
+                MessageBox.Show(mensaje);
             }
-
-            // Validar el formato del DNI
-            string dniText = DniTransportistaTextBox.Text;
-            string errorDni = _ordenDePreparacionModel.ValidarDniTransportista(dniText);
-
-            if(errorDni != null)
+            catch (Exception ex)
             {
-                MessageBox.Show(errorDni);
-                return;
+                // Manejar errores inesperados
+                MessageBox.Show("La Orden de Preparación no pudo ser creada correctamente. Por favor intente de nuevo o contacte al área de sistemas.\n" + ex.Message);
             }
-
-            // Si todo es válido, continuar con la creación de la orden
-            MessageBox.Show("Orden Creada Satisfactoriamente. ID de Orden: 004. Fecha de emisión: 06/10/2024 14:50hs");
-            ResetearFormulario();
+            finally
+            {
+                // Resetear el formulario después de la creación
+                ResetearFormulario();
+            }
         }
+
 
         private void ResetearFormulario()
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 
 namespace TP_CAI.Forms.OrdenDePreparacion.Model
 {
@@ -13,7 +14,14 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
         public OrdenDePreparacionModel()
         {
-            ProductosDisponibles = new List<Producto>();
+            ProductosDisponibles = new List<Producto>
+    {
+        new Producto { Id = "001", Descripcion = "Producto A", Cantidad = 10 },
+        new Producto { Id = "002", Descripcion = "Producto B", Cantidad = 20 },
+        new Producto { Id = "003", Descripcion = "Producto C", Cantidad = 15 },
+        new Producto { Id = "004", Descripcion = "Producto D", Cantidad = 25 },
+        new Producto { Id = "005", Descripcion = "Producto E", Cantidad = 30 }
+    };
             ProductosAgregados = new List<Producto>();
         }
 
@@ -21,7 +29,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
         {
             bool isDniCompleto = !string.IsNullOrWhiteSpace(dniText);
 
-            if(!isDniCompleto)
+            if (!isDniCompleto)
             {
                 return "Por favor complete el campo DNI Transportista.";
             }
@@ -48,14 +56,12 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
         {
             if (!isPrioridadSeleccionada)
             {
-               return "Por favor complete el campo Prioridad.";
+                return "Por favor complete el campo Prioridad.";
             }
 
             return null;
 
         }
-
-
 
         public string? ValidarCantidades(int cantidad1, int cantidad2, string descripcion, string cantidadItem)
         {
@@ -66,21 +72,31 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
             if (cantidad1 > cantidad2)
             {
-                MessageBox.Show("No pueden agregarse a la órden de preparación " + cantidad1 + " unidades del producto " + descripcion + " ya que solo se cuentan con " + cantidadItem + " unidades. Por favor intente con un valor igual o menor a " + cantidadItem);
                 return "No pueden agregarse a la órden de preparación " + cantidad1 + " unidades del producto " + descripcion + " ya que solo se cuentan con " + cantidadItem + " unidades. Por favor intente con un valor igual o menor a " + cantidadItem;
             }
 
             return null;
         }
 
-        public void AgregarProducto(string id, string descripcion, int cantidad)
+        public string? AgregarProducto(string id, string descripcion, int cantidad1, int cantidad2)
         {
-            var producto = ProductosDisponibles.FirstOrDefault(p => p.Id == id);
-            if (producto != null)
+            // Validar la cantidad
+            string errorCantidad = ValidarCantidades(cantidad1, cantidad2, descripcion, cantidad2.ToString());
+            if (errorCantidad != null)
             {
-                ProductosDisponibles.Remove(producto);
-                ProductosAgregados.Add(new Producto { Id = id, Descripcion = descripcion, UnidadesDisponibles = cantidad });
+                return errorCantidad; // Retornar el error si hay uno
             }
+
+            // Agregar el producto a la lista de ProductosAgregados
+            var producto = new Producto
+            {
+                Id = id,
+                Descripcion = descripcion,
+                Cantidad = cantidad1
+            };
+
+            ProductosAgregados.Add(producto);
+            return null; // Sin errores
         }
 
         public void EliminarProducto(string id)
@@ -88,30 +104,39 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             var producto = ProductosAgregados.FirstOrDefault(p => p.Id == id);
             if (producto != null)
             {
+                // Eliminar el producto de la lista de agregados
                 ProductosAgregados.Remove(producto);
-                ProductosDisponibles.Add(producto); // Regresar el producto a la lista de disponibles
+
+                // Buscar el producto en la lista de disponibles
+                var productoDisponible = ProductosDisponibles.FirstOrDefault(p => p.Id == id);
+                if (productoDisponible != null)
+                {
+                    // Aumentar la cantidad disponible
+                    productoDisponible.Cantidad += producto.Cantidad; // Regresar la cantidad al stock
+                }
+                else
+                {
+                    // Si no existe, agregar un nuevo producto disponible con la cantidad
+                    ProductosDisponibles.Add(new Producto
+                    {
+                        Id = producto.Id,
+                        Descripcion = producto.Descripcion,
+                        Cantidad = producto.Cantidad // Regresar la cantidad al stock
+                    });
+                }
             }
         }
 
-        public ListViewItem[] CargarElementos()
+        public string CrearOrden(string documentoCliente, string nombreCliente, int dniTransportista, PrioridadEnum prioridad)
         {
-            // Crear un array de ListViewItem
-            ListViewItem[] elementos = new ListViewItem[3];
+            // Generar un ID único 
+            int nuevoId = 1;
 
-            // Inicializar los elementos
-            elementos[0] = new ListViewItem(new[] { "1", "Remeras", "10" });
-            elementos[1] = new ListViewItem(new[] { "2", "Zapatillas", "20" });
-            elementos[2] = new ListViewItem(new[] { "3", "Pantalones", "30" });
+            // Crear una nueva instancia de OrdenPreparacion
+            var nuevaOrden = new OrdenPreparacion(nuevoId, documentoCliente, nombreCliente, dniTransportista, prioridad, EstadoOrdenPreparacionEnum.Pendiente);
 
-            // Devolver el array de ListViewItem
-            return elementos;
-        }
-
-        public void CargarElementosDisponibles()
-        {
-            this.ProductosDisponibles.Add(new Producto { Id = "1", Descripcion = "Remeras", UnidadesDisponibles = 10 });
-            this.ProductosDisponibles.Add(new Producto { Id = "2", Descripcion = "Zapatillas", UnidadesDisponibles = 20 });
-            this.ProductosDisponibles.Add(new Producto { Id = "3", Descripcion = "Pantalones", UnidadesDisponibles = 30 });
+            // Retornar un mensaje de éxito
+            return $"Orden Creada Satisfactoriamente. ID de Orden: {nuevaOrden.Id}. Fecha de emisión: {nuevaOrden.FechaEmision.ToString("dd/MM/yyyy HH:mm")}";
         }
     }
 }

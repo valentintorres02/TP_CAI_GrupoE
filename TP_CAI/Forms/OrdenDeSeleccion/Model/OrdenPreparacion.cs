@@ -9,6 +9,7 @@
         public int DNITransportista { get; set; }
         public PrioridadEnum Prioridad { get; set; }
         public EstadoOrdenPreparacionEnum Estado { get; set; }
+        public DateTime FechaEmision { get; set; }
 
         public OrdenPreparacion(int id, string documentoCliente, string nombreCliente, int dniTransportista, PrioridadEnum prioridad, EstadoOrdenPreparacionEnum estado)
         {
@@ -18,6 +19,7 @@
             DNITransportista = dniTransportista;
             Prioridad = prioridad;
             Estado = estado;
+            FechaEmision = DateTime.Now;
         }
     }
 }
