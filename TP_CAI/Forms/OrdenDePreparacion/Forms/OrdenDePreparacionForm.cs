@@ -34,8 +34,8 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             InfoOrdenGroup.Enabled = false;
 
             // Registrar los eventos SelectedIndexChanged de los ComboBox
-            comboBox1.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);
-            comboBox2.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);
+            ClienteCombobox.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);
+            DepositoCombobox.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);
 
             // Registrar el evento SelectedIndexChanged del ListView
             ProductosDisponiblesListView.SelectedIndexChanged += new EventHandler(ProductosDisponiblesListView_SelectedIndexChanged);
@@ -57,7 +57,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Verificar si ambos ComboBox tienen un valor seleccionado
-            if (comboBox1.SelectedItem != null && comboBox2.SelectedItem != null)
+            if (ClienteCombobox.SelectedItem != null && DepositoCombobox.SelectedItem != null)
             {
                 ContinuarButton.Enabled = true; // Habilitar el botón
             }
@@ -108,7 +108,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void ContinuarButton_Click(object sender, EventArgs e)
         {
-            if(comboBox1.SelectedIndex != 0)
+            if(ClienteCombobox.SelectedIndex != 0)
             {
                 MessageBox.Show("No hay productos en existencia para el cliente C.A.I S.A en el depósito ID 7. Por favor intente con otro cliente u otro depósito.");
             } else
@@ -268,6 +268,9 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
             // Restablecer comboBox
             PrioridadComboBox.SelectedIndex = -1; // Ninguna selección
+            ClienteCombobox.SelectedIndex = -1;
+            DepositoCombobox.SelectedIndex = -1;
+
 
             // Limpiar ListView
             ProductosAgregadosListView.Items.Clear();
@@ -277,12 +280,15 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
              
 
-            // Habilitar/deshabilitar controles según sea necesario
-            CantidadTextBox.Enabled = true;
+            // deshabilitar controles 
+            CantidadTextBox.Enabled = false;
             EliminarProductoButton.Enabled = false; // Deshabilitar el botón de eliminar
             InfoOrdenGroup.Enabled = false; // Deshabilitar el grupo de información de la orden
-            AgregarProductoButton.Enabled = true; // Habilitar el botón de agregar
-            CrearOrdenButton.Enabled = true; // Habilitar el botón de crear orden
+            AgregarProductoButton.Enabled = false; // Habilitar el botón de agregar
+            CrearOrdenButton.Enabled = false; // Habilitar el botón de crear orden
+            ProductosGroup.Enabled = false;
+
+            InfoOrdenGroup.Enabled = false;
 
         }
 

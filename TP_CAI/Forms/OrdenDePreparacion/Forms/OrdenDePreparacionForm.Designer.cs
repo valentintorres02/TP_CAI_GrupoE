@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            comboBox1 = new ComboBox();
+            ClienteCombobox = new ComboBox();
             label2 = new Label();
-            comboBox2 = new ComboBox();
+            DepositoCombobox = new ComboBox();
             label3 = new Label();
             ContinuarButton = new Button();
             VolverAlMenuButton = new Button();
@@ -54,14 +54,14 @@
             InfoOrdenGroup.SuspendLayout();
             SuspendLayout();
             // 
-            // comboBox1
+            // ClienteCombobox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "GrupoE S.R.L. CUIT 20-44444444-4. ", "C.A.I S.A. CUIT 20-55555555-5" });
-            comboBox1.Location = new Point(12, 26);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(387, 23);
-            comboBox1.TabIndex = 1;
+            ClienteCombobox.FormattingEnabled = true;
+            ClienteCombobox.Items.AddRange(new object[] { "GrupoE S.R.L. CUIT 20-44444444-4. ", "C.A.I S.A. CUIT 20-55555555-5" });
+            ClienteCombobox.Location = new Point(12, 26);
+            ClienteCombobox.Name = "ClienteCombobox";
+            ClienteCombobox.Size = new Size(387, 23);
+            ClienteCombobox.TabIndex = 1;
             // 
             // label2
             // 
@@ -72,14 +72,14 @@
             label2.TabIndex = 2;
             label2.Text = "Cliente";
             // 
-            // comboBox2
+            // DepositoCombobox
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Deposito ID 5. Av. Cordoba 21211, CABA.", "Deposito ID 7. Belgrano 120, Córdoba." });
-            comboBox2.Location = new Point(405, 26);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(306, 23);
-            comboBox2.TabIndex = 3;
+            DepositoCombobox.FormattingEnabled = true;
+            DepositoCombobox.Items.AddRange(new object[] { "Deposito ID 5. Av. Cordoba 21211, CABA.", "Deposito ID 7. Belgrano 120, Córdoba." });
+            DepositoCombobox.Location = new Point(405, 26);
+            DepositoCombobox.Name = "DepositoCombobox";
+            DepositoCombobox.Size = new Size(306, 23);
+            DepositoCombobox.TabIndex = 3;
             // 
             // label3
             // 
@@ -272,9 +272,9 @@
             Controls.Add(VolverAlMenuButton);
             Controls.Add(ContinuarButton);
             Controls.Add(label3);
-            Controls.Add(comboBox2);
+            Controls.Add(DepositoCombobox);
             Controls.Add(label2);
-            Controls.Add(comboBox1);
+            Controls.Add(ClienteCombobox);
             Name = "OrdenDePreparacionForm";
             Text = "Crear Orden de Preparación";
             Load += OrdenDePreparacionForm_Load;
@@ -287,9 +287,9 @@
         }
 
         #endregion
-        private ComboBox comboBox1;
+        private ComboBox ClienteCombobox;
         private Label label2;
-        private ComboBox comboBox2;
+        private ComboBox DepositoCombobox;
         private Label label3;
         private Button ContinuarButton;
         private Button VolverAlMenuButton;
