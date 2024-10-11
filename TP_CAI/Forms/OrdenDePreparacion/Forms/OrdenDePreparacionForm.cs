@@ -114,10 +114,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             } else
             {
 
-
             ProductosGroup.Enabled = true;
-
-
 
             ProductosDisponiblesListView.Columns.Add("ID", 70); // Ancho de la columna 50
             ProductosDisponiblesListView.Columns.Add("Descripción", 170);
@@ -236,18 +233,15 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void CrearOrdenButton_Click(object sender, EventArgs e)
         {
-            bool isDniCompleto = !string.IsNullOrWhiteSpace(DniTransportistaTextBox.Text);
             bool isPrioridadSeleccionada = PrioridadComboBox.SelectedIndex != -1; // -1 indica que no hay selección
 
-            if (!isPrioridadSeleccionada)
-            {
-                MessageBox.Show("Por favor complete el campo Prioridad.");
-                return;
-            }
+            // validar prioridad
+            string errorPrioridad = _ordenDePreparacionModel.ValidarPrioridad(isPrioridadSeleccionada);
 
-            if (!isDniCompleto)
+
+            if (errorPrioridad != null)
             {
-                MessageBox.Show("Por favor complete el campo DNI Transportista.");
+                MessageBox.Show(errorPrioridad);
                 return;
             }
 
@@ -263,6 +257,32 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
             // Si todo es válido, continuar con la creación de la orden
             MessageBox.Show("Orden Creada Satisfactoriamente. ID de Orden: 004. Fecha de emisión: 06/10/2024 14:50hs");
+            ResetearFormulario();
+        }
+
+        private void ResetearFormulario()
+        {
+            // Limpiar campos de texto
+            DniTransportistaTextBox.Clear();
+            CantidadTextBox.Clear();
+
+            // Restablecer comboBox
+            PrioridadComboBox.SelectedIndex = -1; // Ninguna selección
+
+            // Limpiar ListView
+            ProductosAgregadosListView.Items.Clear();
+            ProductosDisponiblesListView.Items.Clear();
+
+            ContinuarButton.Enabled = false;
+
+             
+
+            // Habilitar/deshabilitar controles según sea necesario
+            CantidadTextBox.Enabled = true;
+            EliminarProductoButton.Enabled = false; // Deshabilitar el botón de eliminar
+            InfoOrdenGroup.Enabled = false; // Deshabilitar el grupo de información de la orden
+            AgregarProductoButton.Enabled = true; // Habilitar el botón de agregar
+            CrearOrdenButton.Enabled = true; // Habilitar el botón de crear orden
 
         }
 

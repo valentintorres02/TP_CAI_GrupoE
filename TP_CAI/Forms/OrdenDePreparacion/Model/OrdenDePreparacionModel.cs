@@ -19,6 +19,13 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
         public string? ValidarDniTransportista(string dniText)
         {
+            bool isDniCompleto = !string.IsNullOrWhiteSpace(dniText);
+
+            if(!isDniCompleto)
+            {
+                return "Por favor complete el campo DNI Transportista.";
+            }
+
             if (!int.TryParse(dniText, out _))
             {
                 return "El DNI de Transportista debe ser un número válido. Por favor ingrese un valor correcto.";
@@ -36,6 +43,19 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
             return null;
         }
+
+        public string? ValidarPrioridad(bool isPrioridadSeleccionada)
+        {
+            if (!isPrioridadSeleccionada)
+            {
+               return "Por favor complete el campo Prioridad.";
+            }
+
+            return null;
+
+        }
+
+
 
         public string? ValidarCantidades(int cantidad1, int cantidad2, string descripcion, string cantidadItem)
         {
