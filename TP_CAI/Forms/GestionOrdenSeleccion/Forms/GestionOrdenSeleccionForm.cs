@@ -44,7 +44,7 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
 
             foreach (var orden in ordenes)
             {
-                OrdenesPreparacionGridView.Rows.Add(orden.Seleccionado, orden.NumeroOrden, orden.NumeroSeguimiento, orden.Estado);
+                OrdenesPreparacionGridView.Rows.Add(false, orden.Id, orden.DocumentoCliente, orden.Estado);
             }
 
 

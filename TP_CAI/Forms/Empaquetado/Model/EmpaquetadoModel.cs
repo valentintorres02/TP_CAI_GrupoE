@@ -15,12 +15,10 @@ namespace TP_CAI.Forms.Empaquetado.Model
             // Crear una lista para almacenar las ordenes
             List<OrdenPreparacion> ordenes = new List<OrdenPreparacion>
             {
-                new OrdenPreparacion(false, "19", "20-44444444-4", "Media", "En Preparación"),
-                new OrdenPreparacion(false, "20", "20-55555555-4", "Media", "En Preparación"),
-                new OrdenPreparacion(false, "21", "20-66666666-4", "Alta", "En Preparación"),
-                new OrdenPreparacion(false, "22", "20-77777777-4", "Baja", "En Preparación"),
-                new OrdenPreparacion(false, "23", "20-88888888-4", "Alta", "En Preparación"),
-                new OrdenPreparacion(false, "24", "20-99999999-4", "Alta", "En Preparación")
+               new OrdenPreparacion(019, "20-44444444-4", "GrupoE S.R.L", 35012345, PrioridadEnum.Baja, EstadoOrdenPreparacionEnum.EnPreparacion),
+               new OrdenPreparacion(025, "20-44444444-4", "C.A.I S.A", 35012345, PrioridadEnum.Media, EstadoOrdenPreparacionEnum.EnPreparacion),
+               new OrdenPreparacion(034, "20-44444444-4", "Grupo-Z S.A", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.EnPreparacion),
+               new OrdenPreparacion(055, "20-44444444-4", "Molinos S.R.L", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.EnPreparacion)
             };
 
             // Devolver la lista de ordenes

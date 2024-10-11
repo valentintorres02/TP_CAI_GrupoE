@@ -13,12 +13,12 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
             // Crear una lista para almacenar las ordenes
             List<OrdenSeleccion> ordenes = new List<OrdenSeleccion>
             {
-                new OrdenSeleccion(false, "19", "20-44444444-4", "Pendiente de Seleccion"),
-                new OrdenSeleccion(false, "20", "20-55555555-4", "Pendiente de Seleccion"),
-                new OrdenSeleccion(false, "21", "20-66666666-4", "Pendiente de Seleccion"),
-                new OrdenSeleccion(false, "22", "20-77777777-4", "Pendiente de Seleccion"),
-                new OrdenSeleccion(false, "23", "20-88888888-4", "Pendiente de Seleccion"),
-                new OrdenSeleccion(false, "24", "20-99999999-4", "Pendiente de Seleccion")
+                new OrdenSeleccion(19, "20-44444444-4", EstadoOrdenSeleccionEnum.PendienteDeSeleccion),
+                new OrdenSeleccion(20, "20-55555555-4", EstadoOrdenSeleccionEnum.PendienteDeSeleccion),
+                new OrdenSeleccion(21, "20-66666666-4", EstadoOrdenSeleccionEnum.PendienteDeSeleccion),
+                new OrdenSeleccion(22, "20-77777777-4", EstadoOrdenSeleccionEnum.PendienteDeSeleccion),
+                new OrdenSeleccion(23, "20-88888888-4", EstadoOrdenSeleccionEnum.PendienteDeSeleccion),
+                new OrdenSeleccion(24, "20-99999999-4", EstadoOrdenSeleccionEnum.PendienteDeSeleccion)
             };
 
             // Devolver la lista de ordenes

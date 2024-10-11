@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 using TP_CAI.Forms.Empaquetado.Model;
 using TP_CAI.Forms.OrdenDeEntrega.Model;
+using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 
 namespace TP_CAI.Forms.OrdenDeEntrega.Forms
 {
@@ -140,11 +141,11 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
             OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
             OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
 
-            List<OrdenEntrega> ordenes = _ordenDeEntregaModel.ObtenerOrdenes();
+            List<OrdenPreparacion> ordenes = _ordenDeEntregaModel.ObtenerOrdenes();
 
             foreach (var orden in ordenes)
             {
-                OrdenesPreparacionGridView.Rows.Add(orden.Seleccionado, orden.NumeroOrden, orden.NumeroSeguimiento, orden.Prioridad, orden.Estado);
+                OrdenesPreparacionGridView.Rows.Add(false, orden.Id, orden.DocumentoCliente, orden.Prioridad, orden.Estado);
             }
 
 

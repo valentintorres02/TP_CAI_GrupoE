@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 
 namespace TP_CAI.Forms.OrdenDeEntrega.Model
 {
@@ -8,17 +9,15 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Model
     internal class OrdenDeEntregaModel
     {
         // Obtener las órdenes como una lista de OrdenEntrega
-        public List<OrdenEntrega> ObtenerOrdenes()
+        public List<OrdenPreparacion> ObtenerOrdenes()
         {
             // Crear una lista para almacenar las órdenes
-            List<OrdenEntrega> ordenes = new List<OrdenEntrega>
+            List<OrdenPreparacion> ordenes = new List<OrdenPreparacion>
             {
-                new OrdenEntrega(false, "19", "20-44444444-4", "Media", "Preparada"),
-                new OrdenEntrega(false, "20", "20-55555555-4", "Media", "Preparada"),
-                new OrdenEntrega(false, "21", "20-66666666-4", "Alta", "Preparada"),
-                new OrdenEntrega(false, "22", "20-77777777-4", "Baja", "Preparada"),
-                new OrdenEntrega(false, "23", "20-88888888-4", "Alta", "Preparada"),
-                new OrdenEntrega(false, "24", "20-99999999-4", "Alta", "Preparada")
+               new OrdenPreparacion(019, "20-44444444-4", "GrupoE S.R.L", 35012345, PrioridadEnum.Baja, EstadoOrdenPreparacionEnum.Preparada),
+                new OrdenPreparacion(025, "20-44444444-4", "C.A.I S.A", 35012345, PrioridadEnum.Media, EstadoOrdenPreparacionEnum.Preparada),
+                new OrdenPreparacion(034, "20-44444444-4", "Grupo-Z S.A", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Preparada),
+                new OrdenPreparacion(055, "20-44444444-4", "Molinos S.R.L", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Preparada)
             };
 
             return ordenes;

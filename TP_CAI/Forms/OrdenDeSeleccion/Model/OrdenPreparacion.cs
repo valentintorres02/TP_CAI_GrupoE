@@ -3,17 +3,19 @@
     // Clase que representa una orden de preparación
     public class OrdenPreparacion
     {
-        public bool Seleccionado { get; set; }
-        public string NumeroOrden { get; set; }
-        public string NumeroSeguimiento { get; set; }
-        public string Prioridad { get; set; }
-        public string Estado { get; set; }
+        public int Id { get; set; }
+        public string DocumentoCliente{ get; set; }
+        public string NombreCliente{ get; set; }
+        public int DNITransportista { get; set; }
+        public PrioridadEnum Prioridad { get; set; }
+        public EstadoOrdenPreparacionEnum Estado { get; set; }
 
-        public OrdenPreparacion(bool seleccionado, string numeroOrden, string numeroSeguimiento, string prioridad, string estado)
+        public OrdenPreparacion(int id, string documentoCliente, string nombreCliente, int dniTransportista, PrioridadEnum prioridad, EstadoOrdenPreparacionEnum estado)
         {
-            Seleccionado = seleccionado;
-            NumeroOrden = numeroOrden;
-            NumeroSeguimiento = numeroSeguimiento;
+            Id = id;
+            DocumentoCliente = documentoCliente;
+            NombreCliente = nombreCliente;
+            DNITransportista = dniTransportista;
             Prioridad = prioridad;
             Estado = estado;
         }
