@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 using TP_CAI.Forms.Despacho.Model;
 using TP_CAI.Forms.OrdenDeEntrega.Model;
+using static TP_CAI.Forms.Despacho.Model.DespachoModel;
 
 namespace TP_CAI.Archivos.Despacho.Forms
 {
@@ -65,11 +66,14 @@ namespace TP_CAI.Archivos.Despacho.Forms
             OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
             OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
 
-            // Agregar algunas filas como ejemplo
-            OrdenesPreparacionGridView.Rows.Add("019", "20-44444444-4", "GrupoE S.R.L", "35012345", "Media", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add("025", "20-44444444-4", "C.A.I S.A", "35012345", "Media", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add("034", "20-44444444-4", "Grupo-Z S.A", "35012345", "Media", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add("055", "20-44444444-4", "Molinos S.R.L", "35012345", "Media", "Preparada");
+            List<OrdenDespacho> ordenes = _despachoModel.ObtenerOrdenes();
+
+            foreach (var orden in ordenes)
+            {
+                OrdenesPreparacionGridView.Rows.Add(orden.Id, orden.NumeroIdentificacion, orden.Cliente, orden.Codigo, orden.Categoria, orden.Estado);
+            }
+
+           
         }
 
         private void VolverAlMenuButton_Click(object sender, EventArgs e)

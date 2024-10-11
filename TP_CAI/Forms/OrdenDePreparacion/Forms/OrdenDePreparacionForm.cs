@@ -49,6 +49,9 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             ProductosDisponiblesListView.FullRowSelect = true;
             ProductosAgregadosListView.FullRowSelect = true;
 
+            CargarProductosDisponibles();
+
+
 
         }
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,9 +117,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
             ProductosGroup.Enabled = true;
 
-            ListViewItem item1 = new ListViewItem(new[] { "1", "Remeras", "10" });
-            ListViewItem item2 = new ListViewItem(new[] { "2", "Zapatillas", "20" });
-            ListViewItem item3 = new ListViewItem(new[] { "3", "Pantalones", "30" });
+
 
             ProductosDisponiblesListView.Columns.Add("ID", 70); // Ancho de la columna 50
             ProductosDisponiblesListView.Columns.Add("Descripción", 170);
@@ -126,9 +127,31 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             ProductosAgregadosListView.Columns.Add("Descripción", 170);
             ProductosAgregadosListView.Columns.Add("Unidades agregadas", 100);
 
-            ProductosDisponiblesListView.Items.Add(item1);
-            ProductosDisponiblesListView.Items.Add(item2);
-            ProductosDisponiblesListView.Items.Add(item3);
+
+                ListViewItem[] items = _ordenDePreparacionModel.CargarElementos();
+
+
+                foreach (var item in items)
+                {
+                    ProductosDisponiblesListView.Items.Add(item);
+                }
+            }
+        }
+
+        private void CargarProductosDisponibles()
+        {
+            _ordenDePreparacionModel.CargarElementosDisponibles();
+
+            ActualizarListViewDisponibles();
+        }
+
+        private void ActualizarListViewDisponibles()
+        {
+            ProductosDisponiblesListView.Items.Clear();
+            foreach (var producto in _ordenDePreparacionModel.ProductosDisponibles)
+            {
+                ListViewItem item = new ListViewItem(new[] { producto.Id, producto.Descripcion, producto.UnidadesDisponibles.ToString() });
+                ProductosDisponiblesListView.Items.Add(item);
             }
         }
 
@@ -140,19 +163,15 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             // Obtener los valores de las columnas (ID y Descripción) del item seleccionado
             string id = itemSeleccionado.SubItems[0].Text;  // Columna ID
             string descripcion = itemSeleccionado.SubItems[1].Text;  // Columna Descripción
-            string cantidadItem= itemSeleccionado.SubItems[2].Text;  // Columna Descripción
+            string cantidadItem = itemSeleccionado.SubItems[2].Text;  // Columna Descripción
 
             int.TryParse(cantidadItem, out int cantidad2);
 
-            if (cantidad1 > cantidad2)
-            {
-                MessageBox.Show("No pueden agregarse a la órden de preparación " + cantidad1 + " unidades del producto " + descripcion + " ya que solo se cuentan con " + cantidadItem + " unidades. Por favor intente con un valor igual o menor a " + cantidadItem);
-                return;
-            }
+            string errorCantidad = _ordenDePreparacionModel.ValidarCantidades(cantidad1, cantidad2, descripcion, cantidadItem);
 
-            if(cantidad1 < 1)
+            if(errorCantidad  != null)
             {
-                MessageBox.Show("No pueden agregarse a la órden de preparación " + cantidad1 + " unidades del producto " + descripcion + " ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a " + cantidadItem + " pero mayor que 0.");
+                MessageBox.Show(errorCantidad);
                 return;
             }
 
@@ -160,7 +179,6 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             // Verificar si hay un elemento seleccionado en la lista original (listView1)
             if (ProductosDisponiblesListView.SelectedItems.Count > 0 && int.TryParse(CantidadTextBox.Text, out int cantidad) && cantidad > 0)
             {
-
                 // Crear un nuevo ListViewItem con los valores y la cantidad especificada
                 ListViewItem nuevoItem = new ListViewItem(new[] { id, descripcion, cantidad.ToString() });
 
@@ -173,6 +191,11 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 // Limpiar el campo de cantidad
                 CantidadTextBox.Clear();
 
+                // Habilitar los campos que estaban deshabilitados
+                CantidadTextBox.Enabled = true;
+                EliminarProductoButton.Enabled = true; // Habilitar el botón de eliminar
+                InfoOrdenGroup.Enabled = true; // Habilitar el grupo de información de la orden
+
                 // Deshabilitar el botón nuevamente
                 AgregarProductoButton.Enabled = false;
             }
@@ -181,38 +204,33 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 MessageBox.Show("Por favor, selecciona un producto y una cantidad válida.");
             }
 
-            InfoOrdenGroup.Enabled = true;
+            // Habilitar el botón de crear orden
             CrearOrdenButton.Enabled = true;
+        }
+
+        private void ActualizarListViewAgregados()
+        {
+            ProductosAgregadosListView.Items.Clear();
+            foreach (var producto in _ordenDePreparacionModel.ProductosAgregados)
+            {
+                ListViewItem item = new ListViewItem(new[] { producto.Id, producto.Descripcion, producto.UnidadesDisponibles.ToString() });
+                ProductosAgregadosListView.Items.Add(item);
+            }
         }
 
         private void EliminarProductoButton_Click(object sender, EventArgs e)
         {
-            // Verificar si hay un elemento seleccionado en la lista de productos agregados
             if (ProductosAgregadosListView.SelectedItems.Count > 0)
             {
-                // Obtener el elemento seleccionado
                 ListViewItem itemSeleccionado = ProductosAgregadosListView.SelectedItems[0];
-
-                // Obtener los valores de las columnas (ID y Descripción) del item seleccionado
                 string id = itemSeleccionado.SubItems[0].Text;  // Columna ID
-                string descripcion = itemSeleccionado.SubItems[1].Text;  // Columna Descripción
-                string cantidad = "10";
 
-                // Crear un nuevo ListViewItem para la lista original
-                ListViewItem nuevoItem = new ListViewItem(new[] { id, descripcion, cantidad });
+                // Eliminar el producto del modelo
+                _ordenDePreparacionModel.EliminarProducto(id);
 
-                // Agregar el item de vuelta a la lista original (listView1)
-                ProductosDisponiblesListView.Items.Add(nuevoItem);
-
-                // Eliminar el item de la lista de productos agregados (ProductosAgregadosListView)
-                ProductosAgregadosListView.Items.Remove(itemSeleccionado);
-
-                // Deshabilitar el botón de eliminar si ya no hay más elementos seleccionados
-                EliminarProductoButton.Enabled = false;
-            }
-            else
-            {
-                MessageBox.Show("Por favor, selecciona un producto para eliminar.");
+                // Actualizar la interfaz de usuario
+                ActualizarListViewAgregados();
+                ActualizarListViewDisponibles();
             }
         }
 
@@ -269,5 +287,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 this.Close();
             }
         }
+
+
     }
 }

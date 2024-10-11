@@ -140,13 +140,13 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
             OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
             OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
 
-            // Agregar algunas filas como ejemplo
-            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Media", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Media", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Alta", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Baja", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Alta", "Preparada");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Alta", "Preparada");
+            List<OrdenEntrega> ordenes = _ordenDeEntregaModel.ObtenerOrdenes();
+
+            foreach (var orden in ordenes)
+            {
+                OrdenesPreparacionGridView.Rows.Add(orden.Seleccionado, orden.NumeroOrden, orden.NumeroSeguimiento, orden.Prioridad, orden.Estado);
+            }
+
 
             OrdenesGroupBox.Enabled = true;
             OrdenesPreparacionGridView.Enabled = true;

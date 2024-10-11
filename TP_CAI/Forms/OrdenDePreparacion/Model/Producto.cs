@@ -1,9 +1,9 @@
 ﻿namespace TP_CAI.Forms.OrdenDePreparacion.Model
 {
-    internal class Producto
+    public class Producto
     {
-        public object Id { get; set; }
-        public object Descripcion { get; set; }
-        public int CantidadDisponible { get; set; }
+        public string Id { get; set; }
+        public string Descripcion { get; set; }
+        public int UnidadesDisponibles { get; set; }
     }
 }

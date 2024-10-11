@@ -33,19 +33,18 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
             chkCol.HeaderText = "Seleccionar";
             OrdenesPreparacionGridView.Columns.Add(chkCol);
 
-            // Agregar otras columnas
+            // Agregar columnas
             OrdenesPreparacionGridView.Columns.Add("Columna1", "ID Orden");
             OrdenesPreparacionGridView.Columns.Add("Columna2", "CUIT/CUIL Cliente");
             OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
             OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
 
-            // Agregar algunas filas como ejemplo
-            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Media", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Media", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Alta", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Baja", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Alta", "Pendiente");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Alta", "Pendiente");
+            List<OrdenPreparacion> ordenes = _ordenDeSeleccionModel.ObtenerOrdenes();
+
+            foreach (var orden in ordenes)
+            {
+                OrdenesPreparacionGridView.Rows.Add(orden.Seleccionado, orden.NumeroOrden, orden.NumeroSeguimiento, orden.Prioridad, orden.Estado);
+            }
 
 
             GenerarOrdenButton.Enabled = false; // El botón empieza deshabilitado

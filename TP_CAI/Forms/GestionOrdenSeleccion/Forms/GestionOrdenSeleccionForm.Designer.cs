@@ -72,6 +72,7 @@
             GenerarOrdenButton.TabIndex = 12;
             GenerarOrdenButton.Text = "Seleccionar";
             GenerarOrdenButton.UseVisualStyleBackColor = true;
+            GenerarOrdenButton.Click += GenerarOrdenButton_Click_1;
             // 
             // label1
             // 

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 using TP_CAI.Forms.Empaquetado.Model;
 using TP_CAI.Forms.GestionOrdenSeleccion.Model;
+using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 
 namespace TP_CAI.Archivos.Empaquetado.Forms
 {
@@ -41,13 +42,12 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
             OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
             OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
 
-            // Agregar algunas filas como ejemplo
-            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Media", "En Preparación");
-            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Media", "En Preparación");
-            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Alta", "En Preparación");
-            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Baja", "En Preparación");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Alta", "En Preparación");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Alta", "En Preparación");
+            List<OrdenPreparacion> ordenes = _empaquetadoModel.ObtenerOrdenes();
+
+            foreach (var orden in ordenes)
+            {
+                OrdenesPreparacionGridView.Rows.Add(orden.Seleccionado, orden.NumeroOrden, orden.NumeroSeguimiento, orden.Prioridad, orden.Estado);
+            }
 
 
             GenerarOrdenButton.Enabled = false; // El botón empieza deshabilitado

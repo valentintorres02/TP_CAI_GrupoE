@@ -40,13 +40,12 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
             //OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
             OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
 
-            // Agregar algunas filas como ejemplo
-            OrdenesPreparacionGridView.Rows.Add(false, "19", "20-44444444-4", "Pendiente de Seleccion");
-            OrdenesPreparacionGridView.Rows.Add(false, "20", "20-55555555-4", "Pendiente de Seleccion");
-            OrdenesPreparacionGridView.Rows.Add(false, "21", "20-66666666-4", "Pendiente de Seleccion");
-            OrdenesPreparacionGridView.Rows.Add(false, "22", "20-77777777-4", "Pendiente de Seleccion");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-88888888-4", "Pendiente de Seleccion");
-            OrdenesPreparacionGridView.Rows.Add(false, "23", "20-99999999-4", "Pendiente de Seleccion");
+            List<OrdenSeleccion> ordenes = _gestionOrdenSeleccionModel.ObtenerOrdenes();
+
+            foreach (var orden in ordenes)
+            {
+                OrdenesPreparacionGridView.Rows.Add(orden.Seleccionado, orden.NumeroOrden, orden.NumeroSeguimiento, orden.Estado);
+            }
 
 
             GenerarOrdenButton.Enabled = false; // El botón empieza deshabilitado
@@ -121,12 +120,6 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
             LimpiarButton.Enabled = alMenosUnoSeleccionado;
         }
 
-        private void GenerarOrdenButton_Click(object sender, EventArgs e)
-        {
-
-            MessageBox.Show("Se seleccionó correctamente la selección de la orden de selección ID 0009");
-        }
-
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -174,6 +167,11 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
                 // Cerrar el formulario actual
                 this.Close();
             }
+        }
+
+        private void GenerarOrdenButton_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Se seleccionó correctamente la selección de la orden de selección ID 0009");
         }
     }
 
