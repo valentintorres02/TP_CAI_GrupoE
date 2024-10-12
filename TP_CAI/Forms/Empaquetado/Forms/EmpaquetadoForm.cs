@@ -27,100 +27,46 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
 
         private void EmpaquetadoForm_Load(object sender, EventArgs e)
         {
-            OrdenesPreparacionGridView.AllowUserToAddRows = false; // Deshabilitar agregar filas manualmente
-            OrdenesPreparacionGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            OrdenesPreparacionGridView.MultiSelect = false;
-
-            // Agregar una columna de checkboxes para selección múltiple
-            DataGridViewCheckBoxColumn chkCol = new DataGridViewCheckBoxColumn();
-            chkCol.HeaderText = "Seleccionar";
-            OrdenesPreparacionGridView.Columns.Add(chkCol);
-
-            // Agregar otras columnas
-            OrdenesPreparacionGridView.Columns.Add("Columna1", "ID Orden");
-            OrdenesPreparacionGridView.Columns.Add("Columna2", "CUIT/CUIL Cliente");
-            OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
-            OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
-
             List<OrdenPreparacion> ordenes = _empaquetadoModel.ObtenerOrdenes();
 
             foreach (var orden in ordenes)
             {
-                OrdenesPreparacionGridView.Rows.Add(false, orden.Id, orden.DocumentoCliente, orden.Prioridad, orden.Estado);
-            }
+                var item = new ListViewItem(new[]
+                  {
+                        orden.Id.ToString(),                      // Convertir ID (int) a string
+                        orden.DocumentoCliente ?? string.Empty,   // Documento del cliente, aseguramos que no sea null
+                        orden.Prioridad.ToString(),               // Convertir PrioridadEnum a string
+                        orden.Estado.ToString()                   // Convertir EstadoOrdenPreparacionEnum a string
+                    });
 
+                // Agregar el item al ListView
+                OrdenesPreparacionListView.Items.Add(item);
+            }
 
             GenerarOrdenButton.Enabled = false; // El botón empieza deshabilitado
             LimpiarButton.Enabled = false;
 
-            // Suscribirse al evento CellValueChanged para detectar cambios en el checkbox
-            OrdenesPreparacionGridView.CellValueChanged += Dgv_CellValueChanged;
-
-            // Suscribirse al evento CurrentCellDirtyStateChanged para hacer que el valor del checkbox
-            // se detecte inmediatamente al hacer clic.
-            OrdenesPreparacionGridView.CurrentCellDirtyStateChanged += Dgv_CurrentCellDirtyStateChanged;
+            OrdenesPreparacionListView.ItemCheck += OrdenesPreparacionListView_ItemCheck;
         }
 
-        // Evento para habilitar el botón si hay al menos un checkbox seleccionado
-        private void Dgv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void OrdenesPreparacionListView_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            // Verificar si la celda modificada es de la columna de CheckBox (asumamos que es la columna 0)
-            if (e.ColumnIndex == 0 && OrdenesPreparacionGridView.Rows[e.RowIndex].Cells[e.ColumnIndex] is DataGridViewCheckBoxCell)
+            // Evitar que se seleccione más de un checkbox
+            if (e.NewValue == CheckState.Checked)
             {
-                // Si la celda fue seleccionada (true)
-                if ((bool)OrdenesPreparacionGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == true)
+                foreach (ListViewItem item in OrdenesPreparacionListView.Items)
                 {
-                    // Desmarcar todos los demás CheckBoxes en la misma columna
-                    foreach (DataGridViewRow row in OrdenesPreparacionGridView.Rows)
+                    if (item != OrdenesPreparacionListView.Items[e.Index])
                     {
-                        if (row.Index != e.RowIndex)
-                        {
-                            row.Cells[0].Value = false; // Desmarcar
-                        }
+                        // Desmarcar otros checkboxes
+                        item.Checked = false;
                     }
-
-                    // Habilitar el botón cuando un checkbox esté seleccionado
-                    GenerarOrdenButton.Enabled = true;
-                }
-                else
-                {
-                    // Verificar si aún queda algún checkbox seleccionado
-                    bool algunSeleccionado = OrdenesPreparacionGridView.Rows.Cast<DataGridViewRow>()
-                        .Any(r => (bool)r.Cells[0].Value == true);
-
-                    GenerarOrdenButton.Enabled = algunSeleccionado;
-                }
-            }
-        }
-
-        // Este evento se asegura de que el valor del checkbox se registre inmediatamente después de un clic.
-        private void Dgv_CurrentCellDirtyStateChanged(object sender, EventArgs e)
-        {
-            if (OrdenesPreparacionGridView.IsCurrentCellDirty)
-            {
-                OrdenesPreparacionGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            }
-        }
-
-        // Método para verificar si hay al menos un checkbox seleccionado
-        private void VerificarSeleccion()
-        {
-            bool alMenosUnoSeleccionado = false;
-
-            // Recorrer todas las filas del DataGridView
-            foreach (DataGridViewRow row in OrdenesPreparacionGridView.Rows)
-            {
-                // Verificar si el checkbox de la primera columna está seleccionado
-                if (Convert.ToBoolean(row.Cells[0].Value) == true)
-                {
-                    alMenosUnoSeleccionado = true;
-                    break; // No necesitamos seguir recorriendo si ya encontramos uno
                 }
             }
 
-            // Habilitar o deshabilitar el botón en función de la selección
-            GenerarOrdenButton.Enabled = alMenosUnoSeleccionado;
-            LimpiarButton.Enabled = alMenosUnoSeleccionado;
+            bool hayOrdenSeleccionada = e.NewValue == CheckState.Checked;
+
+            GenerarOrdenButton.Enabled = hayOrdenSeleccionada;
         }
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
@@ -148,11 +94,6 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
                 // Cerrar el formulario actual
                 this.Close();
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
