@@ -23,6 +23,10 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
         {
             InitializeComponent();
             _empaquetadoModel = new EmpaquetadoModel();
+
+            // Evento que chequea que solamente se seleccione 1 checkbox. El componente ListView no soporta nativamente una propiedad para solamente 1 fila se seleccione
+            OrdenesPreparacionListView.ItemCheck += OrdenesPreparacionListView_ItemCheck;
+
         }
 
         private void EmpaquetadoForm_Load(object sender, EventArgs e)
