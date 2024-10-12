@@ -52,29 +52,27 @@ namespace TP_CAI.Archivos.Despacho.Forms
 
         private void SeleccionarOrdenButton_Click(object sender, EventArgs e)
         {
-            OrdenesPreparacionGridView.Enabled = true;
+            OrdenesPreparacionListView.Enabled = true;
             GenerarRemitoYDespacharButton.Enabled = true;
             OrdenesDePreparacionLabel.Enabled = true;
-
-            OrdenesPreparacionGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-
-            // Agregar otras columnas
-            OrdenesPreparacionGridView.Columns.Add("Columna1", "ID Orden");
-            OrdenesPreparacionGridView.Columns.Add("Columna2", "CUIT/CUIL Cliente");
-            OrdenesPreparacionGridView.Columns.Add("Columna2", "Nombre Cliente");
-            OrdenesPreparacionGridView.Columns.Add("Columna2", "DNI Transportista");
-            OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
-            OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
 
             List<OrdenPreparacion> ordenes = _despachoModel.ObtenerOrdenesPreparacion();
 
             foreach (var orden in ordenes)
             {
-                OrdenesPreparacionGridView.Rows.Add(orden.Id, orden.DocumentoCliente, orden.NombreCliente, orden.DNITransportista, orden.Prioridad, orden.Estado);
-            }
+                var item = new ListViewItem(new[]
+                  {
+                        orden.Id.ToString(),                      // Convertir ID (int) a string
+                        orden.DocumentoCliente ?? string.Empty,   // Documento del cliente, aseguramos que no sea null
+                        orden.NombreCliente ?? string.Empty,      // Nombre del cliente, aseguramos que no sea null
+                        orden.DNITransportista.ToString(),        // Convertir DNI (int) a string
+                        orden.Prioridad.ToString(),               // Convertir PrioridadEnum a string
+                        orden.Estado.ToString()                   // Convertir EstadoOrdenPreparacionEnum a string
+                    });
 
-           
+                // Agregar el item al ListView
+                OrdenesPreparacionListView.Items.Add(item);
+            }
         }
 
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
