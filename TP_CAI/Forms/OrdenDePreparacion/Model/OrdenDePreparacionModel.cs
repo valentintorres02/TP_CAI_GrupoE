@@ -65,7 +65,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
         public string? ValidarCantidades(int cantidad1, int cantidad2, string descripcion, string cantidadItem)
         {
-            if (cantidad1 < 1 && cantidad2 == null)
+            if (cantidad1 < 1)
             {
                 return "No pueden agregarse a la órden de preparación " + cantidad1 + " unidades del producto " + descripcion + " ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a " + cantidadItem + " pero mayor que 0.";
             }
