@@ -101,19 +101,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
         {
                 ProductosGroup.Enabled = true;
 
-                // Limpiar las columnas antes de agregar nuevas
-                ProductosDisponiblesListView.Columns.Clear();
-                ProductosAgregadosListView.Columns.Clear();
-
-                // Agregar columnas a la lista de productos disponibles
-                ProductosDisponiblesListView.Columns.Add("ID", 70); // Ancho de la columna 70
-                ProductosDisponiblesListView.Columns.Add("Descripción", 170);
-                ProductosDisponiblesListView.Columns.Add("Unidades disponibles", 100);
-
-                // Agregar columnas a la lista de productos agregados
-                ProductosAgregadosListView.Columns.Add("ID", 70); // Ancho de la columna 70
-                ProductosAgregadosListView.Columns.Add("Descripción", 170);
-                ProductosAgregadosListView.Columns.Add("Unidades agregadas", 100);
+            
 
                 // Mapear productos disponibles a la lista
                 foreach (var producto in _ordenDePreparacionModel.ProductosDisponibles)
