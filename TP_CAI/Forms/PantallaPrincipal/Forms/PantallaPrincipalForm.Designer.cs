@@ -36,6 +36,7 @@
 			EmpaquetadoButton = new Button();
 			CrearOrdenDeEntrega = new Button();
 			GestionOrdenSeleccionButton = new Button();
+			ClasificarOrdenesEntregaButton = new Button();
 			SuspendLayout();
 			// 
 			// RolUsuario
@@ -76,7 +77,7 @@
 			// 
 			// DespachoButton
 			// 
-			DespachoButton.Location = new Point(12, 267);
+			DespachoButton.Location = new Point(12, 317);
 			DespachoButton.Name = "DespachoButton";
 			DespachoButton.Size = new Size(226, 45);
 			DespachoButton.TabIndex = 7;
@@ -114,11 +115,21 @@
 			GestionOrdenSeleccionButton.UseVisualStyleBackColor = true;
 			GestionOrdenSeleccionButton.Click += GestionOrdenSeleccionButton_Click;
 			// 
+			// ClasificarOrdenesEntregaButton
+			// 
+			ClasificarOrdenesEntregaButton.Location = new Point(11, 266);
+			ClasificarOrdenesEntregaButton.Name = "ClasificarOrdenesEntregaButton";
+			ClasificarOrdenesEntregaButton.Size = new Size(226, 45);
+			ClasificarOrdenesEntregaButton.TabIndex = 10;
+			ClasificarOrdenesEntregaButton.Text = "Clasificar Ordenes de Entrega";
+			ClasificarOrdenesEntregaButton.UseVisualStyleBackColor = true;
+			// 
 			// PantallaPrincipalForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(250, 326);
+			ClientSize = new Size(249, 374);
+			Controls.Add(ClasificarOrdenesEntregaButton);
 			Controls.Add(GestionOrdenSeleccionButton);
 			Controls.Add(CrearOrdenDeEntrega);
 			Controls.Add(DespachoButton);
@@ -144,5 +155,6 @@
         private Button EmpaquetadoButton;
         private Button CrearOrdenDeEntrega;
         private Button GestionOrdenSeleccionButton;
-    }
+		private Button ClasificarOrdenesEntregaButton;
+	}
 }
