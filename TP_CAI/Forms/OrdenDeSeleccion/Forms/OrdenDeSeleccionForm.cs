@@ -26,77 +26,12 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
         private void OrdenDeSeleccionForm_Load(object sender, EventArgs e)
         {
 
-            OrdenesPreparacionGridView.AllowUserToAddRows = false; // Deshabilitar agregar filas manualmente
-            OrdenesPreparacionGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-            // Agregar una columna de checkboxes para selección múltiple
-            DataGridViewCheckBoxColumn chkCol = new DataGridViewCheckBoxColumn();
-            chkCol.HeaderText = "Seleccionar";
-            OrdenesPreparacionGridView.Columns.Add(chkCol);
-
-            // Agregar columnas
-            OrdenesPreparacionGridView.Columns.Add("Columna1", "ID Orden");
-            OrdenesPreparacionGridView.Columns.Add("Columna2", "CUIT/CUIL Cliente");
-            OrdenesPreparacionGridView.Columns.Add("Columna3", "Prioridad");
-            OrdenesPreparacionGridView.Columns.Add("Columna4", "Estado");
-
             List<OrdenPreparacion> ordenes = _ordenDeSeleccionModel.ObtenerOrdenes();
 
             foreach (var orden in ordenes)
             {
-                OrdenesPreparacionGridView.Rows.Add(false, orden.Id, orden.DocumentoCliente, orden.Prioridad, orden.Estado);
+                //OrdenesPreparacionListView.Add(false, orden.Id, orden.DocumentoCliente, orden.Prioridad, orden.Estado);
             }
-
-
-            GenerarOrdenButton.Enabled = false; // El botón empieza deshabilitado
-            LimpiarButton.Enabled = false;
-
-            // Suscribirse al evento CellValueChanged para detectar cambios en el checkbox
-            OrdenesPreparacionGridView.CellValueChanged += Dgv_CellValueChanged;
-
-            // Suscribirse al evento CurrentCellDirtyStateChanged para hacer que el valor del checkbox
-            // se detecte inmediatamente al hacer clic.
-            OrdenesPreparacionGridView.CurrentCellDirtyStateChanged += Dgv_CurrentCellDirtyStateChanged;
-        }
-
-        // Evento para habilitar el botón si hay al menos un checkbox seleccionado
-        private void Dgv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            // Verificar si la columna es la de los checkboxes (columna 0 en este caso)
-            if (e.ColumnIndex == 0)
-            {
-                VerificarSeleccion();
-            }
-        }
-
-        // Este evento se asegura de que el valor del checkbox se registre inmediatamente después de un clic.
-        private void Dgv_CurrentCellDirtyStateChanged(object sender, EventArgs e)
-        {
-            if (OrdenesPreparacionGridView.IsCurrentCellDirty)
-            {
-                OrdenesPreparacionGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            }
-        }
-
-        // Método para verificar si hay al menos un checkbox seleccionado
-        private void VerificarSeleccion()
-        {
-            bool alMenosUnoSeleccionado = false;
-
-            // Recorrer todas las filas del DataGridView
-            foreach (DataGridViewRow row in OrdenesPreparacionGridView.Rows)
-            {
-                // Verificar si el checkbox de la primera columna está seleccionado
-                if (Convert.ToBoolean(row.Cells[0].Value) == true)
-                {
-                    alMenosUnoSeleccionado = true;
-                    break; // No necesitamos seguir recorriendo si ya encontramos uno
-                }
-            }
-
-            // Habilitar o deshabilitar el botón en función de la selección
-            GenerarOrdenButton.Enabled = alMenosUnoSeleccionado;
-            LimpiarButton.Enabled = alMenosUnoSeleccionado;
         }
 
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
@@ -150,14 +85,6 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
 
         private void LimpiarFormulario()
         {
-            // Recorrer todas las filas del DataGridView
-            foreach (DataGridViewRow row in OrdenesPreparacionGridView.Rows)
-            {
-                // Desmarcar el checkbox en la primera columna
-                row.Cells[0].Value = false;
-            }
-
-            // También puedes restablecer otros controles de formulario aquí, si es necesario
         }
 
         private void EliminarOrdenesSeleccionadas()
@@ -167,12 +94,6 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
 
         private void LimpiarButton_Click(object sender, EventArgs e)
         {
-            // Recorrer todas las filas del DataGridView
-            foreach (DataGridViewRow row in OrdenesPreparacionGridView.Rows)
-            {
-                // Desmarcar el checkbox en la primera columna
-                row.Cells[0].Value = false;
-            }
         }
     }
 }

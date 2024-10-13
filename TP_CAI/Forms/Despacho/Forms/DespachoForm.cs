@@ -32,49 +32,7 @@ namespace TP_CAI.Archivos.Despacho.Forms
 
         private void DespachoForm_Load(object sender, EventArgs e)
         {
-            // Registrar el evento SelectedIndexChanged para el ComboBox
-            OrdenDeEntregaComboBox.SelectedIndexChanged += OrdenDeEntregaComboBox_SelectedIndexChanged;
         }
-
-        // Evento que se dispara cuando se selecciona un elemento en el ComboBox
-        private void OrdenDeEntregaComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Verificar si se ha seleccionado un elemento (índice >= 0)
-            if (OrdenDeEntregaComboBox.SelectedIndex >= 0)
-            {
-                SeleccionarOrdenButton.Enabled = true; // Habilitar el botón
-            }
-            else
-            {
-                SeleccionarOrdenButton.Enabled = false; // Deshabilitar si no hay selección
-            }
-        }
-
-        private void SeleccionarOrdenButton_Click(object sender, EventArgs e)
-        {
-            OrdenesPreparacionListView.Enabled = true;
-            GenerarRemitoYDespacharButton.Enabled = true;
-            OrdenesDePreparacionLabel.Enabled = true;
-
-            List<OrdenPreparacion> ordenes = _despachoModel.ObtenerOrdenesPreparacion();
-
-            foreach (var orden in ordenes)
-            {
-                var item = new ListViewItem(new[]
-                  {
-                        orden.Id.ToString(),                      // Convertir ID (int) a string
-                        orden.DocumentoCliente ?? string.Empty,   // Documento del cliente, aseguramos que no sea null
-                        orden.NombreCliente ?? string.Empty,      // Nombre del cliente, aseguramos que no sea null
-                        orden.DNITransportista.ToString(),        // Convertir DNI (int) a string
-                        orden.Prioridad.ToString(),               // Convertir PrioridadEnum a string
-                        orden.Estado.ToString()                   // Convertir EstadoOrdenPreparacionEnum a string
-                    });
-
-                // Agregar el item al ListView
-                OrdenesPreparacionListView.Items.Add(item);
-            }
-        }
-
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(

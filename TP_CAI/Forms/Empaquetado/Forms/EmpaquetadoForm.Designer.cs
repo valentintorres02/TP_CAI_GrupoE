@@ -31,12 +31,13 @@
             VolverAlMenuButton = new Button();
             GenerarOrdenButton = new Button();
             OrdenesPreparacionListView = new ListView();
-            this.IdProducto = new ColumnHeader();
-            this.Descripcion = new ColumnHeader();
             Cantidad = new ColumnHeader();
             label1 = new Label();
             Productos = new GroupBox();
             label2 = new Label();
+            IdProducto = new ColumnHeader();
+            Descripcion = new ColumnHeader();
+            CantidadProducto = new ColumnHeader();
             Productos.SuspendLayout();
             SuspendLayout();
             // 
@@ -63,26 +64,16 @@
             // OrdenesPreparacionListView
             // 
             OrdenesPreparacionListView.CheckBoxes = true;
-            OrdenesPreparacionListView.Columns.AddRange(new ColumnHeader[] { this.IdProducto, this.Descripcion, Cantidad });
+            OrdenesPreparacionListView.Columns.AddRange(new ColumnHeader[] { IdProducto, Descripcion, CantidadProducto });
             OrdenesPreparacionListView.FullRowSelect = true;
             OrdenesPreparacionListView.Location = new Point(7, 21);
-            OrdenesPreparacionListView.Margin = new Padding(2, 2, 2, 2);
+            OrdenesPreparacionListView.Margin = new Padding(2);
             OrdenesPreparacionListView.MultiSelect = false;
             OrdenesPreparacionListView.Name = "OrdenesPreparacionListView";
             OrdenesPreparacionListView.Size = new Size(503, 246);
             OrdenesPreparacionListView.TabIndex = 11;
             OrdenesPreparacionListView.UseCompatibleStateImageBehavior = false;
             OrdenesPreparacionListView.View = View.Details;
-            // 
-            // IdProducto
-            // 
-            this.IdProducto.Text = "ID Producto";
-            this.IdProducto.Width = 150;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.Text = "Descripcion";
-            this.Descripcion.Width = 200;
             // 
             // Cantidad
             // 
@@ -118,6 +109,21 @@
             label2.TabIndex = 13;
             label2.Text = "Quedan 37 órdenes para empaquetar.";
             // 
+            // IdProducto
+            // 
+            IdProducto.Text = "ID Producto";
+            IdProducto.Width = 110;
+            // 
+            // Descripcion
+            // 
+            Descripcion.Text = "Descripcion";
+            Descripcion.Width = 200;
+            // 
+            // CantidadProducto
+            // 
+            CantidadProducto.Text = "Cantidad";
+            CantidadProducto.Width = 150;
+            // 
             // EmpaquetadoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -149,5 +155,8 @@
         private Label label1;
         private GroupBox Productos;
         private Label label2;
+        private ColumnHeader IdProducto;
+        private ColumnHeader Descripcion;
+        private ColumnHeader CantidadProducto;
     }
 }
