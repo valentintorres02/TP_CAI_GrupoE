@@ -28,164 +28,115 @@
         /// </summary>
         private void InitializeComponent()
         {
+            button3 = new Button();
+            button2 = new Button();
+            groupBox1 = new GroupBox();
+            listView1 = new ListView();
+            IdOrden = new ColumnHeader();
+            button1 = new Button();
             label1 = new Label();
-            OrdenDeEntregaComboBox = new ComboBox();
-            SeleccionarOrdenButton = new Button();
-            OrdenesDePreparacionLabel = new Label();
-            GenerarRemitoYDespacharButton = new Button();
-            VolverAlMenuButton = new Button();
-            OrdenesPreparacionListView = new ListView();
-            IdOrdenPreparacion = new ColumnHeader();
-            DocumentoCliente = new ColumnHeader();
-            NombreCliente = new ColumnHeader();
-            DNITransportista = new ColumnHeader();
-            Prioridad = new ColumnHeader();
-            Estado = new ColumnHeader();
+            comboBox1 = new ComboBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
+            // 
+            // button3
+            // 
+            button3.Location = new Point(12, 407);
+            button3.Name = "button3";
+            button3.Size = new Size(145, 23);
+            button3.TabIndex = 11;
+            button3.Text = "Volver al Menú Principal";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(12, 330);
+            button2.Name = "button2";
+            button2.Size = new Size(213, 48);
+            button2.TabIndex = 10;
+            button2.Text = "Marcar como Despachadas y Generar Remito";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(listView1);
+            groupBox1.Location = new Point(12, 110);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(213, 214);
+            groupBox1.TabIndex = 9;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Órdenes a Despachar";
+            // 
+            // listView1
+            // 
+            listView1.Columns.AddRange(new ColumnHeader[] { IdOrden });
+            listView1.Location = new Point(6, 22);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(201, 186);
+            listView1.TabIndex = 0;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            // 
+            // IdOrden
+            // 
+            IdOrden.Text = "ID de Orden";
+            IdOrden.Width = 190;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(12, 56);
+            button1.Name = "button1";
+            button1.Size = new Size(213, 23);
+            button1.TabIndex = 8;
+            button1.Text = "Seleccionar";
+            button1.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(17, 15);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(342, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Seleccionar orden de entrega a despachar";
+            label1.Size = new Size(219, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Transportistas con Ordenes a Despachar:";
             // 
-            // OrdenDeEntregaComboBox
+            // comboBox1
             // 
-            OrdenDeEntregaComboBox.FormattingEnabled = true;
-            OrdenDeEntregaComboBox.Items.AddRange(new object[] { "ID Orden de Entrega: 014", "ID Orden de Entrega: 017", "ID Orden de Entrega: 019", "ID Orden de Entrega: 012" });
-            OrdenDeEntregaComboBox.Location = new Point(17, 45);
-            OrdenDeEntregaComboBox.Margin = new Padding(4, 5, 4, 5);
-            OrdenDeEntregaComboBox.Name = "OrdenDeEntregaComboBox";
-            OrdenDeEntregaComboBox.Size = new Size(637, 33);
-            OrdenDeEntregaComboBox.TabIndex = 1;
-            // 
-            // SeleccionarOrdenButton
-            // 
-            SeleccionarOrdenButton.Enabled = false;
-            SeleccionarOrdenButton.Location = new Point(664, 45);
-            SeleccionarOrdenButton.Margin = new Padding(4, 5, 4, 5);
-            SeleccionarOrdenButton.Name = "SeleccionarOrdenButton";
-            SeleccionarOrdenButton.Size = new Size(267, 38);
-            SeleccionarOrdenButton.TabIndex = 15;
-            SeleccionarOrdenButton.Text = "Seleccionar";
-            SeleccionarOrdenButton.UseVisualStyleBackColor = true;
-            SeleccionarOrdenButton.Click += SeleccionarOrdenButton_Click;
-            // 
-            // OrdenesDePreparacionLabel
-            // 
-            OrdenesDePreparacionLabel.AutoSize = true;
-            OrdenesDePreparacionLabel.Enabled = false;
-            OrdenesDePreparacionLabel.Location = new Point(17, 115);
-            OrdenesDePreparacionLabel.Margin = new Padding(4, 0, 4, 0);
-            OrdenesDePreparacionLabel.Name = "OrdenesDePreparacionLabel";
-            OrdenesDePreparacionLabel.Size = new Size(304, 25);
-            OrdenesDePreparacionLabel.TabIndex = 16;
-            OrdenesDePreparacionLabel.Text = "Órdenes de Preparación a Despachar";
-            // 
-            // GenerarRemitoYDespacharButton
-            // 
-            GenerarRemitoYDespacharButton.Enabled = false;
-            GenerarRemitoYDespacharButton.Location = new Point(17, 462);
-            GenerarRemitoYDespacharButton.Margin = new Padding(4, 5, 4, 5);
-            GenerarRemitoYDespacharButton.Name = "GenerarRemitoYDespacharButton";
-            GenerarRemitoYDespacharButton.Size = new Size(914, 65);
-            GenerarRemitoYDespacharButton.TabIndex = 17;
-            GenerarRemitoYDespacharButton.Text = "Generar Remito y Despachar";
-            GenerarRemitoYDespacharButton.UseVisualStyleBackColor = true;
-            GenerarRemitoYDespacharButton.Click += GenerarRemitoYDespacharButton_Click;
-            // 
-            // VolverAlMenuButton
-            // 
-            VolverAlMenuButton.Location = new Point(17, 600);
-            VolverAlMenuButton.Margin = new Padding(4, 5, 4, 5);
-            VolverAlMenuButton.Name = "VolverAlMenuButton";
-            VolverAlMenuButton.Size = new Size(206, 38);
-            VolverAlMenuButton.TabIndex = 18;
-            VolverAlMenuButton.Text = "Volver al Menú Principal";
-            VolverAlMenuButton.UseVisualStyleBackColor = true;
-            VolverAlMenuButton.Click += VolverAlMenuButton_Click;
-            // 
-            // OrdenesPreparacionListView
-            // 
-            OrdenesPreparacionListView.Columns.AddRange(new ColumnHeader[] { IdOrdenPreparacion, DocumentoCliente, NombreCliente, DNITransportista, Prioridad, Estado });
-            OrdenesPreparacionListView.Enabled = false;
-            OrdenesPreparacionListView.FullRowSelect = true;
-            OrdenesPreparacionListView.Location = new Point(17, 143);
-            OrdenesPreparacionListView.Name = "OrdenesPreparacionListView";
-            OrdenesPreparacionListView.Size = new Size(914, 311);
-            OrdenesPreparacionListView.TabIndex = 19;
-            OrdenesPreparacionListView.UseCompatibleStateImageBehavior = false;
-            OrdenesPreparacionListView.View = View.Details;
-            // 
-            // IdOrdenPreparacion
-            // 
-            IdOrdenPreparacion.Text = "Id Orden Preparacion";
-            IdOrdenPreparacion.Width = 150;
-            // 
-            // DocumentoCliente
-            // 
-            DocumentoCliente.Text = "CUIT/CUIL Cliente";
-            DocumentoCliente.Width = 150;
-            // 
-            // NombreCliente
-            // 
-            NombreCliente.Text = "Nombre Cliente";
-            NombreCliente.Width = 150;
-            // 
-            // DNITransportista
-            // 
-            DNITransportista.Text = "DNI Transportista";
-            DNITransportista.Width = 150;
-            // 
-            // Prioridad
-            // 
-            Prioridad.Text = "Prioridad";
-            Prioridad.Width = 150;
-            // 
-            // Estado
-            // 
-            Estado.Text = "Estado";
-            Estado.Width = 150;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(12, 27);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(213, 23);
+            comboBox1.TabIndex = 6;
             // 
             // DespachoForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(949, 652);
-            Controls.Add(OrdenesPreparacionListView);
-            Controls.Add(VolverAlMenuButton);
-            Controls.Add(GenerarRemitoYDespacharButton);
-            Controls.Add(OrdenesDePreparacionLabel);
-            Controls.Add(SeleccionarOrdenButton);
-            Controls.Add(OrdenDeEntregaComboBox);
+            ClientSize = new Size(238, 444);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(groupBox1);
+            Controls.Add(button1);
             Controls.Add(label1);
-            Margin = new Padding(4, 5, 4, 5);
+            Controls.Add(comboBox1);
             MaximizeBox = false;
             Name = "DespachoForm";
             Text = "Despacho";
             Load += DespachoForm_Load;
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
+        private Button button3;
+        private Button button2;
+        private GroupBox groupBox1;
+        private ListView listView1;
+        private ColumnHeader IdOrden;
+        private Button button1;
         private Label label1;
-        private ComboBox OrdenDeEntregaComboBox;
-        private Button SeleccionarOrdenButton;
-        private Label OrdenesDePreparacionLabel;
-        private Button GenerarRemitoYDespacharButton;
-        private Button VolverAlMenuButton;
-        private ListView OrdenesPreparacionListView;
-        private ColumnHeader IdOrdenPreparacion;
-        private ColumnHeader DocumentoCliente;
-        private ColumnHeader NombreCliente;
-        private ColumnHeader DNITransportista;
-        private ColumnHeader Prioridad;
-        private ColumnHeader Estado;
+        private ComboBox comboBox1;
     }
 }
