@@ -28,33 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LimpiarButton = new Button();
             VolverAlMenuButton = new Button();
             GenerarOrdenButton = new Button();
-            label1 = new Label();
             OrdenesPreparacionListView = new ListView();
-            IdOrden = new ColumnHeader();
-            DocumentoCliente = new ColumnHeader();
-            Prioridad = new ColumnHeader();
-            Estado = new ColumnHeader();
+            this.IdProducto = new ColumnHeader();
+            this.Descripcion = new ColumnHeader();
+            Cantidad = new ColumnHeader();
+            label1 = new Label();
+            Productos = new GroupBox();
+            label2 = new Label();
+            Productos.SuspendLayout();
             SuspendLayout();
-            // 
-            // LimpiarButton
-            // 
-            LimpiarButton.Location = new Point(17, 367);
-            LimpiarButton.Margin = new Padding(4, 5, 4, 5);
-            LimpiarButton.Name = "LimpiarButton";
-            LimpiarButton.Size = new Size(107, 38);
-            LimpiarButton.TabIndex = 10;
-            LimpiarButton.Text = "Limpiar";
-            LimpiarButton.UseVisualStyleBackColor = true;
             // 
             // VolverAlMenuButton
             // 
-            VolverAlMenuButton.Location = new Point(17, 453);
-            VolverAlMenuButton.Margin = new Padding(4, 5, 4, 5);
+            VolverAlMenuButton.Location = new Point(6, 394);
             VolverAlMenuButton.Name = "VolverAlMenuButton";
-            VolverAlMenuButton.Size = new Size(206, 38);
+            VolverAlMenuButton.Size = new Size(144, 23);
             VolverAlMenuButton.TabIndex = 9;
             VolverAlMenuButton.Text = "Volver al Menú Principal";
             VolverAlMenuButton.UseVisualStyleBackColor = true;
@@ -62,74 +52,87 @@
             // 
             // GenerarOrdenButton
             // 
-            GenerarOrdenButton.Location = new Point(133, 367);
-            GenerarOrdenButton.Margin = new Padding(4, 5, 4, 5);
+            GenerarOrdenButton.Location = new Point(6, 354);
             GenerarOrdenButton.Name = "GenerarOrdenButton";
-            GenerarOrdenButton.Size = new Size(713, 42);
+            GenerarOrdenButton.Size = new Size(518, 25);
             GenerarOrdenButton.TabIndex = 7;
             GenerarOrdenButton.Text = "Empaquetar";
             GenerarOrdenButton.UseVisualStyleBackColor = true;
             GenerarOrdenButton.Click += GenerarOrdenButton_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(17, 10);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(395, 32);
-            label1.TabIndex = 6;
-            label1.Text = "Seleccionar órdenes de preparación";
-            // 
             // OrdenesPreparacionListView
             // 
             OrdenesPreparacionListView.CheckBoxes = true;
-            OrdenesPreparacionListView.Columns.AddRange(new ColumnHeader[] { IdOrden, DocumentoCliente, Prioridad, Estado });
+            OrdenesPreparacionListView.Columns.AddRange(new ColumnHeader[] { this.IdProducto, this.Descripcion, Cantidad });
             OrdenesPreparacionListView.FullRowSelect = true;
-            OrdenesPreparacionListView.Location = new Point(17, 45);
+            OrdenesPreparacionListView.Location = new Point(7, 21);
+            OrdenesPreparacionListView.Margin = new Padding(2, 2, 2, 2);
             OrdenesPreparacionListView.MultiSelect = false;
             OrdenesPreparacionListView.Name = "OrdenesPreparacionListView";
-            OrdenesPreparacionListView.Size = new Size(829, 314);
+            OrdenesPreparacionListView.Size = new Size(503, 246);
             OrdenesPreparacionListView.TabIndex = 11;
             OrdenesPreparacionListView.UseCompatibleStateImageBehavior = false;
             OrdenesPreparacionListView.View = View.Details;
             // 
-            // IdOrden
+            // IdProducto
             // 
-            IdOrden.Text = "Id Orden";
-            IdOrden.Width = 150;
+            this.IdProducto.Text = "ID Producto";
+            this.IdProducto.Width = 150;
             // 
-            // DocumentoCliente
+            // Descripcion
             // 
-            DocumentoCliente.Text = "CUIT/CUIL Cliente";
-            DocumentoCliente.Width = 200;
+            this.Descripcion.Text = "Descripcion";
+            this.Descripcion.Width = 200;
             // 
-            // Prioridad
+            // Cantidad
             // 
-            Prioridad.Text = "Prioridad";
-            Prioridad.Width = 150;
+            Cantidad.Text = "Cantidad";
+            Cantidad.Width = 150;
             // 
-            // Estado
+            // label1
             // 
-            Estado.Text = "Estado";
-            Estado.Width = 150;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.Location = new Point(8, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(173, 21);
+            label1.TabIndex = 6;
+            label1.Text = "Empaquetar Orden 051";
+            // 
+            // Productos
+            // 
+            Productos.Controls.Add(OrdenesPreparacionListView);
+            Productos.Location = new Point(6, 45);
+            Productos.Name = "Productos";
+            Productos.Size = new Size(518, 272);
+            Productos.TabIndex = 12;
+            Productos.TabStop = false;
+            Productos.Text = "Productos a Empaquetar";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(161, 328);
+            label2.Name = "label2";
+            label2.Size = new Size(205, 15);
+            label2.TabIndex = 13;
+            label2.Text = "Quedan 37 órdenes para empaquetar.";
             // 
             // EmpaquetadoForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(866, 505);
-            Controls.Add(OrdenesPreparacionListView);
-            Controls.Add(LimpiarButton);
+            ClientSize = new Size(535, 422);
+            Controls.Add(label2);
+            Controls.Add(Productos);
             Controls.Add(VolverAlMenuButton);
             Controls.Add(GenerarOrdenButton);
             Controls.Add(label1);
-            Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             Name = "EmpaquetadoForm";
             Text = "Empaquetar";
             Load += EmpaquetadoForm_Load;
+            Productos.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -139,11 +142,12 @@
         private Button LimpiarButton;
         private Button VolverAlMenuButton;
         private Button GenerarOrdenButton;
-        private Label label1;
         private ListView OrdenesPreparacionListView;
         private ColumnHeader IdOrden;
         private ColumnHeader DocumentoCliente;
-        private ColumnHeader Prioridad;
-        private ColumnHeader Estado;
+        private ColumnHeader Cantidad;
+        private Label label1;
+        private GroupBox Productos;
+        private Label label2;
     }
 }
