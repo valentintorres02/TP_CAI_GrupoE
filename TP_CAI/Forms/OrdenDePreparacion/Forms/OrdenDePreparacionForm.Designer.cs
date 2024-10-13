@@ -60,6 +60,8 @@
 			columnHeader4 = new ColumnHeader();
 			columnHeader5 = new ColumnHeader();
 			columnHeader6 = new ColumnHeader();
+			label1 = new Label();
+			FechaEntregaDatePicker = new DateTimePicker();
 			ProductosGroup.SuspendLayout();
 			InfoOrdenGroup.SuspendLayout();
 			SuspendLayout();
@@ -227,6 +229,8 @@
 			// 
 			// InfoOrdenGroup
 			// 
+			InfoOrdenGroup.Controls.Add(FechaEntregaDatePicker);
+			InfoOrdenGroup.Controls.Add(label1);
 			InfoOrdenGroup.Controls.Add(label8);
 			InfoOrdenGroup.Controls.Add(label7);
 			InfoOrdenGroup.Controls.Add(DniTransportistaTextBox);
@@ -241,7 +245,7 @@
 			// label8
 			// 
 			label8.AutoSize = true;
-			label8.Location = new Point(272, 22);
+			label8.Location = new Point(353, 19);
 			label8.Name = "label8";
 			label8.Size = new Size(97, 15);
 			label8.TabIndex = 9;
@@ -258,9 +262,9 @@
 			// 
 			// DniTransportistaTextBox
 			// 
-			DniTransportistaTextBox.Location = new Point(272, 40);
+			DniTransportistaTextBox.Location = new Point(353, 40);
 			DniTransportistaTextBox.Name = "DniTransportistaTextBox";
-			DniTransportistaTextBox.Size = new Size(280, 23);
+			DniTransportistaTextBox.Size = new Size(199, 23);
 			DniTransportistaTextBox.TabIndex = 8;
 			// 
 			// PrioridadComboBox
@@ -269,7 +273,7 @@
 			PrioridadComboBox.Items.AddRange(new object[] { "Baja", "Media", "Alta" });
 			PrioridadComboBox.Location = new Point(6, 40);
 			PrioridadComboBox.Name = "PrioridadComboBox";
-			PrioridadComboBox.Size = new Size(260, 23);
+			PrioridadComboBox.Size = new Size(110, 23);
 			PrioridadComboBox.TabIndex = 9;
 			// 
 			// CrearOrdenButton
@@ -312,6 +316,22 @@
 			// 
 			columnHeader5.Text = "Ubicacion";
 			columnHeader5.Width = 100;
+			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Location = new Point(122, 22);
+			label1.Name = "label1";
+			label1.Size = new Size(97, 15);
+			label1.TabIndex = 11;
+			label1.Text = "Fecha de entrega";
+			// 
+			// FechaEntregaDatePicker
+			// 
+			FechaEntregaDatePicker.Location = new Point(122, 40);
+			FechaEntregaDatePicker.Name = "FechaEntregaDatePicker";
+			FechaEntregaDatePicker.Size = new Size(225, 23);
+			FechaEntregaDatePicker.TabIndex = 12;
 			// 
 			// OrdenDePreparacionForm
 			// 
@@ -373,5 +393,7 @@
 		private ColumnHeader columnHeader4;
 		private ColumnHeader columnHeader5;
 		private ColumnHeader columnHeader6;
+		private Label label1;
+		private DateTimePicker FechaEntregaDatePicker;
 	}
 }
