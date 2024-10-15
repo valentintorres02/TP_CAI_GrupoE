@@ -43,7 +43,7 @@
 			// 
 			// VolverAlMenuButton
 			// 
-			VolverAlMenuButton.Location = new Point(726, 396);
+			VolverAlMenuButton.Location = new Point(527, 396);
 			VolverAlMenuButton.Name = "VolverAlMenuButton";
 			VolverAlMenuButton.Size = new Size(144, 51);
 			VolverAlMenuButton.TabIndex = 9;
@@ -53,9 +53,9 @@
 			// 
 			// GenerarOrdenButton
 			// 
-			GenerarOrdenButton.Location = new Point(6, 396);
+			GenerarOrdenButton.Location = new Point(8, 396);
 			GenerarOrdenButton.Name = "GenerarOrdenButton";
-			GenerarOrdenButton.Size = new Size(714, 51);
+			GenerarOrdenButton.Size = new Size(513, 51);
 			GenerarOrdenButton.TabIndex = 7;
 			GenerarOrdenButton.Text = "Empaquetar";
 			GenerarOrdenButton.UseVisualStyleBackColor = true;
@@ -66,11 +66,11 @@
 			OrdenesPreparacionListView.CheckBoxes = true;
 			OrdenesPreparacionListView.Columns.AddRange(new ColumnHeader[] { IdProducto, Descripcion, CantidadProducto });
 			OrdenesPreparacionListView.FullRowSelect = true;
-			OrdenesPreparacionListView.Location = new Point(7, 21);
+			OrdenesPreparacionListView.Location = new Point(2, 21);
 			OrdenesPreparacionListView.Margin = new Padding(2);
 			OrdenesPreparacionListView.MultiSelect = false;
 			OrdenesPreparacionListView.Name = "OrdenesPreparacionListView";
-			OrdenesPreparacionListView.Size = new Size(852, 319);
+			OrdenesPreparacionListView.Size = new Size(663, 319);
 			OrdenesPreparacionListView.TabIndex = 11;
 			OrdenesPreparacionListView.UseCompatibleStateImageBehavior = false;
 			OrdenesPreparacionListView.View = View.Details;
@@ -78,12 +78,12 @@
 			// IdProducto
 			// 
 			IdProducto.Text = "ID Producto";
-			IdProducto.Width = 200;
+			IdProducto.Width = 150;
 			// 
 			// Descripcion
 			// 
 			Descripcion.Text = "Descripcion";
-			Descripcion.Width = 400;
+			Descripcion.Width = 350;
 			// 
 			// CantidadProducto
 			// 
@@ -99,7 +99,7 @@
 			// 
 			label1.AutoSize = true;
 			label1.Font = new Font("Segoe UI", 12F);
-			label1.Location = new Point(8, 9);
+			label1.Location = new Point(6, 9);
 			label1.Name = "label1";
 			label1.Size = new Size(173, 21);
 			label1.TabIndex = 6;
@@ -110,7 +110,7 @@
 			Productos.Controls.Add(OrdenesPreparacionListView);
 			Productos.Location = new Point(6, 45);
 			Productos.Name = "Productos";
-			Productos.Size = new Size(864, 345);
+			Productos.Size = new Size(670, 345);
 			Productos.TabIndex = 12;
 			Productos.TabStop = false;
 			Productos.Text = "Productos a Empaquetar";
@@ -118,7 +118,7 @@
 			// pendientesLabel
 			// 
 			pendientesLabel.AutoSize = true;
-			pendientesLabel.Location = new Point(665, 27);
+			pendientesLabel.Location = new Point(471, 27);
 			pendientesLabel.Name = "pendientesLabel";
 			pendientesLabel.Size = new Size(205, 15);
 			pendientesLabel.TabIndex = 20;
@@ -128,7 +128,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(882, 459);
+			ClientSize = new Size(688, 459);
 			Controls.Add(pendientesLabel);
 			Controls.Add(Productos);
 			Controls.Add(VolverAlMenuButton);
