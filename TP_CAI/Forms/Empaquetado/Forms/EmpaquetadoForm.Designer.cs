@@ -37,7 +37,6 @@
 			Cantidad = new ColumnHeader();
 			label1 = new Label();
 			Productos = new GroupBox();
-			pendientesLabel = new Label();
 			Productos.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -115,21 +114,11 @@
 			Productos.TabStop = false;
 			Productos.Text = "Productos a Empaquetar";
 			// 
-			// pendientesLabel
-			// 
-			pendientesLabel.AutoSize = true;
-			pendientesLabel.Location = new Point(471, 27);
-			pendientesLabel.Name = "pendientesLabel";
-			pendientesLabel.Size = new Size(205, 15);
-			pendientesLabel.TabIndex = 20;
-			pendientesLabel.Text = "Quedan 37 órdenes para empaquetar.";
-			// 
 			// EmpaquetadoForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(688, 459);
-			Controls.Add(pendientesLabel);
 			Controls.Add(Productos);
 			Controls.Add(VolverAlMenuButton);
 			Controls.Add(GenerarOrdenButton);
@@ -154,7 +143,6 @@
         private ColumnHeader Cantidad;
         private Label label1;
         private GroupBox Productos;
-        private Label pendientesLabel;
         private ColumnHeader IdProducto;
         private ColumnHeader Descripcion;
         private ColumnHeader CantidadProducto;
