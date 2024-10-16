@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static TP_CAI.Forms.OrdenDePreparacion.Model.OrdenDePreparacionModel;
+using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 
 namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
 {
 
-    internal class GestionOrdenSeleccionModel
+    internal partial class GestionOrdenSeleccionModel
     {
-        // Obtener las ordenes como una lista de OrdenSeleccion
-        public List<OrdenSeleccion> ObtenerOrdenes()
+
+        public List<OrdenSeleccion> OrdenesDeSeleccion { get; private set; }
+        public List<Producto> Productos { get; private set; }
+
+        public GestionOrdenSeleccionModel()
         {
-            // Crear una lista para almacenar las ordenes
-            List<OrdenSeleccion> ordenes = new List<OrdenSeleccion>
+            OrdenesDeSeleccion = new List<OrdenSeleccion>
             {
                 new OrdenSeleccion(19),
                 new OrdenSeleccion(20),
@@ -21,8 +25,22 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
                 new OrdenSeleccion(24),
             };
 
-            // Devolver la lista de ordenes
-            return ordenes;
+            Productos = new List<Producto>
+            {
+                new Producto("12-43-2", 17, "001", "Pantalones"),
+                new Producto("4-45-1", 14, "002", "Camperas"),
+                new Producto("4-45-2", 1, "002", "Camperas"),
+                new Producto("4-48-5", 5, "006", "Remeras"),
+                new Producto("4-48-6", 2, "006", "Remeras"),
+            };
         }
+
+        public void EliminarOrdenDeLista(int idOrden)
+        {
+            OrdenSeleccion ordenAEliminar = OrdenesDeSeleccion.FirstOrDefault(o => o.Id == idOrden);
+
+            OrdenesDeSeleccion.Remove(ordenAEliminar);
+        }
+
     }
 }

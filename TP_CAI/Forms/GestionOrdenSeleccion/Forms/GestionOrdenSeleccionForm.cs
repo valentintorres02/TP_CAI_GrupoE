@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 using TP_CAI.Forms.GestionOrdenSeleccion.Model;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
+using static TP_CAI.Forms.GestionOrdenSeleccion.Model.GestionOrdenSeleccionModel;
 
 namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
 {
@@ -25,19 +26,24 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
         private void GestionOrdenSeleccionForm_Load(object sender, EventArgs e)
         {
 
-            List<OrdenSeleccion> ordenes = _gestionOrdenSeleccionModel.ObtenerOrdenes();
+            ActualizarOrdenesDeSeleccion();
+
+        }
+
+        private void ActualizarOrdenesDeSeleccion()
+        {
+            OrdenesSeleccionPendientesListView.Items.Clear();
+            List<OrdenSeleccion> ordenes = _gestionOrdenSeleccionModel.OrdenesDeSeleccion;
 
             foreach (var orden in ordenes)
             {
                 var item = new ListViewItem(new[]
                   {
-                        orden.Id.ToString(),                      // Convertir ID (int) a string
+                        orden.Id.ToString(),
                     });
 
                 OrdenesSeleccionPendientesListView.Items.Add(item);
             }
-
-            MarcarComoSeleccionadaButton.Enabled = false; // El botón empieza deshabilitado
         }
 
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
@@ -62,11 +68,6 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void VolverAlMenuButton_Click_1(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -89,9 +90,55 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
             }
         }
 
-        private void GenerarOrdenButton_Click_1(object sender, EventArgs e)
+        private void VerItemsButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se seleccionó correctamente la selección de la orden de selección ID 0009");
+            ItemsASeleccionarListView.Items.Clear();
+
+            List<Producto> productos = _gestionOrdenSeleccionModel.Productos;
+
+            foreach (var producto in productos)
+            {
+                var item = new ListViewItem(new[]
+                  {
+                        producto.Ubicacion,
+                        producto.Cantidad.ToString(),
+                        producto.IdProducto,
+                        producto.DescripcionProducto,
+                    });
+
+                ItemsASeleccionarListView.Items.Add(item);
+            }
+        }
+
+        private void ResetearFormulario()
+        {
+            ItemsASeleccionarListView.Items.Clear();
+        }
+
+        private void MarcarComoSeleccionadaButton_Click(object sender, EventArgs e)
+        {
+            string idOrdenSeleccionada = "";
+
+            // Verificar si hay elementos seleccionados en el ListView
+            if (OrdenesSeleccionPendientesListView.SelectedItems.Count > 0)
+            {
+                // Obtener el primer item seleccionado
+                ListViewItem selectedItem = OrdenesSeleccionPendientesListView.SelectedItems[0];
+
+                // Obtener el valor del ID (en este caso, asumimos que está en la primera columna)
+                idOrdenSeleccionada = selectedItem.SubItems[0].Text;
+
+            }
+            else
+            {
+                MessageBox.Show("No se ha seleccionado ninguna orden. Por favor seleccione una");
+                return;
+            }
+
+            _gestionOrdenSeleccionModel.EliminarOrdenDeLista(int.Parse(idOrdenSeleccionada));
+            ActualizarOrdenesDeSeleccion();
+            MessageBox.Show("Se seleccionó correctamente la selección de la orden de selección ID " + idOrdenSeleccionada);
+            ResetearFormulario();
         }
     }
 

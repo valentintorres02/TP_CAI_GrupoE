@@ -30,6 +30,7 @@
         {
             label1 = new Label();
             OrdenesGroup = new GroupBox();
+            VerItemsButton = new Button();
             ItemsASeleccionarListView = new ListView();
             Ubicacion = new ColumnHeader();
             CantidadProducto = new ColumnHeader();
@@ -39,7 +40,6 @@
             label4 = new Label();
             OrdenesSeleccionPendientesListView = new ListView();
             IdOrden = new ColumnHeader();
-            FechaEntrega = new ColumnHeader();
             MarcarComoSeleccionadaButton = new Button();
             VolverButton = new Button();
             OrdenesGroup.SuspendLayout();
@@ -57,23 +57,34 @@
             // 
             // OrdenesGroup
             // 
+            OrdenesGroup.Controls.Add(VerItemsButton);
             OrdenesGroup.Controls.Add(ItemsASeleccionarListView);
             OrdenesGroup.Controls.Add(label6);
             OrdenesGroup.Controls.Add(label4);
             OrdenesGroup.Controls.Add(OrdenesSeleccionPendientesListView);
             OrdenesGroup.Location = new Point(15, 33);
             OrdenesGroup.Name = "OrdenesGroup";
-            OrdenesGroup.Size = new Size(1224, 346);
+            OrdenesGroup.Size = new Size(1102, 389);
             OrdenesGroup.TabIndex = 19;
             OrdenesGroup.TabStop = false;
             OrdenesGroup.Text = "Órdenes a seleccionar";
             // 
+            // VerItemsButton
+            // 
+            VerItemsButton.Location = new Point(6, 332);
+            VerItemsButton.Name = "VerItemsButton";
+            VerItemsButton.Size = new Size(249, 51);
+            VerItemsButton.TabIndex = 22;
+            VerItemsButton.Text = "Ver Items a Seleccionar";
+            VerItemsButton.UseVisualStyleBackColor = true;
+            VerItemsButton.Click += VerItemsButton_Click;
+            // 
             // ItemsASeleccionarListView
             // 
             ItemsASeleccionarListView.Columns.AddRange(new ColumnHeader[] { Ubicacion, CantidadProducto, IdProducto, DescripcionProducto });
-            ItemsASeleccionarListView.Location = new Point(537, 37);
+            ItemsASeleccionarListView.Location = new Point(274, 37);
             ItemsASeleccionarListView.Name = "ItemsASeleccionarListView";
-            ItemsASeleccionarListView.Size = new Size(675, 289);
+            ItemsASeleccionarListView.Size = new Size(822, 346);
             ItemsASeleccionarListView.TabIndex = 18;
             ItemsASeleccionarListView.UseCompatibleStateImageBehavior = false;
             ItemsASeleccionarListView.View = View.Details;
@@ -81,27 +92,27 @@
             // Ubicacion
             // 
             Ubicacion.Text = "Ubicacion";
-            Ubicacion.Width = 180;
+            Ubicacion.Width = 220;
             // 
             // CantidadProducto
             // 
             CantidadProducto.Text = "Cantidad";
-            CantidadProducto.Width = 150;
+            CantidadProducto.Width = 180;
             // 
             // IdProducto
             // 
             IdProducto.Text = "ID Producto";
-            IdProducto.Width = 120;
+            IdProducto.Width = 150;
             // 
             // DescripcionProducto
             // 
             DescripcionProducto.Text = "Descripcion";
-            DescripcionProducto.Width = 220;
+            DescripcionProducto.Width = 260;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(537, 19);
+            label6.Location = new Point(274, 19);
             label6.Name = "label6";
             label6.Size = new Size(108, 15);
             label6.TabIndex = 6;
@@ -118,10 +129,10 @@
             // 
             // OrdenesSeleccionPendientesListView
             // 
-            OrdenesSeleccionPendientesListView.Columns.AddRange(new ColumnHeader[] { IdOrden, FechaEntrega });
+            OrdenesSeleccionPendientesListView.Columns.AddRange(new ColumnHeader[] { IdOrden });
             OrdenesSeleccionPendientesListView.Location = new Point(6, 37);
             OrdenesSeleccionPendientesListView.Name = "OrdenesSeleccionPendientesListView";
-            OrdenesSeleccionPendientesListView.Size = new Size(493, 289);
+            OrdenesSeleccionPendientesListView.Size = new Size(249, 289);
             OrdenesSeleccionPendientesListView.TabIndex = 0;
             OrdenesSeleccionPendientesListView.UseCompatibleStateImageBehavior = false;
             OrdenesSeleccionPendientesListView.View = View.Details;
@@ -129,28 +140,23 @@
             // IdOrden
             // 
             IdOrden.Text = "ID";
-            IdOrden.Width = 230;
-            // 
-            // FechaEntrega
-            // 
-            FechaEntrega.Text = "Fecha de Entrega";
-            FechaEntrega.Width = 250;
+            IdOrden.Width = 240;
             // 
             // MarcarComoSeleccionadaButton
             // 
-            MarcarComoSeleccionadaButton.Enabled = false;
-            MarcarComoSeleccionadaButton.Location = new Point(15, 395);
+            MarcarComoSeleccionadaButton.Location = new Point(15, 428);
             MarcarComoSeleccionadaButton.Name = "MarcarComoSeleccionadaButton";
-            MarcarComoSeleccionadaButton.Size = new Size(604, 103);
+            MarcarComoSeleccionadaButton.Size = new Size(545, 85);
             MarcarComoSeleccionadaButton.TabIndex = 21;
             MarcarComoSeleccionadaButton.Text = "Marcar como Seleccionada";
             MarcarComoSeleccionadaButton.UseVisualStyleBackColor = true;
+            MarcarComoSeleccionadaButton.Click += MarcarComoSeleccionadaButton_Click;
             // 
             // VolverButton
             // 
-            VolverButton.Location = new Point(625, 395);
+            VolverButton.Location = new Point(566, 428);
             VolverButton.Name = "VolverButton";
-            VolverButton.Size = new Size(602, 103);
+            VolverButton.Size = new Size(551, 85);
             VolverButton.TabIndex = 20;
             VolverButton.Text = "Volver al Menú Principal";
             VolverButton.UseVisualStyleBackColor = true;
@@ -159,7 +165,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1247, 525);
+            ClientSize = new Size(1127, 526);
             Controls.Add(MarcarComoSeleccionadaButton);
             Controls.Add(VolverButton);
             Controls.Add(OrdenesGroup);
@@ -184,10 +190,10 @@
         private Label label4;
         private ListView OrdenesSeleccionPendientesListView;
         private ColumnHeader IdOrden;
-        private ColumnHeader FechaEntrega;
         private Button MarcarComoSeleccionadaButton;
         private Button VolverButton;
         private ColumnHeader IdProducto;
         private ColumnHeader DescripcionProducto;
+        private Button VerItemsButton;
     }
 }
