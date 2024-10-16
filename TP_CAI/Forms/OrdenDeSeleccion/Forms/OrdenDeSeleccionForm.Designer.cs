@@ -32,28 +32,33 @@
             VolverAlMenuButton = new Button();
             LimpiarButton = new Button();
             FiltrarButton = new Button();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            dateTimePicker2 = new DateTimePicker();
+            PrioridadCombobox = new ComboBox();
+            ClienteCombobox = new ComboBox();
+            FechaEntregaCombobox = new DateTimePicker();
             LimpiarFiltroButton = new Button();
             PrioridadLbl = new Label();
             Clientelbl = new Label();
             FcehaEntregalbl = new Label();
             SeleccionarTodoButton = new Button();
-            ProductosGroup = new GroupBox();
+            OrdenesGroup = new GroupBox();
             EliminarProductoButton = new Button();
             label6 = new Label();
             AgregarProductoButton = new Button();
             label4 = new Label();
-            ProductosDisponiblesListView = new ListView();
+            OrdenesPreparacionPendientesListView = new ListView();
             IdOrden = new ColumnHeader();
             DocumentoCliente = new ColumnHeader();
             CrearOrdenButton = new Button();
-            button1 = new Button();
-            listView1 = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            ProductosGroup.SuspendLayout();
+            VolverButton = new Button();
+            Prioridad = new ColumnHeader();
+            FechaEntrega = new ColumnHeader();
+            OrdenesPreparacionSeleccionadasListView = new ListView();
+            IdOrden2 = new ColumnHeader();
+            Prioridad2 = new ColumnHeader();
+            DocumentoCliente2 = new ColumnHeader();
+            FechaEntrega2 = new ColumnHeader();
+            EliminarTodoButton = new Button();
+            OrdenesGroup.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -78,9 +83,9 @@
             // 
             // LimpiarButton
             // 
-            LimpiarButton.Location = new Point(420, 332);
+            LimpiarButton.Location = new Point(480, 332);
             LimpiarButton.Name = "LimpiarButton";
-            LimpiarButton.Size = new Size(79, 31);
+            LimpiarButton.Size = new Size(99, 31);
             LimpiarButton.TabIndex = 5;
             LimpiarButton.Text = "Limpiar";
             LimpiarButton.UseVisualStyleBackColor = true;
@@ -88,41 +93,41 @@
             // 
             // FiltrarButton
             // 
-            FiltrarButton.Location = new Point(709, 40);
+            FiltrarButton.Location = new Point(869, 40);
             FiltrarButton.Name = "FiltrarButton";
             FiltrarButton.Size = new Size(162, 40);
             FiltrarButton.TabIndex = 7;
             FiltrarButton.Text = "Filtrar";
             FiltrarButton.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // PrioridadCombobox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(10, 57);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(211, 23);
-            comboBox1.TabIndex = 8;
+            PrioridadCombobox.FormattingEnabled = true;
+            PrioridadCombobox.Location = new Point(10, 57);
+            PrioridadCombobox.Name = "PrioridadCombobox";
+            PrioridadCombobox.Size = new Size(267, 23);
+            PrioridadCombobox.TabIndex = 8;
             // 
-            // comboBox2
+            // ClienteCombobox
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(227, 57);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(233, 23);
-            comboBox2.TabIndex = 9;
+            ClienteCombobox.FormattingEnabled = true;
+            ClienteCombobox.Location = new Point(283, 57);
+            ClienteCombobox.Name = "ClienteCombobox";
+            ClienteCombobox.Size = new Size(313, 23);
+            ClienteCombobox.TabIndex = 9;
             // 
-            // dateTimePicker2
+            // FechaEntregaCombobox
             // 
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(466, 57);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(237, 23);
-            dateTimePicker2.TabIndex = 11;
-            dateTimePicker2.Value = new DateTime(2024, 10, 13, 14, 14, 1, 0);
+            FechaEntregaCombobox.Format = DateTimePickerFormat.Short;
+            FechaEntregaCombobox.Location = new Point(602, 57);
+            FechaEntregaCombobox.Name = "FechaEntregaCombobox";
+            FechaEntregaCombobox.Size = new Size(261, 23);
+            FechaEntregaCombobox.TabIndex = 11;
+            FechaEntregaCombobox.Value = new DateTime(2024, 10, 13, 14, 14, 1, 0);
             // 
             // LimpiarFiltroButton
             // 
-            LimpiarFiltroButton.Location = new Point(877, 39);
+            LimpiarFiltroButton.Location = new Point(1037, 39);
             LimpiarFiltroButton.Name = "LimpiarFiltroButton";
             LimpiarFiltroButton.Size = new Size(162, 41);
             LimpiarFiltroButton.TabIndex = 12;
@@ -141,7 +146,7 @@
             // Clientelbl
             // 
             Clientelbl.AutoSize = true;
-            Clientelbl.Location = new Point(227, 40);
+            Clientelbl.Location = new Point(283, 40);
             Clientelbl.Name = "Clientelbl";
             Clientelbl.Size = new Size(44, 15);
             Clientelbl.TabIndex = 14;
@@ -150,7 +155,7 @@
             // FcehaEntregalbl
             // 
             FcehaEntregalbl.AutoSize = true;
-            FcehaEntregalbl.Location = new Point(466, 39);
+            FcehaEntregalbl.Location = new Point(602, 39);
             FcehaEntregalbl.Name = "FcehaEntregalbl";
             FcehaEntregalbl.Size = new Size(97, 15);
             FcehaEntregalbl.TabIndex = 16;
@@ -158,36 +163,37 @@
             // 
             // SeleccionarTodoButton
             // 
-            SeleccionarTodoButton.Location = new Point(274, 332);
+            SeleccionarTodoButton.Location = new Point(297, 332);
             SeleccionarTodoButton.Name = "SeleccionarTodoButton";
-            SeleccionarTodoButton.Size = new Size(140, 31);
+            SeleccionarTodoButton.Size = new Size(177, 31);
             SeleccionarTodoButton.TabIndex = 17;
             SeleccionarTodoButton.Text = "Seleccionar Todo";
             SeleccionarTodoButton.UseVisualStyleBackColor = true;
             // 
-            // ProductosGroup
+            // OrdenesGroup
             // 
-            ProductosGroup.Controls.Add(listView1);
-            ProductosGroup.Controls.Add(SeleccionarTodoButton);
-            ProductosGroup.Controls.Add(EliminarProductoButton);
-            ProductosGroup.Controls.Add(label6);
-            ProductosGroup.Controls.Add(AgregarProductoButton);
-            ProductosGroup.Controls.Add(label4);
-            ProductosGroup.Controls.Add(ProductosDisponiblesListView);
-            ProductosGroup.Controls.Add(LimpiarButton);
-            ProductosGroup.Location = new Point(9, 96);
-            ProductosGroup.Name = "ProductosGroup";
-            ProductosGroup.Size = new Size(1030, 372);
-            ProductosGroup.TabIndex = 18;
-            ProductosGroup.TabStop = false;
-            ProductosGroup.Text = "Órdenes seleccionadas";
+            OrdenesGroup.Controls.Add(EliminarTodoButton);
+            OrdenesGroup.Controls.Add(OrdenesPreparacionSeleccionadasListView);
+            OrdenesGroup.Controls.Add(SeleccionarTodoButton);
+            OrdenesGroup.Controls.Add(EliminarProductoButton);
+            OrdenesGroup.Controls.Add(label6);
+            OrdenesGroup.Controls.Add(AgregarProductoButton);
+            OrdenesGroup.Controls.Add(label4);
+            OrdenesGroup.Controls.Add(OrdenesPreparacionPendientesListView);
+            OrdenesGroup.Controls.Add(LimpiarButton);
+            OrdenesGroup.Location = new Point(9, 96);
+            OrdenesGroup.Name = "OrdenesGroup";
+            OrdenesGroup.Size = new Size(1190, 372);
+            OrdenesGroup.TabIndex = 18;
+            OrdenesGroup.TabStop = false;
+            OrdenesGroup.Text = "Órdenes";
             // 
             // EliminarProductoButton
             // 
             EliminarProductoButton.Enabled = false;
-            EliminarProductoButton.Location = new Point(529, 336);
+            EliminarProductoButton.Location = new Point(606, 332);
             EliminarProductoButton.Name = "EliminarProductoButton";
-            EliminarProductoButton.Size = new Size(496, 27);
+            EliminarProductoButton.Size = new Size(390, 31);
             EliminarProductoButton.TabIndex = 7;
             EliminarProductoButton.Text = "Eliminar de la Orden de Selección";
             EliminarProductoButton.UseVisualStyleBackColor = true;
@@ -195,7 +201,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(529, 19);
+            label6.Location = new Point(606, 19);
             label6.Name = "label6";
             label6.Size = new Size(377, 15);
             label6.TabIndex = 6;
@@ -206,7 +212,7 @@
             AgregarProductoButton.Enabled = false;
             AgregarProductoButton.Location = new Point(6, 332);
             AgregarProductoButton.Name = "AgregarProductoButton";
-            AgregarProductoButton.Size = new Size(262, 31);
+            AgregarProductoButton.Size = new Size(285, 31);
             AgregarProductoButton.TabIndex = 4;
             AgregarProductoButton.Text = "Agregar a la Orden de Selección";
             AgregarProductoButton.UseVisualStyleBackColor = true;
@@ -220,80 +226,109 @@
             label4.TabIndex = 1;
             label4.Text = "Órdenes de Preparacion pendientes";
             // 
-            // ProductosDisponiblesListView
+            // OrdenesPreparacionPendientesListView
             // 
-            ProductosDisponiblesListView.Columns.AddRange(new ColumnHeader[] { IdOrden, DocumentoCliente });
-            ProductosDisponiblesListView.Location = new Point(6, 37);
-            ProductosDisponiblesListView.Name = "ProductosDisponiblesListView";
-            ProductosDisponiblesListView.Size = new Size(493, 289);
-            ProductosDisponiblesListView.TabIndex = 0;
-            ProductosDisponiblesListView.UseCompatibleStateImageBehavior = false;
-            ProductosDisponiblesListView.View = View.Details;
+            OrdenesPreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { IdOrden, Prioridad, DocumentoCliente, FechaEntrega });
+            OrdenesPreparacionPendientesListView.Location = new Point(6, 37);
+            OrdenesPreparacionPendientesListView.Name = "OrdenesPreparacionPendientesListView";
+            OrdenesPreparacionPendientesListView.Size = new Size(573, 289);
+            OrdenesPreparacionPendientesListView.TabIndex = 0;
+            OrdenesPreparacionPendientesListView.UseCompatibleStateImageBehavior = false;
+            OrdenesPreparacionPendientesListView.View = View.Details;
             // 
             // IdOrden
             // 
             IdOrden.Text = "ID";
-            IdOrden.Width = 230;
+            IdOrden.Width = 90;
             // 
             // DocumentoCliente
             // 
             DocumentoCliente.Text = "CUIT/CUIL Cliente";
-            DocumentoCliente.Width = 250;
+            DocumentoCliente.Width = 240;
             // 
             // CrearOrdenButton
             // 
             CrearOrdenButton.Enabled = false;
             CrearOrdenButton.Location = new Point(9, 489);
             CrearOrdenButton.Name = "CrearOrdenButton";
-            CrearOrdenButton.Size = new Size(513, 103);
+            CrearOrdenButton.Size = new Size(587, 103);
             CrearOrdenButton.TabIndex = 19;
             CrearOrdenButton.Text = "Crear Orden de Selección";
             CrearOrdenButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // VolverButton
             // 
-            button1.Location = new Point(528, 489);
-            button1.Name = "button1";
-            button1.Size = new Size(511, 103);
-            button1.TabIndex = 18;
-            button1.Text = "Volver al Menú Principal";
-            button1.UseVisualStyleBackColor = true;
+            VolverButton.Location = new Point(602, 489);
+            VolverButton.Name = "VolverButton";
+            VolverButton.Size = new Size(586, 103);
+            VolverButton.TabIndex = 18;
+            VolverButton.Text = "Volver al Menú Principal";
+            VolverButton.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // Prioridad
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            listView1.Location = new Point(532, 37);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(493, 289);
-            listView1.TabIndex = 18;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            Prioridad.Text = "Prioridad";
+            Prioridad.Width = 100;
             // 
-            // columnHeader1
+            // FechaEntrega
             // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 230;
+            FechaEntrega.Text = "Fecha de Entrega";
+            FechaEntrega.Width = 130;
             // 
-            // columnHeader2
+            // OrdenesPreparacionSeleccionadasListView
             // 
-            columnHeader2.Text = "CUIT/CUIL Cliente";
-            columnHeader2.Width = 250;
+            OrdenesPreparacionSeleccionadasListView.Columns.AddRange(new ColumnHeader[] { IdOrden2, Prioridad2, DocumentoCliente2, FechaEntrega2 });
+            OrdenesPreparacionSeleccionadasListView.Location = new Point(606, 37);
+            OrdenesPreparacionSeleccionadasListView.Name = "OrdenesPreparacionSeleccionadasListView";
+            OrdenesPreparacionSeleccionadasListView.Size = new Size(573, 289);
+            OrdenesPreparacionSeleccionadasListView.TabIndex = 18;
+            OrdenesPreparacionSeleccionadasListView.UseCompatibleStateImageBehavior = false;
+            OrdenesPreparacionSeleccionadasListView.View = View.Details;
+            // 
+            // IdOrden2
+            // 
+            IdOrden2.Text = "ID";
+            IdOrden2.Width = 90;
+            // 
+            // Prioridad2
+            // 
+            Prioridad2.Text = "Prioridad";
+            Prioridad2.Width = 100;
+            // 
+            // DocumentoCliente2
+            // 
+            DocumentoCliente2.Text = "CUIT/CUIL Cliente";
+            DocumentoCliente2.Width = 240;
+            // 
+            // FechaEntrega2
+            // 
+            FechaEntrega2.Text = "Fecha de Entrega";
+            FechaEntrega2.Width = 130;
+            // 
+            // EliminarTodoButton
+            // 
+            EliminarTodoButton.Location = new Point(1002, 332);
+            EliminarTodoButton.Name = "EliminarTodoButton";
+            EliminarTodoButton.Size = new Size(177, 31);
+            EliminarTodoButton.TabIndex = 19;
+            EliminarTodoButton.Text = "Eliminar Todo";
+            EliminarTodoButton.UseVisualStyleBackColor = true;
             // 
             // OrdenDeSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1051, 606);
+            ClientSize = new Size(1206, 606);
             Controls.Add(CrearOrdenButton);
-            Controls.Add(button1);
-            Controls.Add(ProductosGroup);
+            Controls.Add(VolverButton);
+            Controls.Add(OrdenesGroup);
             Controls.Add(FcehaEntregalbl);
             Controls.Add(Clientelbl);
             Controls.Add(PrioridadLbl);
             Controls.Add(LimpiarFiltroButton);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(FechaEntregaCombobox);
+            Controls.Add(ClienteCombobox);
+            Controls.Add(PrioridadCombobox);
             Controls.Add(FiltrarButton);
             Controls.Add(VolverAlMenuButton);
             Controls.Add(label1);
@@ -302,8 +337,8 @@
             Name = "OrdenDeSeleccionForm";
             Text = "Crear Orden de Selección";
             Load += OrdenDeSeleccionForm_Load;
-            ProductosGroup.ResumeLayout(false);
-            ProductosGroup.PerformLayout();
+            OrdenesGroup.ResumeLayout(false);
+            OrdenesGroup.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -314,26 +349,31 @@
         private Button VolverAlMenuButton;
         private Button LimpiarButton;
 		private Button FiltrarButton;
-		private ComboBox comboBox1;
-		private ComboBox comboBox2;
-		private DateTimePicker dateTimePicker2;
+		private ComboBox PrioridadCombobox;
+		private ComboBox ClienteCombobox;
+		private DateTimePicker FechaEntregaCombobox;
 		private Button LimpiarFiltroButton;
 		private Label PrioridadLbl;
 		private Label Clientelbl;
 		private Label FcehaEntregalbl;
 		private Button SeleccionarTodoButton;
-        private GroupBox ProductosGroup;
+        private GroupBox OrdenesGroup;
         private Button EliminarProductoButton;
         private Label label6;
         private Button AgregarProductoButton;
         private Label label4;
-        private ListView ProductosDisponiblesListView;
+        private ListView OrdenesPreparacionPendientesListView;
         private ColumnHeader IdOrden;
         private ColumnHeader DocumentoCliente;
         private Button CrearOrdenButton;
-        private Button button1;
-        private ListView listView1;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
+        private Button VolverButton;
+        private ColumnHeader Prioridad;
+        private ColumnHeader FechaEntrega;
+        private Button EliminarTodoButton;
+        private ListView OrdenesPreparacionSeleccionadasListView;
+        private ColumnHeader IdOrden2;
+        private ColumnHeader Prioridad2;
+        private ColumnHeader DocumentoCliente2;
+        private ColumnHeader FechaEntrega2;
     }
 }

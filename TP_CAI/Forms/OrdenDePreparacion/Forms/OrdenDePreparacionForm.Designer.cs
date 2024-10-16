@@ -33,7 +33,7 @@
             DepositoCombobox = new ComboBox();
             label3 = new Label();
             ContinuarButton = new Button();
-            VolverAlMenuButton = new Button();
+            VolverButton = new Button();
             ProductosGroup = new GroupBox();
             EliminarProductoButton = new Button();
             label6 = new Label();
@@ -54,10 +54,11 @@
             PrioridadComboBox = new ComboBox();
             CrearOrdenButton = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            listView1 = new ListView();
+            ProductosAgregadosListView = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
+            EliminarTodoButton = new Button();
             ProductosGroup.SuspendLayout();
             InfoOrdenGroup.SuspendLayout();
             SuspendLayout();
@@ -109,19 +110,20 @@
             ContinuarButton.UseVisualStyleBackColor = true;
             ContinuarButton.Click += ContinuarButton_Click;
             // 
-            // VolverAlMenuButton
+            // VolverButton
             // 
-            VolverAlMenuButton.Location = new Point(529, 561);
-            VolverAlMenuButton.Name = "VolverAlMenuButton";
-            VolverAlMenuButton.Size = new Size(513, 103);
-            VolverAlMenuButton.TabIndex = 6;
-            VolverAlMenuButton.Text = "Volver al Menú Principal";
-            VolverAlMenuButton.UseVisualStyleBackColor = true;
-            VolverAlMenuButton.Click += VolverAlMenuButton_Click;
+            VolverButton.Location = new Point(529, 561);
+            VolverButton.Name = "VolverButton";
+            VolverButton.Size = new Size(513, 103);
+            VolverButton.TabIndex = 6;
+            VolverButton.Text = "Volver al Menú Principal";
+            VolverButton.UseVisualStyleBackColor = true;
+            VolverButton.Click += VolverAlMenuButton_Click;
             // 
             // ProductosGroup
             // 
-            ProductosGroup.Controls.Add(listView1);
+            ProductosGroup.Controls.Add(EliminarTodoButton);
+            ProductosGroup.Controls.Add(ProductosAgregadosListView);
             ProductosGroup.Controls.Add(EliminarProductoButton);
             ProductosGroup.Controls.Add(label6);
             ProductosGroup.Controls.Add(AgregarProductoButton);
@@ -141,7 +143,7 @@
             EliminarProductoButton.Enabled = false;
             EliminarProductoButton.Location = new Point(529, 336);
             EliminarProductoButton.Name = "EliminarProductoButton";
-            EliminarProductoButton.Size = new Size(496, 27);
+            EliminarProductoButton.Size = new Size(341, 27);
             EliminarProductoButton.TabIndex = 7;
             EliminarProductoButton.Text = "Eliminar producto seleccionado de la Orden";
             EliminarProductoButton.UseVisualStyleBackColor = true;
@@ -235,7 +237,7 @@
             // 
             // FechaEntregaDatePicker
             // 
-            FechaEntregaDatePicker.Location = new Point(339, 37);
+            FechaEntregaDatePicker.Location = new Point(339, 40);
             FechaEntregaDatePicker.Name = "FechaEntregaDatePicker";
             FechaEntregaDatePicker.Size = new Size(316, 23);
             FechaEntregaDatePicker.TabIndex = 12;
@@ -243,7 +245,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(339, 19);
+            label1.Location = new Point(339, 22);
             label1.Name = "label1";
             label1.Size = new Size(97, 15);
             label1.TabIndex = 11;
@@ -252,7 +254,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(661, 19);
+            label8.Location = new Point(661, 22);
             label8.Name = "label8";
             label8.Size = new Size(97, 15);
             label8.TabIndex = 9;
@@ -269,7 +271,7 @@
             // 
             // DniTransportistaTextBox
             // 
-            DniTransportistaTextBox.Location = new Point(661, 37);
+            DniTransportistaTextBox.Location = new Point(661, 40);
             DniTransportistaTextBox.Name = "DniTransportistaTextBox";
             DniTransportistaTextBox.Size = new Size(363, 23);
             DniTransportistaTextBox.TabIndex = 8;
@@ -294,15 +296,15 @@
             CrearOrdenButton.UseVisualStyleBackColor = true;
             CrearOrdenButton.Click += CrearOrdenButton_Click;
             // 
-            // listView1
+            // ProductosAgregadosListView
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            listView1.Location = new Point(529, 37);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(493, 289);
-            listView1.TabIndex = 8;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            ProductosAgregadosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            ProductosAgregadosListView.Location = new Point(529, 37);
+            ProductosAgregadosListView.Name = "ProductosAgregadosListView";
+            ProductosAgregadosListView.Size = new Size(493, 289);
+            ProductosAgregadosListView.TabIndex = 8;
+            ProductosAgregadosListView.UseCompatibleStateImageBehavior = false;
+            ProductosAgregadosListView.View = View.Details;
             // 
             // columnHeader1
             // 
@@ -319,6 +321,16 @@
             columnHeader3.Text = "Cantidad";
             columnHeader3.Width = 150;
             // 
+            // EliminarTodoButton
+            // 
+            EliminarTodoButton.Enabled = false;
+            EliminarTodoButton.Location = new Point(876, 337);
+            EliminarTodoButton.Name = "EliminarTodoButton";
+            EliminarTodoButton.Size = new Size(146, 27);
+            EliminarTodoButton.TabIndex = 9;
+            EliminarTodoButton.Text = "Eliminar Todo";
+            EliminarTodoButton.UseVisualStyleBackColor = true;
+            // 
             // OrdenDePreparacionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -327,7 +339,7 @@
             Controls.Add(CrearOrdenButton);
             Controls.Add(InfoOrdenGroup);
             Controls.Add(ProductosGroup);
-            Controls.Add(VolverAlMenuButton);
+            Controls.Add(VolverButton);
             Controls.Add(ContinuarButton);
             Controls.Add(label3);
             Controls.Add(DepositoCombobox);
@@ -351,7 +363,7 @@
         private ComboBox DepositoCombobox;
         private Label label3;
         private Button ContinuarButton;
-        private Button VolverAlMenuButton;
+        private Button VolverButton;
         private GroupBox ProductosGroup;
         private Label label4;
         private ListView ProductosDisponiblesListView;
@@ -373,9 +385,10 @@
 		private ColumnHeader CantProducto;
 		private Label label1;
 		private DateTimePicker FechaEntregaDatePicker;
-        private ListView listView1;
+        private ListView ProductosAgregadosListView;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
+        private Button EliminarTodoButton;
     }
 }
