@@ -10,8 +10,9 @@
         public PrioridadEnum Prioridad { get; set; }
         public EstadoOrdenPreparacionEnum Estado { get; set; }
         public DateTime FechaEmision { get; set; }
+        public DateTime FechaEntrega { get; set; }
 
-        public OrdenPreparacion(int id, string documentoCliente, string nombreCliente, int dniTransportista, PrioridadEnum prioridad, EstadoOrdenPreparacionEnum estado)
+        public OrdenPreparacion(int id, string documentoCliente, string nombreCliente, int dniTransportista, PrioridadEnum prioridad, EstadoOrdenPreparacionEnum estado, DateTime fechaEntrega)
         {
             Id = id;
             DocumentoCliente = documentoCliente;
@@ -20,6 +21,7 @@
             Prioridad = prioridad;
             Estado = estado;
             FechaEmision = DateTime.Now;
+            FechaEntrega = fechaEntrega;
         }
     }
 }

@@ -31,33 +31,34 @@
             label1 = new Label();
             VolverAlMenuButton = new Button();
             LimpiarButton = new Button();
-            FiltrarButton = new Button();
+            BuscarButton = new Button();
             PrioridadCombobox = new ComboBox();
             ClienteCombobox = new ComboBox();
-            FechaEntregaCombobox = new DateTimePicker();
+            FechaEntregaDatePicker = new DateTimePicker();
             LimpiarFiltroButton = new Button();
             PrioridadLbl = new Label();
             Clientelbl = new Label();
             FcehaEntregalbl = new Label();
             SeleccionarTodoButton = new Button();
             OrdenesGroup = new GroupBox();
-            EliminarProductoButton = new Button();
-            label6 = new Label();
-            AgregarProductoButton = new Button();
-            label4 = new Label();
-            OrdenesPreparacionPendientesListView = new ListView();
-            IdOrden = new ColumnHeader();
-            DocumentoCliente = new ColumnHeader();
-            CrearOrdenButton = new Button();
-            VolverButton = new Button();
-            Prioridad = new ColumnHeader();
-            FechaEntrega = new ColumnHeader();
+            SeleccionarTodoButton2 = new Button();
+            LimpiarButton2 = new Button();
             OrdenesPreparacionSeleccionadasListView = new ListView();
             IdOrden2 = new ColumnHeader();
             Prioridad2 = new ColumnHeader();
             DocumentoCliente2 = new ColumnHeader();
             FechaEntrega2 = new ColumnHeader();
-            EliminarTodoButton = new Button();
+            EliminarProductoButton = new Button();
+            label6 = new Label();
+            AgregarALaOrdenButton = new Button();
+            label4 = new Label();
+            OrdenesPreparacionPendientesListView = new ListView();
+            IdOrden = new ColumnHeader();
+            Prioridad = new ColumnHeader();
+            DocumentoCliente = new ColumnHeader();
+            FechaEntrega = new ColumnHeader();
+            CrearOrdenButton = new Button();
+            VolverButton = new Button();
             OrdenesGroup.SuspendLayout();
             SuspendLayout();
             // 
@@ -91,14 +92,15 @@
             LimpiarButton.UseVisualStyleBackColor = true;
             LimpiarButton.Click += LimpiarButton_Click;
             // 
-            // FiltrarButton
+            // BuscarButton
             // 
-            FiltrarButton.Location = new Point(869, 40);
-            FiltrarButton.Name = "FiltrarButton";
-            FiltrarButton.Size = new Size(162, 40);
-            FiltrarButton.TabIndex = 7;
-            FiltrarButton.Text = "Filtrar";
-            FiltrarButton.UseVisualStyleBackColor = true;
+            BuscarButton.Location = new Point(869, 40);
+            BuscarButton.Name = "BuscarButton";
+            BuscarButton.Size = new Size(162, 40);
+            BuscarButton.TabIndex = 7;
+            BuscarButton.Text = "Buscar";
+            BuscarButton.UseVisualStyleBackColor = true;
+            BuscarButton.Click += FiltrarButton_Click;
             // 
             // PrioridadCombobox
             // 
@@ -116,14 +118,14 @@
             ClienteCombobox.Size = new Size(313, 23);
             ClienteCombobox.TabIndex = 9;
             // 
-            // FechaEntregaCombobox
+            // FechaEntregaDatePicker
             // 
-            FechaEntregaCombobox.Format = DateTimePickerFormat.Short;
-            FechaEntregaCombobox.Location = new Point(602, 57);
-            FechaEntregaCombobox.Name = "FechaEntregaCombobox";
-            FechaEntregaCombobox.Size = new Size(261, 23);
-            FechaEntregaCombobox.TabIndex = 11;
-            FechaEntregaCombobox.Value = new DateTime(2024, 10, 13, 14, 14, 1, 0);
+            FechaEntregaDatePicker.Format = DateTimePickerFormat.Short;
+            FechaEntregaDatePicker.Location = new Point(602, 57);
+            FechaEntregaDatePicker.Name = "FechaEntregaDatePicker";
+            FechaEntregaDatePicker.Size = new Size(261, 23);
+            FechaEntregaDatePicker.TabIndex = 11;
+            FechaEntregaDatePicker.Value = new DateTime(2024, 10, 16, 0, 0, 0, 0);
             // 
             // LimpiarFiltroButton
             // 
@@ -133,6 +135,7 @@
             LimpiarFiltroButton.TabIndex = 12;
             LimpiarFiltroButton.Text = "Limpiar";
             LimpiarFiltroButton.UseVisualStyleBackColor = true;
+            LimpiarFiltroButton.Click += LimpiarFiltroButton_Click;
             // 
             // PrioridadLbl
             // 
@@ -169,15 +172,17 @@
             SeleccionarTodoButton.TabIndex = 17;
             SeleccionarTodoButton.Text = "Seleccionar Todo";
             SeleccionarTodoButton.UseVisualStyleBackColor = true;
+            SeleccionarTodoButton.Click += SeleccionarTodoButton_Click;
             // 
             // OrdenesGroup
             // 
-            OrdenesGroup.Controls.Add(EliminarTodoButton);
+            OrdenesGroup.Controls.Add(SeleccionarTodoButton2);
+            OrdenesGroup.Controls.Add(LimpiarButton2);
             OrdenesGroup.Controls.Add(OrdenesPreparacionSeleccionadasListView);
             OrdenesGroup.Controls.Add(SeleccionarTodoButton);
             OrdenesGroup.Controls.Add(EliminarProductoButton);
             OrdenesGroup.Controls.Add(label6);
-            OrdenesGroup.Controls.Add(AgregarProductoButton);
+            OrdenesGroup.Controls.Add(AgregarALaOrdenButton);
             OrdenesGroup.Controls.Add(label4);
             OrdenesGroup.Controls.Add(OrdenesPreparacionPendientesListView);
             OrdenesGroup.Controls.Add(LimpiarButton);
@@ -188,95 +193,29 @@
             OrdenesGroup.TabStop = false;
             OrdenesGroup.Text = "Órdenes";
             // 
-            // EliminarProductoButton
+            // SeleccionarTodoButton2
             // 
-            EliminarProductoButton.Enabled = false;
-            EliminarProductoButton.Location = new Point(606, 332);
-            EliminarProductoButton.Name = "EliminarProductoButton";
-            EliminarProductoButton.Size = new Size(390, 31);
-            EliminarProductoButton.TabIndex = 7;
-            EliminarProductoButton.Text = "Eliminar de la Orden de Selección";
-            EliminarProductoButton.UseVisualStyleBackColor = true;
+            SeleccionarTodoButton2.Location = new Point(897, 332);
+            SeleccionarTodoButton2.Name = "SeleccionarTodoButton2";
+            SeleccionarTodoButton2.Size = new Size(177, 31);
+            SeleccionarTodoButton2.TabIndex = 20;
+            SeleccionarTodoButton2.Text = "Seleccionar Todo";
+            SeleccionarTodoButton2.UseVisualStyleBackColor = true;
+            SeleccionarTodoButton2.Click += SeleccionarTodoButton2_Click;
             // 
-            // label6
+            // LimpiarButton2
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(606, 19);
-            label6.Name = "label6";
-            label6.Size = new Size(377, 15);
-            label6.TabIndex = 6;
-            label6.Text = "Órdenes de Preparación seleccionadas en la Orden de Selección actual";
-            // 
-            // AgregarProductoButton
-            // 
-            AgregarProductoButton.Enabled = false;
-            AgregarProductoButton.Location = new Point(6, 332);
-            AgregarProductoButton.Name = "AgregarProductoButton";
-            AgregarProductoButton.Size = new Size(285, 31);
-            AgregarProductoButton.TabIndex = 4;
-            AgregarProductoButton.Text = "Agregar a la Orden de Selección";
-            AgregarProductoButton.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(6, 19);
-            label4.Name = "label4";
-            label4.Size = new Size(194, 15);
-            label4.TabIndex = 1;
-            label4.Text = "Órdenes de Preparacion pendientes";
-            // 
-            // OrdenesPreparacionPendientesListView
-            // 
-            OrdenesPreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { IdOrden, Prioridad, DocumentoCliente, FechaEntrega });
-            OrdenesPreparacionPendientesListView.Location = new Point(6, 37);
-            OrdenesPreparacionPendientesListView.Name = "OrdenesPreparacionPendientesListView";
-            OrdenesPreparacionPendientesListView.Size = new Size(573, 289);
-            OrdenesPreparacionPendientesListView.TabIndex = 0;
-            OrdenesPreparacionPendientesListView.UseCompatibleStateImageBehavior = false;
-            OrdenesPreparacionPendientesListView.View = View.Details;
-            // 
-            // IdOrden
-            // 
-            IdOrden.Text = "ID";
-            IdOrden.Width = 90;
-            // 
-            // DocumentoCliente
-            // 
-            DocumentoCliente.Text = "CUIT/CUIL Cliente";
-            DocumentoCliente.Width = 240;
-            // 
-            // CrearOrdenButton
-            // 
-            CrearOrdenButton.Enabled = false;
-            CrearOrdenButton.Location = new Point(9, 489);
-            CrearOrdenButton.Name = "CrearOrdenButton";
-            CrearOrdenButton.Size = new Size(587, 103);
-            CrearOrdenButton.TabIndex = 19;
-            CrearOrdenButton.Text = "Crear Orden de Selección";
-            CrearOrdenButton.UseVisualStyleBackColor = true;
-            // 
-            // VolverButton
-            // 
-            VolverButton.Location = new Point(602, 489);
-            VolverButton.Name = "VolverButton";
-            VolverButton.Size = new Size(586, 103);
-            VolverButton.TabIndex = 18;
-            VolverButton.Text = "Volver al Menú Principal";
-            VolverButton.UseVisualStyleBackColor = true;
-            // 
-            // Prioridad
-            // 
-            Prioridad.Text = "Prioridad";
-            Prioridad.Width = 100;
-            // 
-            // FechaEntrega
-            // 
-            FechaEntrega.Text = "Fecha de Entrega";
-            FechaEntrega.Width = 130;
+            LimpiarButton2.Location = new Point(1080, 332);
+            LimpiarButton2.Name = "LimpiarButton2";
+            LimpiarButton2.Size = new Size(99, 31);
+            LimpiarButton2.TabIndex = 19;
+            LimpiarButton2.Text = "Limpiar";
+            LimpiarButton2.UseVisualStyleBackColor = true;
+            LimpiarButton2.Click += LimpiarButton2_Click;
             // 
             // OrdenesPreparacionSeleccionadasListView
             // 
+            OrdenesPreparacionSeleccionadasListView.CheckBoxes = true;
             OrdenesPreparacionSeleccionadasListView.Columns.AddRange(new ColumnHeader[] { IdOrden2, Prioridad2, DocumentoCliente2, FechaEntrega2 });
             OrdenesPreparacionSeleccionadasListView.Location = new Point(606, 37);
             OrdenesPreparacionSeleccionadasListView.Name = "OrdenesPreparacionSeleccionadasListView";
@@ -305,14 +244,93 @@
             FechaEntrega2.Text = "Fecha de Entrega";
             FechaEntrega2.Width = 130;
             // 
-            // EliminarTodoButton
+            // EliminarProductoButton
             // 
-            EliminarTodoButton.Location = new Point(1002, 332);
-            EliminarTodoButton.Name = "EliminarTodoButton";
-            EliminarTodoButton.Size = new Size(177, 31);
-            EliminarTodoButton.TabIndex = 19;
-            EliminarTodoButton.Text = "Eliminar Todo";
-            EliminarTodoButton.UseVisualStyleBackColor = true;
+            EliminarProductoButton.Location = new Point(606, 332);
+            EliminarProductoButton.Name = "EliminarProductoButton";
+            EliminarProductoButton.Size = new Size(285, 31);
+            EliminarProductoButton.TabIndex = 7;
+            EliminarProductoButton.Text = "Eliminar de la Orden de Selección";
+            EliminarProductoButton.UseVisualStyleBackColor = true;
+            EliminarProductoButton.Click += EliminarProductoButton_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(606, 19);
+            label6.Name = "label6";
+            label6.Size = new Size(377, 15);
+            label6.TabIndex = 6;
+            label6.Text = "Órdenes de Preparación seleccionadas en la Orden de Selección actual";
+            // 
+            // AgregarALaOrdenButton
+            // 
+            AgregarALaOrdenButton.Location = new Point(6, 332);
+            AgregarALaOrdenButton.Name = "AgregarALaOrdenButton";
+            AgregarALaOrdenButton.Size = new Size(285, 31);
+            AgregarALaOrdenButton.TabIndex = 4;
+            AgregarALaOrdenButton.Text = "Agregar a la Orden de Selección";
+            AgregarALaOrdenButton.UseVisualStyleBackColor = true;
+            AgregarALaOrdenButton.Click += AgregarALaOrdenButton_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(6, 19);
+            label4.Name = "label4";
+            label4.Size = new Size(194, 15);
+            label4.TabIndex = 1;
+            label4.Text = "Órdenes de Preparacion pendientes";
+            // 
+            // OrdenesPreparacionPendientesListView
+            // 
+            OrdenesPreparacionPendientesListView.CheckBoxes = true;
+            OrdenesPreparacionPendientesListView.Columns.AddRange(new ColumnHeader[] { IdOrden, Prioridad, DocumentoCliente, FechaEntrega });
+            OrdenesPreparacionPendientesListView.Location = new Point(6, 37);
+            OrdenesPreparacionPendientesListView.Name = "OrdenesPreparacionPendientesListView";
+            OrdenesPreparacionPendientesListView.Size = new Size(573, 289);
+            OrdenesPreparacionPendientesListView.TabIndex = 0;
+            OrdenesPreparacionPendientesListView.UseCompatibleStateImageBehavior = false;
+            OrdenesPreparacionPendientesListView.View = View.Details;
+            // 
+            // IdOrden
+            // 
+            IdOrden.Text = "ID";
+            IdOrden.Width = 90;
+            // 
+            // Prioridad
+            // 
+            Prioridad.Text = "Prioridad";
+            Prioridad.Width = 100;
+            // 
+            // DocumentoCliente
+            // 
+            DocumentoCliente.Text = "CUIT/CUIL Cliente";
+            DocumentoCliente.Width = 240;
+            // 
+            // FechaEntrega
+            // 
+            FechaEntrega.Text = "Fecha de Entrega";
+            FechaEntrega.Width = 130;
+            // 
+            // CrearOrdenButton
+            // 
+            CrearOrdenButton.Location = new Point(9, 489);
+            CrearOrdenButton.Name = "CrearOrdenButton";
+            CrearOrdenButton.Size = new Size(587, 103);
+            CrearOrdenButton.TabIndex = 19;
+            CrearOrdenButton.Text = "Crear Orden de Selección";
+            CrearOrdenButton.UseVisualStyleBackColor = true;
+            CrearOrdenButton.Click += CrearOrdenButton_Click;
+            // 
+            // VolverButton
+            // 
+            VolverButton.Location = new Point(602, 489);
+            VolverButton.Name = "VolverButton";
+            VolverButton.Size = new Size(586, 103);
+            VolverButton.TabIndex = 18;
+            VolverButton.Text = "Volver al Menú Principal";
+            VolverButton.UseVisualStyleBackColor = true;
             // 
             // OrdenDeSeleccionForm
             // 
@@ -326,10 +344,10 @@
             Controls.Add(Clientelbl);
             Controls.Add(PrioridadLbl);
             Controls.Add(LimpiarFiltroButton);
-            Controls.Add(FechaEntregaCombobox);
+            Controls.Add(FechaEntregaDatePicker);
             Controls.Add(ClienteCombobox);
             Controls.Add(PrioridadCombobox);
-            Controls.Add(FiltrarButton);
+            Controls.Add(BuscarButton);
             Controls.Add(VolverAlMenuButton);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -348,10 +366,10 @@
         private Label label1;
         private Button VolverAlMenuButton;
         private Button LimpiarButton;
-		private Button FiltrarButton;
+		private Button BuscarButton;
 		private ComboBox PrioridadCombobox;
 		private ComboBox ClienteCombobox;
-		private DateTimePicker FechaEntregaCombobox;
+		private DateTimePicker FechaEntregaDatePicker;
 		private Button LimpiarFiltroButton;
 		private Label PrioridadLbl;
 		private Label Clientelbl;
@@ -360,7 +378,7 @@
         private GroupBox OrdenesGroup;
         private Button EliminarProductoButton;
         private Label label6;
-        private Button AgregarProductoButton;
+        private Button AgregarALaOrdenButton;
         private Label label4;
         private ListView OrdenesPreparacionPendientesListView;
         private ColumnHeader IdOrden;
@@ -369,11 +387,12 @@
         private Button VolverButton;
         private ColumnHeader Prioridad;
         private ColumnHeader FechaEntrega;
-        private Button EliminarTodoButton;
         private ListView OrdenesPreparacionSeleccionadasListView;
         private ColumnHeader IdOrden2;
         private ColumnHeader Prioridad2;
         private ColumnHeader DocumentoCliente2;
         private ColumnHeader FechaEntrega2;
+        private Button SeleccionarTodoButton2;
+        private Button LimpiarButton2;
     }
 }

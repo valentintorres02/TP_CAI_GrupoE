@@ -231,9 +231,10 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 string nombreCliente = "Cliente Ejemplo"; // Aquí debes obtenerlo del formulario
                 int dniTransportista = int.Parse(dniText);
                 PrioridadEnum prioridad = (PrioridadEnum)PrioridadComboBox.SelectedIndex; // Ajustar según tu enumeración
+                DateTime fechaDeEntrega = FechaEntregaDatePicker.Value;
 
                 // Si todo es válido, continuar con la creación de la orden
-                string mensaje = _ordenDePreparacionModel.CrearOrden(documentoCliente, nombreCliente, dniTransportista, prioridad);
+                string mensaje = _ordenDePreparacionModel.CrearOrden(documentoCliente, nombreCliente, dniTransportista, prioridad, fechaDeEntrega);
                 MessageBox.Show(mensaje);
                 ResetearFormulario();
             }

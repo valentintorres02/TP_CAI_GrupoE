@@ -193,13 +193,13 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
         }
 
-        public string CrearOrden(string documentoCliente, string nombreCliente, int dniTransportista, PrioridadEnum prioridad)
+        public string CrearOrden(string documentoCliente, string nombreCliente, int dniTransportista, PrioridadEnum prioridad, DateTime fechaEntrega)
         {
             // Generar un ID único 
             int nuevoId = 1;
 
             // Crear una nueva instancia de OrdenPreparacion
-            var nuevaOrden = new OrdenPreparacion(nuevoId, documentoCliente, nombreCliente, dniTransportista, prioridad, EstadoOrdenPreparacionEnum.Pendiente);
+            var nuevaOrden = new OrdenPreparacion(nuevoId, documentoCliente, nombreCliente, dniTransportista, prioridad, EstadoOrdenPreparacionEnum.Pendiente, fechaEntrega);
 
             // Retornar un mensaje de éxito
             return $"Orden Creada Satisfactoriamente. ID de Orden: {nuevaOrden.Id}. Fecha de emisión: {nuevaOrden.FechaEmision.ToString("dd/MM/yyyy HH:mm")}";

@@ -32,8 +32,6 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
                 var item = new ListViewItem(new[]
                   {
                         orden.Id.ToString(),                      // Convertir ID (int) a string
-                        orden.DocumentoCliente ?? string.Empty,   // Documento del cliente, aseguramos que no sea null
-                        orden.Estado.ToString()                   // Convertir EstadoOrdenPreparacionEnum a string
                     });
 
                 OrdenesSeleccionPendientesListView.Items.Add(item);
