@@ -1,20 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
+using static TP_CAI.Forms.OrdenDePreparacion.Model.OrdenDePreparacionModel;
 
 namespace TP_CAI.Forms.OrdenDePreparacion.Model
 {
-
-    class OrdenDePreparacionModel
+    partial class OrdenDePreparacionModel
     {
+
         public int DniTransportista { get; set; }
+        public List<Producto> ProductosIniciales { get; private set; }
         public List<Producto> ProductosDisponibles { get; private set; }
         public List<Producto> ProductosAgregados { get; private set; }
+        public List<Cliente> Clientes { get; private set; }
+        public List<Deposito> Depositos{ get; private set; }
 
         public OrdenDePreparacionModel()
         {
-            ProductosDisponibles = new List<Producto>
+            ProductosIniciales = new List<Producto>
     {
         new Producto { Id = "001", Descripcion = "Producto A", Cantidad = 10 },
         new Producto { Id = "002", Descripcion = "Producto B", Cantidad = 20 },
@@ -22,7 +27,24 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
         new Producto { Id = "004", Descripcion = "Producto D", Cantidad = 25 },
         new Producto { Id = "005", Descripcion = "Producto E", Cantidad = 30 }
     };
+            ProductosDisponibles = new List<Producto>(ProductosIniciales);
             ProductosAgregados = new List<Producto>();
+
+            Clientes = new List<Cliente>
+            {
+                new Cliente { Documento = "20-44444444-4", Nombre = "CAI S.R.L" },
+                new Cliente { Documento = "20-34506467-4", Nombre = "GrupoE S.A" },
+                new Cliente { Documento = "20-65930234-4", Nombre = "Fravega S.R.L" },
+                new Cliente { Documento = "20-42104211-4", Nombre = "Amazon S.A" },
+            };
+
+            Depositos = new List<Deposito>
+            {
+                new Deposito { Id = 1, Direccion = "Av. Cordoba 2100, CABA" },
+                new Deposito { Id= 2, Direccion = "Belgrano 120, CABA" },
+                new Deposito { Id = 3, Direccion = "Rivadavia 1100, Cordoba Capital" },
+                new Deposito { Id = 4, Direccion = "Av. Pueyrredon 1100, CABA" },
+            };
         }
 
         public string? ValidarDniTransportista(string dniText)
@@ -63,6 +85,26 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
         }
 
+        public string? ValidarCliente(string documentoCliente)
+        {
+            if(documentoCliente == null || documentoCliente == "")
+            {
+                return "Por favor seleccione un cliente valido.";
+            }
+
+            return null;
+        }
+
+        public string? ValidarDeposito(string idDepositoOpcion)
+        {
+            if (idDepositoOpcion == null || idDepositoOpcion == "")
+            {
+                return "Por favor seleccione un deposito valido.";
+            }
+
+            return null;
+        }
+
         public string? ValidarCantidades(int cantidad1, int cantidad2, string descripcion, string cantidadItem)
         {
             if (cantidad1 < 1)
@@ -78,6 +120,32 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             return null;
         }
 
+        public string? ValidarProductosAgregados(int cantidadProductosAgregados)
+        {
+            if (cantidadProductosAgregados < 1)
+            {
+                return "Debe agregar al menos 1 producto a la orden.";
+            }
+
+            return null;
+        }
+
+        private bool IsDateValid(DateTime selectedDate)
+        {
+            // Comparar con la fecha actual
+            return selectedDate >= DateTime.Today;
+        }
+
+        public string? ValidarFechaEntrega(DateTime fechaEntrega)
+        {
+            if (!IsDateValid(fechaEntrega))
+            {
+                return "Elige una fecha valida. No pueden elegirse fechas pasadas";
+            }
+
+            return null;
+        }
+
         public string? AgregarProducto(string id, string descripcion, int cantidad1, int cantidad2)
         {
             // Validar la cantidad
@@ -88,7 +156,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             }
 
             // Agregar el producto a la lista de ProductosAgregados
-            var producto = new Producto
+            Producto producto = new Producto
             {
                 Id = id,
                 Descripcion = descripcion,
@@ -96,35 +164,33 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             };
 
             ProductosAgregados.Add(producto);
+            Producto productoDisponible = ProductosDisponibles.FirstOrDefault(p => p.Id == id);
+            ProductosDisponibles.Remove(productoDisponible);
             return null; // Sin errores
         }
 
         public void EliminarProducto(string id)
         {
-            var producto = ProductosAgregados.FirstOrDefault(p => p.Id == id);
+            Producto producto = ProductosAgregados.FirstOrDefault(p => p.Id == id);
             if (producto != null)
             {
-                // Eliminar el producto de la lista de agregados
                 ProductosAgregados.Remove(producto);
 
-                // Buscar el producto en la lista de disponibles
-                var productoDisponible = ProductosDisponibles.FirstOrDefault(p => p.Id == id);
-                if (productoDisponible != null)
+
+                Producto productoInicial = ProductosIniciales.FirstOrDefault(p => p.Id == id);
+
+                if(productoInicial != null)
                 {
-                    // Aumentar la cantidad disponible
-                    productoDisponible.Cantidad += producto.Cantidad; // Regresar la cantidad al stock
-                }
-                else
-                {
-                    // Si no existe, agregar un nuevo producto disponible con la cantidad
-                    ProductosDisponibles.Add(new Producto
-                    {
-                        Id = producto.Id,
-                        Descripcion = producto.Descripcion,
-                        Cantidad = producto.Cantidad // Regresar la cantidad al stock
-                    });
+                ProductosDisponibles.Add(productoInicial);
                 }
             }
+        }
+
+        public void EliminarTodosLosProductos()
+        {
+            ProductosDisponibles = new List<Producto>(ProductosIniciales);
+            ProductosAgregados = new List<Producto>();
+
         }
 
         public string CrearOrden(string documentoCliente, string nombreCliente, int dniTransportista, PrioridadEnum prioridad)

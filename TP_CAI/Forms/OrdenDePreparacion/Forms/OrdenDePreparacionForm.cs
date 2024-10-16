@@ -11,6 +11,7 @@ using TP_CAI.Archivos.PantallaPrincipal.Forms;
 using TP_CAI.Forms.OrdenDePreparacion.Model;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static TP_CAI.Forms.OrdenDePreparacion.Model.OrdenDePreparacionModel;
 
 namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 {
@@ -27,105 +28,87 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
         private void OrdenDePreparacionForm_Load(object sender, EventArgs e)
         {
             ResetearFormulario();
-
-            // Registrar los eventos SelectedIndexChanged de los ComboBox
-            ClienteCombobox.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);
-            DepositoCombobox.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);
-
-            // Registrar el evento SelectedIndexChanged del ListView
-            ProductosDisponiblesListView.SelectedIndexChanged += new EventHandler(ProductosDisponiblesListView_SelectedIndexChanged);
-
-            // Registrar el evento SelectedIndexChanged del ListView
-            ProductosAgregadosListView.SelectedIndexChanged += new EventHandler(ProductosAgregadosListView_SelectedIndexChanged);
-
-            // Registrar el evento TextChanged del CantidadTextBox
-            CantidadTextBox.TextChanged += new EventHandler(CantidadTextBox_TextChanged);
-
             ProductosDisponiblesListView.FullRowSelect = true;
             ProductosAgregadosListView.FullRowSelect = true;
 
-        }
-        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Verificar si ambos ComboBox tienen un valor seleccionado
-            if (ClienteCombobox.SelectedItem != null && DepositoCombobox.SelectedItem != null)
-            {
-                ContinuarButton.Enabled = true; // Habilitar el botón
-            }
-            else
-            {
-                ContinuarButton.Enabled = false; // Deshabilitar el botón
-            }
+            CargarClientesCombobox();
+            CargarDepositosCombobox();
         }
 
-        private void ProductosDisponiblesListView_SelectedIndexChanged(object sender, EventArgs e)
+        private void CargarClientesCombobox()
         {
-            // Verificar si hay un elemento seleccionado en el ListView
-            if (ProductosDisponiblesListView.SelectedItems.Count > 0)
-            {
-                CantidadTextBox.Enabled = true; // Habilitar el TextBox
-            }
-            else
-            {
-                EliminarProductoButton.Enabled = false; // Deshabilitar el TextBox
-            }
+            List<Cliente> clientes = _ordenDePreparacionModel.Clientes;
+
+            ClienteCombobox.DataSource = clientes;
+            ClienteCombobox.DisplayMember = "DisplayText"; // Texto visible
+            ClienteCombobox.ValueMember = "Documento";       // Valor asociado
+
+            ClienteCombobox.SelectedIndex = -1; // arranca sin ningun valor
         }
 
-        private void ProductosAgregadosListView_SelectedIndexChanged(object sender, EventArgs e)
+        private void CargarDepositosCombobox()
         {
-            // Verificar si hay un elemento seleccionado en el ListView
-            if (ProductosAgregadosListView.SelectedItems.Count > 0)
-            {
-                EliminarProductoButton.Enabled = true; // Habilitar el TextBox
-            }
-            else
-            {
-                CantidadTextBox.Enabled = false; // Deshabilitar el TextBox
-            }
-        }
+            List<Deposito> depositos = _ordenDePreparacionModel.Depositos;
 
-        private void CantidadTextBox_TextChanged(object sender, EventArgs e)
-        {
-            // Verificar si el valor ingresado es un número válido
-            if (int.TryParse(CantidadTextBox.Text, out int cantidad))
-            {
-                AgregarProductoButton.Enabled = true; // Habilitar el botón si es un número positivo
-            }
-            else
-            {
-                AgregarProductoButton.Enabled = false; // Deshabilitar el botón si el valor no es válido
-            }
+            DepositoCombobox.DataSource = depositos;
+            DepositoCombobox.DisplayMember = "DisplayText"; // Texto visible
+            DepositoCombobox.ValueMember = "Id";       // Valor asociado
+
+            DepositoCombobox.SelectedIndex = -1; // arranca sin ningun valor
         }
 
         private void ContinuarButton_Click(object sender, EventArgs e)
         {
-                ProductosGroup.Enabled = true;
+            string documentoClienteSeleccionado = "";
 
-            
 
-                // Mapear productos disponibles a la lista
-                foreach (var producto in _ordenDePreparacionModel.ProductosDisponibles)
+            if (ClienteCombobox.SelectedValue != null)
+            {
+                documentoClienteSeleccionado = ClienteCombobox.SelectedValue.ToString();
+            }
+
+            string errorDocumentoClienteSeleccionado = _ordenDePreparacionModel.ValidarCliente(documentoClienteSeleccionado);
+
+            if (errorDocumentoClienteSeleccionado != null)
+            {
+                MessageBox.Show(errorDocumentoClienteSeleccionado);
+                return;
+            }
+
+            string idDepositoSeleccionado = "";
+
+            if (DepositoCombobox.SelectedValue != null)
+            {
+                idDepositoSeleccionado = DepositoCombobox.SelectedValue.ToString();
+            }
+
+            string errorIdDepositoSeleccionado = _ordenDePreparacionModel.ValidarDeposito(idDepositoSeleccionado);
+
+            if (errorIdDepositoSeleccionado != null)
+            {
+                MessageBox.Show(errorIdDepositoSeleccionado);
+                return;
+            }
+
+            ProductosGroup.Enabled = true;
+            InfoOrdenGroup.Enabled = true;
+            CrearOrdenButton.Enabled = true;
+
+            // Mapear productos disponibles a la lista
+            foreach (var producto in _ordenDePreparacionModel.ProductosDisponibles)
+            {
+                ListViewItem item = new ListViewItem(new[]
                 {
-                    ListViewItem item = new ListViewItem(new[]
-                    {
                 producto.Id,
                 producto.Descripcion,
                 producto.Cantidad.ToString()
             });
 
-                    ProductosDisponiblesListView.Items.Add(item);
-                }
-        }
-
-        private void ActualizarListViewDisponibles()
-        {
-            ProductosDisponiblesListView.Items.Clear();
-            foreach (var producto in _ordenDePreparacionModel.ProductosDisponibles)
-            {
-                ListViewItem item = new ListViewItem(new[] { producto.Id, producto.Descripcion, producto.Cantidad.ToString() });
                 ProductosDisponiblesListView.Items.Add(item);
             }
         }
+
+
 
         private void AgregarProductoButton_Click(object sender, EventArgs e)
         {
@@ -161,17 +144,15 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
             // Limpiar el campo de cantidad
             CantidadTextBox.Clear();
-
-            // Habilitar los campos que estaban deshabilitados
-            CantidadTextBox.Enabled = true;
-            EliminarProductoButton.Enabled = true; // Habilitar el botón de eliminar
-            InfoOrdenGroup.Enabled = true; // Habilitar el grupo de información de la orden
-
-            // Deshabilitar el botón nuevamente
-            AgregarProductoButton.Enabled = false;
-
-            // Habilitar el botón de crear orden
-            CrearOrdenButton.Enabled = true;
+        }
+        private void ActualizarListViewDisponibles()
+        {
+            ProductosDisponiblesListView.Items.Clear();
+            foreach (var producto in _ordenDePreparacionModel.ProductosDisponibles)
+            {
+                ListViewItem item = new ListViewItem(new[] { producto.Id, producto.Descripcion, producto.Cantidad.ToString() });
+                ProductosDisponiblesListView.Items.Add(item);
+            }
         }
 
         private void ActualizarListViewAgregados()
@@ -204,6 +185,16 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
         {
             try
             {
+                // Validar productos agregados
+                int cantidadProductosAgregados = ProductosAgregadosListView.Items.Count;
+                string errorProductosAgregados = _ordenDePreparacionModel.ValidarProductosAgregados(cantidadProductosAgregados);
+
+                if (errorProductosAgregados != null)
+                {
+                    MessageBox.Show(errorProductosAgregados);
+                    return;
+                }
+
                 bool isPrioridadSeleccionada = PrioridadComboBox.SelectedIndex != -1; // -1 indica que no hay selección
 
                 // Validar prioridad
@@ -212,6 +203,16 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 if (errorPrioridad != null)
                 {
                     MessageBox.Show(errorPrioridad);
+                    return;
+                }
+
+                // Validar fecha entrega
+                DateTime fechaEntregaSeleccionada = FechaEntregaDatePicker.Value;
+                string errorFechaEntrega = _ordenDePreparacionModel.ValidarFechaEntrega(fechaEntregaSeleccionada);
+
+                if (errorFechaEntrega != null)
+                {
+                    MessageBox.Show(errorFechaEntrega);
                     return;
                 }
 
@@ -234,16 +235,12 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 // Si todo es válido, continuar con la creación de la orden
                 string mensaje = _ordenDePreparacionModel.CrearOrden(documentoCliente, nombreCliente, dniTransportista, prioridad);
                 MessageBox.Show(mensaje);
+                ResetearFormulario();
             }
             catch (Exception ex)
             {
                 // Manejar errores inesperados
                 MessageBox.Show("La Orden de Preparación no pudo ser creada correctamente. Por favor intente de nuevo o contacte al área de sistemas.\n" + ex.Message);
-            }
-            finally
-            {
-                // Resetear el formulario después de la creación
-                ResetearFormulario();
             }
         }
 
@@ -264,20 +261,10 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             ProductosAgregadosListView.Items.Clear();
             ProductosDisponiblesListView.Items.Clear();
 
-            ContinuarButton.Enabled = false;
-
-             
-
-            // deshabilitar controles 
-            CantidadTextBox.Enabled = false;
-            EliminarProductoButton.Enabled = false; // Deshabilitar el botón de eliminar
-            InfoOrdenGroup.Enabled = false; // Deshabilitar el grupo de información de la orden
-            AgregarProductoButton.Enabled = false; // Habilitar el botón de agregar
-            CrearOrdenButton.Enabled = false; // Habilitar el botón de crear orden
+            // Desactivar groups
             ProductosGroup.Enabled = false;
-
             InfoOrdenGroup.Enabled = false;
-
+            CrearOrdenButton.Enabled = false;
         }
 
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
@@ -302,6 +289,11 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             }
         }
 
-
+        private void EliminarTodoButton_Click(object sender, EventArgs e)
+        {
+            _ordenDePreparacionModel.EliminarTodosLosProductos();
+            ActualizarListViewAgregados();
+            ActualizarListViewDisponibles();
+        }
     }
 }

@@ -20,30 +20,6 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
         {
             InitializeComponent();
             _gestionOrdenSeleccionModel = new GestionOrdenSeleccionModel();
-
-            // Evento que chequea que solamente se seleccione 1 checkbox. El componente ListView no soporta nativamente una propiedad para solamente 1 fila se seleccione
-            OrdenesSeleccionListView.ItemCheck += OrdenesSeleccionListView_ItemCheck;
-
-        }
-
-        private void OrdenesSeleccionListView_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            // Evitar que se seleccione más de un checkbox
-            if (e.NewValue == CheckState.Checked)
-            {
-                foreach (ListViewItem item in OrdenesSeleccionListView.Items)
-                {
-                    if (item != OrdenesSeleccionListView.Items[e.Index])
-                    {
-                        // Desmarcar otros checkboxes
-                        item.Checked = false;
-                    }
-                }
-            }
-
-            bool hayOrdenSeleccionada = e.NewValue == CheckState.Checked;
-
-            GenerarOrdenButton.Enabled = hayOrdenSeleccionada;
         }
 
         private void GestionOrdenSeleccionForm_Load(object sender, EventArgs e)
@@ -60,10 +36,10 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
                         orden.Estado.ToString()                   // Convertir EstadoOrdenPreparacionEnum a string
                     });
 
-                OrdenesSeleccionListView.Items.Add(item);
+                OrdenesSeleccionPendientesListView.Items.Add(item);
             }
 
-            GenerarOrdenButton.Enabled = false; // El botón empieza deshabilitado
+            MarcarComoSeleccionadaButton.Enabled = false; // El botón empieza deshabilitado
         }
 
         private void VolverAlMenuButton_Click(object sender, EventArgs e)

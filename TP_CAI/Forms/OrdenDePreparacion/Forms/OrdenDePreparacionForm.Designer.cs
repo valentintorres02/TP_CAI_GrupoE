@@ -35,6 +35,11 @@
             ContinuarButton = new Button();
             VolverButton = new Button();
             ProductosGroup = new GroupBox();
+            EliminarTodoButton = new Button();
+            ProductosAgregadosListView = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
             EliminarProductoButton = new Button();
             label6 = new Label();
             AgregarProductoButton = new Button();
@@ -54,11 +59,6 @@
             PrioridadComboBox = new ComboBox();
             CrearOrdenButton = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            ProductosAgregadosListView = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            EliminarTodoButton = new Button();
             ProductosGroup.SuspendLayout();
             InfoOrdenGroup.SuspendLayout();
             SuspendLayout();
@@ -101,7 +101,6 @@
             // 
             // ContinuarButton
             // 
-            ContinuarButton.Enabled = false;
             ContinuarButton.Location = new Point(717, 8);
             ContinuarButton.Name = "ContinuarButton";
             ContinuarButton.Size = new Size(325, 41);
@@ -131,6 +130,7 @@
             ProductosGroup.Controls.Add(CantidadTextBox);
             ProductosGroup.Controls.Add(label4);
             ProductosGroup.Controls.Add(ProductosDisponiblesListView);
+            ProductosGroup.Enabled = false;
             ProductosGroup.Location = new Point(12, 80);
             ProductosGroup.Name = "ProductosGroup";
             ProductosGroup.Size = new Size(1030, 372);
@@ -138,9 +138,43 @@
             ProductosGroup.TabStop = false;
             ProductosGroup.Text = "Productos";
             // 
+            // EliminarTodoButton
+            // 
+            EliminarTodoButton.Location = new Point(876, 337);
+            EliminarTodoButton.Name = "EliminarTodoButton";
+            EliminarTodoButton.Size = new Size(146, 27);
+            EliminarTodoButton.TabIndex = 9;
+            EliminarTodoButton.Text = "Eliminar Todo";
+            EliminarTodoButton.UseVisualStyleBackColor = true;
+            EliminarTodoButton.Click += EliminarTodoButton_Click;
+            // 
+            // ProductosAgregadosListView
+            // 
+            ProductosAgregadosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            ProductosAgregadosListView.Location = new Point(529, 37);
+            ProductosAgregadosListView.Name = "ProductosAgregadosListView";
+            ProductosAgregadosListView.Size = new Size(493, 289);
+            ProductosAgregadosListView.TabIndex = 8;
+            ProductosAgregadosListView.UseCompatibleStateImageBehavior = false;
+            ProductosAgregadosListView.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "ID";
+            columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Descripcion Producto";
+            columnHeader2.Width = 250;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Cantidad";
+            columnHeader3.Width = 150;
+            // 
             // EliminarProductoButton
             // 
-            EliminarProductoButton.Enabled = false;
             EliminarProductoButton.Location = new Point(529, 336);
             EliminarProductoButton.Name = "EliminarProductoButton";
             EliminarProductoButton.Size = new Size(341, 27);
@@ -160,7 +194,6 @@
             // 
             // AgregarProductoButton
             // 
-            AgregarProductoButton.Enabled = false;
             AgregarProductoButton.Location = new Point(234, 332);
             AgregarProductoButton.Name = "AgregarProductoButton";
             AgregarProductoButton.Size = new Size(265, 31);
@@ -180,7 +213,6 @@
             // 
             // CantidadTextBox
             // 
-            CantidadTextBox.Enabled = false;
             CantidadTextBox.Location = new Point(122, 340);
             CantidadTextBox.Name = "CantidadTextBox";
             CantidadTextBox.Size = new Size(106, 23);
@@ -228,6 +260,7 @@
             InfoOrdenGroup.Controls.Add(label7);
             InfoOrdenGroup.Controls.Add(DniTransportistaTextBox);
             InfoOrdenGroup.Controls.Add(PrioridadComboBox);
+            InfoOrdenGroup.Enabled = false;
             InfoOrdenGroup.Location = new Point(12, 458);
             InfoOrdenGroup.Name = "InfoOrdenGroup";
             InfoOrdenGroup.Size = new Size(1030, 79);
@@ -295,41 +328,6 @@
             CrearOrdenButton.Text = "Crear Orden de Preparación";
             CrearOrdenButton.UseVisualStyleBackColor = true;
             CrearOrdenButton.Click += CrearOrdenButton_Click;
-            // 
-            // ProductosAgregadosListView
-            // 
-            ProductosAgregadosListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            ProductosAgregadosListView.Location = new Point(529, 37);
-            ProductosAgregadosListView.Name = "ProductosAgregadosListView";
-            ProductosAgregadosListView.Size = new Size(493, 289);
-            ProductosAgregadosListView.TabIndex = 8;
-            ProductosAgregadosListView.UseCompatibleStateImageBehavior = false;
-            ProductosAgregadosListView.View = View.Details;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 100;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Descripcion Producto";
-            columnHeader2.Width = 250;
-            // 
-            // columnHeader3
-            // 
-            columnHeader3.Text = "Cantidad";
-            columnHeader3.Width = 150;
-            // 
-            // EliminarTodoButton
-            // 
-            EliminarTodoButton.Enabled = false;
-            EliminarTodoButton.Location = new Point(876, 337);
-            EliminarTodoButton.Name = "EliminarTodoButton";
-            EliminarTodoButton.Size = new Size(146, 27);
-            EliminarTodoButton.TabIndex = 9;
-            EliminarTodoButton.Text = "Eliminar Todo";
-            EliminarTodoButton.UseVisualStyleBackColor = true;
             // 
             // OrdenDePreparacionForm
             // 
