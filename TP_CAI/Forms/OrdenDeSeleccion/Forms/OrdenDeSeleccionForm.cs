@@ -82,29 +82,6 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
                 }
             }
         }
-
-        private void VolverAlMenuButton_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-                "Tienes una Órden de Selección en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
-                "Advertencia",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            // Si el usuario selecciona "Sí"
-            if (result == DialogResult.Yes)
-            {
-                // Crear una nueva instancia del formulario de menú principal
-                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
-
-                // Mostrar el formulario de menú principal
-                pantallaPrincipalForm.Show();
-
-                // Cerrar el formulario actual
-                this.Close();
-            }
-        }
-
         private void LimpiarButton_Click(object sender, EventArgs e)
         {
             // Iterar sobre todos los elementos en el ListView
@@ -259,5 +236,26 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
             ResetearFormulario();
         }
 
+        private void VolverButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+               "Tienes una Órden de Selección en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
+               "Advertencia",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Warning);
+
+            // Si el usuario selecciona "Sí"
+            if (result == DialogResult.Yes)
+            {
+                // Crear una nueva instancia del formulario de menú principal
+                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+
+                // Mostrar el formulario de menú principal
+                pantallaPrincipalForm.Show();
+
+                // Cerrar el formulario actual
+                this.Close();
+            }
+        }
     }
 }

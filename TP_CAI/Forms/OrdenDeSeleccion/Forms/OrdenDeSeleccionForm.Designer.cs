@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            VolverAlMenuButton = new Button();
             LimpiarButton = new Button();
             BuscarButton = new Button();
             PrioridadCombobox = new ComboBox();
@@ -57,9 +56,11 @@
             Prioridad = new ColumnHeader();
             DocumentoCliente = new ColumnHeader();
             FechaEntrega = new ColumnHeader();
+            FiltrosGroup = new GroupBox();
             CrearOrdenButton = new Button();
             VolverButton = new Button();
             OrdenesGroup.SuspendLayout();
+            FiltrosGroup.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -71,16 +72,6 @@
             label1.Size = new Size(257, 21);
             label1.TabIndex = 0;
             label1.Text = "Seleccionar órdenes de preparación";
-            // 
-            // VolverAlMenuButton
-            // 
-            VolverAlMenuButton.Location = new Point(72, 722);
-            VolverAlMenuButton.Name = "VolverAlMenuButton";
-            VolverAlMenuButton.Size = new Size(144, 23);
-            VolverAlMenuButton.TabIndex = 4;
-            VolverAlMenuButton.Text = "Volver al Menú Principal";
-            VolverAlMenuButton.UseVisualStyleBackColor = true;
-            VolverAlMenuButton.Click += VolverAlMenuButton_Click;
             // 
             // LimpiarButton
             // 
@@ -94,7 +85,7 @@
             // 
             // BuscarButton
             // 
-            BuscarButton.Location = new Point(869, 40);
+            BuscarButton.Location = new Point(861, 19);
             BuscarButton.Name = "BuscarButton";
             BuscarButton.Size = new Size(162, 40);
             BuscarButton.TabIndex = 7;
@@ -105,7 +96,7 @@
             // PrioridadCombobox
             // 
             PrioridadCombobox.FormattingEnabled = true;
-            PrioridadCombobox.Location = new Point(10, 57);
+            PrioridadCombobox.Location = new Point(4, 36);
             PrioridadCombobox.Name = "PrioridadCombobox";
             PrioridadCombobox.Size = new Size(267, 23);
             PrioridadCombobox.TabIndex = 8;
@@ -113,7 +104,7 @@
             // ClienteCombobox
             // 
             ClienteCombobox.FormattingEnabled = true;
-            ClienteCombobox.Location = new Point(283, 57);
+            ClienteCombobox.Location = new Point(275, 36);
             ClienteCombobox.Name = "ClienteCombobox";
             ClienteCombobox.Size = new Size(313, 23);
             ClienteCombobox.TabIndex = 9;
@@ -121,17 +112,17 @@
             // FechaEntregaDatePicker
             // 
             FechaEntregaDatePicker.Format = DateTimePickerFormat.Short;
-            FechaEntregaDatePicker.Location = new Point(602, 57);
+            FechaEntregaDatePicker.Location = new Point(594, 36);
             FechaEntregaDatePicker.Name = "FechaEntregaDatePicker";
             FechaEntregaDatePicker.Size = new Size(261, 23);
             FechaEntregaDatePicker.TabIndex = 11;
-            FechaEntregaDatePicker.Value = new DateTime(2024, 10, 16, 0, 0, 0, 0);
+            FechaEntregaDatePicker.Value = new DateTime(2024, 10, 17, 0, 0, 0, 0);
             // 
             // LimpiarFiltroButton
             // 
-            LimpiarFiltroButton.Location = new Point(1037, 39);
+            LimpiarFiltroButton.Location = new Point(1029, 18);
             LimpiarFiltroButton.Name = "LimpiarFiltroButton";
-            LimpiarFiltroButton.Size = new Size(162, 41);
+            LimpiarFiltroButton.Size = new Size(156, 41);
             LimpiarFiltroButton.TabIndex = 12;
             LimpiarFiltroButton.Text = "Limpiar";
             LimpiarFiltroButton.UseVisualStyleBackColor = true;
@@ -140,7 +131,7 @@
             // PrioridadLbl
             // 
             PrioridadLbl.AutoSize = true;
-            PrioridadLbl.Location = new Point(12, 40);
+            PrioridadLbl.Location = new Point(6, 19);
             PrioridadLbl.Name = "PrioridadLbl";
             PrioridadLbl.Size = new Size(55, 15);
             PrioridadLbl.TabIndex = 13;
@@ -149,7 +140,7 @@
             // Clientelbl
             // 
             Clientelbl.AutoSize = true;
-            Clientelbl.Location = new Point(283, 40);
+            Clientelbl.Location = new Point(275, 19);
             Clientelbl.Name = "Clientelbl";
             Clientelbl.Size = new Size(44, 15);
             Clientelbl.TabIndex = 14;
@@ -158,7 +149,7 @@
             // FcehaEntregalbl
             // 
             FcehaEntregalbl.AutoSize = true;
-            FcehaEntregalbl.Location = new Point(602, 39);
+            FcehaEntregalbl.Location = new Point(594, 18);
             FcehaEntregalbl.Name = "FcehaEntregalbl";
             FcehaEntregalbl.Size = new Size(97, 15);
             FcehaEntregalbl.TabIndex = 16;
@@ -186,7 +177,7 @@
             OrdenesGroup.Controls.Add(label4);
             OrdenesGroup.Controls.Add(OrdenesPreparacionPendientesListView);
             OrdenesGroup.Controls.Add(LimpiarButton);
-            OrdenesGroup.Location = new Point(9, 96);
+            OrdenesGroup.Location = new Point(9, 104);
             OrdenesGroup.Name = "OrdenesGroup";
             OrdenesGroup.Size = new Size(1190, 372);
             OrdenesGroup.TabIndex = 18;
@@ -313,9 +304,26 @@
             FechaEntrega.Text = "Fecha de Entrega";
             FechaEntrega.Width = 130;
             // 
+            // FiltrosGroup
+            // 
+            FiltrosGroup.Controls.Add(PrioridadLbl);
+            FiltrosGroup.Controls.Add(PrioridadCombobox);
+            FiltrosGroup.Controls.Add(Clientelbl);
+            FiltrosGroup.Controls.Add(ClienteCombobox);
+            FiltrosGroup.Controls.Add(LimpiarFiltroButton);
+            FiltrosGroup.Controls.Add(FcehaEntregalbl);
+            FiltrosGroup.Controls.Add(BuscarButton);
+            FiltrosGroup.Controls.Add(FechaEntregaDatePicker);
+            FiltrosGroup.Location = new Point(9, 33);
+            FiltrosGroup.Name = "FiltrosGroup";
+            FiltrosGroup.Size = new Size(1190, 65);
+            FiltrosGroup.TabIndex = 21;
+            FiltrosGroup.TabStop = false;
+            FiltrosGroup.Text = "Filtros";
+            // 
             // CrearOrdenButton
             // 
-            CrearOrdenButton.Location = new Point(9, 489);
+            CrearOrdenButton.Location = new Point(9, 497);
             CrearOrdenButton.Name = "CrearOrdenButton";
             CrearOrdenButton.Size = new Size(587, 103);
             CrearOrdenButton.TabIndex = 19;
@@ -325,30 +333,23 @@
             // 
             // VolverButton
             // 
-            VolverButton.Location = new Point(602, 489);
+            VolverButton.Location = new Point(602, 497);
             VolverButton.Name = "VolverButton";
             VolverButton.Size = new Size(586, 103);
             VolverButton.TabIndex = 18;
             VolverButton.Text = "Volver al Menú Principal";
             VolverButton.UseVisualStyleBackColor = true;
+            VolverButton.Click += VolverButton_Click;
             // 
             // OrdenDeSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1206, 606);
+            ClientSize = new Size(1206, 618);
+            Controls.Add(FiltrosGroup);
             Controls.Add(CrearOrdenButton);
             Controls.Add(VolverButton);
             Controls.Add(OrdenesGroup);
-            Controls.Add(FcehaEntregalbl);
-            Controls.Add(Clientelbl);
-            Controls.Add(PrioridadLbl);
-            Controls.Add(LimpiarFiltroButton);
-            Controls.Add(FechaEntregaDatePicker);
-            Controls.Add(ClienteCombobox);
-            Controls.Add(PrioridadCombobox);
-            Controls.Add(BuscarButton);
-            Controls.Add(VolverAlMenuButton);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
@@ -357,6 +358,8 @@
             Load += OrdenDeSeleccionForm_Load;
             OrdenesGroup.ResumeLayout(false);
             OrdenesGroup.PerformLayout();
+            FiltrosGroup.ResumeLayout(false);
+            FiltrosGroup.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -364,7 +367,6 @@
         #endregion
 
         private Label label1;
-        private Button VolverAlMenuButton;
         private Button LimpiarButton;
 		private Button BuscarButton;
 		private ComboBox PrioridadCombobox;
@@ -394,5 +396,6 @@
         private ColumnHeader FechaEntrega2;
         private Button SeleccionarTodoButton2;
         private Button LimpiarButton2;
+        private GroupBox FiltrosGroup;
     }
 }

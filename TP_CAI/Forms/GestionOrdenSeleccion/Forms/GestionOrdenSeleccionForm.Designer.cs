@@ -160,6 +160,7 @@
             VolverButton.TabIndex = 20;
             VolverButton.Text = "Volver al Menú Principal";
             VolverButton.UseVisualStyleBackColor = true;
+            VolverButton.Click += VolverButton_Click;
             // 
             // GestionOrdenSeleccionForm
             // 
