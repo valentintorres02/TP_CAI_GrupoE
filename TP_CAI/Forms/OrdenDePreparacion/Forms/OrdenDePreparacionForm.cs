@@ -95,6 +95,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             CrearOrdenButton.Enabled = true;
 
             // Mapear productos disponibles a la lista
+            ProductosDisponiblesListView.Items.Clear();
             foreach (var producto in _ordenDePreparacionModel.ProductosDisponibles)
             {
                 ListViewItem item = new ListViewItem(new[]
