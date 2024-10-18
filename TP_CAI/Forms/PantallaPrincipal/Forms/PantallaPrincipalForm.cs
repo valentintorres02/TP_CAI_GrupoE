@@ -38,6 +38,13 @@ namespace TP_CAI.Archivos.PantallaPrincipal.Forms
             ordenDeSeleccionForm.Show();
         }
 
+        private void GestionOrdenSeleccionButton_Click(object sender, EventArgs e)
+        {
+            GestionOrdenSeleccionForm gestionOrdenSeleccionForm = new GestionOrdenSeleccionForm();
+            this.Hide();
+            gestionOrdenSeleccionForm.Show();
+        }
+
         private void EmpaquetadoButton_Click(object sender, EventArgs e)
         {
             EmpaquetadoForm empaquetadoForm = new EmpaquetadoForm();
