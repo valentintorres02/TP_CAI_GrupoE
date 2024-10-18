@@ -106,8 +106,41 @@ namespace TP_CAI.Archivos.Despacho.Forms
             MessageBox.Show("Ordenes marcadas como listas para despacho correctamente");
         }
 
+
+        private bool OrdenEnProceso()
+        {
+            bool ordenEnProceso = false;
+
+            if (OrdenesADespacharListView.Items.Count > 0)
+            {
+                ordenEnProceso = true;
+            }
+
+            return ordenEnProceso;
+        }
+
+        private void VolverAlMenu()
+        {
+            // Crear una nueva instancia del formulario de menú principal
+            PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+
+            // Mostrar el formulario de menú principal
+            pantallaPrincipalForm.Show();
+
+            // Cerrar el formulario actual
+            this.Close();
+        }
+
         private void VolverButton_Click(object sender, EventArgs e)
         {
+            bool ordenEnProceso = OrdenEnProceso();
+
+            if (!ordenEnProceso)
+            {
+                VolverAlMenu();
+                return;
+            }
+
             DialogResult result = MessageBox.Show(
               "Tienes un Despacho en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
               "Advertencia",
@@ -117,14 +150,7 @@ namespace TP_CAI.Archivos.Despacho.Forms
             // Si el usuario selecciona "Sí"
             if (result == DialogResult.Yes)
             {
-                // Crear una nueva instancia del formulario de menú principal
-                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
-
-                // Mostrar el formulario de menú principal
-                pantallaPrincipalForm.Show();
-
-                // Cerrar el formulario actual
-                this.Close();
+                VolverAlMenu();
             }
         }
     }
