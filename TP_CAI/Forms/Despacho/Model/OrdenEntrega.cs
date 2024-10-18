@@ -5,13 +5,13 @@
         public class OrdenEntrega
         {
             public int Id { get; set; }
-            public string DocumentoCliente { get; set; }
+            public string DocumentoTransportista{ get; set; }
             public EstadoOrdenDeEntregaEnum Estado { get; set; }
 
-            public OrdenEntrega(int id, string documentoCliente)
+            public OrdenEntrega(int id, string documentoTransportista)
             {
                 Id = id;
-                DocumentoCliente = documentoCliente;
+                DocumentoTransportista = documentoTransportista;
                 Estado = EstadoOrdenDeEntregaEnum.Pendiente;
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 
 namespace TP_CAI.Forms.Despacho.Model
@@ -6,19 +7,43 @@ namespace TP_CAI.Forms.Despacho.Model
     internal partial class DespachoModel
     {
 
-        public List<OrdenPreparacion> ObtenerOrdenesPreparacion()
+        public List<OrdenEntrega> OrdenesDeEntrega { get; private set; }
+        public List<Transportista> Transportistas { get; private set; }
+
+        public DespachoModel()
         {
-            // Crear una lista para almacenar las ordenes
-            List<OrdenPreparacion> ordenes = new List<OrdenPreparacion>
+            OrdenesDeEntrega = new List<OrdenEntrega>
             {
-                new OrdenPreparacion(019, "20-44444444-4", "GrupoE S.R.L", 35012345, PrioridadEnum.Baja, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now),
-                new OrdenPreparacion(025, "20-44444444-4", "C.A.I S.A", 35012345, PrioridadEnum.Media, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now),
-                new OrdenPreparacion(034, "20-44444444-4", "Grupo-Z S.A", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now),
-                new OrdenPreparacion(055, "20-44444444-4", "Molinos S.R.L", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now)
+               new OrdenEntrega(019, "20456765"),
+               new OrdenEntrega(055, "45324567"),
+               new OrdenEntrega(031, "34567544"),
+               new OrdenEntrega(042, "22345678"),
+               new OrdenEntrega(011, "22345678"),
             };
 
-            // Devolver la lista de ordenes
-            return ordenes;
+            Transportistas = new List<Transportista>
+            {
+               new Transportista("20456765"),
+               new Transportista("45324567"),
+               new Transportista("34567544"),
+               new Transportista("22345678"),
+            };
         }
+
+        public List<OrdenEntrega> ObtenerOrdenesPorTransportista(string dniTransportista)
+        {
+            return OrdenesDeEntrega.Where(orden => orden.DocumentoTransportista == dniTransportista).ToList();
+        }
+
+        public string ValidarTransportista(string dniTransportista)
+        {
+            if (dniTransportista == null || dniTransportista == "")
+            {
+                return "Por favor seleccione un transportista valido.";
+            }
+
+            return null;
+        }
+
     }
 }

@@ -20,137 +20,141 @@
             base.Dispose(disposing);
         }
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-			button3 = new Button();
-			button2 = new Button();
-			groupBox1 = new GroupBox();
-			listView1 = new ListView();
-			IdOrden = new ColumnHeader();
-			button1 = new Button();
-			label1 = new Label();
-			comboBox1 = new ComboBox();
-			button4 = new Button();
-			groupBox1.SuspendLayout();
-			SuspendLayout();
-			// 
-			// button3
-			// 
-			button3.Location = new Point(540, 376);
-			button3.Name = "button3";
-			button3.Size = new Size(152, 56);
-			button3.TabIndex = 11;
-			button3.Text = "Volver al Menú Principal";
-			button3.UseVisualStyleBackColor = true;
-			// 
-			// button2
-			// 
-			button2.Location = new Point(18, 376);
-			button2.Name = "button2";
-			button2.Size = new Size(289, 56);
-			button2.TabIndex = 10;
-			button2.Text = "Marcar como Despachadas y Generar Remito";
-			button2.UseVisualStyleBackColor = true;
-			// 
-			// groupBox1
-			// 
-			groupBox1.Controls.Add(listView1);
-			groupBox1.Location = new Point(12, 56);
-			groupBox1.Name = "groupBox1";
-			groupBox1.Size = new Size(686, 314);
-			groupBox1.TabIndex = 9;
-			groupBox1.TabStop = false;
-			groupBox1.Text = "Órdenes a Despachar";
-			// 
-			// listView1
-			// 
-			listView1.Columns.AddRange(new ColumnHeader[] { IdOrden });
-			listView1.Location = new Point(6, 22);
-			listView1.Name = "listView1";
-			listView1.Size = new Size(674, 286);
-			listView1.TabIndex = 0;
-			listView1.UseCompatibleStateImageBehavior = false;
-			listView1.View = View.Details;
-			// 
-			// IdOrden
-			// 
-			IdOrden.Text = "ID de Orden";
-			IdOrden.Width = 190;
-			// 
-			// button1
-			// 
-			button1.Location = new Point(485, 27);
-			button1.Name = "button1";
-			button1.Size = new Size(213, 23);
-			button1.TabIndex = 8;
-			button1.Text = "Seleccionar";
-			button1.UseVisualStyleBackColor = true;
-			// 
-			// label1
-			// 
-			label1.AutoSize = true;
-			label1.Location = new Point(18, 9);
-			label1.Name = "label1";
-			label1.Size = new Size(219, 15);
-			label1.TabIndex = 7;
-			label1.Text = "Transportistas con Ordenes a Despachar:";
-			// 
-			// comboBox1
-			// 
-			comboBox1.DropDownHeight = 150;
-			comboBox1.FormattingEnabled = true;
-			comboBox1.IntegralHeight = false;
-			comboBox1.Location = new Point(18, 27);
-			comboBox1.Name = "comboBox1";
-			comboBox1.Size = new Size(461, 23);
-			comboBox1.TabIndex = 6;
-			// 
-			// button4
-			// 
-			button4.Location = new Point(313, 376);
-			button4.Name = "button4";
-			button4.Size = new Size(221, 56);
-			button4.TabIndex = 12;
-			button4.Text = "Marcar como Listas para despacho";
-			button4.UseVisualStyleBackColor = true;
-			// 
-			// DespachoForm
-			// 
-			AutoScaleDimensions = new SizeF(7F, 15F);
-			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(710, 444);
-			Controls.Add(button4);
-			Controls.Add(button3);
-			Controls.Add(button2);
-			Controls.Add(groupBox1);
-			Controls.Add(button1);
-			Controls.Add(label1);
-			Controls.Add(comboBox1);
-			MaximizeBox = false;
-			Name = "DespachoForm";
-			Text = "Despacho";
-			Load += DespachoForm_Load;
-			groupBox1.ResumeLayout(false);
-			ResumeLayout(false);
-			PerformLayout();
-		}
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            button3 = new Button();
+            MarcarComoDespachadasButton = new Button();
+            groupBox1 = new GroupBox();
+            OrdenesADespacharListView = new ListView();
+            IdOrden = new ColumnHeader();
+            SeleccionarTransportistaButton = new Button();
+            label1 = new Label();
+            TransportistasCombobox = new ComboBox();
+            MarcarComoListasButton = new Button();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
+            // 
+            // button3
+            // 
+            button3.Location = new Point(540, 376);
+            button3.Name = "button3";
+            button3.Size = new Size(152, 56);
+            button3.TabIndex = 11;
+            button3.Text = "Volver al Menú Principal";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // MarcarComoDespachadasButton
+            // 
+            MarcarComoDespachadasButton.Location = new Point(18, 376);
+            MarcarComoDespachadasButton.Name = "MarcarComoDespachadasButton";
+            MarcarComoDespachadasButton.Size = new Size(289, 56);
+            MarcarComoDespachadasButton.TabIndex = 10;
+            MarcarComoDespachadasButton.Text = "Marcar como Despachadas y Generar Remito";
+            MarcarComoDespachadasButton.UseVisualStyleBackColor = true;
+            MarcarComoDespachadasButton.Click += MarcarComoDespachadasButton_Click;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(OrdenesADespacharListView);
+            groupBox1.Location = new Point(12, 56);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(686, 314);
+            groupBox1.TabIndex = 9;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Órdenes a Despachar";
+            // 
+            // OrdenesADespacharListView
+            // 
+            OrdenesADespacharListView.Columns.AddRange(new ColumnHeader[] { IdOrden });
+            OrdenesADespacharListView.Location = new Point(6, 22);
+            OrdenesADespacharListView.Name = "OrdenesADespacharListView";
+            OrdenesADespacharListView.Size = new Size(674, 286);
+            OrdenesADespacharListView.TabIndex = 0;
+            OrdenesADespacharListView.UseCompatibleStateImageBehavior = false;
+            OrdenesADespacharListView.View = View.Details;
+            // 
+            // IdOrden
+            // 
+            IdOrden.Text = "ID de Orden";
+            IdOrden.Width = 190;
+            // 
+            // SeleccionarTransportistaButton
+            // 
+            SeleccionarTransportistaButton.Location = new Point(485, 27);
+            SeleccionarTransportistaButton.Name = "SeleccionarTransportistaButton";
+            SeleccionarTransportistaButton.Size = new Size(213, 23);
+            SeleccionarTransportistaButton.TabIndex = 8;
+            SeleccionarTransportistaButton.Text = "Seleccionar";
+            SeleccionarTransportistaButton.UseVisualStyleBackColor = true;
+            SeleccionarTransportistaButton.Click += SeleccionarTransportistaButton_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(18, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(219, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Transportistas con Ordenes a Despachar:";
+            // 
+            // TransportistasCombobox
+            // 
+            TransportistasCombobox.DropDownHeight = 150;
+            TransportistasCombobox.FormattingEnabled = true;
+            TransportistasCombobox.IntegralHeight = false;
+            TransportistasCombobox.Items.AddRange(new object[] { "DNI 39456294", "DNI 65320644", "DNI 21245675", "DNI 95435677" });
+            TransportistasCombobox.Location = new Point(18, 27);
+            TransportistasCombobox.Name = "TransportistasCombobox";
+            TransportistasCombobox.Size = new Size(461, 23);
+            TransportistasCombobox.TabIndex = 6;
+            // 
+            // MarcarComoListasButton
+            // 
+            MarcarComoListasButton.Location = new Point(313, 376);
+            MarcarComoListasButton.Name = "MarcarComoListasButton";
+            MarcarComoListasButton.Size = new Size(221, 56);
+            MarcarComoListasButton.TabIndex = 12;
+            MarcarComoListasButton.Text = "Marcar como Listas para despacho";
+            MarcarComoListasButton.UseVisualStyleBackColor = true;
+            MarcarComoListasButton.Click += MarcarComoListasButton_Click;
+            // 
+            // DespachoForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(710, 444);
+            Controls.Add(MarcarComoListasButton);
+            Controls.Add(button3);
+            Controls.Add(MarcarComoDespachadasButton);
+            Controls.Add(groupBox1);
+            Controls.Add(SeleccionarTransportistaButton);
+            Controls.Add(label1);
+            Controls.Add(TransportistasCombobox);
+            MaximizeBox = false;
+            Name = "DespachoForm";
+            Text = "Despacho";
+            Load += DespachoForm_Load;
+            groupBox1.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
+        }
 
-		#endregion
+        #endregion
 
-		private Button button3;
-        private Button button2;
+        private Button button3;
+        private Button MarcarComoDespachadasButton;
         private GroupBox groupBox1;
-        private ListView listView1;
+        private ListView OrdenesADespacharListView;
         private ColumnHeader IdOrden;
-        private Button button1;
+        private Button SeleccionarTransportistaButton;
         private Label label1;
-        private ComboBox comboBox1;
-		private Button button4;
+        private ComboBox TransportistasCombobox;
+		private Button MarcarComoListasButton;
 	}
 }

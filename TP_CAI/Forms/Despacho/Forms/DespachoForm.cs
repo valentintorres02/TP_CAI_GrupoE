@@ -10,8 +10,10 @@ using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 using TP_CAI.Forms.Despacho.Model;
 using TP_CAI.Forms.OrdenDeEntrega.Model;
+using TP_CAI.Forms.OrdenDePreparacion.Model;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 using static TP_CAI.Forms.Despacho.Model.DespachoModel;
+using static TP_CAI.Forms.OrdenDePreparacion.Model.OrdenDePreparacionModel;
 
 namespace TP_CAI.Archivos.Despacho.Forms
 {
@@ -30,9 +32,23 @@ namespace TP_CAI.Archivos.Despacho.Forms
             MessageBox.Show("Se generó correctamente el remito N°1405 y se registró correctamente el despacho de las órdenes de preparación.");
         }
 
+
         private void DespachoForm_Load(object sender, EventArgs e)
         {
+            CargarTransportistasCombobox();
         }
+
+        private void CargarTransportistasCombobox()
+        {
+            List<Transportista> transportistas = _despachoModel.Transportistas;
+
+            TransportistasCombobox.DataSource = transportistas;
+            TransportistasCombobox.DisplayMember = "DisplayText"; // Texto visible
+            TransportistasCombobox.ValueMember = "Documento";       // Valor asociado
+
+            TransportistasCombobox.SelectedIndex = -1; // arranca sin ningun valor
+        }
+
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -53,6 +69,63 @@ namespace TP_CAI.Archivos.Despacho.Forms
                 // Cerrar el formulario actual
                 this.Close();
             }
+        }
+
+        private string ObtenerDocumentoTransportista()
+        {
+            string documentoTransportista = "";
+
+
+            if (TransportistasCombobox.SelectedValue != null)
+            {
+                documentoTransportista = TransportistasCombobox.SelectedValue.ToString();
+            }
+
+            string errorDocumentoTransportistaSeleccionado = _despachoModel.ValidarTransportista(documentoTransportista);
+
+            if (errorDocumentoTransportistaSeleccionado != null)
+            {
+                MessageBox.Show(errorDocumentoTransportistaSeleccionado);
+                return null;
+            }
+
+            return documentoTransportista;
+        }
+
+        private void ActualizarTabla()
+        {
+            string documentoTransportista = ObtenerDocumentoTransportista();
+
+            List<OrdenEntrega> ordenesEntrega = _despachoModel.ObtenerOrdenesPorTransportista(documentoTransportista);
+
+            OrdenesADespacharListView.Items.Clear();
+            foreach (var orden in ordenesEntrega)
+            {
+                var item = new ListViewItem(new[]
+                  {
+                        orden.Id.ToString(),
+                    });
+
+                // Agregar el item al ListView
+                OrdenesADespacharListView.Items.Add(item);
+            }
+        }
+
+        private void SeleccionarTransportistaButton_Click(object sender, EventArgs e)
+        {
+            ActualizarTabla();
+        }
+
+        private void MarcarComoDespachadasButton_Click(object sender, EventArgs e)
+        {
+            OrdenesADespacharListView.Items.Clear();
+            TransportistasCombobox.SelectedIndex = -1;
+            MessageBox.Show("Ordenes despachadas correctamente");
+        }
+
+        private void MarcarComoListasButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ordenes marcadas como listas para despacho correctamente");
         }
     }
 }
