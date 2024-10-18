@@ -57,12 +57,5 @@ namespace TP_CAI.Archivos.PantallaPrincipal.Forms
             this.Hide();
             despachoForm.Show();
         }
-
-        private void GestionOrdenSeleccionButton_Click(object sender, EventArgs e)
-        {
-            GestionOrdenSeleccionForm gestionOrdenSeleccionForm= new GestionOrdenSeleccionForm();
-            this.Hide();
-            gestionOrdenSeleccionForm.Show();
-        }
     }
 }

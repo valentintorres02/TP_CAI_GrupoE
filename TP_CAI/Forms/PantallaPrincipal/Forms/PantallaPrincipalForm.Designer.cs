@@ -112,7 +112,6 @@
 			GestionOrdenSeleccionButton.TabIndex = 9;
 			GestionOrdenSeleccionButton.Text = "Gestion Orden de Seleccion";
 			GestionOrdenSeleccionButton.UseVisualStyleBackColor = true;
-			GestionOrdenSeleccionButton.Click += GestionOrdenSeleccionButton_Click;
 			// 
 			// PantallaPrincipalForm
 			// 
