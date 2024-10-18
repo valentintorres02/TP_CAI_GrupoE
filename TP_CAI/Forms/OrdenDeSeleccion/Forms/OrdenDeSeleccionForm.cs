@@ -38,6 +38,18 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
 
         }
 
+        private bool OrdenEnProceso()
+        {
+            bool ordenEnProceso = false;
+
+            if (_ordenDeSeleccionModel.OrdenesDePreparacionAgregadas.Count > 0)
+            {
+                ordenEnProceso = true;
+            }
+
+            return ordenEnProceso;
+        }
+
         private void ActualizarOrdenesFiltradas()
         {
             OrdenesPreparacionPendientesListView.Items.Clear();
@@ -236,25 +248,39 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
             ResetearFormulario();
         }
 
+        private void VolverAlMenu()
+        {
+            // Crear una nueva instancia del formulario de menú principal
+            PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+
+            // Mostrar el formulario de menú principal
+            pantallaPrincipalForm.Show();
+
+            // Cerrar el formulario actual
+            this.Close();
+        }
+
         private void VolverButton_Click(object sender, EventArgs e)
         {
+            bool ordenEnProceso = OrdenEnProceso();
+
+            if (!ordenEnProceso)
+            {
+                VolverAlMenu();
+                return;
+            }
+
+
             DialogResult result = MessageBox.Show(
-               "Tienes una Órden de Selección en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
-               "Advertencia",
-               MessageBoxButtons.YesNo,
-               MessageBoxIcon.Warning);
+                "Tienes una Órden de Seleccion en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
+                "Advertencia",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
 
             // Si el usuario selecciona "Sí"
             if (result == DialogResult.Yes)
             {
-                // Crear una nueva instancia del formulario de menú principal
-                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
-
-                // Mostrar el formulario de menú principal
-                pantallaPrincipalForm.Show();
-
-                // Cerrar el formulario actual
-                this.Close();
+                VolverAlMenu();
             }
         }
     }
