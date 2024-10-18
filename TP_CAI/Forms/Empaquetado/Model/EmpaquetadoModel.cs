@@ -72,7 +72,6 @@ namespace TP_CAI.Forms.Empaquetado.Model
             }
 
             OrdenesDePreparacionAEmpaquetar.Remove(orden);
-            MessageBox.Show("Se registró correctamente el empaquetado de la orden de preparación ID " + orden.Id);
         }
     }
 }

@@ -143,7 +143,7 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
 
 
             // Actualizar la lista de órdenes mostradas
-            ActualizarOrdenesFiltradas();
+            ActualizarOrdenesFiltradas();            
         }
 
         private void LimpiarFiltroButton_Click(object sender, EventArgs e)
@@ -152,6 +152,7 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
             ClienteCombobox.SelectedIndex = -1;
 
             _ordenDeSeleccionModel.ResetearFiltros();
+            ActualizarOrdenesFiltradas();
         }
 
         private void SeleccionarTodoButton_Click(object sender, EventArgs e)

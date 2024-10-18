@@ -65,6 +65,7 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
             _empaquetadoModel.MarcarOrdenComoEmpaquetada(ordenDePreparacionAEmpaquetar);
+            //MessageBox.Show("Se registró correctamente el empaquetado de la orden de preparación ID " + orden.Id);
             PasarALaSiguienteOrden();
         }
 
