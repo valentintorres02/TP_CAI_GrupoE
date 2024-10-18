@@ -24,17 +24,50 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
             _ordenDeEntregaModel = new OrdenDeEntregaModel();
         }
 
+        private List<int> ObtenerOrdenesChequeadas()
+        {
+            List<int> ordenesChequeadas = new List<int>();
+
+            // Iterar sobre los elementos que están chequeados
+            foreach (ListViewItem item in OrdenesPreparacionListView.CheckedItems)
+            {
+                // El primer subitem es el ID, así que lo convertimos a entero
+                int id = int.Parse(item.SubItems[0].Text);
+                ordenesChequeadas.Add(id);
+            }
+
+            return ordenesChequeadas;
+        }
+
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se registró correctamente la órden de entrega ID 0003");
+            List<int> ordenesChequeadas = ObtenerOrdenesChequeadas();
+
+            _ordenDeEntregaModel.CrearOrdenEntrega(ordenesChequeadas);
+            ActualizarTabla();
         }
 
         private void OrdenDeEntregaForm_Load(object sender, EventArgs e)
         {
+            ActualizarTabla();
         }
 
-        private void SeleccionarTransporistaComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ActualizarTabla()
         {
+            List<OrdenPreparacion> ordenesPreparacion = _ordenDeEntregaModel.OrdenesDePreparacion;
+
+            OrdenesPreparacionListView.Items.Clear();
+            foreach (var orden in ordenesPreparacion)
+            {
+                var item = new ListViewItem(new[]
+                  {
+                        orden.Id.ToString(),
+                        orden.FechaEntrega.ToString(),
+                    });
+
+                // Agregar el item al ListView
+                OrdenesPreparacionListView.Items.Add(item);
+            }
         }
 
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
@@ -57,10 +90,6 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
                 // Cerrar el formulario actual
                 this.Close();
             }
-        }
-
-        private void LimpiarButton_Click(object sender, EventArgs e)
-        {
         }
     }
 }

@@ -8,11 +8,11 @@
             public string DocumentoCliente { get; set; }
             public EstadoOrdenDeEntregaEnum Estado { get; set; }
 
-            public OrdenEntrega(int id, string documentoCliente, EstadoOrdenDeEntregaEnum estado)
+            public OrdenEntrega(int id, string documentoCliente)
             {
                 Id = id;
                 DocumentoCliente = documentoCliente;
-                Estado = estado;
+                Estado = EstadoOrdenDeEntregaEnum.Pendiente;
             }
         }
     }

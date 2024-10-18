@@ -1,26 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
+using TP_CAI.Forms.Empaquetado.Model;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
+using static TP_CAI.Forms.Despacho.Model.DespachoModel;
 
 namespace TP_CAI.Forms.OrdenDeEntrega.Model
 {
 
     internal class OrdenDeEntregaModel
     {
-        // Obtener las órdenes como una lista de OrdenEntrega
-        public List<OrdenPreparacion> ObtenerOrdenes()
+        public List<OrdenPreparacion> OrdenesDePreparacion{ get; private set; }
+
+        public OrdenDeEntregaModel()
         {
-            // Crear una lista para almacenar las órdenes
-            List<OrdenPreparacion> ordenes = new List<OrdenPreparacion>
+            OrdenesDePreparacion = new List<OrdenPreparacion>
             {
                new OrdenPreparacion(019, "20-44444444-4", "GrupoE S.R.L", 35012345, PrioridadEnum.Baja, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now),
-                new OrdenPreparacion(025, "20-44444444-4", "C.A.I S.A", 35012345, PrioridadEnum.Media, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now),
-                new OrdenPreparacion(034, "20-44444444-4", "Grupo-Z S.A", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now),
-                new OrdenPreparacion(055, "20-44444444-4", "Molinos S.R.L", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now)
+               new OrdenPreparacion(025, "20-44444444-4", "C.A.I S.A", 35012345, PrioridadEnum.Media, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now),
+               new OrdenPreparacion(034, "20-44444444-4", "Grupo-Z S.A", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now),
+               new OrdenPreparacion(055, "20-44444444-4", "Molinos S.R.L", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now)
             };
+        }
 
-            return ordenes;
+        public void CrearOrdenEntrega(List<int> idsOrdenesPreparacion)
+        {
+            if (idsOrdenesPreparacion == null || idsOrdenesPreparacion.Count == 0)
+            {
+                MessageBox.Show("Por favor selecciona al menos una orden de preparacion");
+                return;
+            }
+
+
+            foreach (var idOrden in idsOrdenesPreparacion)
+            {
+                var orden = OrdenesDePreparacion.FirstOrDefault(o => o.Id == idOrden);
+                OrdenesDePreparacion.Remove(orden);
+            }
+
+            var ordenEntrega = new OrdenEntrega(1, "20-44444444");
+
+            MessageBox.Show("Se registró correctamente la orden de entrega ID " + ordenEntrega.Id);
         }
     }
 }
