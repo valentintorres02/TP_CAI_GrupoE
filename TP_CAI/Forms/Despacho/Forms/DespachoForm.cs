@@ -49,28 +49,6 @@ namespace TP_CAI.Archivos.Despacho.Forms
             TransportistasCombobox.SelectedIndex = -1; // arranca sin ningun valor
         }
 
-        private void VolverAlMenuButton_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-                "Tienes un Despacho en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
-                "Advertencia",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            // Si el usuario selecciona "Sí"
-            if (result == DialogResult.Yes)
-            {
-                // Crear una nueva instancia del formulario de menú principal
-                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
-
-                // Mostrar el formulario de menú principal
-                pantallaPrincipalForm.Show();
-
-                // Cerrar el formulario actual
-                this.Close();
-            }
-        }
-
         private string ObtenerDocumentoTransportista()
         {
             string documentoTransportista = "";
@@ -126,6 +104,28 @@ namespace TP_CAI.Archivos.Despacho.Forms
         private void MarcarComoListasButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Ordenes marcadas como listas para despacho correctamente");
+        }
+
+        private void VolverButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+              "Tienes un Despacho en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
+              "Advertencia",
+              MessageBoxButtons.YesNo,
+              MessageBoxIcon.Warning);
+
+            // Si el usuario selecciona "Sí"
+            if (result == DialogResult.Yes)
+            {
+                // Crear una nueva instancia del formulario de menú principal
+                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+
+                // Mostrar el formulario de menú principal
+                pantallaPrincipalForm.Show();
+
+                // Cerrar el formulario actual
+                this.Close();
+            }
         }
     }
 }

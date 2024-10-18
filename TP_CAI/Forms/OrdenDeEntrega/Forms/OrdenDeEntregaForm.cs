@@ -24,26 +24,9 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
             _ordenDeEntregaModel = new OrdenDeEntregaModel();
         }
 
-        private List<int> ObtenerOrdenesChequeadas()
-        {
-            List<int> ordenesChequeadas = new List<int>();
-
-            // Iterar sobre los elementos que están chequeados
-            foreach (ListViewItem item in OrdenesPreparacionListView.CheckedItems)
-            {
-                // El primer subitem es el ID, así que lo convertimos a entero
-                int id = int.Parse(item.SubItems[0].Text);
-                ordenesChequeadas.Add(id);
-            }
-
-            return ordenesChequeadas;
-        }
-
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
-            List<int> ordenesChequeadas = ObtenerOrdenesChequeadas();
-
-            _ordenDeEntregaModel.CrearOrdenEntrega(ordenesChequeadas);
+            _ordenDeEntregaModel.CrearOrdenEntrega();
             ActualizarTabla();
         }
 
@@ -57,6 +40,12 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
             List<OrdenPreparacion> ordenesPreparacion = _ordenDeEntregaModel.OrdenesDePreparacion;
 
             OrdenesPreparacionListView.Items.Clear();
+
+            if(ordenesPreparacion.Count == 0)
+            {
+                MessageBox.Show("No hay ordenes de preparacion preparadas para agregar a la orden de entrega");
+            }
+
             foreach (var orden in ordenesPreparacion)
             {
                 var item = new ListViewItem(new[]
@@ -72,24 +61,13 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
 
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-                "Tienes una Órden de Entrega en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
-                "Advertencia",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            // Si el usuario selecciona "Sí"
-            if (result == DialogResult.Yes)
-            {
-                // Crear una nueva instancia del formulario de menú principal
-                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+            PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
 
                 // Mostrar el formulario de menú principal
                 pantallaPrincipalForm.Show();
 
                 // Cerrar el formulario actual
                 this.Close();
-            }
         }
     }
 }

@@ -24,24 +24,18 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Model
             };
         }
 
-        public void CrearOrdenEntrega(List<int> idsOrdenesPreparacion)
+        public void CrearOrdenEntrega()
         {
-            if (idsOrdenesPreparacion == null || idsOrdenesPreparacion.Count == 0)
+            if(OrdenesDePreparacion.Count == 0)
             {
-                MessageBox.Show("Por favor selecciona al menos una orden de preparacion");
+                MessageBox.Show("Debe haber al menos una orden de preparacion para crear una orden de entrega");
                 return;
-            }
-
-
-            foreach (var idOrden in idsOrdenesPreparacion)
-            {
-                var orden = OrdenesDePreparacion.FirstOrDefault(o => o.Id == idOrden);
-                OrdenesDePreparacion.Remove(orden);
             }
 
             var ordenEntrega = new OrdenEntrega(1, "20-44444444");
 
             MessageBox.Show("Se registró correctamente la orden de entrega ID " + ordenEntrega.Id);
+            OrdenesDePreparacion = new List<OrdenPreparacion>();
         }
     }
 }

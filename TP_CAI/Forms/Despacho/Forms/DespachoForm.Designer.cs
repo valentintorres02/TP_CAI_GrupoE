@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button3 = new Button();
+            VolverButton = new Button();
             MarcarComoDespachadasButton = new Button();
             groupBox1 = new GroupBox();
             OrdenesADespacharListView = new ListView();
@@ -40,14 +40,15 @@
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // button3
+            // VolverButton
             // 
-            button3.Location = new Point(540, 376);
-            button3.Name = "button3";
-            button3.Size = new Size(152, 56);
-            button3.TabIndex = 11;
-            button3.Text = "Volver al Menú Principal";
-            button3.UseVisualStyleBackColor = true;
+            VolverButton.Location = new Point(540, 376);
+            VolverButton.Name = "VolverButton";
+            VolverButton.Size = new Size(152, 56);
+            VolverButton.TabIndex = 11;
+            VolverButton.Text = "Volver al Menú Principal";
+            VolverButton.UseVisualStyleBackColor = true;
+            VolverButton.Click += VolverButton_Click;
             // 
             // MarcarComoDespachadasButton
             // 
@@ -130,7 +131,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(710, 444);
             Controls.Add(MarcarComoListasButton);
-            Controls.Add(button3);
+            Controls.Add(VolverButton);
             Controls.Add(MarcarComoDespachadasButton);
             Controls.Add(groupBox1);
             Controls.Add(SeleccionarTransportistaButton);
@@ -147,7 +148,7 @@
 
         #endregion
 
-        private Button button3;
+        private Button VolverButton;
         private Button MarcarComoDespachadasButton;
         private GroupBox groupBox1;
         private ListView OrdenesADespacharListView;

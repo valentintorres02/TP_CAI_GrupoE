@@ -69,7 +69,6 @@
             // 
             // OrdenesPreparacionListView
             // 
-            OrdenesPreparacionListView.CheckBoxes = true;
             OrdenesPreparacionListView.Columns.AddRange(new ColumnHeader[] { IdOrden, FechaEntrega });
             OrdenesPreparacionListView.Location = new Point(6, 22);
             OrdenesPreparacionListView.Name = "OrdenesPreparacionListView";
