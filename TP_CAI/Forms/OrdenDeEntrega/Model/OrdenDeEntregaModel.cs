@@ -4,13 +4,13 @@ using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using TP_CAI.Forms.Empaquetado.Model;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
-using static TP_CAI.Forms.Despacho.Model.DespachoModel;
 
 namespace TP_CAI.Forms.OrdenDeEntrega.Model
 {
 
-    internal class OrdenDeEntregaModel
+    internal partial class OrdenDeEntregaModel
     {
+
         public List<OrdenPreparacion> OrdenesDePreparacion{ get; private set; }
 
         public OrdenDeEntregaModel()

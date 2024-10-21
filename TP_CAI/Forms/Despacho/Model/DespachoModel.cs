@@ -1,24 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Net;
-using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 
 namespace TP_CAI.Forms.Despacho.Model
 {
     internal partial class DespachoModel
     {
 
-        public List<OrdenEntrega> OrdenesDeEntrega { get; private set; }
+        public List<OrdenPreparacion> OrdenesDePreparacion { get; private set; }
         public List<Transportista> Transportistas { get; private set; }
 
         public DespachoModel()
         {
-            OrdenesDeEntrega = new List<OrdenEntrega>
+            OrdenesDePreparacion = new List<OrdenPreparacion>
             {
-               new OrdenEntrega(019, "20456765"),
-               new OrdenEntrega(055, "45324567"),
-               new OrdenEntrega(031, "34567544"),
-               new OrdenEntrega(042, "22345678"),
-               new OrdenEntrega(011, "22345678"),
+               new OrdenPreparacion(019, "20456765"),
+               new OrdenPreparacion(055, "45324567"),
+               new OrdenPreparacion(031, "34567544"),
+               new OrdenPreparacion(042, "22345678"),
+               new OrdenPreparacion(011, "22345678"),
             };
 
             Transportistas = new List<Transportista>
@@ -30,9 +29,9 @@ namespace TP_CAI.Forms.Despacho.Model
             };
         }
 
-        public List<OrdenEntrega> ObtenerOrdenesPorTransportista(string dniTransportista)
+        public List<OrdenPreparacion> ObtenerOrdenesPorTransportista(string dniTransportista)
         {
-            return OrdenesDeEntrega.Where(orden => orden.DocumentoTransportista == dniTransportista).ToList();
+            return OrdenesDePreparacion.Where(orden => orden.DocumentoTransportista == dniTransportista).ToList();
         }
 
         public string ValidarTransportista(string dniTransportista)
@@ -43,6 +42,16 @@ namespace TP_CAI.Forms.Despacho.Model
             }
 
             return null;
+        }
+
+        public void MarcarComoListasParaDespacho(string dniTransportista)
+        {
+            List<OrdenPreparacion> ordenesPreparacion = ObtenerOrdenesPorTransportista(dniTransportista);
+
+            foreach (var orden in ordenesPreparacion)
+            {
+                orden.Estado = EstadoOrdenDePreparacionEnum.ListaParaDespacho;
+            }
         }
 
     }

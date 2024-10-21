@@ -114,6 +114,7 @@
             FechaEntregaDatePicker.Format = DateTimePickerFormat.Short;
             FechaEntregaDatePicker.Location = new Point(594, 36);
             FechaEntregaDatePicker.Name = "FechaEntregaDatePicker";
+            FechaEntregaDatePicker.ShowCheckBox = true;
             FechaEntregaDatePicker.Size = new Size(261, 23);
             FechaEntregaDatePicker.TabIndex = 11;
             FechaEntregaDatePicker.Value = new DateTime(2024, 10, 17, 0, 0, 0, 0);

@@ -1,11 +1,13 @@
-﻿namespace TP_CAI.Forms.Despacho.Model
+﻿namespace TP_CAI.Forms.OrdenDeEntrega.Model
 {
-    internal partial class DespachoModel
+
+    internal partial class OrdenDeEntregaModel
     {
+
         public class OrdenEntrega
         {
             public int Id { get; set; }
-            public string DocumentoTransportista{ get; set; }
+            public string DocumentoTransportista { get; set; }
             public EstadoOrdenDeEntregaEnum Estado { get; set; }
 
             public OrdenEntrega(int id, string documentoTransportista)

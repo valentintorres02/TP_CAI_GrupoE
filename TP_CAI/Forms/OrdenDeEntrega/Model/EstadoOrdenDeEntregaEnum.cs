@@ -1,6 +1,7 @@
-﻿namespace TP_CAI.Forms.Despacho.Model
+﻿namespace TP_CAI.Forms.OrdenDeEntrega.Model
 {
-    internal partial class DespachoModel
+
+    internal partial class OrdenDeEntregaModel
     {
         public enum EstadoOrdenDeEntregaEnum
         {

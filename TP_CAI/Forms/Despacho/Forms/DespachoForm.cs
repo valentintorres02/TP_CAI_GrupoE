@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 using TP_CAI.Forms.Despacho.Model;
-using TP_CAI.Forms.OrdenDeEntrega.Model;
-using TP_CAI.Forms.OrdenDePreparacion.Model;
-using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 using static TP_CAI.Forms.Despacho.Model.DespachoModel;
 using static TP_CAI.Forms.OrdenDePreparacion.Model.OrdenDePreparacionModel;
+using OrdenPreparacion = TP_CAI.Forms.Despacho.Model.DespachoModel.OrdenPreparacion;
 
 namespace TP_CAI.Archivos.Despacho.Forms
 {
@@ -74,14 +72,15 @@ namespace TP_CAI.Archivos.Despacho.Forms
         {
             string documentoTransportista = ObtenerDocumentoTransportista();
 
-            List<OrdenEntrega> ordenesEntrega = _despachoModel.ObtenerOrdenesPorTransportista(documentoTransportista);
+            List<OrdenPreparacion> ordenesPreparacion = _despachoModel.ObtenerOrdenesPorTransportista(documentoTransportista);
 
             OrdenesADespacharListView.Items.Clear();
-            foreach (var orden in ordenesEntrega)
+            foreach (var orden in ordenesPreparacion)
             {
                 var item = new ListViewItem(new[]
                   {
                         orden.Id.ToString(),
+                        orden.Estado.ToString(),
                     });
 
                 // Agregar el item al ListView
@@ -103,6 +102,9 @@ namespace TP_CAI.Archivos.Despacho.Forms
 
         private void MarcarComoListasButton_Click(object sender, EventArgs e)
         {
+            string documentoTransportista = ObtenerDocumentoTransportista();
+            _despachoModel.MarcarComoListasParaDespacho(documentoTransportista);
+            ActualizarTabla();
             MessageBox.Show("Ordenes marcadas como listas para despacho correctamente");
         }
 

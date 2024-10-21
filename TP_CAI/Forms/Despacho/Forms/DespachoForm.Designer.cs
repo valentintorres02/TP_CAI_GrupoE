@@ -37,6 +37,7 @@
             label1 = new Label();
             TransportistasCombobox = new ComboBox();
             MarcarComoListasButton = new Button();
+            Estado = new ColumnHeader();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -72,7 +73,7 @@
             // 
             // OrdenesADespacharListView
             // 
-            OrdenesADespacharListView.Columns.AddRange(new ColumnHeader[] { IdOrden });
+            OrdenesADespacharListView.Columns.AddRange(new ColumnHeader[] { IdOrden, Estado });
             OrdenesADespacharListView.Location = new Point(6, 22);
             OrdenesADespacharListView.Name = "OrdenesADespacharListView";
             OrdenesADespacharListView.Size = new Size(674, 286);
@@ -125,6 +126,11 @@
             MarcarComoListasButton.UseVisualStyleBackColor = true;
             MarcarComoListasButton.Click += MarcarComoListasButton_Click;
             // 
+            // Estado
+            // 
+            Estado.Text = "Estado";
+            Estado.Width = 200;
+            // 
             // DespachoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -157,5 +163,6 @@
         private Label label1;
         private ComboBox TransportistasCombobox;
 		private Button MarcarComoListasButton;
-	}
+        private ColumnHeader Estado;
+    }
 }
