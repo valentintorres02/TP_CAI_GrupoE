@@ -11,6 +11,7 @@ using TP_CAI.Archivos.PantallaPrincipal.Forms;
 using TP_CAI.Forms.Empaquetado.Model;
 using TP_CAI.Forms.OrdenDeEntrega.Model;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
+using static TP_CAI.Forms.OrdenDeEntrega.Model.OrdenDeEntregaModel;
 
 namespace TP_CAI.Forms.OrdenDeEntrega.Forms
 {
@@ -26,7 +27,16 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
 
         private void GenerarOrdenButton_Click(object sender, EventArgs e)
         {
-            _ordenDeEntregaModel.CrearOrdenEntrega();
+            string errorOrdenEntrega = _ordenDeEntregaModel.ValidarOrdenEntrega();
+
+            if(errorOrdenEntrega != null)
+            {
+                MessageBox.Show(errorOrdenEntrega);
+                return;
+            }
+
+            OrdenEntrega ordenEntrega = _ordenDeEntregaModel.CrearOrdenEntrega();
+            MessageBox.Show("Se registró correctamente la orden de entrega ID " + ordenEntrega.Id);
             ActualizarTabla();
         }
 
