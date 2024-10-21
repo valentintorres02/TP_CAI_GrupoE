@@ -307,10 +307,10 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
 
             DialogResult result = MessageBox.Show(
-                "Tienes una Órden de Preparación en proceso. Si sales se perderá el progreso y la órden no será creada, ¿deseas salir?",
-                "Advertencia",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
+              "Se dispone a cerrar el formulario. ¿Está seguro?",
+              "Advertencia",
+              MessageBoxButtons.YesNo,
+              MessageBoxIcon.Warning);
 
             // Si el usuario selecciona "Sí"
             if (result == DialogResult.Yes)
