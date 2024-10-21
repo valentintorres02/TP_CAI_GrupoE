@@ -95,7 +95,7 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
             OrdenesDePreparacionAgregadas = new List<OrdenPreparacion>();
         }
 
-        public void AgregarOrdenDePreparacionAOrdenDeSeleccion(int idOrdenPreparacion)
+        public string AgregarOrdenDePreparacionAOrdenDeSeleccion(int idOrdenPreparacion)
         {
             // Buscar la orden de preparación en la lista inicial
             var ordenPreparacion = OrdenesDePreparacionFiltradas.FirstOrDefault(o => o.Id == idOrdenPreparacion);
@@ -108,14 +108,15 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 
                 // Eliminar la orden de la lista de órdenes filtradas (opcional)
                 OrdenesDePreparacionFiltradas.Remove(ordenPreparacion);
+                return null;
             }
             else
             {
-                MessageBox.Show($"Hubo un error al agregar la orden ID {idOrdenPreparacion}.");
+                return $"Hubo un error al agregar la orden ID {idOrdenPreparacion}.";
             }
         }
 
-        public void EliminarOrdenDePreparacionDeOrdenDeSeleccion(int idOrdenPreparacion)
+        public string EliminarOrdenDePreparacionDeOrdenDeSeleccion(int idOrdenPreparacion)
         {
             // Buscar la orden de preparación en la lista inicial
             var ordenPreparacion = OrdenesDePreparacionAgregadas.FirstOrDefault(o => o.Id == idOrdenPreparacion);
@@ -126,10 +127,11 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
                 OrdenesDePreparacionFiltradas.Add(ordenPreparacion);
 
                 OrdenesDePreparacionAgregadas.Remove(ordenPreparacion);
+                return null;
             }
             else
             {
-                MessageBox.Show($"Hubo un error al eliminar la orden ID {idOrdenPreparacion}.");
+                return $"Hubo un error al eliminar la orden ID {idOrdenPreparacion}.";
             }
         }
     }

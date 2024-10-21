@@ -172,7 +172,14 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
                 if (item.Checked) // Si el checkbox está marcado
                 {
                     int idOrdenPreparacion = int.Parse(item.SubItems[0].Text);
-                    _ordenDeSeleccionModel.AgregarOrdenDePreparacionAOrdenDeSeleccion(idOrdenPreparacion);
+                    string agregarOrdenError =  _ordenDeSeleccionModel.AgregarOrdenDePreparacionAOrdenDeSeleccion(idOrdenPreparacion);
+
+                    if(agregarOrdenError != null)
+                    {
+                        MessageBox.Show(agregarOrdenError);
+                        return;
+                    }
+
                 }
             }
 
@@ -187,7 +194,13 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
                 if (item.Checked) // Si el checkbox está marcado
                 {
                     int idOrdenPreparacion = int.Parse(item.SubItems[0].Text);
-                    _ordenDeSeleccionModel.EliminarOrdenDePreparacionDeOrdenDeSeleccion(idOrdenPreparacion);
+                    string eliminarOrdenError = _ordenDeSeleccionModel.EliminarOrdenDePreparacionDeOrdenDeSeleccion(idOrdenPreparacion);
+
+                    if (eliminarOrdenError != null)
+                    {
+                        MessageBox.Show(eliminarOrdenError);
+                        return;
+                    }
                 }
             }
 
