@@ -81,7 +81,9 @@ namespace TP_CAI.Archivos.Despacho.Forms
                   {
                         orden.Id.ToString(),
                         orden.Estado.ToString(),
-                    });
+                        orden.IdOrdenEntrega.ToString(),
+                        orden.FechaEntrega.ToString("dd/MM/yyyy"),
+            });
 
                 // Agregar el item al ListView
                 OrdenesADespacharListView.Items.Add(item);

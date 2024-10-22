@@ -13,11 +13,11 @@ namespace TP_CAI.Forms.Despacho.Model
         {
             OrdenesDePreparacion = new List<OrdenPreparacion>
             {
-               new OrdenPreparacion(019, "20456765"),
-               new OrdenPreparacion(055, "45324567"),
-               new OrdenPreparacion(031, "34567544"),
-               new OrdenPreparacion(042, "22345678"),
-               new OrdenPreparacion(011, "22345678"),
+               new OrdenPreparacion(019, "20456765", 11),
+               new OrdenPreparacion(055, "45324567", 11),
+               new OrdenPreparacion(031, "34567544", 15),
+               new OrdenPreparacion(042, "22345678", 30),
+               new OrdenPreparacion(011, "22345678", 4),
             };
 
             Transportistas = new List<Transportista>

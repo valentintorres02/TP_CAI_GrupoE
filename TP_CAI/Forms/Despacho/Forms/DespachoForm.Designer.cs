@@ -33,11 +33,13 @@
             groupBox1 = new GroupBox();
             OrdenesADespacharListView = new ListView();
             IdOrden = new ColumnHeader();
+            Estado = new ColumnHeader();
             SeleccionarTransportistaButton = new Button();
             label1 = new Label();
             TransportistasCombobox = new ComboBox();
             MarcarComoListasButton = new Button();
-            Estado = new ColumnHeader();
+            IdOrdenEntrega = new ColumnHeader();
+            FechaEntrega = new ColumnHeader();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -73,7 +75,7 @@
             // 
             // OrdenesADespacharListView
             // 
-            OrdenesADespacharListView.Columns.AddRange(new ColumnHeader[] { IdOrden, Estado });
+            OrdenesADespacharListView.Columns.AddRange(new ColumnHeader[] { IdOrden, Estado, IdOrdenEntrega, FechaEntrega });
             OrdenesADespacharListView.Location = new Point(6, 22);
             OrdenesADespacharListView.Name = "OrdenesADespacharListView";
             OrdenesADespacharListView.Size = new Size(674, 286);
@@ -83,8 +85,13 @@
             // 
             // IdOrden
             // 
-            IdOrden.Text = "ID de Orden";
+            IdOrden.Text = "ID Orden Preparación";
             IdOrden.Width = 190;
+            // 
+            // Estado
+            // 
+            Estado.Text = "Estado";
+            Estado.Width = 200;
             // 
             // SeleccionarTransportistaButton
             // 
@@ -126,10 +133,15 @@
             MarcarComoListasButton.UseVisualStyleBackColor = true;
             MarcarComoListasButton.Click += MarcarComoListasButton_Click;
             // 
-            // Estado
+            // IdOrdenEntrega
             // 
-            Estado.Text = "Estado";
-            Estado.Width = 200;
+            IdOrdenEntrega.Text = "ID Orden Entrega";
+            IdOrdenEntrega.Width = 120;
+            // 
+            // FechaEntrega
+            // 
+            FechaEntrega.Text = "Fecha de Entrega";
+            FechaEntrega.Width = 150;
             // 
             // DespachoForm
             // 
@@ -164,5 +176,7 @@
         private ComboBox TransportistasCombobox;
 		private Button MarcarComoListasButton;
         private ColumnHeader Estado;
+        private ColumnHeader IdOrdenEntrega;
+        private ColumnHeader FechaEntrega;
     }
 }
