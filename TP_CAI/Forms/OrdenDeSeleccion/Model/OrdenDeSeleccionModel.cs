@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using TP_CAI.Forms.GestionOrdenSeleccion.Model;
 using static TP_CAI.Forms.OrdenDePreparacion.Model.OrdenDePreparacionModel;
 using TP_CAI.Forms.OrdenDePreparacion.Model;
+using TP_CAI.Almacenes;
 
 namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 {
@@ -30,13 +31,14 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 
             OrdenesDePreparacionFiltradas = new List<OrdenPreparacion>(OrdenesDePreparacionIniciales);
             OrdenesDePreparacionAgregadas = new List<OrdenPreparacion>();
-            Clientes = new List<Cliente>
-                {
-                    new Cliente { Documento = "20-44444444-4", Nombre = "CAI S.R.L" },
-                    new Cliente { Documento = "20-34506467-4", Nombre = "GrupoE S.A" },
-                    new Cliente { Documento = "20-65930234-4", Nombre = "Fravega S.R.L" },
-                    new Cliente { Documento = "20-42104211-4", Nombre = "Amazon S.A" },
-                };
+            Clientes = new List<Cliente>();
+            foreach (var clienteEntidad in ClienteAlmacen.Clientes)
+            {
+                var clienteModelo = new Cliente();
+                clienteModelo.Documento = clienteEntidad.CUIT;
+                clienteModelo.Nombre = clienteEntidad.Nombre;
+                Clientes.Add(clienteModelo);
+            }
 
         }
 
