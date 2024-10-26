@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace TP_CAI.Almacenes
 {
-	internal class MercaderiaStock
+	public class MercaderiaStock
 	{
+		public int DepositoId { get; set; }
+		public string Ubicacion { get; set; }
+		public int Cantidad { get; set; }
 	}
 }
