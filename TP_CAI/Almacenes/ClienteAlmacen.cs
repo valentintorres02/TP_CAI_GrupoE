@@ -36,5 +36,10 @@ namespace TP_CAI.Almacenes
 
             clientes = JsonSerializer.Deserialize<List<ClienteEntidad>>(datos)!;
 		}
+
+		public static ClienteEntidad ObtenerClientePorId(int id)
+		{
+            return clientes.FirstOrDefault(c => c.ClienteId == id);
+		}
 	}
 }

@@ -1,0 +1,82 @@
+[
+  {
+    "OrdenPreparacionId": 1,
+    "ClienteId": 1,
+    "Estado": 0,
+    "DniTransportista": 12345678,
+    "Prioridad": 2,
+    "FechaEmision": "2024-10-21T14:18:16.6600073-03:00",
+    "FechaEntrega": "2024-10-28T14:18:16.6632772-03:00",
+    "Detalle": [
+      {
+        "ProductoId": 1001,
+        "Cantidad": 20
+      },
+      {
+        "ProductoId": 1002,
+        "Cantidad": 15
+      }
+    ]
+  },
+  {
+    "OrdenPreparacionId": 2,
+    "ClienteId": 2,
+    "Estado": 1,
+    "DniTransportista": 87654321,
+    "Prioridad": 1,
+    "FechaEmision": "2024-10-23T14:18:16.6634347-03:00",
+    "FechaEntrega": "2024-10-27T14:18:16.6634354-03:00",
+    "Detalle": [
+      {
+        "ProductoId": 2001,
+        "Cantidad": 30
+      },
+      {
+        "ProductoId": 2002,
+        "Cantidad": 10
+      }
+    ]
+  },
+  {
+    "OrdenPreparacionId": 3,
+    "ClienteId": 3,
+    "Estado": 2,
+    "DniTransportista": 13579246,
+    "Prioridad": 0,
+    "FechaEmision": "2024-10-16T14:18:16.6634359-03:00",
+    "FechaEntrega": "2024-10-25T14:18:16.663436-03:00",
+    "Detalle": [
+      {
+        "ProductoId": 3001,
+        "Cantidad": 25
+      },
+      {
+        "ProductoId": 3002,
+        "Cantidad": 5
+      }
+    ]
+  },
+  {
+    "OrdenPreparacionId": 4,
+    "ClienteId": 4,
+    "Estado": 3,
+    "DniTransportista": 24681357,
+    "Prioridad": 2,
+    "FechaEmision": "2024-10-11T14:18:16.6634364-03:00",
+    "FechaEntrega": "2024-10-21T14:18:16.6634365-03:00",
+    "Detalle": [
+      {
+        "ProductoId": 4001,
+        "Cantidad": 50
+      },
+      {
+        "ProductoId": 4002,
+        "Cantidad": 40
+      },
+      {
+        "ProductoId": 4003,
+        "Cantidad": 35
+      }
+    ]
+  }
+]

@@ -21,13 +21,21 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
         public List<Cliente> Clientes { get; private set; }
 
         public OrdenDeSeleccionModel() {
-                 OrdenesDePreparacionIniciales = new List<OrdenPreparacion>
-                    {
-                        new OrdenPreparacion(019, "20-44444444-4", "GrupoE S.R.L", 35012345, PrioridadEnum.Baja, EstadoOrdenPreparacionEnum.Pendiente, DateTime.Now),
-                        new OrdenPreparacion(025, "20-44444444-4", "C.A.I S.A", 35012345, PrioridadEnum.Media, EstadoOrdenPreparacionEnum.Pendiente, DateTime.Now),
-                        new OrdenPreparacion(034, "20-44444444-4", "Grupo-Z S.A", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Pendiente, DateTime.Now),
-                        new OrdenPreparacion(055, "20-44444444-4", "Molinos S.R.L", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Pendiente, DateTime.Now)
-                    };
+            OrdenesDePreparacionIniciales = new List<OrdenPreparacion>();
+            foreach (var ordenPreparacionEntidad in OrdenPreparacionAlmacen.OrdenesPreparacion)
+            {
+                var clienteId = ordenPreparacionEntidad.ClienteId;
+                var cliente = ClienteAlmacen.ObtenerClientePorId(clienteId);
+
+                if(cliente == null)
+                {
+                    return;
+                }
+
+                var ordenPreparacionModelo = new OrdenPreparacion(
+                        ordenPreparacionEntidad.OrdenPreparacionId, cliente.CUIT, cliente.Nombre, ordenPreparacionEntidad.DniTransportista, (PrioridadEnum)ordenPreparacionEntidad.Prioridad, (EstadoOrdenPreparacionEnum)ordenPreparacionEntidad.Estado, ordenPreparacionEntidad.FechaEntrega);
+                OrdenesDePreparacionIniciales.Add(ordenPreparacionModelo);
+            }
 
             OrdenesDePreparacionFiltradas = new List<OrdenPreparacion>(OrdenesDePreparacionIniciales);
             OrdenesDePreparacionAgregadas = new List<OrdenPreparacion>();
@@ -39,7 +47,6 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
                 clienteModelo.Nombre = clienteEntidad.Nombre;
                 Clientes.Add(clienteModelo);
             }
-
         }
 
 
