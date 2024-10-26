@@ -115,6 +115,13 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
             // Mapear productos disponibles a la lista
             ProductosDisponiblesListView.Items.Clear();
+
+            if(_ordenDePreparacionModel.ProductosDisponibles.Count == 0)
+            {
+                MessageBox.Show("No hay productos en existencia para el cliente " + documentoClienteSeleccionado + " en el deposito ID " + idDepositoSeleccionado + ". Por favor intente con otro cliente u otro depósito");
+                return;
+            }
+
             foreach (var producto in _ordenDePreparacionModel.ProductosDisponibles)
             {
                 ListViewItem item = new ListViewItem(new[]

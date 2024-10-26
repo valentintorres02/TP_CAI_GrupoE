@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using TP_CAI.Almacenes;
@@ -234,7 +235,6 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
                 _ => throw new Exception($"Prioridad no contemplada: {prioridad}")
             };
 
-            //depende como funciona la pantalla, acá puede caer un documento invalido o no.
             var cliente = ClienteAlmacen.Clientes.FirstOrDefault(c => c.CUIT == ClienteSeleccionado);
             if (cliente == null)
             {
@@ -246,18 +246,61 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             nuevaOrden.FechaEntrega = fechaEntrega;
             nuevaOrden.FechaEmision = DateTime.Now;
 
+
             foreach (var producto in ProductosAgregados)
             {
                 var nuevoProductoOrden = new OrdenPreparacionDetalle();
                 nuevoProductoOrden.ProductoId = int.Parse(producto.Id);
                 nuevoProductoOrden.Cantidad = producto.Cantidad;
+                nuevaOrden.Detalle.Add(nuevoProductoOrden);
+
+
             }
+
+            // Resta el stock de los productos
+            foreach (var detalle in nuevaOrden.Detalle)
+            {
+                var productoEntidad = MercaderiaAlmacen.Mercaderia.FirstOrDefault(m => m.ProductoId == detalle.ProductoId);
+
+                if (productoEntidad == null)
+                {
+                    return $"El producto con ID {detalle.ProductoId} no existe en el stock.";
+                }
+
+                int cantidadRequerida = detalle.Cantidad;
+
+                // Intentar descontar el stock del producto
+                foreach (var stockItem in productoEntidad.Stock)
+                {
+                    if (stockItem.Cantidad >= cantidadRequerida)
+                    {
+                        stockItem.Cantidad -= cantidadRequerida;
+                        cantidadRequerida = 0; // Stock suficiente, se terminó la necesidad
+                        break;
+                    }
+                    else
+                    {
+                        cantidadRequerida -= stockItem.Cantidad;
+                        stockItem.Cantidad = 0; // Consumir todo el stock de esta ubicación
+                    }
+                }
+
+                // Si no se pudo satisfacer completamente el stock requerido, cancelar la orden
+                if (cantidadRequerida > 0)
+                {
+                    return $"No hay suficiente stock para el producto ID {detalle.ProductoId}. Se necesita {cantidadRequerida} más.";
+                }
+            }
+
 
             string error = OrdenPreparacionAlmacen.Nueva(nuevaOrden);
             if (error != null)
             {
                 return null;
             }
+
+            // resetear los ProductosAgregados
+            ProductosAgregados = [];
 
             // Retornar un mensaje de éxito
             return $"Orden Creada Satisfactoriamente. ID de Orden: {nuevaOrden.OrdenPreparacionId}. Fecha de emisión: {nuevaOrden.FechaEmision:dd/MM/yyyy HH:mm}";

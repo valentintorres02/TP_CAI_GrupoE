@@ -16,6 +16,9 @@ namespace TP_CAI
             ApplicationConfiguration.Initialize();
 
             Application.Run(new PantallaPrincipalForm());
+            ClienteAlmacen.Grabar();
+            DepositosAlmacen.Grabar();
+            MercaderiaAlmacen.Grabar();
         }
     }
 }
