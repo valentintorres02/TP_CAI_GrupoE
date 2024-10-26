@@ -51,7 +51,7 @@ namespace TP_CAI.Almacenes
             }
             else
             {
-                nuevaOrden.OrdenPreparacionId = OrdenPreparacionAlmacen.OrdenesPreparacion.Max(o => o.OrdenPreparacionId);
+                nuevaOrden.OrdenPreparacionId = OrdenPreparacionAlmacen.OrdenesPreparacion.Max(o => o.OrdenPreparacionId) + 1;
             }
 
 

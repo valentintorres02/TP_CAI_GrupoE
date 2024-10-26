@@ -42,7 +42,7 @@ namespace TP_CAI.Almacenes
             }
             else
             {
-                nuevaOrden.IDOrdenSeleccion = OrdenSeleccionAlmacen.OrdenesSeleccion.Max(o => o.IDOrdenSeleccion);
+                nuevaOrden.IDOrdenSeleccion = OrdenSeleccionAlmacen.OrdenesSeleccion.Max(o => o.IDOrdenSeleccion) + 1;
             }
 
 
