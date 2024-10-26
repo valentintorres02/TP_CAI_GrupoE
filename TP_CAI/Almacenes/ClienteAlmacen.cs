@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TP_CAI.Almacenes
 {
-	internal class ClienteAlmacen
+	internal static class ClienteAlmacen
 	{
 		private static List<ClienteEntidad> clientes = [];
 

@@ -8,5 +8,7 @@ namespace TP_CAI.Almacenes
 {
 	internal class DepositosEntidad
 	{
+		public int DepositoId { get; set; }
+		public string Nombre { get; set; }
 	}
 }
