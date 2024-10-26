@@ -30,6 +30,7 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
         {
             OrdenesPreparacionPendientesListView.FullRowSelect = true;
             OrdenesPreparacionSeleccionadasListView.FullRowSelect = true;
+            FechaEntregaDatePicker.Checked = false;
 
             CargarPrioridadesCombobox();
             CargarClientesCombobox();
@@ -231,6 +232,8 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
         private void ResetearFormulario()
         {
             _ordenDeSeleccionModel.ResetearFiltros();
+            ClienteCombobox.SelectedIndex = -1;
+            PrioridadCombobox.SelectedIndex = -1;
             ActualizarOrdenesAgregadas();
             ActualizarOrdenesFiltradas();
 

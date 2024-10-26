@@ -23,22 +23,7 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 
         public OrdenDeSeleccionModel() {
             OrdenesDePreparacionIniciales = new List<OrdenPreparacion>();
-            foreach (var ordenPreparacionEntidad in OrdenPreparacionAlmacen.ObtenerOrdenesPendientes())
-            {
-                var clienteId = ordenPreparacionEntidad.ClienteId;
-                var cliente = ClienteAlmacen.ObtenerClientePorId(clienteId);
-
-                if(cliente == null)
-                {
-                    return;
-                }
-
-                var ordenPreparacionModelo = new OrdenPreparacion(
-                        ordenPreparacionEntidad.OrdenPreparacionId, cliente.CUIT, cliente.Nombre, ordenPreparacionEntidad.DniTransportista, (PrioridadEnum)ordenPreparacionEntidad.Prioridad, (EstadoOrdenPreparacionEnum)ordenPreparacionEntidad.Estado, ordenPreparacionEntidad.FechaEntrega);
-                OrdenesDePreparacionIniciales.Add(ordenPreparacionModelo);
-            }
-
-            OrdenesDePreparacionFiltradas = new List<OrdenPreparacion>(OrdenesDePreparacionIniciales);
+            OrdenesDePreparacionFiltradas = new List<OrdenPreparacion>();
             OrdenesDePreparacionAgregadas = new List<OrdenPreparacion>();
             Clientes = new List<Cliente>();
             foreach (var clienteEntidad in ClienteAlmacen.Clientes)
@@ -48,6 +33,8 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
                 clienteModelo.Nombre = clienteEntidad.Nombre;
                 Clientes.Add(clienteModelo);
             }
+
+            ReiniciarOrdenes();
         }
 
         private void ReiniciarOrdenes()
@@ -112,6 +99,7 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 
             // Refresca las listas para que las órdenes en preparación no aparezcan
             ReiniciarOrdenes();
+            ResetearFiltros();
 
             return $"Orden Creada Satisfactoriamente. ID de Orden: {nuevaOrden.IDOrdenSeleccion}.";
         }
