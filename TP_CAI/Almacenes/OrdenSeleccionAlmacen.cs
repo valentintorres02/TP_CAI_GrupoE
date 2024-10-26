@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace TP_CAI.Almacenes
 {
-		internal static class OrdenDeSeleccionAlmacen
+		internal static class OrdenSeleccionAlmacen
 		{
-			private static List<OrdenDeSeleccionEntidad> ordenDeSeleccion = new List<OrdenDeSeleccionEntidad>();
+			private static List<OrdenSeleccionEntidad> ordenDeSeleccion = new List<OrdenSeleccionEntidad>();
 
-			public static IReadOnlyCollection<OrdenDeSeleccionEntidad> OrdenDeSeleccion => ordenDeSeleccion.AsReadOnly();
+			public static IReadOnlyCollection<OrdenSeleccionEntidad> OrdenDeSeleccion => ordenDeSeleccion.AsReadOnly();
 
 
 
@@ -31,7 +31,7 @@ namespace TP_CAI.Almacenes
 
 				var datos = File.ReadAllText("OrdenDeSeleccion.json");
 
-				ordenDeSeleccion = JsonSerializer.Deserialize<List<OrdenDeSeleccionEntidad>>(datos)!;
+				ordenDeSeleccion = JsonSerializer.Deserialize<List<OrdenSeleccionEntidad>>(datos)!;
 			}
 
 			//FALTA AGREGAR EN EL PROGRAM SE EJECUTEN GRABAR Y LEER

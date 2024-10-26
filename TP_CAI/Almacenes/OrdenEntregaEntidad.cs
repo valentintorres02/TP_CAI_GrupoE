@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP_CAI.Almacenes
 {
-	internal class OrdenDeSeleccionEntidad
+	internal class OrdenEntregaEntidad
 	{
 	}
 }

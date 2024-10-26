@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TP_CAI.Almacenes
 {
-	internal class OrdenPreparacionDetalle
+	public class OrdenPreparacionDetalle
 	{
+		public int ProductoId { get; set; }
+		public int Cantidad { get; set; }
 	}
 }

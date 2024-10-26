@@ -7,7 +7,7 @@ using static TP_CAI.Forms.Despacho.Model.DespachoModel;
 
 namespace TP_CAI.Almacenes
 {
-	internal class OrdenDePreparacionEntidad
+	internal class OrdenPreparacionEntidad
 	{
 		//Poner los datos que contienen las ordenes de preparacion
 	}
