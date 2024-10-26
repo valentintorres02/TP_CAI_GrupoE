@@ -21,6 +21,7 @@ namespace TP_CAI
             DepositosAlmacen.Grabar();
             MercaderiaAlmacen.Grabar();
             OrdenPreparacionAlmacen.Grabar();
+            OrdenSeleccionAlmacen.Grabar();
         }
     }
 }

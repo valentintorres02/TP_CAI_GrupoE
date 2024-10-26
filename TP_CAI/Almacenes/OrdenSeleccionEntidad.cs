@@ -11,6 +11,10 @@ namespace TP_CAI.Almacenes
 	{
         public int IDOrdenSeleccion { get; set; }
         public EstadoOrdenSeleccionEnum Estado { get; set; }
-        public List<OrdenPreparacionEntidad> OrdenesPreparacion { get; } = new();
+        public List<OrdenPreparacionEntidad> OrdenesPreparacion { get; set; } = new();
+        public void MarcarComoSeleccionada()
+        {
+            this.Estado = EstadoOrdenSeleccionEnum.Seleccionada;
+        }
     }
 }

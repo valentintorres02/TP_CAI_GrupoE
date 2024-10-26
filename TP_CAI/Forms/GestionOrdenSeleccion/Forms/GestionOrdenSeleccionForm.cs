@@ -33,6 +33,11 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
             OrdenesSeleccionPendientesListView.Items.Clear();
             List<OrdenSeleccion> ordenes = _gestionOrdenSeleccionModel.OrdenesDeSeleccion;
 
+            if(ordenes.Count == 0)
+            {
+                MessageBox.Show("Actualmente no hay ordenes de seleccion pendientes.");
+            }
+
             foreach (var orden in ordenes)
             {
                 var item = new ListViewItem(new[]
@@ -88,9 +93,9 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
                 return;
             }
 
-            _gestionOrdenSeleccionModel.EliminarOrdenDeLista(int.Parse(idOrdenSeleccionada));
-            ActualizarOrdenesDeSeleccion();
+            _gestionOrdenSeleccionModel.MarcarOrdenComoSeleccionada(int.Parse(idOrdenSeleccionada));
             MessageBox.Show("Se seleccionó correctamente la selección de la orden de selección ID " + idOrdenSeleccionada);
+            ActualizarOrdenesDeSeleccion();
             ResetearFormulario();
         }
 
