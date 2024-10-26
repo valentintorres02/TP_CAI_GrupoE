@@ -17,7 +17,7 @@ namespace TP_CAI.Almacenes
 		public DateTime FechaEmision { get; set; }
 		public DateTime FechaEntrega { get; set; }
 
-		public List<OrdenPreparacionDetalle> Detalle { get; } = new();
+		public List<OrdenPreparacionDetalle> Detalle { get; set; } = new();
 
 		public void MarcarComoEnPreparacion()
 		{

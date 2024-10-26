@@ -51,9 +51,8 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
         private void VerItemsButton_Click(object sender, EventArgs e)
         {
             ItemsASeleccionarListView.Items.Clear();
-
-            List<Producto> productos = _gestionOrdenSeleccionModel.Productos;
-
+            int idOrdenSeleccionada = ObtenerIdOrden();
+            List<Producto> productos = _gestionOrdenSeleccionModel.ObtenerProductosDeOrden(idOrdenSeleccionada);
             foreach (var producto in productos)
             {
                 var item = new ListViewItem(new[]
@@ -73,7 +72,7 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
             ItemsASeleccionarListView.Items.Clear();
         }
 
-        private void MarcarComoSeleccionadaButton_Click(object sender, EventArgs e)
+        private int ObtenerIdOrden()
         {
             string idOrdenSeleccionada = "";
 
@@ -90,10 +89,16 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
             else
             {
                 MessageBox.Show("No se ha seleccionado ninguna orden. Por favor seleccione una");
-                return;
+                return -1;
             }
 
-            _gestionOrdenSeleccionModel.MarcarOrdenComoSeleccionada(int.Parse(idOrdenSeleccionada));
+            return int.Parse(idOrdenSeleccionada);
+        }
+
+        private void MarcarComoSeleccionadaButton_Click(object sender, EventArgs e)
+        {
+            int idOrdenSeleccionada = ObtenerIdOrden();
+            _gestionOrdenSeleccionModel.MarcarOrdenComoSeleccionada(idOrdenSeleccionada);
             MessageBox.Show("Se seleccionó correctamente la selección de la orden de selección ID " + idOrdenSeleccionada);
             ActualizarOrdenesDeSeleccion();
             ResetearFormulario();

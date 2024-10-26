@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using static TP_CAI.Forms.OrdenDePreparacion.Model.OrdenDePreparacionModel;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 using TP_CAI.Almacenes;
+using System.Xml;
 
 namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
 {
@@ -35,6 +36,25 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
             ordenSeleccion.MarcarComoSeleccionada();
 
             OrdenesDeSeleccion.Remove(ordenASeleccionar);
+        }
+
+        public List<Producto> ObtenerProductosDeOrden(int idOrden)
+        {
+            var ordenSeleccion = OrdenSeleccionAlmacen.ObtenerOrdenPorId(idOrden);
+            var productos = new List<Producto>();
+
+            foreach (var orden in ordenSeleccion.OrdenesPreparacion)
+            {
+
+                MessageBox.Show("Aca " + string.Join(Environment.NewLine, orden));
+                foreach (var detalle in orden.Detalle)
+                {
+                    var newProducto = new Producto("UBICACION_WIP", detalle.Cantidad, detalle.ProductoId.ToString(), "DESCRIPCION_WIP");
+                    productos.Add(newProducto);
+                }
+            }
+
+            return productos;
         }
 
     }
