@@ -9,15 +9,15 @@ namespace TP_CAI.Almacenes
 {
 	internal static class OrdenPreparacionAlmacen
 	{
-		private static List<OrdenPreparacionEntidad> ordenDePreparacion = new List<OrdenPreparacionEntidad>();
+		private static List<OrdenPreparacionEntidad> ordenesPreparacion = new List<OrdenPreparacionEntidad>();
 
-		public static IReadOnlyCollection<OrdenPreparacionEntidad> OrdenDePreparacion => ordenDePreparacion.AsReadOnly(); 
+		public static IReadOnlyCollection<OrdenPreparacionEntidad> OrdenesPreparacion => ordenesPreparacion.AsReadOnly(); 
 
 
 
 		public static void Grabar()
 		{
-			var datos = JsonSerializer.Serialize(ordenDePreparacion);
+			var datos = JsonSerializer.Serialize(ordenesPreparacion);
 
 			File.WriteAllText("OrdenDePreparacion.json",datos);
 		}
@@ -31,11 +31,24 @@ namespace TP_CAI.Almacenes
 
 			var datos = File.ReadAllText("OrdenDePreparacion.json");
 
-			ordenDePreparacion = JsonSerializer.Deserialize<List<OrdenPreparacionEntidad>>(datos)!;
+			ordenesPreparacion = JsonSerializer.Deserialize<List<OrdenPreparacionEntidad>>(datos)!;
 		}
 
-		//FALTA AGREGAR EN EL PROGRAM SE EJECUTEN GRABAR Y LEER
+        internal static string Nueva(OrdenPreparacionEntidad nuevaOrden)
+        {
+            if (OrdenPreparacionAlmacen.ordenesPreparacion.Count == 0)
+            {
+                nuevaOrden.OrdenPreparacionId = 1;
+            }
+            else
+            {
+                nuevaOrden.OrdenPreparacionId = OrdenPreparacionAlmacen.OrdenesPreparacion.Max(o => o.OrdenPreparacionId);
+            }
 
 
-	}
+            ordenesPreparacion.Add(nuevaOrden);
+            return null; //sin errores.
+        }
+
+    }
 }

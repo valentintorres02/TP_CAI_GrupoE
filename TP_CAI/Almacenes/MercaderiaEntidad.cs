@@ -11,7 +11,7 @@ namespace TP_CAI.Almacenes
 		public int ProductoId { get; set; }
 		public int ClienteId { get; set; }
 		public string Nombre { get; set; }
-		public List<MercaderiaStock> Stock { get; } = [];
+		public List<MercaderiaStock> Stock { get; set; } = [];
 
 
 		//Es importante que un valor calculado sea un METODO.

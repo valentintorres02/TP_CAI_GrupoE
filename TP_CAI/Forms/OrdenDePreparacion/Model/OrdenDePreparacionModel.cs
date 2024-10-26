@@ -2,54 +2,94 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using TP_CAI.Almacenes;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 using static TP_CAI.Forms.OrdenDePreparacion.Model.OrdenDePreparacionModel;
 
 namespace TP_CAI.Forms.OrdenDePreparacion.Model
 {
-    partial class OrdenDePreparacionModel
+    internal partial class OrdenDePreparacionModel
     {
+        //Agregamos esta propiedad y hacemos que la pantalla, al seleccionar un cliente, le 
+        //pase este dato al modelo.
+        public string ClienteSeleccionado { get; set; }
+        public int DepositoSeleccionado { get; set; }
+
+        public List<Producto> ProductosDisponibles
+        {
+            get
+            {
+                var clienteEntidad = ClienteAlmacen.Clientes.FirstOrDefault(c => c.CUIT == ClienteSeleccionado);
+                if (clienteEntidad == null)
+                {
+                    return new List<Producto>();
+                }
+
+                var depositoEntidad = DepositosAlmacen.Depositos.FirstOrDefault(d => d.DepositoId == DepositoSeleccionado);
+                if (depositoEntidad == null)
+                {
+                    return new List<Producto>();
+                }
+
+
+                var productosCliente = new List<Producto>();
+
+                foreach (var productoEntidad in MercaderiaAlmacen.Mercaderia)
+                {
+                    if (productoEntidad.ClienteId == clienteEntidad.ClienteId)
+                    {
+                        var productoModelo = new Producto();
+                        productoModelo.Id = productoEntidad.ProductoId.ToString();
+                        productoModelo.Cantidad = productoEntidad.CalcularTotalStock(depositoEntidad.DepositoId);
+                        productoModelo.Descripcion = productoEntidad.Nombre;
+
+                        if (productoModelo.Cantidad == 0)
+                        {
+                            continue;
+                        }
+
+                        var productoAgregado = ProductosAgregados.FirstOrDefault(pa => pa.Id == productoEntidad.ProductoId.ToString());
+                        if (productoAgregado != null) //significa que ya está este producto en la orden
+                        {
+                            continue;
+                        }
+
+                        productosCliente.Add(productoModelo);
+                    }
+                }
+
+                return productosCliente;
+            }
+        }
 
         public int DniTransportista { get; set; }
-        public List<Producto> ProductosIniciales { get; private set; }
-        public List<Producto> ProductosDisponibles { get; private set; }
         public List<Producto> ProductosAgregados { get; private set; }
         public List<Cliente> Clientes { get; private set; }
-        public List<Deposito> Depositos{ get; private set; }
+        public List<Deposito> Depositos { get; private set; }
 
         public OrdenDePreparacionModel()
         {
-            ProductosIniciales = new List<Producto>
-    {
-        new Producto { Id = "001", Descripcion = "Producto A", Cantidad = 10 },
-        new Producto { Id = "002", Descripcion = "Producto B", Cantidad = 20 },
-        new Producto { Id = "003", Descripcion = "Producto C", Cantidad = 15 },
-        new Producto { Id = "004", Descripcion = "Producto D", Cantidad = 25 },
-        new Producto { Id = "005", Descripcion = "Producto E", Cantidad = 30 }
-    };
-            ProductosDisponibles = new List<Producto>(ProductosIniciales);
-            ProductosAgregados = new List<Producto>();
-
-            Clientes = new List<Cliente>
+            Depositos = DepositosAlmacen.Depositos.Select(d => new Deposito
             {
-                new Cliente { Documento = "20-44444444-4", Nombre = "CAI S.R.L" },
-                new Cliente { Documento = "20-34506467-4", Nombre = "GrupoE S.A" },
-                new Cliente { Documento = "20-65930234-4", Nombre = "Fravega S.R.L" },
-                new Cliente { Documento = "20-42104211-4", Nombre = "Amazon S.A" },
-            };
+                Id = d.DepositoId,
+                Direccion = d.Direccion
+            }).ToList(); 
 
-            Depositos = new List<Deposito>
+            Clientes = new List<Cliente>();
+            foreach (var clienteEntidad in ClienteAlmacen.Clientes)
             {
-                new Deposito { Id = 1, Direccion = "Av. Cordoba 2100, CABA" },
-                new Deposito { Id= 2, Direccion = "Belgrano 120, CABA" },
-                new Deposito { Id = 3, Direccion = "Rivadavia 1100, Cordoba Capital" },
-                new Deposito { Id = 4, Direccion = "Av. Pueyrredon 1100, CABA" },
-            };
+                var clienteModelo = new Cliente();
+                clienteModelo.Documento = clienteEntidad.CUIT;
+                clienteModelo.Nombre = clienteEntidad.Nombre;
+                Clientes.Add(clienteModelo);
+            }
+
+            ProductosAgregados = [];
         }
 
         public string? ValidarDniTransportista(string dniText)
         {
-            bool isDniCompleto = !string.IsNullOrWhiteSpace(dniText);
+            var isDniCompleto = !string.IsNullOrWhiteSpace(dniText);
 
             if (!isDniCompleto)
             {
@@ -87,7 +127,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
         public string? ValidarCliente(string documentoCliente)
         {
-            if(documentoCliente == null || documentoCliente == "")
+            if (documentoCliente is null or "")
             {
                 return "Por favor seleccione un cliente valido.";
             }
@@ -97,7 +137,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
         public string? ValidarDeposito(string idDepositoOpcion)
         {
-            if (idDepositoOpcion == null || idDepositoOpcion == "")
+            if (idDepositoOpcion is null or "")
             {
                 return "Por favor seleccione un deposito valido.";
             }
@@ -130,11 +170,9 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             return null;
         }
 
-        private bool IsDateValid(DateTime selectedDate)
-        {
+        private bool IsDateValid(DateTime selectedDate) =>
             // Comparar con la fecha actual
-            return selectedDate >= DateTime.Today;
-        }
+            selectedDate >= DateTime.Today;
 
         public string? ValidarFechaEntrega(DateTime fechaEntrega)
         {
@@ -149,14 +187,14 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
         public string? AgregarProducto(string id, string descripcion, int cantidad1, int cantidad2)
         {
             // Validar la cantidad
-            string errorCantidad = ValidarCantidades(cantidad1, cantidad2, descripcion, cantidad2.ToString());
+            var errorCantidad = ValidarCantidades(cantidad1, cantidad2, descripcion, cantidad2.ToString());
             if (errorCantidad != null)
             {
                 return errorCantidad; // Retornar el error si hay uno
             }
 
             // Agregar el producto a la lista de ProductosAgregados
-            Producto producto = new Producto
+            var producto = new Producto
             {
                 Id = id,
                 Descripcion = descripcion,
@@ -164,45 +202,65 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             };
 
             ProductosAgregados.Add(producto);
-            Producto productoDisponible = ProductosDisponibles.FirstOrDefault(p => p.Id == id);
-            ProductosDisponibles.Remove(productoDisponible);
             return null; // Sin errores
         }
 
         public void EliminarProducto(string id)
         {
-            Producto producto = ProductosAgregados.FirstOrDefault(p => p.Id == id);
+            var producto = ProductosAgregados.FirstOrDefault(p => p.Id == id);
             if (producto != null)
             {
-                ProductosAgregados.Remove(producto);
-
-
-                Producto productoInicial = ProductosIniciales.FirstOrDefault(p => p.Id == id);
-
-                if(productoInicial != null)
-                {
-                ProductosDisponibles.Add(productoInicial);
-                }
+                _ = ProductosAgregados.Remove(producto);
             }
         }
 
         public void EliminarTodosLosProductos()
         {
-            ProductosDisponibles = new List<Producto>(ProductosIniciales);
-            ProductosAgregados = new List<Producto>();
-
+            ProductosAgregados = [];
         }
 
         public string CrearOrden(string documentoCliente, string nombreCliente, int dniTransportista, PrioridadEnum prioridad, DateTime fechaEntrega)
         {
-            // Generar un ID único 
-            int nuevoId = 1;
+            //Crear una orden de preparacion (entidad)
+            //pasarsela al archivo.
 
-            // Crear una nueva instancia de OrdenPreparacion
-            var nuevaOrden = new OrdenPreparacion(nuevoId, documentoCliente, nombreCliente, dniTransportista, prioridad, EstadoOrdenPreparacionEnum.Pendiente, fechaEntrega);
+            var nuevaOrden = new OrdenPreparacionEntidad();
+
+            nuevaOrden.Prioridad = prioridad switch
+            {
+                PrioridadEnum.Alta => Prioridades.Alta,
+                PrioridadEnum.Media => Prioridades.Media,
+                PrioridadEnum.Baja => Prioridades.Baja,
+                _ => throw new Exception($"Prioridad no contemplada: {prioridad}")
+            };
+
+            //depende como funciona la pantalla, acá puede caer un documento invalido o no.
+            var cliente = ClienteAlmacen.Clientes.FirstOrDefault(c => c.CUIT == ClienteSeleccionado);
+            if (cliente == null)
+            {
+                return "No hay un cliente seleccionado.";
+            }
+
+            nuevaOrden.ClienteId = cliente.ClienteId;
+            nuevaOrden.DniTransportista = dniTransportista;
+            nuevaOrden.FechaEntrega = fechaEntrega;
+            nuevaOrden.FechaEmision = DateTime.Now;
+
+            foreach (var producto in ProductosAgregados)
+            {
+                var nuevoProductoOrden = new OrdenPreparacionDetalle();
+                nuevoProductoOrden.ProductoId = int.Parse(producto.Id);
+                nuevoProductoOrden.Cantidad = producto.Cantidad;
+            }
+
+            string error = OrdenPreparacionAlmacen.Nueva(nuevaOrden);
+            if (error != null)
+            {
+                return null;
+            }
 
             // Retornar un mensaje de éxito
-            return $"Orden Creada Satisfactoriamente. ID de Orden: {nuevaOrden.Id}. Fecha de emisión: {nuevaOrden.FechaEmision.ToString("dd/MM/yyyy HH:mm")}";
+            return $"Orden Creada Satisfactoriamente. ID de Orden: {nuevaOrden.OrdenPreparacionId}. Fecha de emisión: {nuevaOrden.FechaEmision:dd/MM/yyyy HH:mm}";
         }
     }
 }

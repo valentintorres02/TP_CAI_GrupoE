@@ -1,0 +1,22 @@
+[
+  {
+    "DepositoId": 1,
+    "Direccion": "Av. Cordoba 2100, CABA"
+  },
+  {
+    "DepositoId": 2,
+    "Direccion": "Belgrano 1100, Cordoba Capital"
+  },
+  {
+    "DepositoId": 3,
+    "Direccion": "San Martin 500, Rosario, Santa Fe"
+  },
+  {
+    "DepositoId": 4,
+    "Direccion": "Independencia 250, Mendoza Capital"
+  },
+  {
+    "DepositoId": 5,
+    "Direccion": "Av. Italia 1300, San Miguel de Tucuman"
+  }
+]

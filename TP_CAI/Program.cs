@@ -1,3 +1,4 @@
+using TP_CAI.Almacenes;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 
 namespace TP_CAI
@@ -13,7 +14,6 @@ namespace TP_CAI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-                
 
             Application.Run(new PantallaPrincipalForm());
         }

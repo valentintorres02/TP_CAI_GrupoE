@@ -11,31 +11,31 @@ namespace TP_CAI.Almacenes
 	{
 		private static List<MercaderiaEntidad> mercaderia = new List<MercaderiaEntidad>();
 
+		static MercaderiaAlmacen()
+		{
+			Leer();
+		}
+
 		public static IReadOnlyCollection<MercaderiaEntidad> Mercaderia => mercaderia.AsReadOnly();
-
-
 
 		public static void Grabar()
 		{
 			var datos = JsonSerializer.Serialize(mercaderia);
 
-			File.WriteAllText("Mercaderia.json", datos);
+			File.WriteAllText(@"Datos\Mercaderia.json", datos);
 		}
 
 		public static void Leer()
 		{
-			if (!File.Exists("Mercaderia.json"))
+			if (!File.Exists(@"Datos\Mercaderia.json"))
 			{
 				return;
 			}
 
-			var datos = File.ReadAllText("Mercaderia.json");
+			var datos = File.ReadAllText(@"Datos\Mercaderia.json");
 
 			mercaderia = JsonSerializer.Deserialize<List<MercaderiaEntidad>>(datos)!;
 		}
-
-		//FALTA AGREGAR EN EL PROGRAM SE EJECUTEN GRABAR Y LEER
-
 
 	}
 }

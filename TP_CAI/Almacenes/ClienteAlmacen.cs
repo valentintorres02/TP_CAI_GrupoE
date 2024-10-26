@@ -9,26 +9,32 @@ namespace TP_CAI.Almacenes
 {
 	internal static class ClienteAlmacen
 	{
-		private static List<ClienteEntidad> clientes = [];
+		private static List<ClienteEntidad> clientes = new List<ClienteEntidad>();
 
-		public static IReadOnlyCollection<ClienteEntidad> Clientes => clientes.AsReadOnly();
+		static ClienteAlmacen()
+		{
+			Leer();
+		}
+
+        public static IReadOnlyCollection<ClienteEntidad> Clientes => clientes.AsReadOnly();
 
 		public static void Grabar()
 		{
 			var datos = JsonSerializer.Serialize(clientes);
-			File.WriteAllText("Clientes.json", datos);
+			File.WriteAllText(@"Datos\Clientes.json", datos);
 		}
 
 		public static void Leer()
 		{
-			if (!File.Exists(@"Clientes.json"))
+
+			if (!File.Exists(@"Datos\Clientes.json"))
 			{
-				return;
+                return;
 			}
 
-			var datos = File.ReadAllText("Clientes.json");
+			var datos = File.ReadAllText(@"Datos\Clientes.json");
 
-			clientes = JsonSerializer.Deserialize<List<ClienteEntidad>>(datos)!;
+            clientes = JsonSerializer.Deserialize<List<ClienteEntidad>>(datos)!;
 		}
 	}
 }

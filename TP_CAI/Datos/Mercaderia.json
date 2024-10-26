@@ -1,0 +1,307 @@
+[
+  {
+    "ProductoId": 101,
+    "ClienteId": 1,
+    "Nombre": "Cajas de Aluminio",
+    "Stock": [
+      {
+        "DepositoId": 1,
+        "Ubicacion": "Estante A1",
+        "Cantidad": 150
+      },
+      {
+        "DepositoId": 2,
+        "Ubicacion": "Estante B2",
+        "Cantidad": 50
+      }
+    ]
+  },
+  {
+    "ProductoId": 102,
+    "ClienteId": 2,
+    "Nombre": "Palets de Madera",
+    "Stock": [
+      {
+        "DepositoId": 1,
+        "Ubicacion": "Zona C1",
+        "Cantidad": 200
+      },
+      {
+        "DepositoId": 3,
+        "Ubicacion": "Zona D3",
+        "Cantidad": 75
+      }
+    ]
+  },
+  {
+    "ProductoId": 103,
+    "ClienteId": 3,
+    "Nombre": "Rollos de Papel",
+    "Stock": [
+      {
+        "DepositoId": 2,
+        "Ubicacion": "Estante E4",
+        "Cantidad": 100
+      },
+      {
+        "DepositoId": 4,
+        "Ubicacion": "Estante F5",
+        "Cantidad": 120
+      }
+    ]
+  },
+  {
+    "ProductoId": 104,
+    "ClienteId": 4,
+    "Nombre": "Contenedores de Pl\u00E1stico",
+    "Stock": [
+      {
+        "DepositoId": 1,
+        "Ubicacion": "Zona G6",
+        "Cantidad": 80
+      },
+      {
+        "DepositoId": 5,
+        "Ubicacion": "Zona H7",
+        "Cantidad": 60
+      }
+    ]
+  },
+  {
+    "ProductoId": 105,
+    "ClienteId": 5,
+    "Nombre": "Bidones de Agua",
+    "Stock": [
+      {
+        "DepositoId": 3,
+        "Ubicacion": "Zona I8",
+        "Cantidad": 45
+      },
+      {
+        "DepositoId": 4,
+        "Ubicacion": "Zona J9",
+        "Cantidad": 150
+      }
+    ]
+  },
+  {
+    "ProductoId": 201,
+    "ClienteId": 1,
+    "Nombre": "Tornillos de Acero",
+    "Stock": [
+      {
+        "DepositoId": 1,
+        "Ubicacion": "Estante A1",
+        "Cantidad": 300
+      },
+      {
+        "DepositoId": 2,
+        "Ubicacion": "Estante B1",
+        "Cantidad": 150
+      },
+      {
+        "DepositoId": 3,
+        "Ubicacion": "Estante C2",
+        "Cantidad": 50
+      }
+    ]
+  },
+  {
+    "ProductoId": 202,
+    "ClienteId": 1,
+    "Nombre": "Cajas de Plástico",
+    "Stock": [
+      {
+        "DepositoId": 2,
+        "Ubicacion": "Zona D4",
+        "Cantidad": 200
+      },
+      {
+        "DepositoId": 4,
+        "Ubicacion": "Zona E5",
+        "Cantidad": 120
+      },
+      {
+        "DepositoId": 5,
+        "Ubicacion": "Zona F6",
+        "Cantidad": 75
+      }
+    ]
+  },
+  {
+    "ProductoId": 203,
+    "ClienteId": 2,
+    "Nombre": "Palets de Madera",
+    "Stock": [
+      {
+        "DepositoId": 1,
+        "Ubicacion": "Estante G1",
+        "Cantidad": 450
+      },
+      {
+        "DepositoId": 3,
+        "Ubicacion": "Zona H3",
+        "Cantidad": 200
+      },
+      {
+        "DepositoId": 5,
+        "Ubicacion": "Zona I4",
+        "Cantidad": 300
+      }
+    ]
+  },
+  {
+    "ProductoId": 204,
+    "ClienteId": 2,
+    "Nombre": "Cilindros Metálicos",
+    "Stock": [
+      {
+        "DepositoId": 1,
+        "Ubicacion": "Estante J5",
+        "Cantidad": 80
+      },
+      {
+        "DepositoId": 4,
+        "Ubicacion": "Estante K6",
+        "Cantidad": 60
+      },
+      {
+        "DepositoId": 5,
+        "Ubicacion": "Zona L7",
+        "Cantidad": 100
+      }
+    ]
+  },
+  {
+    "ProductoId": 205,
+    "ClienteId": 3,
+    "Nombre": "Rollos de Papel",
+    "Stock": [
+      {
+        "DepositoId": 2,
+        "Ubicacion": "Estante M1",
+        "Cantidad": 150
+      },
+      {
+        "DepositoId": 3,
+        "Ubicacion": "Zona N2",
+        "Cantidad": 50
+      },
+      {
+        "DepositoId": 5,
+        "Ubicacion": "Zona O3",
+        "Cantidad": 100
+      }
+    ]
+  },
+  {
+    "ProductoId": 206,
+    "ClienteId": 3,
+    "Nombre": "Bobinas de Cable",
+    "Stock": [
+      {
+        "DepositoId": 1,
+        "Ubicacion": "Zona P4",
+        "Cantidad": 200
+      },
+      {
+        "DepositoId": 3,
+        "Ubicacion": "Estante Q5",
+        "Cantidad": 125
+      },
+      {
+        "DepositoId": 4,
+        "Ubicacion": "Estante R6",
+        "Cantidad": 175
+      }
+    ]
+  },
+  {
+    "ProductoId": 207,
+    "ClienteId": 4,
+    "Nombre": "Baterías de Litio",
+    "Stock": [
+      {
+        "DepositoId": 2,
+        "Ubicacion": "Zona S7",
+        "Cantidad": 120
+      },
+      {
+        "DepositoId": 4,
+        "Ubicacion": "Zona T8",
+        "Cantidad": 95
+      },
+      {
+        "DepositoId": 5,
+        "Ubicacion": "Estante U9",
+        "Cantidad": 60
+      }
+    ]
+  },
+  {
+    "ProductoId": 208,
+    "ClienteId": 4,
+    "Nombre": "Contenedores de Metal",
+    "Stock": [
+      {
+        "DepositoId": 1,
+        "Ubicacion": "Zona V10",
+        "Cantidad": 300
+      },
+      {
+        "DepositoId": 3,
+        "Ubicacion": "Zona W11",
+        "Cantidad": 250
+      },
+      {
+        "DepositoId": 4,
+        "Ubicacion": "Estante X12",
+        "Cantidad": 175
+      }
+    ]
+  },
+  {
+    "ProductoId": 209,
+    "ClienteId": 5,
+    "Nombre": "Cajas de Cartón",
+    "Stock": [
+      {
+        "DepositoId": 2,
+        "Ubicacion": "Zona Y13",
+        "Cantidad": 200
+      },
+      {
+        "DepositoId": 3,
+        "Ubicacion": "Estante Z14",
+        "Cantidad": 160
+      },
+      {
+        "DepositoId": 5,
+        "Ubicacion": "Zona A15",
+        "Cantidad": 250
+      }
+    ]
+  },
+  {
+    "ProductoId": 210,
+    "ClienteId": 5,
+    "Nombre": "Botellas de Vidrio",
+    "Stock": [
+      {
+        "DepositoId": 1,
+        "Ubicacion": "Zona B16",
+        "Cantidad": 90
+      },
+      {
+        "DepositoId": 3,
+        "Ubicacion": "Zona C17",
+        "Cantidad": 75
+      },
+      {
+        "DepositoId": 4,
+        "Ubicacion": "Zona D18",
+        "Cantidad": 60
+      }
+    ]
+  }
+]

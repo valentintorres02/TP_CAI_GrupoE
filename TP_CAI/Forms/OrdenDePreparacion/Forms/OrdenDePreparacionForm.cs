@@ -90,6 +90,8 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 return;
             }
 
+            _ordenDePreparacionModel.ClienteSeleccionado = documentoClienteSeleccionado;
+
             string idDepositoSeleccionado = "";
 
             if (DepositoCombobox.SelectedValue != null)
@@ -104,6 +106,8 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 MessageBox.Show(errorIdDepositoSeleccionado);
                 return;
             }
+
+            _ordenDePreparacionModel.DepositoSeleccionado = int.Parse(idDepositoSeleccionado);
 
             ProductosGroup.Enabled = true;
             InfoOrdenGroup.Enabled = true;

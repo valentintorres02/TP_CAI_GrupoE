@@ -12,4 +12,16 @@
     <Folder Include="Datos\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Datos\Clientes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="datos\Depositos.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Datos\Mercaderia.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
