@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace TP_CAI.Almacenes
 {
-	internal class EstadosOrdenPreparacion
+	public enum EstadosOrdenPreparacion
 	{
+		Pendiente,
+		EnPreparacion,
+		Preparada,
+		Despachada
 	}
+
 }
