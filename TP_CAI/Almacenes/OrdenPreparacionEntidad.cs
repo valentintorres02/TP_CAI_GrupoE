@@ -7,8 +7,16 @@ using static TP_CAI.Forms.Despacho.Model.DespachoModel;
 
 namespace TP_CAI.Almacenes
 {
-	internal class OrdenPreparacionEntidad
+	public class OrdenPreparacionEntidad
 	{
-		//Poner los datos que contienen las ordenes de preparacion
+		public int OrdenPreparacionId { get; set; }
+		public int ClienteId { get; set; }
+		public EstadosOrdenPreparacion Estado { get; set; }
+		public int DniTransportista { get; set; }
+		public Prioridades Prioridad { get; set; }
+		public DateTime FechaEmision { get; set; }
+		public DateTime FechaEntrega { get; set; }
+
+		public List<OrdenPreparacionDetalle> Detalle { get; } = new();
 	}
 }
