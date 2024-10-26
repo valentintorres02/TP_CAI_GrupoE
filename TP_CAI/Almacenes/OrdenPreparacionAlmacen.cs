@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using static TP_CAI.Forms.OrdenDePreparacion.Model.OrdenDePreparacionModel;
 
 namespace TP_CAI.Almacenes
 {
@@ -37,6 +38,11 @@ namespace TP_CAI.Almacenes
 			ordenesPreparacion = JsonSerializer.Deserialize<List<OrdenPreparacionEntidad>>(datos)!;
 		}
 
+        public static List<OrdenPreparacionEntidad> ObtenerOrdenesPendientes()
+        {
+            return ordenesPreparacion.FindAll(o => o.Estado == EstadosOrdenPreparacion.Pendiente);
+        }
+
         internal static string Nueva(OrdenPreparacionEntidad nuevaOrden)
         {
             if (OrdenPreparacionAlmacen.ordenesPreparacion.Count == 0)
@@ -51,6 +57,11 @@ namespace TP_CAI.Almacenes
 
             ordenesPreparacion.Add(nuevaOrden);
             return null; //sin errores.
+        }
+
+        public static OrdenPreparacionEntidad ObtenerOrdenPorId(int id)
+        {
+            return ordenesPreparacion.FirstOrDefault(o => o.OrdenPreparacionId == id);
         }
 
     }

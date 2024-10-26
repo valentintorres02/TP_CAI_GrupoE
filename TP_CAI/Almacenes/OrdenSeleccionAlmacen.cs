@@ -9,15 +9,15 @@ namespace TP_CAI.Almacenes
 {
 		internal static class OrdenSeleccionAlmacen
 		{
-			private static List<OrdenSeleccionEntidad> ordenDeSeleccion = new List<OrdenSeleccionEntidad>();
+			private static List<OrdenSeleccionEntidad> ordenesSeleccion = new List<OrdenSeleccionEntidad>();
 
-			public static IReadOnlyCollection<OrdenSeleccionEntidad> OrdenDeSeleccion => ordenDeSeleccion.AsReadOnly();
+			public static IReadOnlyCollection<OrdenSeleccionEntidad> OrdenesSeleccion => ordenesSeleccion.AsReadOnly();
 
 
 
 			public static void Grabar()
 			{
-				var datos = JsonSerializer.Serialize(ordenDeSeleccion);
+				var datos = JsonSerializer.Serialize(ordenesSeleccion);
 
 				File.WriteAllText("OrdenDeSeleccion.json", datos);
 			}
@@ -31,11 +31,24 @@ namespace TP_CAI.Almacenes
 
 				var datos = File.ReadAllText("OrdenDeSeleccion.json");
 
-				ordenDeSeleccion = JsonSerializer.Deserialize<List<OrdenSeleccionEntidad>>(datos)!;
+				ordenesSeleccion = JsonSerializer.Deserialize<List<OrdenSeleccionEntidad>>(datos)!;
 			}
 
-			//FALTA AGREGAR EN EL PROGRAM SE EJECUTEN GRABAR Y LEER
+        internal static string Nueva(OrdenSeleccionEntidad nuevaOrden)
+        {
+            if (OrdenSeleccionAlmacen.ordenesSeleccion.Count == 0)
+            {
+                nuevaOrden.IDOrdenSeleccion = 1;
+            }
+            else
+            {
+                nuevaOrden.IDOrdenSeleccion = OrdenSeleccionAlmacen.OrdenesSeleccion.Max(o => o.IDOrdenSeleccion);
+            }
 
 
-		}
+            ordenesSeleccion.Add(nuevaOrden);
+            return null; //sin errores.
+        }
+    }	
+
 }

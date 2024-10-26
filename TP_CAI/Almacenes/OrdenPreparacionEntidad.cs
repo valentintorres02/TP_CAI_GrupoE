@@ -18,5 +18,10 @@ namespace TP_CAI.Almacenes
 		public DateTime FechaEntrega { get; set; }
 
 		public List<OrdenPreparacionDetalle> Detalle { get; } = new();
+
+		public void MarcarComoEnPreparacion()
+		{
+			this.Estado = EstadosOrdenPreparacion.EnPreparacion;
+		}
 	}
 }

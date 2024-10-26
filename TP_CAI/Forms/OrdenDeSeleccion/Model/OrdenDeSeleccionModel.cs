@@ -9,6 +9,7 @@ using TP_CAI.Forms.GestionOrdenSeleccion.Model;
 using static TP_CAI.Forms.OrdenDePreparacion.Model.OrdenDePreparacionModel;
 using TP_CAI.Forms.OrdenDePreparacion.Model;
 using TP_CAI.Almacenes;
+using System.ComponentModel;
 
 namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 {
@@ -22,7 +23,7 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 
         public OrdenDeSeleccionModel() {
             OrdenesDePreparacionIniciales = new List<OrdenPreparacion>();
-            foreach (var ordenPreparacionEntidad in OrdenPreparacionAlmacen.OrdenesPreparacion)
+            foreach (var ordenPreparacionEntidad in OrdenPreparacionAlmacen.ObtenerOrdenesPendientes())
             {
                 var clienteId = ordenPreparacionEntidad.ClienteId;
                 var cliente = ClienteAlmacen.ObtenerClientePorId(clienteId);
@@ -49,8 +50,40 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
             }
         }
 
+        private void ReiniciarOrdenes()
+        {
+            OrdenesDePreparacionIniciales.Clear();
 
-       public string ValidarOrdenesSeleccionadas(int cantidadOrdenesSeleccionadas)
+            // Agrega solo las órdenes pendientes a la lista inicial
+            foreach (var ordenPreparacionEntidad in OrdenPreparacionAlmacen.ObtenerOrdenesPendientes())
+            {
+                if (ordenPreparacionEntidad.Estado != EstadosOrdenPreparacion.EnPreparacion)
+                {
+                    var clienteId = ordenPreparacionEntidad.ClienteId;
+                    var cliente = ClienteAlmacen.ObtenerClientePorId(clienteId);
+
+                    if (cliente == null)
+                    {
+                        continue;
+                    }
+
+                    var ordenPreparacionModelo = new OrdenPreparacion(
+                            ordenPreparacionEntidad.OrdenPreparacionId, cliente.CUIT, cliente.Nombre, ordenPreparacionEntidad.DniTransportista,
+                            (PrioridadEnum)ordenPreparacionEntidad.Prioridad,
+                            (EstadoOrdenPreparacionEnum)ordenPreparacionEntidad.Estado,
+                            ordenPreparacionEntidad.FechaEntrega);
+
+                    OrdenesDePreparacionIniciales.Add(ordenPreparacionModelo);
+                }
+            }
+
+            // Actualiza las listas derivadas
+            OrdenesDePreparacionFiltradas = new List<OrdenPreparacion>(OrdenesDePreparacionIniciales);
+            OrdenesDePreparacionAgregadas.Clear();
+        }
+
+
+        public string ValidarOrdenesSeleccionadas(int cantidadOrdenesSeleccionadas)
         {
             if(cantidadOrdenesSeleccionadas == 0)
             {
@@ -60,15 +93,27 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
             return null;
         }
 
-       public OrdenSeleccion CrearOrden(List<int> idOrdenesPreparacion)
+        public string CrearOrden(List<int> idOrdenesPreparacion)
         {
-            // Generar un ID único 
-            int nuevoId = 1;
+            var nuevaOrden = new OrdenSeleccionEntidad();
 
-            // Crear una nueva instancia de OrdenPreparacion
-            var nuevaOrden = new OrdenSeleccion(nuevoId, idOrdenesPreparacion);
+            foreach (int idOrden in idOrdenesPreparacion)
+            {
+                var ordenPreparacion = OrdenPreparacionAlmacen.ObtenerOrdenPorId(idOrden);
 
-            return nuevaOrden;
+                if (ordenPreparacion != null)
+                {
+                    nuevaOrden.OrdenesPreparacion.Add(ordenPreparacion);
+                    ordenPreparacion.MarcarComoEnPreparacion();
+                }
+            }
+
+            string error = OrdenSeleccionAlmacen.Nueva(nuevaOrden);
+
+            // Refresca las listas para que las órdenes en preparación no aparezcan
+            ReiniciarOrdenes();
+
+            return $"Orden Creada Satisfactoriamente. ID de Orden: {nuevaOrden.IDOrdenSeleccion}.";
         }
 
         public void FiltrarOrdenes(PrioridadEnum? prioridad, string documentoCliente, DateTime? fechaEntrega)

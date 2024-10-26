@@ -255,9 +255,9 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
                 return;
             }
 
-            var nuevaOrden = _ordenDeSeleccionModel.CrearOrden(idsOrdenesPreparacion);
+            var nuevaOrdenMsg = _ordenDeSeleccionModel.CrearOrden(idsOrdenesPreparacion);
 
-            MessageBox.Show($"La orden de selección ID {nuevaOrden.Id} se generó correctamente");
+            MessageBox.Show(nuevaOrdenMsg);
 
             ResetearFormulario();
         }
