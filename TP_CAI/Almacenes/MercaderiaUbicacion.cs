@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TP_CAI.Almacenes
 {
-	public enum Prioridades
+	public class MercaderiaUbicacion
 	{
-		Baja,
-		Media,
-		Alta
+		public int IDDeposito { get; set; }
+		public string Ubicacion { get; set; }
+		public int Cantidad { get; set; }
 	}
 }

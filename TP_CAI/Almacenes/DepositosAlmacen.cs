@@ -9,14 +9,14 @@ namespace TP_CAI.Almacenes
 {
 	internal static class DepositosAlmacen
 	{
-		private static List<DepositosEntidad> depositos = new List<DepositosEntidad>();
+		private static List<DepositoEntidad> depositos = new List<DepositoEntidad>();
 
 		static DepositosAlmacen()
 		{
 			Leer();
 		}
 
-		public static IReadOnlyCollection<DepositosEntidad> Depositos => depositos.AsReadOnly();
+		public static IReadOnlyCollection<DepositoEntidad> Depositos => depositos.AsReadOnly();
 
         public static void Grabar()
 		{
@@ -33,7 +33,7 @@ namespace TP_CAI.Almacenes
 
 			var datos = File.ReadAllText(@"Datos\Depositos.json");
 
-            depositos = JsonSerializer.Deserialize<List<DepositosEntidad>>(datos)!;
+            depositos = JsonSerializer.Deserialize<List<DepositoEntidad>>(datos)!;
 		}
 	}
 }

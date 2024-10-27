@@ -39,7 +39,7 @@ namespace TP_CAI.Almacenes
 
 		public static ClienteEntidad ObtenerClientePorId(int id)
 		{
-            return clientes.FirstOrDefault(c => c.ClienteId == id);
+            return clientes.FirstOrDefault(c => c.IDCliente == id);
 		}
 	}
 }

@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace TP_CAI.Almacenes
 {
-	public enum EstadosOrdenPreparacion
+	public enum EstadoOrdenPreparacion
 	{
-		Pendiente,
+		PendienteDeSeleccion,
 		EnPreparacion,
+		PendienteDeEmpaquetado,
 		Preparada,
+		PendienteDeDespacho,
+		ListaParaDespachar,
 		Despachada
 	}
 

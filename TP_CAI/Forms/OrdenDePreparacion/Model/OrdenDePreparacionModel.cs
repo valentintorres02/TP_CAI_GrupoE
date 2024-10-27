@@ -20,13 +20,13 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
         {
             get
             {
-                var clienteEntidad = ClienteAlmacen.Clientes.FirstOrDefault(c => c.CUIT == ClienteSeleccionado);
+                var clienteEntidad = ClienteAlmacen.Clientes.FirstOrDefault(c => c.CUITCliente == ClienteSeleccionado);
                 if (clienteEntidad == null)
                 {
                     return new List<Producto>();
                 }
 
-                var depositoEntidad = DepositosAlmacen.Depositos.FirstOrDefault(d => d.DepositoId == DepositoSeleccionado);
+                var depositoEntidad = DepositosAlmacen.Depositos.FirstOrDefault(d => d.IDDeposito == DepositoSeleccionado);
                 if (depositoEntidad == null)
                 {
                     return new List<Producto>();
@@ -37,19 +37,19 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
                 foreach (var productoEntidad in MercaderiaAlmacen.Mercaderia)
                 {
-                    if (productoEntidad.ClienteId == clienteEntidad.ClienteId)
+                    if (productoEntidad.IDCliente == clienteEntidad.IDCliente)
                     {
                         var productoModelo = new Producto();
-                        productoModelo.Id = productoEntidad.ProductoId.ToString();
-                        productoModelo.Cantidad = productoEntidad.CalcularTotalStock(depositoEntidad.DepositoId);
-                        productoModelo.Descripcion = productoEntidad.Nombre;
+                        productoModelo.Id = productoEntidad.IDMercaderia.ToString();
+                        productoModelo.Cantidad = productoEntidad.CalcularTotalStock(depositoEntidad.IDDeposito);
+                        productoModelo.Descripcion = productoEntidad.DescripcionMercaderia;
 
                         if (productoModelo.Cantidad == 0)
                         {
                             continue;
                         }
 
-                        var productoAgregado = ProductosAgregados.FirstOrDefault(pa => pa.Id == productoEntidad.ProductoId.ToString());
+                        var productoAgregado = ProductosAgregados.FirstOrDefault(pa => pa.Id == productoEntidad.IDMercaderia.ToString());
                         if (productoAgregado != null) //significa que ya está este producto en la orden
                         {
                             continue;
@@ -72,7 +72,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
         {
             Depositos = DepositosAlmacen.Depositos.Select(d => new Deposito
             {
-                Id = d.DepositoId,
+                Id = d.IDDeposito,
                 Direccion = d.Direccion
             }).ToList(); 
 
@@ -80,7 +80,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             foreach (var clienteEntidad in ClienteAlmacen.Clientes)
             {
                 var clienteModelo = new Cliente();
-                clienteModelo.Documento = clienteEntidad.CUIT;
+                clienteModelo.Documento = clienteEntidad.CUITCliente;
                 clienteModelo.Nombre = clienteEntidad.Nombre;
                 Clientes.Add(clienteModelo);
             }
@@ -229,48 +229,48 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
             nuevaOrden.Prioridad = prioridad switch
             {
-                PrioridadEnum.Alta => Prioridades.Alta,
-                PrioridadEnum.Media => Prioridades.Media,
-                PrioridadEnum.Baja => Prioridades.Baja,
+                PrioridadEnum.Alta => PrioridadOrdenPreparacion.Alta,
+                PrioridadEnum.Media => PrioridadOrdenPreparacion.Media,
+                PrioridadEnum.Baja => PrioridadOrdenPreparacion.Baja,
                 _ => throw new Exception($"Prioridad no contemplada: {prioridad}")
             };
 
-            var cliente = ClienteAlmacen.Clientes.FirstOrDefault(c => c.CUIT == ClienteSeleccionado);
+            var cliente = ClienteAlmacen.Clientes.FirstOrDefault(c => c.CUITCliente == ClienteSeleccionado);
             if (cliente == null)
             {
                 return "No hay un cliente seleccionado.";
             }
 
-            nuevaOrden.ClienteId = cliente.ClienteId;
-            nuevaOrden.DniTransportista = dniTransportista;
+            nuevaOrden.IDCliente = cliente.IDCliente;
+            nuevaOrden.DNITransportista = dniTransportista;
             nuevaOrden.FechaEntrega = fechaEntrega;
             nuevaOrden.FechaEmision = DateTime.Now;
 
 
             foreach (var producto in ProductosAgregados)
             {
-                var nuevoProductoOrden = new OrdenPreparacionDetalle();
-                nuevoProductoOrden.ProductoId = int.Parse(producto.Id);
+                var nuevoProductoOrden = new MercaderiaOrden();
+                nuevoProductoOrden.IDProducto = int.Parse(producto.Id);
                 nuevoProductoOrden.Cantidad = producto.Cantidad;
-                nuevaOrden.Detalle.Add(nuevoProductoOrden);
+                nuevaOrden.MercaderiaOrden.Add(nuevoProductoOrden);
 
 
             }
 
             // Resta el stock de los productos
-            foreach (var detalle in nuevaOrden.Detalle)
+            foreach (var detalle in nuevaOrden.MercaderiaOrden)
             {
-                var productoEntidad = MercaderiaAlmacen.Mercaderia.FirstOrDefault(m => m.ProductoId == detalle.ProductoId);
+                var productoEntidad = MercaderiaAlmacen.Mercaderia.FirstOrDefault(m => m.IDMercaderia == detalle.IDProducto);
 
                 if (productoEntidad == null)
                 {
-                    return $"El producto con ID {detalle.ProductoId} no existe en el stock.";
+                    return $"El producto con ID {detalle.IDProducto} no existe en el stock.";
                 }
 
                 int cantidadRequerida = detalle.Cantidad;
 
                 // Intentar descontar el stock del producto
-                foreach (var stockItem in productoEntidad.Stock)
+                foreach (var stockItem in productoEntidad.Ubicaciones)
                 {
                     if (stockItem.Cantidad >= cantidadRequerida)
                     {
@@ -288,7 +288,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
                 // Si no se pudo satisfacer completamente el stock requerido, cancelar la orden
                 if (cantidadRequerida > 0)
                 {
-                    return $"No hay suficiente stock para el producto ID {detalle.ProductoId}. Se necesita {cantidadRequerida} más.";
+                    return $"No hay suficiente stock para el producto ID {detalle.IDProducto}. Se necesita {cantidadRequerida} más.";
                 }
             }
 
@@ -303,7 +303,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             ProductosAgregados = [];
 
             // Retornar un mensaje de éxito
-            return $"Orden Creada Satisfactoriamente. ID de Orden: {nuevaOrden.OrdenPreparacionId}. Fecha de emisión: {nuevaOrden.FechaEmision:dd/MM/yyyy HH:mm}";
+            return $"Orden Creada Satisfactoriamente. ID de Orden: {nuevaOrden.IDOrdenPreparacion}. Fecha de emisión: {nuevaOrden.FechaEmision:dd/MM/yyyy HH:mm}";
         }
     }
 }

@@ -56,7 +56,7 @@ namespace TP_CAI.Almacenes
 
         public static List<OrdenSeleccionEntidad> ObtenerOrdenesPendientes()
         {
-            return ordenesSeleccion.FindAll(o => o.Estado == EstadoOrdenSeleccionEnum.PendienteDeSeleccion);
+            return ordenesSeleccion.FindAll(o => o.Estado == EstadoOrdenSeleccion.PendienteDeSeleccion);
         }
 
         public static OrdenSeleccionEntidad ObtenerOrdenPorId(int idOrden)

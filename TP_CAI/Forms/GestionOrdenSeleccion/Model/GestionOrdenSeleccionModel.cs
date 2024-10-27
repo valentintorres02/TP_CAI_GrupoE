@@ -43,13 +43,12 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
             var ordenSeleccion = OrdenSeleccionAlmacen.ObtenerOrdenPorId(idOrden);
             var productos = new List<Producto>();
 
-            foreach (var orden in ordenSeleccion.OrdenesPreparacion)
+            foreach (var idOrdenPreparacion in ordenSeleccion.IDsOrdenesPreparacion)
             {
-
-                MessageBox.Show("Aca " + string.Join(Environment.NewLine, orden));
-                foreach (var detalle in orden.Detalle)
+                var orden = OrdenPreparacionAlmacen.ObtenerOrdenPorId(idOrdenPreparacion);
+                foreach (var detalle in orden.MercaderiaOrden)
                 {
-                    var newProducto = new Producto("UBICACION_WIP", detalle.Cantidad, detalle.ProductoId.ToString(), "DESCRIPCION_WIP");
+                    var newProducto = new Producto("UBICACION_WIP", detalle.Cantidad, detalle.IDProducto.ToString(), "DESCRIPCION_WIP");
                     productos.Add(newProducto);
                 }
             }

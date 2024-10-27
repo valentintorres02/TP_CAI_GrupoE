@@ -9,19 +9,20 @@ namespace TP_CAI.Almacenes
 {
 	public class OrdenPreparacionEntidad
 	{
-		public int OrdenPreparacionId { get; set; }
-		public int ClienteId { get; set; }
-		public EstadosOrdenPreparacion Estado { get; set; }
-		public int DniTransportista { get; set; }
-		public Prioridades Prioridad { get; set; }
+		public int IDOrdenPreparacion { get; set; }
+		public int IDDeposito { get; set; }
+		public int IDCliente { get; set; }
+		public EstadoOrdenPreparacion Estado { get; set; }
+		public PrioridadOrdenPreparacion Prioridad { get; set; }
+		public int DNITransportista { get; set; }
 		public DateTime FechaEmision { get; set; }
 		public DateTime FechaEntrega { get; set; }
 
-		public List<OrdenPreparacionDetalle> Detalle { get; set; } = new();
+		public List<MercaderiaOrden> MercaderiaOrden { get; set; } = new();
 
 		public void MarcarComoEnPreparacion()
 		{
-			this.Estado = EstadosOrdenPreparacion.EnPreparacion;
+			this.Estado = EstadoOrdenPreparacion.EnPreparacion;
 		}
 	}
 }

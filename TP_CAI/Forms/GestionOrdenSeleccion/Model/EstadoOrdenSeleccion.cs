@@ -1,6 +1,6 @@
 ﻿namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
 {
-    public enum EstadoOrdenSeleccionEnum
+    public enum EstadoOrdenSeleccion
     {
        PendienteDeSeleccion,
        Seleccionada

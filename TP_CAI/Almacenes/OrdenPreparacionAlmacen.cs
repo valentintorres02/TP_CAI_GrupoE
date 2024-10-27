@@ -40,18 +40,18 @@ namespace TP_CAI.Almacenes
 
         public static List<OrdenPreparacionEntidad> ObtenerOrdenesPendientes()
         {
-            return ordenesPreparacion.FindAll(o => o.Estado == EstadosOrdenPreparacion.Pendiente);
+            return ordenesPreparacion.FindAll(o => o.Estado == EstadoOrdenPreparacion.PendienteDeSeleccion);
         }
 
         internal static string Nueva(OrdenPreparacionEntidad nuevaOrden)
         {
             if (OrdenPreparacionAlmacen.ordenesPreparacion.Count == 0)
             {
-                nuevaOrden.OrdenPreparacionId = 1;
+                nuevaOrden.IDOrdenPreparacion = 1;
             }
             else
             {
-                nuevaOrden.OrdenPreparacionId = OrdenPreparacionAlmacen.OrdenesPreparacion.Max(o => o.OrdenPreparacionId) + 1;
+                nuevaOrden.IDOrdenPreparacion = OrdenPreparacionAlmacen.OrdenesPreparacion.Max(o => o.IDOrdenPreparacion) + 1;
             }
 
 
@@ -61,7 +61,7 @@ namespace TP_CAI.Almacenes
 
         public static OrdenPreparacionEntidad ObtenerOrdenPorId(int id)
         {
-            return ordenesPreparacion.FirstOrDefault(o => o.OrdenPreparacionId == id);
+            return ordenesPreparacion.FirstOrDefault(o => o.IDOrdenPreparacion == id);
         }
 
     }

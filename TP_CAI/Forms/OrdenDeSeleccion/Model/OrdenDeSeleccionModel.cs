@@ -29,7 +29,7 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
             foreach (var clienteEntidad in ClienteAlmacen.Clientes)
             {
                 var clienteModelo = new Cliente();
-                clienteModelo.Documento = clienteEntidad.CUIT;
+                clienteModelo.Documento = clienteEntidad.CUITCliente;
                 clienteModelo.Nombre = clienteEntidad.Nombre;
                 Clientes.Add(clienteModelo);
             }
@@ -44,9 +44,8 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
             // Agrega solo las órdenes pendientes a la lista inicial
             foreach (var ordenPreparacionEntidad in OrdenPreparacionAlmacen.ObtenerOrdenesPendientes())
             {
-                if (ordenPreparacionEntidad.Estado != EstadosOrdenPreparacion.EnPreparacion)
-                {
-                    var clienteId = ordenPreparacionEntidad.ClienteId;
+                    var clienteId = ordenPreparacionEntidad.IDCliente;
+
                     var cliente = ClienteAlmacen.ObtenerClientePorId(clienteId);
 
                     if (cliente == null)
@@ -55,13 +54,12 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
                     }
 
                     var ordenPreparacionModelo = new OrdenPreparacion(
-                            ordenPreparacionEntidad.OrdenPreparacionId, cliente.CUIT, cliente.Nombre, ordenPreparacionEntidad.DniTransportista,
+                            ordenPreparacionEntidad.IDOrdenPreparacion, cliente.CUITCliente, cliente.Nombre, ordenPreparacionEntidad.DNITransportista,
                             (PrioridadEnum)ordenPreparacionEntidad.Prioridad,
                             (EstadoOrdenPreparacionEnum)ordenPreparacionEntidad.Estado,
                             ordenPreparacionEntidad.FechaEntrega);
 
                     OrdenesDePreparacionIniciales.Add(ordenPreparacionModelo);
-                }
             }
 
             // Actualiza las listas derivadas
@@ -90,7 +88,7 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 
                 if (ordenPreparacion != null)
                 {
-                    nuevaOrden.OrdenesPreparacion.Add(ordenPreparacion);
+                    nuevaOrden.IDsOrdenesPreparacion.Add(ordenPreparacion.IDOrdenPreparacion);
                     ordenPreparacion.MarcarComoEnPreparacion();
                 }
             }

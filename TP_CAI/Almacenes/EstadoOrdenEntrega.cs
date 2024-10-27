@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace TP_CAI.Almacenes
 {
-	internal class DepositosEntidad
-	{
-		public int DepositoId { get; set; }
-		public string Direccion { get; set; }
-	}
+    public enum EstadoOrdenEntrega
+    {
+        PendienteDeDespacho,
+        ListaParaDespachar,
+        Finalizada
+    }
 }

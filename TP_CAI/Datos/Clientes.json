@@ -1,27 +1,27 @@
 [
   {
-    "ClienteId": 1,
-    "CUIT": "20-34567345-3",
+    "IDCliente": 1,
+    "CUITCliente": "20-34567345-3",
     "Nombre": "CAI S.R.L"
   },
   {
-    "ClienteId": 2,
-    "CUIT": "30-12345678-9",
+    "IDCliente": 2,
+    "CUITCliente": "30-12345678-9",
     "Nombre": "Fravega S.A."
   },
   {
-    "ClienteId": 3,
-    "CUIT": "27-87654321-5",
+    "IDCliente": 3,
+    "CUITCliente": "27-87654321-5",
     "Nombre": "Mercado Libre S.A."
   },
   {
-    "ClienteId": 4,
-    "CUIT": "33-56789012-4",
+    "IDCliente": 4,
+    "CUITCliente": "33-56789012-4",
     "Nombre": "Amazon S.R.L."
   },
   {
-    "ClienteId": 5,
-    "CUIT": "23-23456789-6",
+    "IDCliente": 5,
+    "CUITCliente": "23-23456789-6",
     "Nombre": "Ebay"
   }
 ]
