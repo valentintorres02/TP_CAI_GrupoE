@@ -48,7 +48,7 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
                 var orden = OrdenPreparacionAlmacen.ObtenerOrdenPorId(idOrdenPreparacion);
                 foreach (var detalle in orden.MercaderiaOrden)
                 {
-                    var newProducto = new Producto("UBICACION_WIP", detalle.Cantidad, detalle.IDProducto.ToString(), "DESCRIPCION_WIP");
+                    var newProducto = new Producto("UBICACION_WIP", detalle.Cantidad, detalle.IDMercaderia.ToString(), "DESCRIPCION_WIP");
                     productos.Add(newProducto);
                 }
             }

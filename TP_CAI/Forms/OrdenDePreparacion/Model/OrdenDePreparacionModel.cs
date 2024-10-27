@@ -250,7 +250,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             foreach (var producto in ProductosAgregados)
             {
                 var nuevoProductoOrden = new MercaderiaOrden();
-                nuevoProductoOrden.IDProducto = int.Parse(producto.Id);
+                nuevoProductoOrden.IDMercaderia = int.Parse(producto.Id);
                 nuevoProductoOrden.Cantidad = producto.Cantidad;
                 nuevaOrden.MercaderiaOrden.Add(nuevoProductoOrden);
 
@@ -260,11 +260,11 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             // Resta el stock de los productos
             foreach (var detalle in nuevaOrden.MercaderiaOrden)
             {
-                var productoEntidad = MercaderiaAlmacen.Mercaderia.FirstOrDefault(m => m.IDMercaderia == detalle.IDProducto);
+                var productoEntidad = MercaderiaAlmacen.Mercaderia.FirstOrDefault(m => m.IDMercaderia == detalle.IDMercaderia);
 
                 if (productoEntidad == null)
                 {
-                    return $"El producto con ID {detalle.IDProducto} no existe en el stock.";
+                    return $"El producto con ID {detalle.IDMercaderia} no existe en el stock.";
                 }
 
                 int cantidadRequerida = detalle.Cantidad;
@@ -288,7 +288,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
                 // Si no se pudo satisfacer completamente el stock requerido, cancelar la orden
                 if (cantidadRequerida > 0)
                 {
-                    return $"No hay suficiente stock para el producto ID {detalle.IDProducto}. Se necesita {cantidadRequerida} más.";
+                    return $"No hay suficiente stock para el producto ID {detalle.IDMercaderia}. Se necesita {cantidadRequerida} más.";
                 }
             }
 

@@ -8,7 +8,7 @@ namespace TP_CAI.Almacenes
 {
 	public class MercaderiaOrden
 	{
-		public int IDProducto { get; set; }
+		public int IDMercaderia { get; set; }
 		public int Cantidad { get; set; }
 	}
 }
