@@ -130,6 +130,7 @@
             MaximizeBox = false;
             Name = "PantallaPrincipalForm";
             Text = "PantallaPrincipalForm";
+            FormClosing += PantallaPrincipalForm_FormClosing;
             Load += PantallaPrincipalForm_Load;
             ResumeLayout(false);
             PerformLayout();

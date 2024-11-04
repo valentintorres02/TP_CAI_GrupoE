@@ -98,6 +98,12 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
         private void MarcarComoSeleccionadaButton_Click(object sender, EventArgs e)
         {
             int idOrdenSeleccionada = ObtenerIdOrden();
+
+            if(idOrdenSeleccionada == -1)
+            {
+                return;
+            }
+
             _gestionOrdenSeleccionModel.MarcarOrdenComoSeleccionada(idOrdenSeleccionada);
             MessageBox.Show("Se seleccionó correctamente la selección de la orden de selección ID " + idOrdenSeleccionada);
             ActualizarOrdenesDeSeleccion();

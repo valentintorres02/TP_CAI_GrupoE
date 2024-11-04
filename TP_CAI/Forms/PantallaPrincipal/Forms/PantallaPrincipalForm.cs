@@ -64,5 +64,10 @@ namespace TP_CAI.Archivos.PantallaPrincipal.Forms
             this.Hide();
             despachoForm.Show();
         }
+
+        private void PantallaPrincipalForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
