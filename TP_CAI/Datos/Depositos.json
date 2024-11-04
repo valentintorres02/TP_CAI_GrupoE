@@ -10,13 +10,5 @@
   {
     "IDDeposito": 3,
     "Direccion": "San Martin 500, Rosario, Santa Fe"
-  },
-  {
-    "IDDeposito": 4,
-    "Direccion": "Independencia 250, Mendoza Capital"
-  },
-  {
-    "IDDeposito": 5,
-    "Direccion": "Av. Italia 1300, San Miguel de Tucuman"
   }
 ]

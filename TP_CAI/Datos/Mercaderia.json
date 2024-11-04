@@ -44,7 +44,7 @@
         "Cantidad": 100
       },
       {
-        "IDDeposito": 4,
+        "IDDeposito": 3,
         "Ubicacion": "Estante F5",
         "Cantidad": 120
       }
@@ -61,7 +61,7 @@
         "Cantidad": 80
       },
       {
-        "IDDeposito": 5,
+        "IDDeposito": 3,
         "Ubicacion": "Zona H7",
         "Cantidad": 60
       }
@@ -78,7 +78,7 @@
         "Cantidad": 45
       },
       {
-        "IDDeposito": 4,
+        "IDDeposito": 2,
         "Ubicacion": "Zona J9",
         "Cantidad": 150
       }
@@ -117,12 +117,12 @@
         "Cantidad": 200
       },
       {
-        "IDDeposito": 4,
+        "IDDeposito": 1,
         "Ubicacion": "Zona E5",
         "Cantidad": 120
       },
       {
-        "IDDeposito": 5,
+        "IDDeposito": 2,
         "Ubicacion": "Zona F6",
         "Cantidad": 75
       }
@@ -144,7 +144,7 @@
         "Cantidad": 200
       },
       {
-        "IDDeposito": 5,
+        "IDDeposito": 1,
         "Ubicacion": "Zona I4",
         "Cantidad": 300
       }
@@ -161,12 +161,12 @@
         "Cantidad": 80
       },
       {
-        "IDDeposito": 4,
+        "IDDeposito": 3,
         "Ubicacion": "Estante K6",
         "Cantidad": 60
       },
       {
-        "IDDeposito": 5,
+        "IDDeposito": 3,
         "Ubicacion": "Zona L7",
         "Cantidad": 100
       }
@@ -188,7 +188,7 @@
         "Cantidad": 50
       },
       {
-        "IDDeposito": 5,
+        "IDDeposito": 2,
         "Ubicacion": "Zona O3",
         "Cantidad": 100
       }
@@ -210,7 +210,7 @@
         "Cantidad": 125
       },
       {
-        "IDDeposito": 4,
+        "IDDeposito": 2,
         "Ubicacion": "Estante R6",
         "Cantidad": 175
       }
@@ -227,12 +227,12 @@
         "Cantidad": 120
       },
       {
-        "IDDeposito": 4,
+        "IDDeposito": 1,
         "Ubicacion": "Zona T8",
         "Cantidad": 95
       },
       {
-        "IDDeposito": 5,
+        "IDDeposito": 1,
         "Ubicacion": "Estante U9",
         "Cantidad": 60
       }
@@ -254,7 +254,7 @@
         "Cantidad": 250
       },
       {
-        "IDDeposito": 4,
+        "IDDeposito": 3,
         "Ubicacion": "Estante X12",
         "Cantidad": 175
       }
@@ -276,7 +276,7 @@
         "Cantidad": 160
       },
       {
-        "IDDeposito": 5,
+        "IDDeposito": 3,
         "Ubicacion": "Zona A15",
         "Cantidad": 250
       }
@@ -298,7 +298,7 @@
         "Cantidad": 75
       },
       {
-        "IDDeposito": 4,
+        "IDDeposito": 2,
         "Ubicacion": "Zona D18",
         "Cantidad": 60
       }

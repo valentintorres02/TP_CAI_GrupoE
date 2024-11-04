@@ -62,9 +62,6 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
                         .OrderBy(u => u.Cantidad)
                         .ToList();
 
-                    MessageBox.Show("Mercaderia" + mercaderia.IDMercaderia + mercaderia.DescripcionMercaderia);
-                    MessageBox.Show("Ubicaciones" + ubicaciones.Count.ToString());
-
                     foreach (var ubicacion in ubicaciones)
                     {
                         if (cantidadRestante <= 0) break;
