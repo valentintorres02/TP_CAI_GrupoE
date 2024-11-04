@@ -46,10 +46,53 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
             foreach (var idOrdenPreparacion in ordenSeleccion.IDsOrdenesPreparacion)
             {
                 var orden = OrdenPreparacionAlmacen.ObtenerOrdenPorId(idOrdenPreparacion);
-                foreach (var detalle in orden.MercaderiaOrden)
+
+                foreach (var mercaderiaOrden in orden.MercaderiaOrden)
                 {
-                    var newProducto = new Producto("UBICACION_WIP", detalle.Cantidad, detalle.IDMercaderia.ToString(), "DESCRIPCION_WIP");
-                    productos.Add(newProducto);
+                    var mercaderia = MercaderiaAlmacen.ObtenerMercaderiaPorId(mercaderiaOrden.IDMercaderia);
+
+                    if (mercaderia == null)
+                    {
+                        continue;
+                    }
+
+                    int cantidadRestante = mercaderiaOrden.Cantidad;
+                    var ubicaciones = mercaderia.Ubicaciones
+                        .Where(u => u.IDDeposito == orden.IDDeposito && u.Cantidad > 0)
+                        .OrderBy(u => u.Cantidad)
+                        .ToList();
+
+                    MessageBox.Show("Mercaderia" + mercaderia.IDMercaderia + mercaderia.DescripcionMercaderia);
+                    MessageBox.Show("Ubicaciones" + ubicaciones.Count.ToString());
+
+                    foreach (var ubicacion in ubicaciones)
+                    {
+                        if (cantidadRestante <= 0) break;
+
+                        int cantidadTomada = Math.Min(ubicacion.Cantidad, cantidadRestante);
+
+                        var producto = new Producto(
+                            ubicacion: $"{ubicacion.IDDeposito}-{ubicacion.Ubicacion}",
+                            cantidad: cantidadTomada,
+                            idProducto: mercaderiaOrden.IDMercaderia.ToString(),
+                            descripcionProducto: mercaderia.DescripcionMercaderia
+                        );
+
+                        productos.Add(producto);
+
+                        cantidadRestante -= cantidadTomada;
+                    }
+
+                    if (cantidadRestante > 0)
+                    {
+                        // Añadir un producto indicando que no hay suficiente stock
+                        productos.Add(new Producto(
+                            ubicacion: "Sin stock suficiente",
+                            cantidad: cantidadRestante,
+                            idProducto: mercaderiaOrden.IDMercaderia.ToString(),
+                            descripcionProducto: $"{mercaderia.DescripcionMercaderia} (faltante)"
+                        ));
+                    }
                 }
             }
 

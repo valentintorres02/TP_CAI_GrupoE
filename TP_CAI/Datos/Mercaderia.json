@@ -178,12 +178,12 @@
     "DescripcionMercaderia": "Rollos de Papel",
     "Ubicaciones": [
       {
-        "IDDeposito": 2,
+        "IDDeposito": 1,
         "Ubicacion": "Estante M1",
-        "Cantidad": 150
+        "Cantidad": 5
       },
       {
-        "IDDeposito": 3,
+        "IDDeposito": 1,
         "Ubicacion": "Zona N2",
         "Cantidad": 50
       },
@@ -222,7 +222,7 @@
     "DescripcionMercaderia": "Baterías de Litio",
     "Ubicaciones": [
       {
-        "IDDeposito": 2,
+        "IDDeposito": 1,
         "Ubicacion": "Zona S7",
         "Cantidad": 120
       },

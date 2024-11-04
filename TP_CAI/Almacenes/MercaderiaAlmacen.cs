@@ -37,5 +37,10 @@ namespace TP_CAI.Almacenes
 			mercaderia = JsonSerializer.Deserialize<List<MercaderiaEntidad>>(datos)!;
 		}
 
-	}
+        public static MercaderiaEntidad ObtenerMercaderiaPorId(int id)
+        {
+            return mercaderia.FirstOrDefault(m => m.IDMercaderia == id);
+        }
+
+    }
 }
