@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP_CAI.Almacenes;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 using TP_CAI.Forms.OrdenDePreparacion.Model;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
@@ -253,15 +254,14 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                     return;
                 }
 
-                // Obtener los valores necesarios para la creación de la orden
-                string documentoCliente = "12345678"; // Aquí debes obtenerlo del formulario
-                string nombreCliente = "Cliente Ejemplo"; // Aquí debes obtenerlo del formulario
+                string documentoCliente = dniText;
+                int depositoId = 1;
                 int dniTransportista = int.Parse(dniText);
-                PrioridadEnum prioridad = (PrioridadEnum)PrioridadComboBox.SelectedIndex; // Ajustar según tu enumeración
+                PrioridadEnum prioridad = (PrioridadEnum)PrioridadComboBox.SelectedIndex; 
                 DateTime fechaDeEntrega = FechaEntregaDatePicker.Value;
 
                 // Si todo es válido, continuar con la creación de la orden
-                string mensaje = _ordenDePreparacionModel.CrearOrden(documentoCliente, nombreCliente, dniTransportista, prioridad, fechaDeEntrega);
+                string mensaje = _ordenDePreparacionModel.CrearOrden(depositoId, dniTransportista, prioridad, fechaDeEntrega);
                 MessageBox.Show(mensaje);
                 ResetearFormulario();
             }

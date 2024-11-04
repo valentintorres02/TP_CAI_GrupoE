@@ -220,10 +220,9 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             ProductosAgregados = [];
         }
 
-        public string CrearOrden(string documentoCliente, string nombreCliente, int dniTransportista, PrioridadEnum prioridad, DateTime fechaEntrega)
+        public string CrearOrden(int idDeposito, int dniTransportista, PrioridadEnum prioridad, DateTime fechaEntrega)
         {
-            //Crear una orden de preparacion (entidad)
-            //pasarsela al archivo.
+            var cliente = ClienteAlmacen.ObtenerClientePorDocumento(ClienteSeleccionado);
 
             var nuevaOrden = new OrdenPreparacionEntidad();
 
@@ -235,13 +234,13 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
                 _ => throw new Exception($"Prioridad no contemplada: {prioridad}")
             };
 
-            var cliente = ClienteAlmacen.Clientes.FirstOrDefault(c => c.CUITCliente == ClienteSeleccionado);
             if (cliente == null)
             {
                 return "No hay un cliente seleccionado.";
             }
 
             nuevaOrden.IDCliente = cliente.IDCliente;
+            nuevaOrden.IDDeposito = idDeposito;
             nuevaOrden.DNITransportista = dniTransportista;
             nuevaOrden.FechaEntrega = fechaEntrega;
             nuevaOrden.FechaEmision = DateTime.Now;

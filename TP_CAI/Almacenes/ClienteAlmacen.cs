@@ -41,5 +41,10 @@ namespace TP_CAI.Almacenes
 		{
             return clientes.FirstOrDefault(c => c.IDCliente == id);
 		}
-	}
+
+        public static ClienteEntidad ObtenerClientePorDocumento(string doc)
+        {
+            return clientes.FirstOrDefault(c => c.CUITCliente== doc);
+        }
+    }
 }
