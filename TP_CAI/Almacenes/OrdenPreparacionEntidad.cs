@@ -30,9 +30,14 @@ namespace TP_CAI.Almacenes
 			this.Estado = EstadoOrdenPreparacion.PendienteDeEmpaquetado;
 		}
 
-        internal void MarcarComoPreparada()
+        public void MarcarComoPreparada()
         {
 			this.Estado = EstadoOrdenPreparacion.Preparada;
         }
+
+		public void MarcarComoPendienteDeDespacho()
+		{
+			this.Estado = EstadoOrdenPreparacion.PendienteDeDespacho;
+		}
     }
 }

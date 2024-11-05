@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using TP_CAI.Almacenes;
 using TP_CAI.Forms.Empaquetado.Model;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
 
@@ -15,13 +17,25 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Model
 
         public OrdenDeEntregaModel()
         {
-            OrdenesDePreparacion = new List<OrdenPreparacion>
+            OrdenesDePreparacion = new List<OrdenPreparacion>();
+
+            var ordenesPreparacionPreparadas = OrdenPreparacionAlmacen.ObtenerOrdenesPreparadas();
+
+            foreach(var ordenPreparacionPreparada in ordenesPreparacionPreparadas)
             {
-               new OrdenPreparacion(019, "20-44444444-4", "GrupoE S.R.L", 35012345, PrioridadEnum.Baja, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now),
-               new OrdenPreparacion(025, "20-44444444-4", "C.A.I S.A", 35012345, PrioridadEnum.Media, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now),
-               new OrdenPreparacion(034, "20-44444444-4", "Grupo-Z S.A", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now),
-               new OrdenPreparacion(055, "20-44444444-4", "Molinos S.R.L", 35012345, PrioridadEnum.Alta, EstadoOrdenPreparacionEnum.Preparada, DateTime.Now)
-            };
+                var cliente = ClienteAlmacen.ObtenerClientePorId(ordenPreparacionPreparada.IDCliente);
+                OrdenPreparacion ordenPreparacion = new OrdenPreparacion(
+                    ordenPreparacionPreparada.IDOrdenPreparacion, 
+                    cliente.CUITCliente, 
+                    cliente.Nombre,
+                    ordenPreparacionPreparada.DNITransportista,
+                    ordenPreparacionPreparada.Prioridad,
+                    ordenPreparacionPreparada.Estado,
+                    ordenPreparacionPreparada.FechaEntrega
+                    );
+
+                OrdenesDePreparacion.Add(ordenPreparacion);
+            }
         }
 
         public string ValidarOrdenEntrega()
@@ -34,13 +48,26 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Model
             return null;
         }
 
-        public OrdenEntrega CrearOrdenEntrega()
+        public string CrearOrdenEntrega()
         {
-           var ordenEntrega = new OrdenEntrega(1, "20-44444444");
+
+            var ordenEntregaACrear = new OrdenEntregaEntidad();
+
+            ordenEntregaACrear.Estado = EstadoOrdenEntrega.PendienteDeDespacho;
+            ordenEntregaACrear.IDsOrdenesPreparacion = [];
+
+            foreach(var ordenPreparacion in OrdenesDePreparacion)
+            {
+                OrdenPreparacionEntidad ordenPreparacionEntidad = OrdenPreparacionAlmacen.ObtenerOrdenPorId(ordenPreparacion.Id);
+                ordenPreparacionEntidad.MarcarComoPendienteDeDespacho();
+                ordenEntregaACrear.IDsOrdenesPreparacion.Add(ordenPreparacion.Id);
+            }
 
             OrdenesDePreparacion = new List<OrdenPreparacion>();
 
-            return ordenEntrega;
+            var ordenEntrega = OrdenEntregaAlmacen.Nueva(ordenEntregaACrear);
+
+            return null;
         }
     }
 }

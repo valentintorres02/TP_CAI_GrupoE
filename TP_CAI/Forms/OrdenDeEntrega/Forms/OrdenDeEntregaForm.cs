@@ -35,8 +35,8 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
                 return;
             }
 
-            OrdenEntrega ordenEntrega = _ordenDeEntregaModel.CrearOrdenEntrega();
-            MessageBox.Show("Se registró correctamente la orden de entrega ID " + ordenEntrega.Id);
+            _ordenDeEntregaModel.CrearOrdenEntrega();
+            MessageBox.Show("Se registró correctamente la orden de entrega.");
             ActualizarTabla();
         }
 

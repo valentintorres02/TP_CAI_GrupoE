@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net;
+using TP_CAI.Almacenes;
 
 namespace TP_CAI.Forms.Despacho.Model
 {
@@ -50,7 +51,7 @@ namespace TP_CAI.Forms.Despacho.Model
 
             foreach (var orden in ordenesPreparacion)
             {
-                orden.Estado = EstadoOrdenDePreparacionEnum.ListaParaDespacho;
+                orden.Estado = EstadoOrdenPreparacion.ListaParaDespachar;
             }
         }
 

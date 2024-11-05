@@ -55,8 +55,8 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 
                     var ordenPreparacionModelo = new OrdenPreparacion(
                             ordenPreparacionEntidad.IDOrdenPreparacion, cliente.CUITCliente, cliente.Nombre, ordenPreparacionEntidad.DNITransportista,
-                            (PrioridadEnum)ordenPreparacionEntidad.Prioridad,
-                            (EstadoOrdenPreparacionEnum)ordenPreparacionEntidad.Estado,
+                            ordenPreparacionEntidad.Prioridad,
+                            ordenPreparacionEntidad.Estado,
                             ordenPreparacionEntidad.FechaEntrega);
 
                     OrdenesDePreparacionIniciales.Add(ordenPreparacionModelo);
@@ -110,7 +110,7 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
             // Filtrar por prioridad si se proporciona
             if (prioridad.HasValue)
             {
-                ordenesFiltradas = ordenesFiltradas.Where(o => o.Prioridad == prioridad.Value);
+                ordenesFiltradas = ordenesFiltradas.Where(o => o.Prioridad == (PrioridadOrdenPreparacion)prioridad.Value);
             }
 
             // Filtrar por documento del cliente si se proporciona

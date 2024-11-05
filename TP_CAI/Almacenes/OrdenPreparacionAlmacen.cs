@@ -69,5 +69,9 @@ namespace TP_CAI.Almacenes
             return ordenesPreparacion.FirstOrDefault(o => o.IDOrdenPreparacion == id);
         }
 
+        public static List<OrdenPreparacionEntidad> ObtenerOrdenesPreparadas()
+        {
+            return ordenesPreparacion.FindAll(o => o.Estado == EstadoOrdenPreparacion.Preparada);
+        }
     }
 }

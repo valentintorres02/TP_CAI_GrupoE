@@ -4,38 +4,49 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using TP_CAI.Forms.GestionOrdenSeleccion.Model;
 
 namespace TP_CAI.Almacenes
 {
 	internal static class OrdenEntregaAlmacen
 	{
-		private static List<OrdenEntregaEntidad> ordenDeEntrega = new List<OrdenEntregaEntidad>();
+		private static List<OrdenEntregaEntidad> ordenesEntrega = new List<OrdenEntregaEntidad>();
 
-		public static IReadOnlyCollection<OrdenEntregaEntidad> OrdenDeEntrega => ordenDeEntrega.AsReadOnly();
-
-
+		public static IReadOnlyCollection<OrdenEntregaEntidad> OrdenesEntrega => ordenesEntrega.AsReadOnly();
 
 		public static void Grabar()
 		{
-			var datos = JsonSerializer.Serialize(ordenDeEntrega);
+			var datos = JsonSerializer.Serialize(ordenesEntrega);
 
-			File.WriteAllText("OrdenDeEntrega.json", datos);
+			File.WriteAllText(@"Datos\OrdenEntrega.json", datos);
 		}
 
 		public static void Leer()
 		{
-			if (!File.Exists("OrdenDeEntrega.json"))
+			if (!File.Exists(@"Datos\OrdenEntrega.json"))
 			{
 				return;
 			}
 
-			var datos = File.ReadAllText("OrdenDeEntrega.json");
+			var datos = File.ReadAllText(@"Datos\OrdenEntrega.json");
 
-			ordenDeEntrega = JsonSerializer.Deserialize<List<OrdenEntregaEntidad>>(datos)!;
+			ordenesEntrega = JsonSerializer.Deserialize<List<OrdenEntregaEntidad>>(datos)!;
 		}
 
-		//FALTA AGREGAR EN EL PROGRAM SE EJECUTEN GRABAR Y LEER
+        internal static string Nueva(OrdenEntregaEntidad nuevaOrden)
+        {
+            if (OrdenEntregaAlmacen.ordenesEntrega.Count == 0)
+            {
+                nuevaOrden.IDOrdenEntrega = 1;
+            }
+            else
+            {
+                nuevaOrden.IDOrdenEntrega = OrdenEntregaAlmacen.OrdenesEntrega.Max(o => o.IDOrdenEntrega) + 1;
+            }
 
 
-	}
+            ordenesEntrega.Add(nuevaOrden);
+            return null; //sin errores.
+        }
+    }
 }

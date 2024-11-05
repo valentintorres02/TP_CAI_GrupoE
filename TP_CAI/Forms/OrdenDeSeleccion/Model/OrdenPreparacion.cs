@@ -1,4 +1,6 @@
-﻿namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
+﻿using TP_CAI.Almacenes;
+
+namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 {
     // Clase que representa una orden de preparación
     public class OrdenPreparacion
@@ -7,12 +9,12 @@
         public string DocumentoCliente{ get; set; }
         public string NombreCliente{ get; set; }
         public int DNITransportista { get; set; }
-        public PrioridadEnum Prioridad { get; set; }
-        public EstadoOrdenPreparacionEnum Estado { get; set; }
+        public PrioridadOrdenPreparacion Prioridad { get; set; }
+        public EstadoOrdenPreparacion Estado { get; set; }
         public DateTime FechaEmision { get; set; }
         public DateTime FechaEntrega { get; set; }
 
-        public OrdenPreparacion(int id, string documentoCliente, string nombreCliente, int dniTransportista, PrioridadEnum prioridad, EstadoOrdenPreparacionEnum estado, DateTime fechaEntrega)
+        public OrdenPreparacion(int id, string documentoCliente, string nombreCliente, int dniTransportista, PrioridadOrdenPreparacion prioridad, EstadoOrdenPreparacion estado, DateTime fechaEntrega)
         {
             Id = id;
             DocumentoCliente = documentoCliente;
