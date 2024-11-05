@@ -72,7 +72,7 @@ namespace TP_CAI.Archivos.Despacho.Forms
         {
             string documentoTransportista = ObtenerDocumentoTransportista();
 
-            List<OrdenPreparacion> ordenesPreparacion = _despachoModel.ObtenerOrdenesPorTransportista(documentoTransportista);
+            List<OrdenPreparacion> ordenesPreparacion = _despachoModel.OrdenesDePreparacion;
 
             OrdenesADespacharListView.Items.Clear();
             foreach (var orden in ordenesPreparacion)
@@ -92,6 +92,8 @@ namespace TP_CAI.Archivos.Despacho.Forms
 
         private void SeleccionarTransportistaButton_Click(object sender, EventArgs e)
         {
+            string documentoTransportista = ObtenerDocumentoTransportista();
+            _despachoModel.CargarOrdenesPorTransportista(documentoTransportista);
             ActualizarTabla();
         }
 

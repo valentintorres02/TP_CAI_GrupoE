@@ -15,13 +15,19 @@ namespace TP_CAI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-
+            ClienteAlmacen.Leer();
+            DepositosAlmacen.Leer();
+            MercaderiaAlmacen.Leer();
+            OrdenPreparacionAlmacen.Leer();
+            OrdenSeleccionAlmacen.Leer();
+            OrdenEntregaAlmacen.Leer();
             Application.Run(new PantallaPrincipalForm());
             ClienteAlmacen.Grabar();
             DepositosAlmacen.Grabar();
             MercaderiaAlmacen.Grabar();
             OrdenPreparacionAlmacen.Grabar();
             OrdenSeleccionAlmacen.Grabar();
+            OrdenEntregaAlmacen.Grabar();
         }
     }
 }

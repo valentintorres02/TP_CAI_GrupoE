@@ -11,11 +11,6 @@ namespace TP_CAI.Almacenes
 	{
 		private static List<ClienteEntidad> clientes = new List<ClienteEntidad>();
 
-		static ClienteAlmacen()
-		{
-			Leer();
-		}
-
         public static IReadOnlyCollection<ClienteEntidad> Clientes => clientes.AsReadOnly();
 
 		public static void Grabar()

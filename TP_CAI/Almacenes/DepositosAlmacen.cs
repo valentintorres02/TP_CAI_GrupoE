@@ -11,11 +11,6 @@ namespace TP_CAI.Almacenes
 	{
 		private static List<DepositoEntidad> depositos = new List<DepositoEntidad>();
 
-		static DepositosAlmacen()
-		{
-			Leer();
-		}
-
 		public static IReadOnlyCollection<DepositoEntidad> Depositos => depositos.AsReadOnly();
 
         public static void Grabar()

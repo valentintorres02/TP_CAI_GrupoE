@@ -12,21 +12,16 @@ namespace TP_CAI.Almacenes
 		{
 		private static List<OrdenSeleccionEntidad> ordenesSeleccion = new List<OrdenSeleccionEntidad>();
 
-        static OrdenSeleccionAlmacen()
-			{
-				Leer();
-			}
+        public static IReadOnlyCollection<OrdenSeleccionEntidad> OrdenesSeleccion => ordenesSeleccion.AsReadOnly();
 
-			public static IReadOnlyCollection<OrdenSeleccionEntidad> OrdenesSeleccion => ordenesSeleccion.AsReadOnly();
-
-			public static void Grabar()
+		public static void Grabar()
 			{
 				var datos = JsonSerializer.Serialize(ordenesSeleccion);
 
 				File.WriteAllText(@"Datos\OrdenSeleccion.json", datos);
 			}
 
-			public static void Leer()
+		public static void Leer()
 			{
 				if (!File.Exists(@"Datos\OrdenSeleccion.json"))
 				{

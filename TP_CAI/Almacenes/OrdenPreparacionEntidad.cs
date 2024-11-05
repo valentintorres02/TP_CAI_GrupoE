@@ -39,5 +39,14 @@ namespace TP_CAI.Almacenes
 		{
 			this.Estado = EstadoOrdenPreparacion.PendienteDeDespacho;
 		}
+
+        public void MarcarComoListaParaDespachar()
+        {
+            this.Estado = EstadoOrdenPreparacion.ListaParaDespachar;
+        }
+        public void MarcarComoDespachada()
+        {
+            this.Estado = EstadoOrdenPreparacion.Despachada;
+        }
     }
 }

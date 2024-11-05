@@ -11,11 +11,6 @@ namespace TP_CAI.Almacenes
 	{
 		private static List<MercaderiaEntidad> mercaderia = new List<MercaderiaEntidad>();
 
-		static MercaderiaAlmacen()
-		{
-			Leer();
-		}
-
 		public static IReadOnlyCollection<MercaderiaEntidad> Mercaderia => mercaderia.AsReadOnly();
 
 		public static void Grabar()

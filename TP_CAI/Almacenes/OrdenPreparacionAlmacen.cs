@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using static TP_CAI.Forms.Despacho.Model.DespachoModel;
 using static TP_CAI.Forms.OrdenDePreparacion.Model.OrdenDePreparacionModel;
 
 namespace TP_CAI.Almacenes
@@ -11,11 +12,6 @@ namespace TP_CAI.Almacenes
 	internal static class OrdenPreparacionAlmacen
 	{
         private static List<OrdenPreparacionEntidad> ordenesPreparacion = new List<OrdenPreparacionEntidad>();
-
-        static OrdenPreparacionAlmacen()
-		{
-			Leer();
-		}
 
 		public static IReadOnlyCollection<OrdenPreparacionEntidad> OrdenesPreparacion => ordenesPreparacion.AsReadOnly(); 
 
@@ -46,6 +42,29 @@ namespace TP_CAI.Almacenes
         public static List<OrdenPreparacionEntidad> ObtenerOrdenesPendientesDeEmpaquetado()
         {
             return ordenesPreparacion.FindAll(o => o.Estado == EstadoOrdenPreparacion.PendienteDeEmpaquetado);
+        }
+
+        public static List<OrdenPreparacionEntidad> ObtenerOrdenesParaDespacho()
+        {
+            return ordenesPreparacion.FindAll(o => o.Estado == EstadoOrdenPreparacion.PendienteDeDespacho || o.Estado == EstadoOrdenPreparacion.ListaParaDespachar);
+        }
+
+        public static List<int> ObtenerTransportistasConOrdenesParaDespacho()
+        {
+
+            // Crear un HashSet para almacenar DNI únicos
+            HashSet<int> dniTransportistasUnicos = new HashSet<int>();
+
+            var ordenes = ObtenerOrdenesParaDespacho();
+
+            foreach (var o in ordenes)
+            {
+                dniTransportistasUnicos.Add(o.DNITransportista);
+            }
+
+           var transportistas = new List<int>(dniTransportistasUnicos);
+
+            return transportistas;
         }
 
         internal static string Nueva(OrdenPreparacionEntidad nuevaOrden)

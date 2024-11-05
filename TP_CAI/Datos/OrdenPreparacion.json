@@ -106,5 +106,41 @@
         "Cantidad": 32
       }
     ]
+  },
+  {
+    "IDOrdenPreparacion": 6,
+    "IDCliente": 4,
+    "Estado": 5,
+    "IDDeposito": 1,
+    "DNITransportista": 24681357,
+    "Prioridad": 2,
+    "FechaEmision": "2024-10-11T14:18:16.6634364-03:00",
+    "FechaEntrega": "2024-10-21T14:18:16.6634365-03:00",
+    "MercaderiaOrden": [
+      {
+        "IDMercaderia": 205,
+        "Cantidad": 50
+      },
+      {
+        "IDMercaderia": 206,
+        "Cantidad": 40
+      }
+    ]
+  },
+  {
+    "IDOrdenPreparacion": 7,
+    "IDCliente": 2,
+    "Estado": 4,
+    "IDDeposito": 1,
+    "DNITransportista": 13579246,
+    "Prioridad": 1,
+    "FechaEmision": "2024-10-11T14:18:16.6634364-03:00",
+    "FechaEntrega": "2024-10-21T14:18:16.6634365-03:00",
+    "MercaderiaOrden": [
+      {
+        "IDMercaderia": 202,
+        "Cantidad": 50
+      }
+    ]
   }
 ]

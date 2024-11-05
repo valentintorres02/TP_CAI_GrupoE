@@ -10,9 +10,29 @@ namespace TP_CAI.Almacenes
 {
 	internal static class OrdenEntregaAlmacen
 	{
-		private static List<OrdenEntregaEntidad> ordenesEntrega = new List<OrdenEntregaEntidad>();
+        private static List<OrdenEntregaEntidad> ordenesEntrega = new List<OrdenEntregaEntidad>
+        {
+            new OrdenEntregaEntidad
+            {
+                IDOrdenEntrega = 1,
+                Estado = EstadoOrdenEntrega.ListaParaDespachar,
+                IDsOrdenesPreparacion = new List<int> { 101, 102, 103 }
+            },
+            new OrdenEntregaEntidad
+            {
+                IDOrdenEntrega = 2,
+                Estado = EstadoOrdenEntrega.Finalizada,
+                IDsOrdenesPreparacion = new List<int> { 201, 202 }
+            },
+            new OrdenEntregaEntidad
+            {
+                IDOrdenEntrega = 3,
+                Estado = EstadoOrdenEntrega.ListaParaDespachar,
+                IDsOrdenesPreparacion = new List<int> { 301, 302, 303, 304 }
+            }
+        };
 
-		public static IReadOnlyCollection<OrdenEntregaEntidad> OrdenesEntrega => ordenesEntrega.AsReadOnly();
+        public static IReadOnlyCollection<OrdenEntregaEntidad> OrdenesEntrega => ordenesEntrega.AsReadOnly();
 
 		public static void Grabar()
 		{
@@ -47,6 +67,16 @@ namespace TP_CAI.Almacenes
 
             ordenesEntrega.Add(nuevaOrden);
             return null; //sin errores.
+        }
+
+        public static List<OrdenEntregaEntidad> ObtenerOrdenesParaDespacho()
+        {
+            return ordenesEntrega.FindAll(o => o.Estado == EstadoOrdenEntrega.PendienteDeDespacho || o.Estado == EstadoOrdenEntrega.ListaParaDespachar);
+        }
+
+        public static OrdenEntregaEntidad ObtenerOrdenPorId(int idOrden)
+        {
+            return ordenesEntrega.FirstOrDefault(o => o.IDOrdenEntrega == idOrden);
         }
     }
 }
