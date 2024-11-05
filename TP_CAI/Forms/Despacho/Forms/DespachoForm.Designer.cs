@@ -34,12 +34,12 @@
             OrdenesADespacharListView = new ListView();
             IdOrden = new ColumnHeader();
             Estado = new ColumnHeader();
+            IdOrdenEntrega = new ColumnHeader();
+            FechaEntrega = new ColumnHeader();
             SeleccionarTransportistaButton = new Button();
             label1 = new Label();
             TransportistasCombobox = new ComboBox();
             MarcarComoListasButton = new Button();
-            IdOrdenEntrega = new ColumnHeader();
-            FechaEntrega = new ColumnHeader();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -93,6 +93,16 @@
             Estado.Text = "Estado";
             Estado.Width = 200;
             // 
+            // IdOrdenEntrega
+            // 
+            IdOrdenEntrega.Text = "ID Orden Entrega";
+            IdOrdenEntrega.Width = 120;
+            // 
+            // FechaEntrega
+            // 
+            FechaEntrega.Text = "Fecha de Entrega";
+            FechaEntrega.Width = 150;
+            // 
             // SeleccionarTransportistaButton
             // 
             SeleccionarTransportistaButton.Location = new Point(485, 27);
@@ -133,16 +143,6 @@
             MarcarComoListasButton.UseVisualStyleBackColor = true;
             MarcarComoListasButton.Click += MarcarComoListasButton_Click;
             // 
-            // IdOrdenEntrega
-            // 
-            IdOrdenEntrega.Text = "ID Orden Entrega";
-            IdOrdenEntrega.Width = 120;
-            // 
-            // FechaEntrega
-            // 
-            FechaEntrega.Text = "Fecha de Entrega";
-            FechaEntrega.Width = 150;
-            // 
             // DespachoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -158,6 +158,7 @@
             MaximizeBox = false;
             Name = "DespachoForm";
             Text = "Despacho";
+            FormClosing += DespachoForm_FormClosing;
             Load += DespachoForm_Load;
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);

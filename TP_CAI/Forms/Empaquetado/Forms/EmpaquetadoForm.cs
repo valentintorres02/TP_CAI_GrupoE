@@ -69,17 +69,38 @@ namespace TP_CAI.Archivos.Empaquetado.Forms
             PasarALaSiguienteOrden();
         }
 
+        private void VolverAlMenu()
+        {
+            // Solo oculta el formulario actual
+            this.Hide();
+
+            // Mostrar el formulario de menú principal
+            // Verifica si el formulario principal ya está abierto
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is PantallaPrincipalForm)
+                {
+                    form.Show(); // Muestra el formulario si está oculto
+                    return;
+                }
+            }
+
+            // Si no está abierto, crea una nueva instancia (solo si es necesario)
+            PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+            pantallaPrincipalForm.Show();
+        }
+
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
         {
-            
-                // Crear una nueva instancia del formulario de menú principal
-                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
 
-                // Mostrar el formulario de menú principal
-                pantallaPrincipalForm.Show();
+            VolverAlMenu();
+        }
 
-                // Cerrar el formulario actual
-                this.Close();
+
+
+        private void EmpaquetadoForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            VolverAlMenu();
         }
     }
 }

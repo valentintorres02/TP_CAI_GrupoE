@@ -99,6 +99,7 @@
             MaximizeBox = false;
             Name = "OrdenDeEntregaForm";
             Text = "Crear Orden de Entrega";
+            FormClosing += OrdenDeEntregaForm_FormClosing;
             Load += OrdenDeEntregaForm_Load;
             OrdenesGroupBox.ResumeLayout(false);
             ResumeLayout(false);

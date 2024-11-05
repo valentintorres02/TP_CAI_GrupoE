@@ -33,7 +33,7 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
             OrdenesSeleccionPendientesListView.Items.Clear();
             List<OrdenSeleccion> ordenes = _gestionOrdenSeleccionModel.OrdenesDeSeleccion;
 
-            if(ordenes.Count == 0)
+            if (ordenes.Count == 0)
             {
                 MessageBox.Show("Actualmente no hay ordenes de seleccion pendientes.");
             }
@@ -99,7 +99,7 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
         {
             int idOrdenSeleccionada = ObtenerIdOrden();
 
-            if(idOrdenSeleccionada == -1)
+            if (idOrdenSeleccionada == -1)
             {
                 return;
             }
@@ -110,16 +110,35 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
             ResetearFormulario();
         }
 
+        private void VolverAlMenu()
+        {
+            // Solo oculta el formulario actual
+            this.Hide();
+
+            // Mostrar el formulario de menú principal
+            // Verifica si el formulario principal ya está abierto
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is PantallaPrincipalForm)
+                {
+                    form.Show(); // Muestra el formulario si está oculto
+                    return;
+                }
+            }
+
+            // Si no está abierto, crea una nueva instancia (solo si es necesario)
+            PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+            pantallaPrincipalForm.Show();
+        }
+
         private void VolverButton_Click(object sender, EventArgs e)
         {
-             // Crear una nueva instancia del formulario de menú principal
-                PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+            VolverAlMenu();
+        }
 
-                // Mostrar el formulario de menú principal
-                pantallaPrincipalForm.Show();
-
-                // Cerrar el formulario actual
-                this.Close();
+        private void GestionOrdenSeleccionForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            VolverAlMenu();
         }
     }
 

@@ -29,7 +29,7 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
         {
             string errorOrdenEntrega = _ordenDeEntregaModel.ValidarOrdenEntrega();
 
-            if(errorOrdenEntrega != null)
+            if (errorOrdenEntrega != null)
             {
                 MessageBox.Show(errorOrdenEntrega);
                 return;
@@ -51,7 +51,7 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
 
             OrdenesPreparacionListView.Items.Clear();
 
-            if(ordenesPreparacion.Count == 0)
+            if (ordenesPreparacion.Count == 0)
             {
                 MessageBox.Show("No hay ordenes de preparacion preparadas para agregar a la orden de entrega");
             }
@@ -69,15 +69,35 @@ namespace TP_CAI.Forms.OrdenDeEntrega.Forms
             }
         }
 
+        private void VolverAlMenu()
+        {
+            // Solo oculta el formulario actual
+            this.Hide();
+
+            // Mostrar el formulario de menú principal
+            // Verifica si el formulario principal ya está abierto
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is PantallaPrincipalForm)
+                {
+                    form.Show(); // Muestra el formulario si está oculto
+                    return;
+                }
+            }
+
+            // Si no está abierto, crea una nueva instancia (solo si es necesario)
+            PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+            pantallaPrincipalForm.Show();
+        }
+
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
         {
-            PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+            VolverAlMenu();
+        }
 
-                // Mostrar el formulario de menú principal
-                pantallaPrincipalForm.Show();
-
-                // Cerrar el formulario actual
-                this.Close();
+        private void OrdenDeEntregaForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            VolverAlMenu();
         }
     }
 }

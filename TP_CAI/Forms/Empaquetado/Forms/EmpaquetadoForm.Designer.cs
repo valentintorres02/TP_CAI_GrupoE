@@ -137,6 +137,7 @@
             MaximizeBox = false;
             Name = "EmpaquetadoForm";
             Text = "Empaquetar";
+            FormClosing += EmpaquetadoForm_FormClosing;
             Load += EmpaquetadoForm_Load;
             Productos.ResumeLayout(false);
             ResumeLayout(false);

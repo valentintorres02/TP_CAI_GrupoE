@@ -19,7 +19,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
     public partial class OrdenDePreparacionForm : Form
     {
         private OrdenDePreparacionModel _ordenDePreparacionModel;
-        
+
 
         public OrdenDePreparacionForm()
         {
@@ -41,7 +41,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
         {
             bool ordenEnProceso = false;
 
-            if(_ordenDePreparacionModel.ProductosAgregados.Count > 0)
+            if (_ordenDePreparacionModel.ProductosAgregados.Count > 0)
             {
                 ordenEnProceso = true;
             }
@@ -116,8 +116,11 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
             // Mapear productos disponibles a la lista
             ProductosDisponiblesListView.Items.Clear();
+            ProductosAgregadosListView.Items.Clear();
 
-            if(_ordenDePreparacionModel.ProductosDisponibles.Count == 0)
+            _ordenDePreparacionModel.EliminarTodosLosProductos();
+
+            if (_ordenDePreparacionModel.ProductosDisponibles.Count == 0)
             {
                 MessageBox.Show("No hay productos en existencia para el cliente " + documentoClienteSeleccionado + " en el deposito ID " + idDepositoSeleccionado + ". Por favor intente con otro cliente u otro depósito");
                 return;
@@ -257,7 +260,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 string documentoCliente = dniText;
                 int depositoId = 1;
                 int dniTransportista = int.Parse(dniText);
-                PrioridadEnum prioridad = (PrioridadEnum)PrioridadComboBox.SelectedIndex; 
+                PrioridadEnum prioridad = (PrioridadEnum)PrioridadComboBox.SelectedIndex;
                 DateTime fechaDeEntrega = FechaEntregaDatePicker.Value;
 
                 // Si todo es válido, continuar con la creación de la orden
@@ -297,21 +300,31 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
 
         private void VolverAlMenu()
         {
-            // Crear una nueva instancia del formulario de menú principal
-            PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+            // Solo oculta el formulario actual
+            this.Hide();
 
             // Mostrar el formulario de menú principal
-            pantallaPrincipalForm.Show();
+            // Verifica si el formulario principal ya está abierto
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is PantallaPrincipalForm)
+                {
+                    form.Show(); // Muestra el formulario si está oculto
+                    return;
+                }
+            }
 
-            // Cerrar el formulario actual
-            this.Close();
+            // Si no está abierto, crea una nueva instancia (solo si es necesario)
+            PantallaPrincipalForm pantallaPrincipalForm = new PantallaPrincipalForm();
+            pantallaPrincipalForm.Show();
         }
 
         private void VolverAlMenuButton_Click(object sender, EventArgs e)
         {
             bool ordenEnProceso = OrdenEnProceso();
 
-            if (!ordenEnProceso) {
+            if (!ordenEnProceso)
+            {
                 VolverAlMenu();
                 return;
             }
@@ -335,6 +348,11 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
             _ordenDePreparacionModel.EliminarTodosLosProductos();
             ActualizarListViewAgregados();
             ActualizarListViewDisponibles();
+        }
+
+        private void OrdenDePreparacionForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            VolverAlMenu();
         }
     }
 }

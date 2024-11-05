@@ -174,6 +174,7 @@
             MaximizeBox = false;
             Name = "GestionOrdenSeleccionForm";
             Text = "GestionOrdenSeleccionForm";
+            FormClosing += GestionOrdenSeleccionForm_FormClosing;
             Load += GestionOrdenSeleccionForm_Load;
             OrdenesGroup.ResumeLayout(false);
             OrdenesGroup.PerformLayout();

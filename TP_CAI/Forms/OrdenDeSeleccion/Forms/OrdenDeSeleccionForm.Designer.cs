@@ -356,6 +356,7 @@
             MaximizeBox = false;
             Name = "OrdenDeSeleccionForm";
             Text = "Crear Orden de Selección";
+            FormClosing += OrdenDeSeleccionForm_FormClosing;
             Load += OrdenDeSeleccionForm_Load;
             OrdenesGroup.ResumeLayout(false);
             OrdenesGroup.PerformLayout();

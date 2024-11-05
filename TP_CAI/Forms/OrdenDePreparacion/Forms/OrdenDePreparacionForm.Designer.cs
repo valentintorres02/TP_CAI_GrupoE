@@ -346,6 +346,7 @@
             MaximizeBox = false;
             Name = "OrdenDePreparacionForm";
             Text = "Crear Orden de Preparación";
+            FormClosing += OrdenDePreparacionForm_FormClosing;
             Load += OrdenDePreparacionForm_Load;
             ProductosGroup.ResumeLayout(false);
             ProductosGroup.PerformLayout();
