@@ -127,6 +127,7 @@
             Controls.Add(RecepcionOrdenesPreparacionButton);
             Controls.Add(RolUsuario);
             Controls.Add(NombreUsuario);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "PantallaPrincipalForm";
             Text = "PantallaPrincipalForm";

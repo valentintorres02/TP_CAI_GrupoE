@@ -95,7 +95,7 @@
             Controls.Add(OrdenesGroupBox);
             Controls.Add(VolverAlMenuButton);
             Controls.Add(CrearOrdenEntregaButton);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "OrdenDeEntregaForm";
             Text = "Crear Orden de Entrega";

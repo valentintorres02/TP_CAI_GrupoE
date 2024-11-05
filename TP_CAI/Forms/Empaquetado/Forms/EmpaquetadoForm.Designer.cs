@@ -134,6 +134,7 @@
             Controls.Add(VolverAlMenuButton);
             Controls.Add(EmpaquetarButton);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "EmpaquetadoForm";
             Text = "Empaquetar";

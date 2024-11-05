@@ -155,6 +155,7 @@
             Controls.Add(SeleccionarTransportistaButton);
             Controls.Add(label1);
             Controls.Add(TransportistasCombobox);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "DespachoForm";
             Text = "Despacho";

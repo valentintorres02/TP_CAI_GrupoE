@@ -343,6 +343,7 @@
             Controls.Add(DepositoCombobox);
             Controls.Add(label2);
             Controls.Add(ClienteCombobox);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "OrdenDePreparacionForm";
             Text = "Crear Orden de Preparación";

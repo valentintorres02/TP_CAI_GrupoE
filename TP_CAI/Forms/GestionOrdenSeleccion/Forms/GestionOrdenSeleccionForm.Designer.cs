@@ -171,6 +171,7 @@
             Controls.Add(VolverButton);
             Controls.Add(OrdenesGroup);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "GestionOrdenSeleccionForm";
             Text = "GestionOrdenSeleccionForm";
