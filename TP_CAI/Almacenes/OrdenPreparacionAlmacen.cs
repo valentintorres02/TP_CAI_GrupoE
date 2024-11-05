@@ -38,9 +38,14 @@ namespace TP_CAI.Almacenes
 			ordenesPreparacion = JsonSerializer.Deserialize<List<OrdenPreparacionEntidad>>(datos)!;
 		}
 
-        public static List<OrdenPreparacionEntidad> ObtenerOrdenesPendientes()
+        public static List<OrdenPreparacionEntidad> ObtenerOrdenesPendientesDeSeleccion()
         {
             return ordenesPreparacion.FindAll(o => o.Estado == EstadoOrdenPreparacion.PendienteDeSeleccion);
+        }
+
+        public static List<OrdenPreparacionEntidad> ObtenerOrdenesPendientesDeEmpaquetado()
+        {
+            return ordenesPreparacion.FindAll(o => o.Estado == EstadoOrdenPreparacion.PendienteDeEmpaquetado);
         }
 
         internal static string Nueva(OrdenPreparacionEntidad nuevaOrden)

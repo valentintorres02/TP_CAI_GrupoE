@@ -24,5 +24,15 @@ namespace TP_CAI.Almacenes
 		{
 			this.Estado = EstadoOrdenPreparacion.EnPreparacion;
 		}
-	}
+
+		public void MarcarComoPendienteDeEmpaquetado()
+		{
+			this.Estado = EstadoOrdenPreparacion.PendienteDeEmpaquetado;
+		}
+
+        internal void MarcarComoPreparada()
+        {
+			this.Estado = EstadoOrdenPreparacion.Preparada;
+        }
+    }
 }

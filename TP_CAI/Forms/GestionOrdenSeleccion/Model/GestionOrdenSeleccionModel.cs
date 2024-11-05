@@ -35,6 +35,13 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
 
             ordenSeleccion.MarcarComoSeleccionada();
 
+            foreach(var ordenPreparacionId in ordenSeleccion.IDsOrdenesPreparacion)
+            {
+                var ordenPreparacion = OrdenPreparacionAlmacen.ObtenerOrdenPorId(ordenPreparacionId);
+
+                ordenPreparacion.MarcarComoPendienteDeEmpaquetado();
+            }
+
             OrdenesDeSeleccion.Remove(ordenASeleccionar);
         }
 

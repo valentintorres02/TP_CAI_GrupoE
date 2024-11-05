@@ -42,7 +42,7 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
             OrdenesDePreparacionIniciales.Clear();
 
             // Agrega solo las órdenes pendientes a la lista inicial
-            foreach (var ordenPreparacionEntidad in OrdenPreparacionAlmacen.ObtenerOrdenesPendientes())
+            foreach (var ordenPreparacionEntidad in OrdenPreparacionAlmacen.ObtenerOrdenesPendientesDeSeleccion())
             {
                     var clienteId = ordenPreparacionEntidad.IDCliente;
 
