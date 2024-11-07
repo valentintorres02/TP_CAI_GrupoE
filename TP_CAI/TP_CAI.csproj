@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Datos\" />
+    <Folder Include="Pruebas\" />
   </ItemGroup>
 
   <ItemGroup>
