@@ -97,6 +97,9 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
                             descripcionProducto: $"{mercaderia.DescripcionMercaderia} (faltante)"
                         ));
                     }
+
+                    // Ordenar los productos por ubicación
+                    productos.Sort((a, b) => a.Ubicacion.CompareTo(b.Ubicacion));
                 }
             }
 
