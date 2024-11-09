@@ -1,0 +1,4 @@
+ Botón: "Crear orden de entrega" 
+Ver: Se registró correctamente la Orden de entrega ID 1
+Cerrar el sistema
+Verificar
