@@ -1,0 +1,42 @@
+Verificar eliminacion de stock disponible
+
+
+- Botón: "Crear orden de preparación"
+
+- Cliente : "CAI S.R.L"
+
+- Depósito : "Depósito ID 1. Av. Córdoba 2100, CABA"
+
+- Botón: continuar
+
+- Productos disponibles:
+	.101	Cajas de aluminio	150
+	.201	Tornillos de acero	300
+	.202	Cajas de plástico	120
+
+- Seleccionar: Producto ID "101" 
+
+- Cantidad: 50
+
+- Botón "Agregar Producto a la orden"
+
+- "Prioridad" : "Alta"
+
+- DNI TRANSPORTISTA: "12345678"
+
+- Boton: Crear orden de preparacion
+
+-Mensaje : "Orden creada satisfactoriamente" . ID de orden 6. Fecha de emisión, (fecha actual)"
+
+- Cliente : "CAI S.R.L"
+
+- Depósito : "Depósito ID 1. Av. Córdoba 2100, CABA"
+
+- Botón: continuar
+
+- Verificar productos disponibles:
+	.101	Cajas de aluminio	100
+	.201	Tornillos de acero	300
+	.202	Cajas de plástico	120
+
+- Cerrar el sistema
