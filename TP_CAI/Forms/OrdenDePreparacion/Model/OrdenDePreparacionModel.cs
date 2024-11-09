@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Windows.Forms;
 using TP_CAI.Almacenes;
 using TP_CAI.Forms.OrdenDeSeleccion.Forms.Model;
@@ -97,9 +98,15 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
                 return "Por favor complete el campo DNI Transportista.";
             }
 
-            if (!int.TryParse(dniText, out _))
+            if (!int.TryParse(dniText, out int dni))
             {
                 return "El DNI de Transportista debe ser un número válido. Por favor ingrese un valor correcto.";
+            }
+
+
+            if (dni <= 0)
+            {
+                return "El DNI de Transportista no puede ser un número negativo o cero. Por favor ingrese un valor positivo.";
             }
 
             if (dniText.Length < 7)
