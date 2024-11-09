@@ -126,13 +126,14 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
         {
             // Obtener los valores de los filtros desde los controles de la interfaz de usuario
             PrioridadEnum? prioridadSeleccionada = null;
-            if (PrioridadCombobox.SelectedItem != null)
+            if (PrioridadCombobox.SelectedItem != null && !string.IsNullOrWhiteSpace(PrioridadCombobox.SelectedItem.ToString()))
             {
-                // Convertir el valor seleccionado a PrioridadEnum
-                prioridadSeleccionada = (PrioridadEnum)Enum.Parse(typeof(PrioridadEnum), PrioridadCombobox.SelectedItem.ToString());
+                // Convertir el valor seleccionado a PrioridadEnum, ignorando mayúsculas y minúsculas
+                prioridadSeleccionada = (PrioridadEnum)Enum.Parse(typeof(PrioridadEnum), PrioridadCombobox.SelectedItem.ToString(), true);
             }
 
-            string documentoCliente = string.IsNullOrWhiteSpace(ClienteCombobox.Text) ? null : ClienteCombobox.SelectedValue.ToString();
+            // Obtener el documento del cliente, validando que SelectedValue no sea nulo
+            string documentoCliente = ClienteCombobox.SelectedValue?.ToString();
 
             DateTime? fechaEntrega = null;
             if (FechaEntregaDatePicker.Value != null && FechaEntregaDatePicker.Checked)
@@ -140,8 +141,8 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
                 fechaEntrega = FechaEntregaDatePicker.Value.Date;
             }
 
+            // Filtrar las órdenes en el modelo
             _ordenDeSeleccionModel.FiltrarOrdenes(prioridadSeleccionada, documentoCliente, fechaEntrega);
-
 
             // Actualizar la lista de órdenes mostradas
             ActualizarOrdenesFiltradas();
