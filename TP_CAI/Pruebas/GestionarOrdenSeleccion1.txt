@@ -1,10 +1,19 @@
 Botón “Gestión Orden de selección”
+
 Botón: “Ver ítems a seleccionar”
+
 Mensaje:”No se ha seleccionado ninguna orden.Por favor seleccione una”
+
 Botón: “Marcar como seleccionada”
+
 Mensaje:”No se ha seleccionado ninguna orden.Por favor seleccione una”
+
 Seleccionar: Orden ID 1
+
 Botón: “Marcar como seleccionada”
+
 Mensaje: “Se seleccionó correctamente la selección de la orden de selección ID 1”
+
 Cerrar el sistema
+
 Verificar
