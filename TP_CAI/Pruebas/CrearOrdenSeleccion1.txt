@@ -1,0 +1,33 @@
+Orden de selección con una sola orden de preparación
+
+-botón “Crear Orden de selección”
+- Prioridad: “Alta”
+- Cliente “CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.L”
+- Fecha entrega : 28/10/2024
+- Botón “Limpiar”
+- Ver que se borraron los datos de Prioridad y Cliente.
+- Prioridad: “Alta”
+- Cliente “CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.L”
+- Fecha entrega : 28/10/2024
+- Botón “Buscar”
+- Órdenes de preparación pendientes
+	.  ID1  Alta  20-34567345-3   28/10/2024
+- Seleccionar: Orden ID 1
+- Botón: “Agregar a la Orden de Selección”
+- Ver Órdenes de preparación seleccionada:
+	. 1  Alta  20-34567345-3   28/10/2024
+Seleccionar: Orden ID 1
+Botón: “Eliminar de la Orden de Selección”
+ Seleccionar: Orden ID 1
+Botón: “Agregar a la Orden de Selección”
+Ver Órdenes de preparación seleccionada:
+. 1  Alta  20-34567345-3   28/10/2024
+- Botón: “Crear Orden de Selección”
+- Mensaje: “Orden creada Satisfactoriamente. ID de Orden: 2
+- Cerrar el sistema
+-  Verificar: OrdenSeleccion.JSON:
+{
+    "IDOrdenSeleccion": 1,
+   "Estado": 0,
+   "IDsOrdenesPreparacion": [5]
+ }
