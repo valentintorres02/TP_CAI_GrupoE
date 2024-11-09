@@ -50,7 +50,7 @@ namespace TP_CAI.Forms.Despacho.Model
         public string MarcarComoListasParaDespacho()
         {
 
-            if (OrdenesDePreparacion.FirstOrDefault(o => o.Estado == EstadoOrdenPreparacion.ListaParaDespachar) != null)
+            if (OrdenesDePreparacion.FirstOrDefault(o => o.Estado == EstadoOrdenPreparacion.PendienteDeDespacho) == null)
             {
                 return "No hay ninguna orden para marcar como lista para despachar.";
             }
@@ -100,7 +100,6 @@ namespace TP_CAI.Forms.Despacho.Model
 
             if(marcarOrdenComoFinalizada)
             {
-                MessageBox.Show("Finalizada");
                 ordenEntrega.MarcarComoFinalizada();
             }
         }
