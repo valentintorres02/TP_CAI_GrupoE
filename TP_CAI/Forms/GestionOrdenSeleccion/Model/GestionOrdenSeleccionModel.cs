@@ -50,9 +50,22 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
             var ordenSeleccion = OrdenSeleccionAlmacen.ObtenerOrdenPorId(idOrden);
             var productos = new List<Producto>();
 
+            // Verificar si ordenSeleccion es null antes de continuar
+            if (ordenSeleccion == null || ordenSeleccion.IDsOrdenesPreparacion == null || !ordenSeleccion.IDsOrdenesPreparacion.Any())
+            {
+                Console.WriteLine("No se encontró la orden de selección o no contiene órdenes de preparación.");
+                return productos;
+            }
+
             foreach (var idOrdenPreparacion in ordenSeleccion.IDsOrdenesPreparacion)
             {
                 var orden = OrdenPreparacionAlmacen.ObtenerOrdenPorId(idOrdenPreparacion);
+
+                if (orden == null || orden.MercaderiaOrden == null)
+                {
+                    Console.WriteLine($"No se encontró la orden de preparación con ID {idOrdenPreparacion} o no tiene mercadería.");
+                    continue;
+                }
 
                 foreach (var mercaderiaOrden in orden.MercaderiaOrden)
                 {
@@ -60,6 +73,7 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
 
                     if (mercaderia == null)
                     {
+                        Console.WriteLine($"No se encontró mercadería con ID {mercaderiaOrden.IDMercaderia}.");
                         continue;
                     }
 
@@ -97,11 +111,11 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
                             descripcionProducto: $"{mercaderia.DescripcionMercaderia} (faltante)"
                         ));
                     }
-
-                    // Ordenar los productos por ubicación
-                    productos.Sort((a, b) => a.Ubicacion.CompareTo(b.Ubicacion));
                 }
             }
+
+            // Ordenar los productos por ubicación después de agregar todos
+            productos.Sort((a, b) => a.Ubicacion.CompareTo(b.Ubicacion));
 
             return productos;
         }
