@@ -1,26 +1,64 @@
-- Tocar botón "Crear orden de preparación"
-- Seleccionar desplegable para elegir un cliente
-- Elegir cliente : "CAI S.R.L"
-- Seleccionar desplegable para elegir un depósito
-- Elegir el depósito : "Deposito ID 1. Av. Córdoba 2100, CABA"
-- Tocar botón continuar
-- Ver productos disponibles del depósito seleccionado en la tabla:
-.101 Cajas de aluminio 150
-.201 Tornillos de acero 300
-.202. Cajas de plástico 120
-- Seleccionar el producto con ID "101" 
-- Ingresar Cantidad a agregar del producto ID"101" : "50"
-- Tocar botón "Agregar Producto a la orden"
-- Seleccionar el producto con ID "202" 
-- Ingresar Cantidad a agregar del producto ID"101" : "60"
-- Tocar botón "Agregar Producto a la orden"
--Ver productos agregados en la tabla productos agregados a la orden de preparación:
-	.101 Cajas de aluminio 50
-	.202 Cajas de plástico 60
-- Ingresar "Prioridad" : "Alta"
-- Ingresar campo fecha : "sábado, 12 de diciembre de 2024", 
-- Ingresar campo "DNI TRANSPORTISTA" : "12345678"
--Ver. Mensaje : "Orden creada satisfactoriamente" . ID de orden X. Fecha de emisión, XX/XX/XXXX"
-- Cerrar formulario
+Orden preparación con varios productos
+
+- Botón: "Crear orden de preparación"
+
+- Cliente : "CAI S.R.L"
+
+- Depósito : "Depósito ID 1. Av. Córdoba 2100, CABA"
+
+- Botón: continuar
+
+- Productos disponibles:
+	.101	Cajas de aluminio	150
+	.201	Tornillos de acero	300
+	.202	Cajas de plástico	120
+
+- Seleccionar: Producto ID "101" 
+
+- Cantidad: 50
+
+- Botón "Agregar Producto a la orden"
+
+- Seleccionar: Producto ID "201" 
+
+- Cantidad: 60
+
+- Botón "Agregar Producto a la orden"
+
+- Ver Productos agregados:
+	.101	Cajas de aluminio	50
+.201	Tornillos de acero	60
+
+- "Prioridad" : "Alta"
+
+- Fecha : "sábado, 12 de diciembre de 2024", 
+
+- DNI TRANSPORTISTA: "12345678"
+
+- Boton: Crear orden de preparacion
+
+-Mensaje : "Orden creada satisfactoriamente" . ID de orden 6. Fecha de emisión, (fecha actual)"
+
 - Cerrar el sistema
-- Verificar: en el BIN nueva orden: ID numero X, fecha: 07/12/2024,  podemos poner directamente si se puede verificar en el de orden de selección que consume ese archivo.
+
+- Verificar: OrdenPreparacion.JSON:
+{
+    "IDOrdenPreparacion": 7,
+    "IDDeposito": 1,
+    "IDCliente": 1,
+    "Estado": 0,
+    "Prioridad": 2,
+    "DNITransportista": 12345678,
+    "FechaEmision": "(Fecha Actual)",
+    "FechaEntrega": "2024-12-07 (No importa hora)",
+    "MercaderiaOrden": [
+      {
+        "IDMercaderia": 101,
+        "Cantidad": 50
+      },
+      {
+        "IDMercaderia": 201,
+        "Cantidad": 60
+      }
+    ]
+  },
