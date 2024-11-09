@@ -10,27 +10,7 @@ namespace TP_CAI.Almacenes
 {
 	internal static class OrdenEntregaAlmacen
 	{
-        private static List<OrdenEntregaEntidad> ordenesEntrega = new List<OrdenEntregaEntidad>
-        {
-            new OrdenEntregaEntidad
-            {
-                IDOrdenEntrega = 1,
-                Estado = EstadoOrdenEntrega.ListaParaDespachar,
-                IDsOrdenesPreparacion = new List<int> { 101, 102, 103 }
-            },
-            new OrdenEntregaEntidad
-            {
-                IDOrdenEntrega = 2,
-                Estado = EstadoOrdenEntrega.Finalizada,
-                IDsOrdenesPreparacion = new List<int> { 201, 202 }
-            },
-            new OrdenEntregaEntidad
-            {
-                IDOrdenEntrega = 3,
-                Estado = EstadoOrdenEntrega.ListaParaDespachar,
-                IDsOrdenesPreparacion = new List<int> { 301, 302, 303, 304 }
-            }
-        };
+        private static List<OrdenEntregaEntidad> ordenesEntrega = new List<OrdenEntregaEntidad>();
 
         public static IReadOnlyCollection<OrdenEntregaEntidad> OrdenesEntrega => ordenesEntrega.AsReadOnly();
 
