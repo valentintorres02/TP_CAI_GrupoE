@@ -40,6 +40,11 @@ namespace TP_CAI.Archivos.Despacho.Forms
         {
             List<Transportista> transportistas = _despachoModel.Transportistas;
 
+            if(transportistas.Count == 0)
+            {
+                MessageBox.Show("No hay transportistas con ordenes de preparacion pendientes de despacho");
+            }
+
             TransportistasCombobox.DataSource = transportistas;
             TransportistasCombobox.DisplayMember = "DisplayText"; // Texto visible
             TransportistasCombobox.ValueMember = "Documento";       // Valor asociado

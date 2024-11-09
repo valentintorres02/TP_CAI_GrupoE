@@ -96,8 +96,6 @@ namespace TP_CAI.Forms.Despacho.Model
             {
                 var ordenPreparacion = OrdenPreparacionAlmacen.ObtenerOrdenPorId(orden.Id);
                 ordenPreparacion.MarcarComoDespachada();
-                var ordenEntrega = OrdenEntregaAlmacen.ObtenerOrdenPorId(orden.IdOrdenEntrega);
-                ordenEntrega.MarcarComoFinalizada();
                 remito.IDsOrdenesPreparacion.Add(ordenPreparacion.IDOrdenPreparacion);
             }
 
