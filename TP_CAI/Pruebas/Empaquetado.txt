@@ -1,0 +1,9 @@
+Botón: “Empaquetado”
+
+Ver: Empaquetar Orden 01
+
+Botón: “Empaquetar”
+
+Cerrar el sistema
+
+Verificar
