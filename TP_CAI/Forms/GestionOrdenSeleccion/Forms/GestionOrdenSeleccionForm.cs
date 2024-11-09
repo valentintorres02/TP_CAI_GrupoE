@@ -52,6 +52,12 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
         {
             ItemsASeleccionarListView.Items.Clear();
             int idOrdenSeleccionada = ObtenerIdOrden();
+
+            if(idOrdenSeleccionada == -1)
+            {
+                return;
+            }   
+
             List<Producto> productos = _gestionOrdenSeleccionModel.ObtenerProductosDeOrden(idOrdenSeleccionada);
             foreach (var producto in productos)
             {
