@@ -111,7 +111,15 @@ namespace TP_CAI.Archivos.Despacho.Forms
 
         private void MarcarComoDespachadasButton_Click(object sender, EventArgs e)
         {
-            _despachoModel.MarcarComoDespachadas();
+            ObtenerDocumentoTransportista();
+            string error = _despachoModel.MarcarComoDespachadas();
+
+            if (error != null)
+            {
+                MessageBox.Show(error);
+                return;
+            }
+
             MessageBox.Show("Ordenes despachadas correctamente");
             ActualizarTabla();
         }

@@ -49,6 +49,11 @@ namespace TP_CAI.Forms.Despacho.Model
 
         public string MarcarComoListasParaDespacho()
         {
+            if (OrdenesDePreparacion.Count == 0)
+            {
+                return "No hay ninguna orden para marcar como lista para despachar.";
+            }
+
 
             if (OrdenesDePreparacion.FirstOrDefault(o => o.Estado == EstadoOrdenPreparacion.PendienteDeDespacho) == null)
             {
@@ -104,8 +109,13 @@ namespace TP_CAI.Forms.Despacho.Model
             }
         }
 
-        public void MarcarComoDespachadas()
+        public string MarcarComoDespachadas()
         {
+            if(OrdenesDePreparacion.Count == 0)
+            {
+                return "No hay ninguna orden para marcar como despachada.";
+            }
+
             var primeraOrden = OrdenPreparacionAlmacen.ObtenerOrdenPorId(OrdenesDePreparacion[0].Id);
 
             RemitoEntidad remito = new();
@@ -124,6 +134,8 @@ namespace TP_CAI.Forms.Despacho.Model
 
             RemitoAlmacen.Nuevo(remito);
             OrdenesDePreparacion = [];
+
+            return null;
         }
 
     }
