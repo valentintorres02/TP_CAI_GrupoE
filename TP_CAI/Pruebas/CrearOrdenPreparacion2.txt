@@ -1,0 +1,26 @@
+- Tocar botón "Crear orden de preparación"
+- Seleccionar desplegable para elegir un cliente
+- Elegir cliente : "CAI S.R.L"
+- Seleccionar desplegable para elegir un depósito
+- Elegir el depósito : "Deposito ID 1. Av. Córdoba 2100, CABA"
+- Tocar botón continuar
+- Ver productos disponibles del depósito seleccionado en la tabla:
+.101 Cajas de aluminio 150
+.201 Tornillos de acero 300
+.202. Cajas de plástico 120
+- Seleccionar el producto con ID "101" 
+- Ingresar Cantidad a agregar del producto ID"101" : "50"
+- Tocar botón "Agregar Producto a la orden"
+- Seleccionar el producto con ID "202" 
+- Ingresar Cantidad a agregar del producto ID"101" : "60"
+- Tocar botón "Agregar Producto a la orden"
+-Ver productos agregados en la tabla productos agregados a la orden de preparación:
+	.101 Cajas de aluminio 50
+	.202 Cajas de plástico 60
+- Ingresar "Prioridad" : "Alta"
+- Ingresar campo fecha : "sábado, 12 de diciembre de 2024", 
+- Ingresar campo "DNI TRANSPORTISTA" : "12345678"
+-Ver. Mensaje : "Orden creada satisfactoriamente" . ID de orden X. Fecha de emisión, XX/XX/XXXX"
+- Cerrar formulario
+- Cerrar el sistema
+- Verificar: en el BIN nueva orden: ID numero X, fecha: 07/12/2024,  podemos poner directamente si se puede verificar en el de orden de selección que consume ese archivo.

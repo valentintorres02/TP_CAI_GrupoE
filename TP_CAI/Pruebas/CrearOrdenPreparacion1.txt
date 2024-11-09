@@ -1,0 +1,53 @@
+Orden preparacion con un solo producto
+
+- Botón: "Crear orden de preparación"
+
+- Cliente : "CAI S.R.L"
+
+- Depósito : "Depósito ID 1. Av. Córdoba 2100, CABA"
+
+- Botón: continuar
+
+- Productos disponibles:
+	.101	Cajas de aluminio	150
+	.201	Tornillos de acero	300
+	.202	Cajas de plástico	120
+
+- Seleccionar: Producto ID "101" 
+
+- Cantidad: 50
+
+- Botón "Agregar Producto a la orden"
+
+- Ver Productos agregados:
+	.101	Cajas de aluminio	50
+
+- "Prioridad" : "Alta"
+
+- Fecha : "sábado, 12 de diciembre de 2024", 
+
+- DNI TRANSPORTISTA: "12345678"
+
+- Boton: Crear orden de preparacion
+
+-Mensaje : "Orden creada satisfactoriamente" . ID de orden 6. Fecha de emisión, (fecha actual)"
+
+- Cerrar el sistema
+
+- Verificar: OrdenPreparacion.JSON:
+{
+    "IDOrdenPreparacion": 6,
+    "IDDeposito": 1,
+    "IDCliente": 1,
+    "Estado": 0,
+    "Prioridad": 2,
+    "DNITransportista": 12345678,
+    "FechaEmision": "(Fecha Actual)",
+    "FechaEntrega": "2024-12-07 (No importa hora)",
+    "MercaderiaOrden": [
+      {
+        "IDMercaderia": 101,
+        "Cantidad": 50
+      }
+    ]
+  },

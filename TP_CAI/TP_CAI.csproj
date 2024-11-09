@@ -9,9 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Datos\OrdenEntrega.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Folder Include="Datos\" />
+    <Folder Include="Pruebas\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Datos\Clientes.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
