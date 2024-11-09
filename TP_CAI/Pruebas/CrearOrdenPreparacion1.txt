@@ -1,4 +1,4 @@
-Orden preparacion con un solo producto
+Orden preparación con un solo producto
 
 - Botón: "Crear orden de preparación"
 
