@@ -105,7 +105,7 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Forms
             }
 
             _gestionOrdenSeleccionModel.MarcarOrdenComoSeleccionada(idOrdenSeleccionada);
-            MessageBox.Show("Se seleccionó correctamente la selección de la orden de selección ID " + idOrdenSeleccionada);
+            MessageBox.Show("Se seleccionó correctamente la orden de selección ID " + idOrdenSeleccionada);
             ActualizarOrdenesDeSeleccion();
             ResetearFormulario();
         }
