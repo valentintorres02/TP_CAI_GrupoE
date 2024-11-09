@@ -82,6 +82,29 @@ namespace TP_CAI.Forms.Despacho.Model
             }
         }
 
+        private void ActualizarOrdenDeEntrega(int idOrdenEntrega)
+        {
+            bool marcarOrdenComoFinalizada = true;
+
+            var ordenEntrega = OrdenEntregaAlmacen.ObtenerOrdenPorId(idOrdenEntrega);
+
+            foreach(var idOrdenPreparacion in ordenEntrega.IDsOrdenesPreparacion)
+            {
+                var ordenPrep = OrdenPreparacionAlmacen.ObtenerOrdenPorId(idOrdenPreparacion);
+
+                if(ordenPrep.Estado != EstadoOrdenPreparacion.Despachada)
+                {
+                    marcarOrdenComoFinalizada = false;
+                }
+            }
+
+            if(marcarOrdenComoFinalizada)
+            {
+                MessageBox.Show("Finalizada");
+                ordenEntrega.MarcarComoFinalizada();
+            }
+        }
+
         public void MarcarComoDespachadas()
         {
             var primeraOrden = OrdenPreparacionAlmacen.ObtenerOrdenPorId(OrdenesDePreparacion[0].Id);
@@ -97,6 +120,7 @@ namespace TP_CAI.Forms.Despacho.Model
                 var ordenPreparacion = OrdenPreparacionAlmacen.ObtenerOrdenPorId(orden.Id);
                 ordenPreparacion.MarcarComoDespachada();
                 remito.IDsOrdenesPreparacion.Add(ordenPreparacion.IDOrdenPreparacion);
+                ActualizarOrdenDeEntrega(orden.IdOrdenEntrega);
             }
 
             RemitoAlmacen.Nuevo(remito);
