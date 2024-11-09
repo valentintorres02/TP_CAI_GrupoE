@@ -44,24 +44,50 @@ namespace TP_CAI.Forms.Despacho.Model
                 foreach (var idOrdenPreparacion in ordenEntrega.IDsOrdenesPreparacion)
                 {
                     var ordenPreparacion = OrdenPreparacionAlmacen.ObtenerOrdenPorId(idOrdenPreparacion);
-                    var ordenPreparacionParaDespacho = new OrdenPreparacion(ordenPreparacion.IDOrdenPreparacion, ordenPreparacion.DNITransportista.ToString(), ordenEntrega.IDOrdenEntrega);
-                    OrdenesDePreparacion.Add(ordenPreparacionParaDespacho);
+
+                    if(ordenPreparacion.DNITransportista.ToString() ==  dniTransportista)
+                    {
+                        var ordenPreparacionParaDespacho = new OrdenPreparacion(ordenPreparacion.IDOrdenPreparacion, ordenPreparacion.DNITransportista.ToString(), ordenPreparacion.Estado, ordenEntrega.IDOrdenEntrega);
+                        OrdenesDePreparacion.Add(ordenPreparacionParaDespacho);
+                    }
                 }
             }
         }
 
-        public void MarcarComoListasParaDespacho(string dniTransportista)
+        public string MarcarComoListasParaDespacho()
         {
-            OrdenesDePreparacion = [];
+
+            if (OrdenesDePreparacion.FirstOrDefault(o => o.Estado == EstadoOrdenPreparacion.ListaParaDespachar) != null)
+            {
+                return "No hay ninguna orden para marcar como lista para despachar.";
+            }
+
+            List<OrdenPreparacion> nuevasOrdenes = [];
             foreach (var orden in OrdenesDePreparacion)
             {
                 var ordenPreparacion = OrdenPreparacionAlmacen.ObtenerOrdenPorId(orden.Id);
                 ordenPreparacion.MarcarComoListaParaDespachar();
                 var ordenEntrega = OrdenEntregaAlmacen.ObtenerOrdenPorId(orden.IdOrdenEntrega);
                 ordenEntrega.MarcarComoListaParaDespachar();
-                var ordenPreparacionParaDespacho = new OrdenPreparacion(ordenPreparacion.IDOrdenPreparacion, ordenPreparacion.DNITransportista.ToString(), ordenEntrega.IDOrdenEntrega);
-                //OrdenesDePreparacion.Add(ordenPreparacionParaDespacho);
+                var ordenPreparacionParaDespacho = new OrdenPreparacion(ordenPreparacion.IDOrdenPreparacion, ordenPreparacion.DNITransportista.ToString(), ordenPreparacion.Estado, ordenEntrega.IDOrdenEntrega);
+                nuevasOrdenes.Add(ordenPreparacionParaDespacho);
             }
+
+            OrdenesDePreparacion = nuevasOrdenes;
+            return null;
+        }
+
+        public void MarcarComoDespachadas()
+        {
+            foreach (var orden in OrdenesDePreparacion)
+            {
+                var ordenPreparacion = OrdenPreparacionAlmacen.ObtenerOrdenPorId(orden.Id);
+                ordenPreparacion.MarcarComoDespachada();
+                var ordenEntrega = OrdenEntregaAlmacen.ObtenerOrdenPorId(orden.IdOrdenEntrega);
+                ordenEntrega.MarcarComoFinalizada();
+            }
+
+            OrdenesDePreparacion = [];
         }
 
     }

@@ -12,11 +12,11 @@ namespace TP_CAI.Forms.Despacho.Model
             public DateTime FechaEntrega { get; set; }
             public int IdOrdenEntrega { get; set; }
 
-            public OrdenPreparacion(int id, string documentoTransportista, int idOrdenEntrega)
+            public OrdenPreparacion(int id, string documentoTransportista, EstadoOrdenPreparacion estado, int idOrdenEntrega)
             {
                 Id = id;
                 DocumentoTransportista = documentoTransportista;
-                Estado = EstadoOrdenPreparacion.PendienteDeDespacho;
+                Estado = estado;
                 FechaEntrega = DateTime.Now;
                 IdOrdenEntrega = idOrdenEntrega;
             }

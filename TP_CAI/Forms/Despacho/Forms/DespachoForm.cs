@@ -75,6 +75,13 @@ namespace TP_CAI.Archivos.Despacho.Forms
             List<OrdenPreparacion> ordenesPreparacion = _despachoModel.OrdenesDePreparacion;
 
             OrdenesADespacharListView.Items.Clear();
+
+            if(ordenesPreparacion.Count == 0)
+            {
+                MessageBox.Show("No hay ordenes de preparacion pendientes de despacho para el transportista seleccionado");
+                return;
+            }
+
             foreach (var orden in ordenesPreparacion)
             {
                 var item = new ListViewItem(new[]
@@ -99,17 +106,23 @@ namespace TP_CAI.Archivos.Despacho.Forms
 
         private void MarcarComoDespachadasButton_Click(object sender, EventArgs e)
         {
-            OrdenesADespacharListView.Items.Clear();
-            TransportistasCombobox.SelectedIndex = -1;
+            _despachoModel.MarcarComoDespachadas();
             MessageBox.Show("Ordenes despachadas correctamente");
+            ActualizarTabla();
         }
 
         private void MarcarComoListasButton_Click(object sender, EventArgs e)
         {
             string documentoTransportista = ObtenerDocumentoTransportista();
-            _despachoModel.MarcarComoListasParaDespacho(documentoTransportista);
-            ActualizarTabla();
+            string error = _despachoModel.MarcarComoListasParaDespacho();
+
+            if (error != null) {
+                MessageBox.Show(error);
+                return;
+            }
+            
             MessageBox.Show("Ordenes marcadas como listas para despacho correctamente");
+            ActualizarTabla();
         }
 
 

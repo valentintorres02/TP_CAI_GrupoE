@@ -6,7 +6,7 @@
   },
   {
     "IDOrdenEntrega": 2,
-    "Estado": 2,
+    "Estado": 1,
     "IDsOrdenesPreparacion": [ 6 ]
   }
 ]
