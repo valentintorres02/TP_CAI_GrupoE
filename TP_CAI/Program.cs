@@ -28,6 +28,7 @@ namespace TP_CAI
             OrdenPreparacionAlmacen.Grabar();
             OrdenSeleccionAlmacen.Grabar();
             OrdenEntregaAlmacen.Grabar();
+            RemitoAlmacen.Grabar();
         }
     }
 }

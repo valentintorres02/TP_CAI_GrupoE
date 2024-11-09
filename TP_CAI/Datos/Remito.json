@@ -1,0 +1,23 @@
+﻿[
+  {
+    "IDRemito": 1,
+    "Fecha": "2024-10-29T22:36:51.6141898-03:00",
+    "IDCliente": 101,
+    "DNITransportista": 12345678,
+    "IDsOrdenesPreparacion": [ 1001, 1002, 1003 ]
+  },
+  {
+    "IDRemito": 2,
+    "Fecha": "2024-11-01T22:36:51.617352-03:00",
+    "IDCliente": 102,
+    "DNITransportista": 87654321,
+    "IDsOrdenesPreparacion": [ 1004, 1005 ]
+  },
+  {
+    "IDRemito": 3,
+    "Fecha": "2024-11-03T22:36:51.6173558-03:00",
+    "IDCliente": 103,
+    "DNITransportista": 11223344,
+    "IDsOrdenesPreparacion": [ 1006, 1007, 1008, 1009 ]
+  }
+]
