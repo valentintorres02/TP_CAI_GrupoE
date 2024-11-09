@@ -35,7 +35,7 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
 
             ordenSeleccion.MarcarComoSeleccionada();
 
-            foreach(var ordenPreparacionId in ordenSeleccion.IDsOrdenesPreparacion)
+            foreach (var ordenPreparacionId in ordenSeleccion.IDsOrdenesPreparacion)
             {
                 var ordenPreparacion = OrdenPreparacionAlmacen.ObtenerOrdenPorId(ordenPreparacionId);
 
@@ -49,6 +49,7 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
         {
             var ordenSeleccion = OrdenSeleccionAlmacen.ObtenerOrdenPorId(idOrden);
             var productos = new List<Producto>();
+            var cantidadesPorUbicacion = new Dictionary<string, int>();
 
             foreach (var idOrdenPreparacion in ordenSeleccion.IDsOrdenesPreparacion)
             {
@@ -69,22 +70,40 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
                         .OrderBy(u => u.Cantidad)
                         .ToList();
 
+                    foreach (var ubi in ubicaciones)
+                    {
+                        if (!cantidadesPorUbicacion.ContainsKey(ubi.Ubicacion))
+                        {
+                            cantidadesPorUbicacion.Add(ubi.Ubicacion, ubi.Cantidad);
+                        }
+                    }
+
                     foreach (var ubicacion in ubicaciones)
                     {
                         if (cantidadRestante <= 0) break;
 
-                        int cantidadTomada = Math.Min(ubicacion.Cantidad, cantidadRestante);
+                        int cantidadTomada = Math.Min(cantidadesPorUbicacion[ubicacion.Ubicacion], cantidadRestante);
 
-                        var producto = new Producto(
-                            ubicacion: ubicacion.Ubicacion,
-                            cantidad: cantidadTomada,
-                            idProducto: mercaderiaOrden.IDMercaderia.ToString(),
-                            descripcionProducto: mercaderia.DescripcionMercaderia
-                        );
+                        var producto = productos.Where(p => p.Ubicacion == ubicacion.Ubicacion).FirstOrDefault();
 
-                        productos.Add(producto);
+                        if (producto == null)
+                        {
+                            producto = new Producto(
+                                ubicacion: ubicacion.Ubicacion,
+                                cantidad: cantidadTomada,
+                                idProducto: mercaderiaOrden.IDMercaderia.ToString(),
+                                descripcionProducto: mercaderia.DescripcionMercaderia
+                            );
+
+                            productos.Add(producto);
+                        }
+                        else
+                        {
+                            producto.Cantidad += cantidadTomada;
+                        }
 
                         cantidadRestante -= cantidadTomada;
+                        cantidadesPorUbicacion[ubicacion.Ubicacion] -= cantidadTomada; 
                     }
 
                     if (cantidadRestante > 0)

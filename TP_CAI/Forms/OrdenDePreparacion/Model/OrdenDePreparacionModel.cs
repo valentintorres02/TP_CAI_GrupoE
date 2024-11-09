@@ -42,7 +42,12 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
                     {
                         var productoModelo = new Producto();
                         productoModelo.Id = productoEntidad.IDMercaderia.ToString();
+                        
+
+                        //A esta cantidad restarle la cantidad de este producto en ordenes de preparacion 
+                        //que estén en un estado ANTERIOR A ACEPTAR LA GESTION DE LA ORDEN DE SELECCION.
                         productoModelo.Cantidad = productoEntidad.CalcularTotalStock(depositoEntidad.IDDeposito);
+                        
                         productoModelo.Descripcion = productoEntidad.DescripcionMercaderia;
 
                         if (productoModelo.Cantidad == 0)
@@ -275,6 +280,8 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
 
                 int cantidadRequerida = detalle.Cantidad;
 
+                //STOCK SE DESCUENTA AL GESTIONAR LA ORDEN DE SELECCION (EN EL ACEPTAR).
+                /*
                 // Intentar descontar el stock del producto
                 foreach (var stockItem in productoEntidad.Ubicaciones)
                 {
@@ -295,7 +302,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
                 if (cantidadRequerida > 0)
                 {
                     return $"No hay suficiente stock para el producto ID {detalle.IDMercaderia}. Se necesita {cantidadRequerida} más.";
-                }
+                }*/
             }
 
 
