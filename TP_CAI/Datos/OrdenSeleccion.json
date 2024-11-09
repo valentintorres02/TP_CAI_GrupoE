@@ -2,6 +2,16 @@
   {
     "IDOrdenSeleccion": 1,
     "Estado": 0,
-    "IDsOrdenesPreparacion": [ 5]
+    "IDsOrdenesPreparacion": [ 5 ]
+  },
+  {
+    "IDOrdenSeleccion": 2,
+    "Estado": 0,
+    "IDsOrdenesPreparacion": [ 13, 14 ]
+  },
+  {
+    "IDOrdenSeleccion": 3,
+    "Estado": 0,
+    "IDsOrdenesPreparacion": [ 15, 16 ]
   }
 ]
