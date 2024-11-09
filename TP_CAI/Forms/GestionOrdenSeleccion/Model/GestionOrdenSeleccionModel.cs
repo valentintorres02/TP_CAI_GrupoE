@@ -76,7 +76,7 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
                         int cantidadTomada = Math.Min(ubicacion.Cantidad, cantidadRestante);
 
                         var producto = new Producto(
-                            ubicacion: $"{ubicacion.IDDeposito}-{ubicacion.Ubicacion}",
+                            ubicacion: ubicacion.Ubicacion,
                             cantidad: cantidadTomada,
                             idProducto: mercaderiaOrden.IDMercaderia.ToString(),
                             descripcionProducto: mercaderia.DescripcionMercaderia
