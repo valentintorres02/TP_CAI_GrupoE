@@ -38,10 +38,39 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
             foreach (var ordenPreparacionId in ordenSeleccion.IDsOrdenesPreparacion)
             {
                 var ordenPreparacion = OrdenPreparacionAlmacen.ObtenerOrdenPorId(ordenPreparacionId);
-
                 ordenPreparacion.MarcarComoPendienteDeEmpaquetado();
+
+                foreach (var mercaderiaOrden in ordenPreparacion.MercaderiaOrden)
+                {
+                    var mercaderia = MercaderiaAlmacen.ObtenerMercaderiaPorId(mercaderiaOrden.IDMercaderia);
+
+                    if (mercaderia == null)
+                    {
+                        continue;
+                    }
+
+                    int cantidadRestante = mercaderiaOrden.Cantidad;
+                    var ubicaciones = mercaderia.Ubicaciones
+                        .Where(u => u.IDDeposito == ordenPreparacion.IDDeposito && u.Cantidad > 0)
+                        .OrderBy(u => u.Cantidad)
+                        .ToList();
+
+                    foreach (var ubicacion in ubicaciones)
+                    {
+                        if (cantidadRestante <= 0) break;
+
+                        int cantidadTomada = Math.Min(ubicacion.Cantidad, cantidadRestante);
+
+                        if (cantidadTomada > 0)
+                        {
+                            cantidadRestante -= cantidadTomada;
+                            ubicacion.Cantidad -= cantidadTomada; // Reduce la cantidad en el stock de la ubicación
+                        }
+                    }
+                }
             }
 
+            // Remueve la orden de selección una vez marcada
             OrdenesDeSeleccion.Remove(ordenASeleccionar);
         }
 
@@ -49,7 +78,6 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
         {
             var ordenSeleccion = OrdenSeleccionAlmacen.ObtenerOrdenPorId(idOrden);
             var productos = new List<Producto>();
-            var cantidadesPorUbicacion = new Dictionary<string, int>();
 
             foreach (var idOrdenPreparacion in ordenSeleccion.IDsOrdenesPreparacion)
             {
@@ -70,45 +98,38 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
                         .OrderBy(u => u.Cantidad)
                         .ToList();
 
-                    foreach (var ubi in ubicaciones)
-                    {
-                        if (!cantidadesPorUbicacion.ContainsKey(ubi.Ubicacion))
-                        {
-                            cantidadesPorUbicacion.Add(ubi.Ubicacion, ubi.Cantidad);
-                        }
-                    }
-
                     foreach (var ubicacion in ubicaciones)
                     {
                         if (cantidadRestante <= 0) break;
 
-                        int cantidadTomada = Math.Min(cantidadesPorUbicacion[ubicacion.Ubicacion], cantidadRestante);
+                        int cantidadTomada = Math.Min(ubicacion.Cantidad, cantidadRestante);
 
-                        var producto = productos.Where(p => p.Ubicacion == ubicacion.Ubicacion).FirstOrDefault();
-
-                        if (producto == null)
+                        if (cantidadTomada > 0)
                         {
-                            producto = new Producto(
-                                ubicacion: ubicacion.Ubicacion,
-                                cantidad: cantidadTomada,
-                                idProducto: mercaderiaOrden.IDMercaderia.ToString(),
-                                descripcionProducto: mercaderia.DescripcionMercaderia
-                            );
+                            var producto = productos
+                                .FirstOrDefault(p => p.Ubicacion == ubicacion.Ubicacion && p.IdProducto == mercaderiaOrden.IDMercaderia.ToString());
 
-                            productos.Add(producto);
-                        }
-                        else
-                        {
-                            producto.Cantidad += cantidadTomada;
-                        }
+                            if (producto == null)
+                            {
+                                producto = new Producto(
+                                    ubicacion: ubicacion.Ubicacion,
+                                    cantidad: cantidadTomada,
+                                    idProducto: mercaderiaOrden.IDMercaderia.ToString(),
+                                    descripcionProducto: mercaderia.DescripcionMercaderia
+                                );
+                                productos.Add(producto);
+                            }
+                            else
+                            {
+                                producto.Cantidad += cantidadTomada;
+                            }
 
-                        cantidadRestante -= cantidadTomada;
-                        cantidadesPorUbicacion[ubicacion.Ubicacion] -= cantidadTomada; 
+                            cantidadRestante -= cantidadTomada;
+                        }
                     }
 
                     if (cantidadRestante > 0)
                     {
-                        // Añadir un producto indicando que no hay suficiente stock
                         productos.Add(new Producto(
                             ubicacion: "Sin stock suficiente",
                             cantidad: cantidadRestante,
@@ -116,12 +137,10 @@ namespace TP_CAI.Forms.GestionOrdenSeleccion.Model
                             descripcionProducto: $"{mercaderia.DescripcionMercaderia} (faltante)"
                         ));
                     }
-
-                    // Ordenar los productos por ubicación
-                    productos.Sort((a, b) => a.Ubicacion.CompareTo(b.Ubicacion));
                 }
             }
 
+            productos.Sort((a, b) => a.Ubicacion.CompareTo(b.Ubicacion));
             return productos;
         }
 

@@ -92,5 +92,27 @@ namespace TP_CAI.Almacenes
         {
             return ordenesPreparacion.FindAll(o => o.Estado == EstadoOrdenPreparacion.Preparada);
         }
+
+        public static int CalcularCantidadReservada(int idDeposito, int idMercaderia, int idCliente)
+        {
+            // Buscar las ordenes de preparacion en estado "EnPreparacion" o "Preparada", donde el deposito y el cliente coincidan
+            var ordenes = ordenesPreparacion.FindAll(o => (o.Estado == EstadoOrdenPreparacion.PendienteDeSeleccion || o.Estado == EstadoOrdenPreparacion.EnPreparacion) && o.IDDeposito== idDeposito && o.IDCliente == idCliente);
+
+            int cantidadReservada = 0;
+
+
+            foreach (var o in ordenes) {
+                // Buscar la mercaderia en la orden de preparacion
+                var mercaderiaOrden = o.MercaderiaOrden.Find(mo => mo.IDMercaderia == idMercaderia);
+
+                if (mercaderiaOrden != null)
+                {
+                    cantidadReservada += mercaderiaOrden.Cantidad;
+                }
+            }
+
+
+            return cantidadReservada;
+        }
     }
 }

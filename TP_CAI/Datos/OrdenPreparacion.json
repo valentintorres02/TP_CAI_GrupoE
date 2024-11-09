@@ -41,9 +41,9 @@
   },
   {
     "IDOrdenPreparacion": 3,
-    "IDCliente": 3,
+    "IDCliente": 1,
     "Estado": 0,
-    "IDDeposito": 2,
+    "IDDeposito": 1,
     "DNITransportista": 13579246,
     "Prioridad": 0,
     "FechaEmision": "2024-10-16T14:18:16.6634359-03:00",
@@ -85,7 +85,7 @@
   },
   {
     "IDOrdenPreparacion": 5,
-    "IDCliente": 4,
+    "IDCliente": 1,
     "Estado": 1,
     "IDDeposito": 1,
     "DNITransportista": 24681357,
@@ -102,8 +102,8 @@
         "Cantidad": 40
       },
       {
-        "IDMercaderia": 207,
-        "Cantidad": 32
+        "IDMercaderia": 101,
+        "Cantidad": 33
       }
     ]
   },
@@ -275,7 +275,7 @@
     "MercaderiaOrden": [
       {
         "IDMercaderia": 202,
-        "Cantidad": 50
+        "Cantidad": 35
       }
     ]
   },

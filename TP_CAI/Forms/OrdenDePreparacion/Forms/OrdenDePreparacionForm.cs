@@ -264,7 +264,7 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 DateTime fechaDeEntrega = FechaEntregaDatePicker.Value;
 
                 // Si todo es válido, continuar con la creación de la orden
-                string mensaje = _ordenDePreparacionModel.CrearOrden(depositoId, dniTransportista, prioridad, fechaDeEntrega);
+                string mensaje = _ordenDePreparacionModel.CrearOrden(dniTransportista, prioridad, fechaDeEntrega);
                 MessageBox.Show(mensaje);
                 ResetearFormulario();
             }

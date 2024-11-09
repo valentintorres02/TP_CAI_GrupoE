@@ -47,7 +47,11 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
                         //A esta cantidad restarle la cantidad de este producto en ordenes de preparacion 
                         //que estén en un estado ANTERIOR A ACEPTAR LA GESTION DE LA ORDEN DE SELECCION.
                         productoModelo.Cantidad = productoEntidad.CalcularTotalStock(depositoEntidad.IDDeposito);
-                        
+
+                        int cantidadReservada = OrdenPreparacionAlmacen.CalcularCantidadReservada(DepositoSeleccionado, productoEntidad.IDMercaderia, clienteEntidad.IDCliente);
+
+                        productoModelo.Cantidad -= cantidadReservada;
+
                         productoModelo.Descripcion = productoEntidad.DescripcionMercaderia;
 
                         if (productoModelo.Cantidad == 0)
@@ -232,7 +236,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             ProductosAgregados = [];
         }
 
-        public string CrearOrden(int idDeposito, int dniTransportista, PrioridadEnum prioridad, DateTime fechaEntrega)
+        public string CrearOrden(int dniTransportista, PrioridadEnum prioridad, DateTime fechaEntrega)
         {
             var cliente = ClienteAlmacen.ObtenerClientePorDocumento(ClienteSeleccionado);
 
@@ -252,7 +256,7 @@ namespace TP_CAI.Forms.OrdenDePreparacion.Model
             }
 
             nuevaOrden.IDCliente = cliente.IDCliente;
-            nuevaOrden.IDDeposito = idDeposito;
+            nuevaOrden.IDDeposito = DepositoSeleccionado;
             nuevaOrden.DNITransportista = dniTransportista;
             nuevaOrden.FechaEntrega = fechaEntrega;
             nuevaOrden.FechaEmision = DateTime.Now;
