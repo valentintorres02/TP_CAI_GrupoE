@@ -12,4 +12,4 @@ Ver:
 
 Botón Marcar como despachadas y generar remito 
 
-Ver: La orden seleccionada no está Lista para despachar
+Ver: La orden seleccionada no está Lista para despachar.
