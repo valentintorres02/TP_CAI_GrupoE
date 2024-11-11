@@ -38,7 +38,7 @@ namespace TP_CAI.Forms.Despacho.Model
                 {
                     var ordenPreparacion = OrdenPreparacionAlmacen.ObtenerOrdenPorId(idOrdenPreparacion);
 
-                    if (ordenPreparacion.DNITransportista.ToString() == dniTransportista)
+                    if (ordenPreparacion.DNITransportista.ToString() == dniTransportista && ordenPreparacion.Estado != EstadoOrdenPreparacion.Despachada)
                     {
                         var ordenPreparacionParaDespacho = new OrdenPreparacion(ordenPreparacion.IDOrdenPreparacion, ordenPreparacion.DNITransportista.ToString(), ordenPreparacion.Estado, ordenEntrega.IDOrdenEntrega);
                         OrdenesDePreparacion.Add(ordenPreparacionParaDespacho);
