@@ -1,0 +1,127 @@
+﻿verificación del mismo cliente en dos depósitos diferentes.
+
+- Botón: "Crear orden de preparación"
+
+- Cliente : "CAI S.R.L"
+
+- Depósito : "Depósito ID 1. Av. Córdoba 2100, CABA"
+
+- Botón: continuar
+
+- Productos disponibles:
+	.101	Cajas de aluminio	97
+	.201	Tornillos de acero	295
+	.202	Cajas de plástico	120
+
+- Seleccionar: Producto ID "101" 
+
+- Cantidad: 50
+
+- Botón "Agregar Producto a la orden"
+
+- Seleccionar: Producto ID "201" 
+
+- Cantidad: 60
+
+- Botón "Agregar Producto a la orden"
+
+- Ver Productos agregados:
+	.101	Cajas de aluminio	50
+.201	Tornillos de acero	60
+
+- "Prioridad" : "Alta"
+
+- Fecha : "sábado, 12 de diciembre de 2024", 
+
+- DNI TRANSPORTISTA: "12345678"
+
+- Boton: Crear orden de preparacion
+
+-Mensaje : "Orden creada satisfactoriamente" . ID de orden 17. Fecha de emisión, (fecha actual)"
+
+
+
+- Botón: "Crear orden de preparación"
+
+- Cliente : "CAI S.R.L"
+
+- Depósito : "Depósito ID 2. Belgrano 1100, Cordoba Capital"
+
+- Botón: continuar
+
+- Productos disponibles:
+	.101	Cajas de aluminio	50
+	.201	Tornillos de acero	150
+	.202	Cajas de plástico	200
+
+- Seleccionar: Producto ID "101" 
+
+- Cantidad: 50
+
+- Botón "Agregar Producto a la orden"
+
+- Seleccionar: Producto ID "201" 
+
+- Cantidad: 60
+
+- Botón "Agregar Producto a la orden"
+
+- Ver Productos agregados:
+	.101	Cajas de aluminio	50
+.201	Tornillos de acero	60
+
+- "Prioridad" : "Alta"
+
+- Fecha : "sábado, 12 de diciembre de 2024", 
+
+- DNI TRANSPORTISTA: "12345678"
+
+- Botón: Crear orden de preparación
+
+-Mensaje : "Orden creada satisfactoriamente" . ID de orden 18. Fecha de emisión, (fecha actual)"
+
+
+- Cerrar el sistema
+
+- Verificar: OrdenPreparacion.JSON:
+
+{
+        "IDOrdenPreparacion": 17,
+        "IDDeposito": 1,
+        "IDCliente": 1,
+        "Estado": 0,
+        "Prioridad": 2,
+        "DNITransportista": 12345678,
+        "FechaEmision": "(Fecha Actual)
+        "FechaEntrega": "2024-12-12T14:43:45.031",
+        "MercaderiaOrden": [
+            {
+                "IDMercaderia": 101,
+                "Cantidad": 50
+            },
+            {
+                "IDMercaderia": 201,
+                "Cantidad": 60
+            }
+        ]
+    },
+    {
+        "IDOrdenPreparacion": 18,
+        "IDDeposito": 2,
+        "IDCliente": 1,
+        "Estado": 0,
+        "Prioridad": 2,
+        "DNITransportista": 12345678,
+        "FechaEmision": (Fecha actual),
+        "FechaEntrega": "2024-12-12T14:43:45.031",
+        "MercaderiaOrden": [
+            {
+                "IDMercaderia": 101,
+                "Cantidad": 50
+            },
+            {
+                "IDMercaderia": 201,
+                "Cantidad": 60
+            }
+        ]
+    }

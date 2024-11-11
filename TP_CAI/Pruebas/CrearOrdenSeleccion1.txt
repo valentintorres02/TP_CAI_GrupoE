@@ -1,33 +1,80 @@
 Orden de selección con una sola orden de preparación
 
--botón “Crear Orden de selección”
+- botón “Crear Orden de selección”
+
 - Prioridad: “Alta”
+
 - Cliente “CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.L”
+
 - Fecha entrega : 28/10/2024
+
 - Botón “Limpiar”
+
 - Ver que se borraron los datos de Prioridad y Cliente.
+
 - Prioridad: “Alta”
+
 - Cliente “CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.L”
+
 - Fecha entrega : 28/10/2024
+
 - Botón “Buscar”
+
 - Órdenes de preparación pendientes
 	.  ID1  Alta  20-34567345-3   28/10/2024
+
 - Seleccionar: Orden ID 1
+
 - Botón: “Agregar a la Orden de Selección”
+
 - Ver Órdenes de preparación seleccionada:
 	. 1  Alta  20-34567345-3   28/10/2024
-Seleccionar: Orden ID 1
-Botón: “Eliminar de la Orden de Selección”
- Seleccionar: Orden ID 1
-Botón: “Agregar a la Orden de Selección”
-Ver Órdenes de preparación seleccionada:
+
+- Seleccionar: Orden ID 1
+
+- Botón: “Eliminar de la Orden de Selección”
+
+- Seleccionar: Orden ID 1
+
+- Botón: “Agregar a la Orden de Selección”
+
+- Ver Órdenes de preparación seleccionada:
 . 1  Alta  20-34567345-3   28/10/2024
+
 - Botón: “Crear Orden de Selección”
+
 - Mensaje: “Orden creada Satisfactoriamente. ID de Orden: 2
+
 - Cerrar el sistema
--  Verificar: OrdenSeleccion.JSON:
+
+-  Verificar:  OrdenSeleccion.JSON:
 {
-    "IDOrdenSeleccion": 1,
-   "Estado": 0,
-   "IDsOrdenesPreparacion": [5]
- }
+        "IDOrdenSeleccion": 4,
+        "Estado": 0,
+        "IDsOrdenesPreparacion": [
+            1
+        ]
+    }
+
+Verificar OrdenPreparacion.Json
+{
+        "IDOrdenPreparacion": 1,
+        "IDDeposito": 1,
+        "IDCliente": 1,
+        "Estado": 1,
+        "Prioridad": 2,
+        "DNITransportista": 12345678,
+        "FechaEmision": "2024-10-21T14:18:16.6600073-03:00",
+        "FechaEntrega": "2024-10-28T14:18:16.6632772-03:00",
+        "MercaderiaOrden": [
+            {
+                "IDMercaderia": 101,
+                "Cantidad": 20
+            },
+            {
+                "IDMercaderia": 102,
+                "Cantidad": 15
+            }
+        ]
+    },
+

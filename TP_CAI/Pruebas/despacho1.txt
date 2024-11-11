@@ -1,18 +1,53 @@
-Seleccionar transportista DNI: 20456765
+- Seleccionar transportista DNI: 20456765
 
-Botón Seleccionar
+- Botón "Seleccionar"
 
-Ver:
+- Ver:
 	. 19 PendienteDespacho 11 08/11/2024
 
-Botón Marcar como Listas para despacho
+- Botón "Marcar como Listas para despacho"
 
-Ver: Ordenes marcadas como listas para despacho correctamente
+- Ver: Ordenes marcadas como listas para despacho correctamente
 
-Botón Marcar como despachadas y generar remito 
+- Botón "Marcar como despachadas y generar remito" 
 
-Ver: Ordenes despachadas correctamente
+- Ver: Ordenes despachadas correctamente
 
-Ver sistema inicializado de 0
+- Ver sistema inicializado de 0
 
-Cerrar el sistema
+- Cerrar el sistema
+
+- Verificar: Remito.Json
+
+{
+        "IDRemito": 1,
+        "Fecha": "2024-11-10T16:05:51.6064595-03:00",
+        "IDCliente": 4,
+        "DNITransportista": 24681357,
+        "IDsOrdenesPreparacion": [
+            6,
+            
+        ]
+    }
+Verificar OrdenPreparacion.Json
+ {
+        "IDOrdenPreparacion": 6,
+        "IDDeposito": 1,
+        "IDCliente": 4,
+        "Estado": 6,
+        "Prioridad": 2,
+        "DNITransportista": 24681357,
+        "FechaEmision": "2024-10-11T14:18:16.6634364-03:00",
+        "FechaEntrega": "2024-10-21T14:18:16.6634365-03:00",
+        "MercaderiaOrden": [
+            {
+                "IDMercaderia": 205,
+                "Cantidad": 50
+            },
+            {
+                "IDMercaderia": 206,
+                "Cantidad": 40
+            }
+        ]
+    },
+

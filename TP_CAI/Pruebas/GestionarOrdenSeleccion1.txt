@@ -16,4 +16,39 @@ Mensaje: “Se seleccionó correctamente la selección de la orden de selección ID 1
 
 Cerrar el sistema
 
-Verificar
+Verificar: OrdenSeleccion.JSON:
+ {
+        "IDOrdenSeleccion": 1,
+        "Estado": 1,
+        "IDsOrdenesPreparacion": [
+            5
+        ]
+    },
+
+Verificar OrdenPreparacion.Json
+
+{
+        "IDOrdenPreparacion": 5,
+        "IDDeposito": 1,
+        "IDCliente": 1,
+        "Estado": 2,
+        "Prioridad": 2,
+        "DNITransportista": 24681357,
+        "FechaEmision": "2024-10-11T14:18:16.6634364-03:00",
+        "FechaEntrega": "2024-10-21T14:18:16.6634365-03:00",
+        "MercaderiaOrden": [
+            {
+                "IDMercaderia": 205,
+                "Cantidad": 50
+            },
+            {
+                "IDMercaderia": 206,
+                "Cantidad": 40
+            },
+            {
+                "IDMercaderia": 101,
+                "Cantidad": 33
+            }
+        ]
+    },
+
