@@ -6,17 +6,21 @@ Validaciones
 
 - Mensaje:�Al menos una orden de preparaci�n debe ser agregada a la nueva orden de selecci�n para que esta pueda ser creada
 
-- Presionar botón �Crear Orden de selecci�n�
-
 - Ingresar Cliente �zaraza�
 
 - Presionar botón �Crear Orden de selecci�n�
+
+- Mensaje:�Al menos una orden de preparaci�n debe ser agregada a la nueva orden de selecci�n para que esta pueda ser creada
 
 - Ingresar Prioridad: �zaraza�
 
 - Presionar botón �Crear Orden de selecci�n�
 
-- Borrar contenido de los filtros
+- Mensaje:�Al menos una orden de preparaci�n debe ser agregada a la nueva orden de selecci�n para que esta pueda ser creada
+
+- Borrar Ingreso de Cliente
+
+- Borrar Ingreso de Prioridad
 
 - Seleccionar Prioridad: �Alta�
 
@@ -30,25 +34,15 @@ Validaciones
 
 ID,Prioridad,CUIT/CUIL Cliente,Fecha de Entrega:
 
-    6,Alta,20-34567345-3,19/9/2026 
-
-    7,Alta,20-34567345-3,29/11/2024 
-
-    9,Alta,20-34567345-3,7/11/2024
+    1,Alta,20-34567345-3,28/10/2024 
 
 - Seleccionar: Orden ID 1
 
 - Presionar Boton Agregar a la orden de selecci�n
 
+- Seleccionar: Orden ID 1 en la segund atabla
+
 - Eliminar orden Id 1 de la orden de selecci�n 
-
-- Seleccionar todas las �rdenes de preparaci�n pendientes y agregarlas.
-
-- Seleccionar ordenes de preparaci�n ID 2 y ID 3 y eliminarlas.
-
-- Seleccionar ordenes de preparaci�n ID 2 y ID 3 y agregarlas a la orden de selecci�n.
-
-- Seleccionar todas todas las �rdenes de preparaci�n seleccionadas en la orden de selecci�n  actual y eliminar de la orden de selecci�n
 
 - Presionar botón �Crear orden de selecci�n�
 

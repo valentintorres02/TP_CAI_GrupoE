@@ -1,0 +1,15 @@
+Empaquetado
+
+- Presionar Bot�n: �Empaquetado�
+
+- Ver: Empaquetar Orden 10
+
+- Presionar Bot�n: �Empaquetar�
+
+- Presionar Bot�n: �Empaquetar� por segunda vez
+
+- Presionar Bot�n: �Empaquetar� por tercera vez
+
+- Ver: No hay ordenes de preparacion para Empaquetar
+
+- Cerrar el sistema
