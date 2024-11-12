@@ -1,10 +1,10 @@
 - Botón: "Crear orden de entrega" 
 
-- Ver: Se registró correctamente la Orden de entrega ID 1
+-Ver: Se registró correctamente la Orden de entrega 
 
-- Cerrar el sistema
+-Cerrar el sistema
 
-- Verificar: OrdenEntrega.Json
+-Verificar OrdenEntrega.Json
  {
         "IDOrdenEntrega": 3,
         "Estado": 0,

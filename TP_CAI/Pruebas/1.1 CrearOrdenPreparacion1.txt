@@ -1,4 +1,4 @@
-Orden preparación con varios productos
+Orden preparación con un solo producto
 
 - Botón: "Crear orden de preparación"
 
@@ -9,8 +9,8 @@ Orden preparación con varios productos
 - Botón: continuar
 
 - Productos disponibles:
-	.101	Cajas de aluminio	150
-	.201	Tornillos de acero	300
+	.101	Cajas de aluminio	97
+	.201	Tornillos de acero	295
 	.202	Cajas de plástico	120
 
 - Seleccionar: Producto ID "101" 
@@ -19,31 +19,24 @@ Orden preparación con varios productos
 
 - Botón "Agregar Producto a la orden"
 
-- Seleccionar: Producto ID "201" 
-
-- Cantidad: 60
-
-- Botón "Agregar Producto a la orden"
-
 - Ver Productos agregados:
 	.101	Cajas de aluminio	50
-.201	Tornillos de acero	60
 
 - "Prioridad" : "Alta"
 
-- Fecha : "sábado, 12 de diciembre de 2024", 
+- Fecha : "jueves, 12 de diciembre de 2024", 
 
 - DNI TRANSPORTISTA: "12345678"
 
-- Boton: Crear orden de preparacion
+- Botón: Crear orden de preparación
 
--Mensaje : "Orden creada satisfactoriamente" . ID de orden 6. Fecha de emisión, (fecha actual)"
+-Mensaje : "Orden creada satisfactoriamente" . ID de orden 17. Fecha de emisión, (fecha actual)"
 
 - Cerrar el sistema
 
 - Verificar: OrdenPreparacion.JSON:
 {
-    "IDOrdenPreparacion": 7,
+    "IDOrdenPreparacion": 17,
     "IDDeposito": 1,
     "IDCliente": 1,
     "Estado": 0,
@@ -55,10 +48,7 @@ Orden preparación con varios productos
       {
         "IDMercaderia": 101,
         "Cantidad": 50
-      },
-      {
-        "IDMercaderia": 201,
-        "Cantidad": 60
       }
     ]
   },
+ 

@@ -1,12 +1,12 @@
 Botón: “Empaquetado”
 
-Ver: Empaquetar Orden 01
+Ver: Empaquetar Orden 10
 
 Botón: “Empaquetar”
 
 Cerrar el sistema
 
-Verificar: OrdenPreparacion.Json
+Verificar OrdenPreparacion.Json
    {
         "IDOrdenPreparacion": 10,
         "IDDeposito": 1,
@@ -23,4 +23,3 @@ Verificar: OrdenPreparacion.Json
             }
         ]
     },
-

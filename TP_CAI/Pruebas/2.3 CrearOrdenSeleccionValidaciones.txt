@@ -1,6 +1,6 @@
 -botón “Crear Orden de selección”
 
--Boton “Crear orden de selección” 
+-Botón “Crear orden de selección” 
 
 -Mensaje:”Al menos una orden de preparación debe ser agregada a la nueva orden de selección para que esta pueda ser creada
 
@@ -13,6 +13,8 @@
 - Prioridad: “zaraza”
 
 --botón “Crear Orden de selección”
+
+- Borrar contenido de los filtros
 
 - Prioridad: “Alta”
 
@@ -32,22 +34,21 @@ ID,Prioridad,CUIT/CUIL Cliente,Fecha de Entrega:
 
 9,Alta,20-34567345-3,7/11/2024
 
-- Seleccionar: Orden ID 6
+- Seleccionar: Orden ID 1
 
 -Agregar a la orden de selección
 
--Eliminar orden Id 6 de la orden de selección 
+-Eliminar orden Id 1 de la orden de selección 
 
 -Seleccionar todas las órdenes de preparación pendientes y agregarlas.
 
--Seleccionar ordenes de preparación ID 7 y ID 9 y eliminarlas.
+-Seleccionar ordenes de preparación ID 2 y ID 3 y eliminarlas.
 
--Seleccionar ordenes de preparación ID 7 y ID 9 y agregarlas a la orden de selección.
+-Seleccionar ordenes de preparación ID 2 y ID 3 y agregarlas a la orden de selección.
 
--Seleccionar todas todas las ordenes de preparación seleccionadas en la orden de selección 
-actual y eliminar de la orden de selección
+-Seleccionar todas todas las órdenes de preparación seleccionadas en la orden de selección  actual y eliminar de la orden de selección
 
--Botón Crear orden de selección
+-Botón “Crear orden de selección”
 
 -Mensaje :”al menos una orden de preparación debe ser agregada a la nueva orden de 
 selección para que esta pueda ser creada”

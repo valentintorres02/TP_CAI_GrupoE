@@ -16,7 +16,9 @@ Mensaje: “Se seleccionó correctamente la selección de la orden de selección ID 1
 
 Cerrar el sistema
 
-Verificar: OrdenSeleccion.JSON:
+Verificar
+
+-  Verificar: OrdenSeleccion.JSON:
  {
         "IDOrdenSeleccion": 1,
         "Estado": 1,
@@ -51,4 +53,3 @@ Verificar OrdenPreparacion.Json
             }
         ]
     },
-

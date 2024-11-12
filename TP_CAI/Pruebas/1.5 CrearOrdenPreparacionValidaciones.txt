@@ -26,8 +26,8 @@ Validaciones
 - Botón continuar
 
 - Productos disponibles:
-	.101	Cajas de aluminio	150
-	.201	Tornillos de acero	300
+	.101	Cajas de aluminio	97
+	.201	Tornillos de acero	295
 	.202	Cajas de plástico	120
 
 - Boton: agregar producto
@@ -79,8 +79,8 @@ Validaciones
 - Productos agregados (Vacio)
 
 - Productos disponibles:
-	.101	Cajas de aluminio	150
-	.201	Tornillos de acero	300
+	.101	Cajas de aluminio	97
+	.201	Tornillos de acero	295
 	.202	Cajas de plástico	120
 - Seleccionar: Producto ID "101" 
 
@@ -103,8 +103,8 @@ Validaciones
 - Productos agregados (Vacio)
 
 - Productos disponibles:
-	.101	Cajas de aluminio	150
-	.201	Tornillos de acero	300
+	.101	Cajas de aluminio	97
+	.201	Tornillos de acero	295
 	.202	Cajas de plástico	120
 
 - Seleccionar: Producto ID "101" 
@@ -126,7 +126,7 @@ Validaciones
 
 - Mensaje :"Elige una fecha válida. No pueden elegirse fechas pasadas"
 
-- Fecha : "sábado, 12 de diciembre de 2024", 
+- Fecha : "jueves, 12 de diciembre de 2024", 
 
 - Boton: "Crear orden de preparacion" 
 
@@ -158,9 +158,11 @@ Validaciones
 
 - DNI TRANSPORTISTA : "-1234567"
 
-- Boton: "Crear orden de preparacion" 
+- Boton: "Crear orden de preparación" 
 
 - Mensaje: "El DNI de Transportista no puede ser un número negativo o cero. Por favor ingrese un valor positivo."
+
+
 
 - "DNI TRANSPORTISTA" : "12345678"
 

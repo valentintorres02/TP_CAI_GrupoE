@@ -31,7 +31,7 @@
 
 - "Prioridad" : "Alta"
 
-- Fecha : "sábado, 12 de diciembre de 2024", 
+- Fecha : "jueves, 12 de diciembre de 2024", 
 
 - DNI TRANSPORTISTA: "12345678"
 
@@ -72,7 +72,7 @@
 
 - "Prioridad" : "Alta"
 
-- Fecha : "sábado, 12 de diciembre de 2024", 
+- Fecha : "jueves, 12 de diciembre de 2024", 
 
 - DNI TRANSPORTISTA: "12345678"
 

@@ -1,4 +1,4 @@
-Verificar eliminacion de stock disponible
+Verificar eliminación de stock disponible
 
 
 - Botón: "Crear orden de preparación"
@@ -10,8 +10,8 @@ Verificar eliminacion de stock disponible
 - Botón: continuar
 
 - Productos disponibles:
-	.101	Cajas de aluminio	150
-	.201	Tornillos de acero	300
+	.101	Cajas de aluminio	97
+	.201	Tornillos de acero	295
 	.202	Cajas de plástico	120
 
 - Seleccionar: Producto ID "101" 
@@ -24,9 +24,9 @@ Verificar eliminacion de stock disponible
 
 - DNI TRANSPORTISTA: "12345678"
 
-- Boton: Crear orden de preparacion
+- Botón: Crear orden de preparación
 
--Mensaje : "Orden creada satisfactoriamente" . ID de orden 6. Fecha de emisión, (fecha actual)"
+-Mensaje : "Orden creada satisfactoriamente" . ID de orden 17. Fecha de emisión, (fecha actual)"
 
 - Cliente : "CAI S.R.L"
 
@@ -35,8 +35,8 @@ Verificar eliminacion de stock disponible
 - Botón: continuar
 
 - Verificar productos disponibles:
-	.101	Cajas de aluminio	100
-	.201	Tornillos de acero	300
+	.101	Cajas de aluminio	47
+	.201	Tornillos de acero	295
 	.202	Cajas de plástico	120
 
 - Cerrar el sistema
