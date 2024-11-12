@@ -1,80 +1,81 @@
 Validaciones
-- Botón: "Crear orden de preparación"
 
-- Boton: Continuar (con los campos vacios)
+- Presionar Botón: "Crear orden de preparación"
+
+- Presionar Boton: Continuar (con los campos vacios)
 
 - Mensaje: “Por favor Seleccione un cliente valido”
 
--Cliente : “zaraza”
+- Escribir Cliente : “zaraza”
 
 - Mensaje: “Por favor Seleccione un cliente valido”
 
 - Cliente : "CAI S.R.L"
 
--Deposito :”Zaraza”
+- Escribir Deposito :”Zaraza”
 
--Mensaje:- Mensaje: "Por favor seleccione un deposito valido
+- Mensaje: "Por favor seleccione un deposito valido
 
-- Cliente : "CAI S.R.L"
+- Seleccionar Cliente : "CAI S.R.L"
 
-- Boton continuar
+- Presionar Boton continuar
 
 - Mensaje: "Por favor seleccione un deposito valido"
 
 - Depósito : "Deposito ID 1. Av. Córdoba 2100, CABA"
 
-- Botón continuar
+- Presionar Botón continuar
 
 - Productos disponibles:
 	.101	Cajas de aluminio	97
 	.201	Tornillos de acero	295
 	.202	Cajas de plástico	120
 
-- Boton: agregar producto
+- Presionar Boton: agregar producto
 
 - Mensaje:  “Por favor, seleccionar un producto”.
 
-- Cantidad: 20
+- Ingresar Cantidad: 20
 
 - Mensaje: “Por favor, seleccionar un producto”.
 
 - Seleccionar: Producto ID "101" 
 
-- Boton: agregar producto
+- Presionar Boton: agregar producto
 
 - Mensaje:  "No pueden agregarse a la orden de preparación 0 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
 
-- Cantidad: 0
-- Boton: agregar producto
+- Ingresar Cantidad: 0
+- Presionar Boton: agregar producto
 
 - Mensaje:  "No pueden agregarse a la orden de preparación 0 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
 
-- Cantidad: -1
+- Ingresar Cantidad: -1
 
-- Boton: agregar producto
+- Presionar Boton: agregar producto
 
 - Mensaje:  "No pueden agregarse a la orden de preparación -1 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
 
-- Cantidad: 1000
+- Ingresar Cantidad: 1000
 
-- Boton: agregar producto
+- Presionar Boton: agregar producto
 
 - Mensaje:  "No pueden agregarse a la orden de preparación 1000 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
 
-- Cantidad: “Cinco”
+- Ingresar Cantidad: “Cinco”
 
-- Boton: agregar producto
+- Presionar Boton: agregar producto
 
 - Mensaje:  "No pueden agregarse a la orden de preparación 0 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
 
-- Cantidad: 50
+- Ingresar Cantidad: 50
 
-- Botón "Agregar Producto a la orden"
+- Presionar Botón "Agregar Producto a la orden"
 
 - Ver Productos agregados:
 	.101	Cajas de aluminio	50
 
-- Botón: "Eliminar producto seleccionado de la orden", 
+- Presionar Botón: "Eliminar producto seleccionado de la orden", 
 
 - Productos agregados (Vacio)
 
@@ -84,21 +85,21 @@ Validaciones
 	.202	Cajas de plástico	120
 - Seleccionar: Producto ID "101" 
 
-- Cantidad: 50
+- Ingresar Cantidad: 50
 
-- Botón "Agregar Producto a la orden"
+- Presionar Botón "Agregar Producto a la orden"
 
 - Seleccionar: Producto ID "201" 
 
-- Cantidad: 60
+- Ingresar Cantidad: 60
 
-- Botón "Agregar Producto a la orden"
+- Presionar Botón "Agregar Producto a la orden"
 
 - Ver Productos agregados:
 	.101	Cajas de aluminio	50
-.201	Tornillos de acero	60
+	.201	Tornillos de acero	60
 
-- Botón: "Eliminar todo”
+- Presionar Botón: "Eliminar todo”
 
 - Productos agregados (Vacio)
 
@@ -109,63 +110,62 @@ Validaciones
 
 - Seleccionar: Producto ID "101" 
 
-- Cantidad: 50
+- Ingresar Cantidad: 50
 
-- Botón "Agregar Producto a la orden"
+- Presionar Botón "Agregar Producto a la orden"
 
 - Ver Productos agregados:
 	.101	Cajas de aluminio	50
 
-- Boton: "Crear orden de preparacion" 
+- Presionar Boton: "Crear orden de preparacion" 
 
 - Mensaje: "Por favor complete el campo prioridad"
 
 - Ingresar "Prioridad" : "Alta"
 
-- Fecha : "Lunes, 1 de enero de 2024"
+- Ingresar Fecha: "Lunes, 1 de enero de 2024"
 
 - Mensaje :"Elige una fecha válida. No pueden elegirse fechas pasadas"
 
-- Fecha : "jueves, 12 de diciembre de 2024", 
+- Ingresar Fecha: "jueves, 12 de diciembre de 2024", 
 
-- Boton: "Crear orden de preparacion" 
+- Presionar Boton: "Crear orden de preparacion" 
 
 - Mensaje: "Por favor complete el campo DNI del transportista" 
 
-- DNI TRANSPORTISTA : "123456"
+- Ingresar DNI Transportista: "123456"
 
-- Boton: "Crear orden de preparacion" 
+- Presionar Boton: "Crear orden de preparacion" 
 
 - Mensaje: "El DNI de transportista debe tener como minimo 7 digitos. Por favor ingrese un valor correcto."
 
-- DNI TRANSPORTISTA : "Cinco"
+- Ingresar DNI Transportista: "Cinco"
 
-- Boton: "Crear orden de preparacion" 
+- Presionar Boton: "Crear orden de preparacion" 
 
 - Mensaje: "El DNI de transportista debe ser un numero valido. Por favor ingrese un valor correcto."
 
-- DNI TRANSPORTISTA : "-1"
+- Ingresar DNI Transportista: "-1"
 
-- Boton: "Crear orden de preparacion" 
+- Presionar Boton: "Crear orden de preparacion" 
 
 - Mensaje: "El DNI de transportista debe tener como minimo 7 digitos. Por favor ingrese un valor correcto."
 
-- DNI TRANSPORTISTA : "123456789"
+- Ingresar DNI Transportista: "123456789"
 
-- Boton: "Crear orden de preparacion" 
+- Presionar Boton: "Crear orden de preparacion" 
 
 - Mensaje: "El DNI del transportista debe tener como máximo 8 dígitos. Por favor ingrese un valor correcto."
 
-- DNI TRANSPORTISTA : "-1234567"
+- Ingresar DNI Transportista: "-1234567"
 
-- Boton: "Crear orden de preparación" 
+- Presionar Boton: "Crear orden de preparación" 
 
 - Mensaje: "El DNI de Transportista no puede ser un número negativo o cero. Por favor ingrese un valor positivo."
 
 
+- Ingresar DNI Transportista : "12345678"
 
-- "DNI TRANSPORTISTA" : "12345678"
+- Presionar Boton: "Crear orden de preparacion" 
 
-- Boton: "Crear orden de preparacion" 
-
--Mensaje : "Orden creada satisfactoriamente" . ID de orden 6. Fecha de emisión, (fecha actual)"
+- Mensaje : "Orden creada satisfactoriamente" . ID de orden 6. Fecha de emisión, (fecha actual)"
