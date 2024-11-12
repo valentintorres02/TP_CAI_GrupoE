@@ -1,13 +1,13 @@
 Verificar eliminación de stock disponible
 
 
-- Botón: "Crear orden de preparación"
+- Presioanr Botón "Crear orden de preparación"
 
-- Cliente : "CAI S.R.L"
+- Seleccionar Cliente: "CAI S.R.L"
 
-- Depósito : "Depósito ID 1. Av. Córdoba 2100, CABA"
+- Seleccionar Depósito: "Depósito ID 1. Av. Córdoba 2100, CABA"
 
-- Botón: continuar
+- Presionar Botón "Continuar"
 
 - Productos disponibles:
 	.101	Cajas de aluminio	97
@@ -16,23 +16,25 @@ Verificar eliminación de stock disponible
 
 - Seleccionar: Producto ID "101" 
 
-- Cantidad: 50
+- Ingresar Cantidad: 50
 
-- Botón "Agregar Producto a la orden"
+- Presionar Botón "Agregar Producto a la orden"
 
-- "Prioridad" : "Alta"
+- Seleccionar Prioridad : "Alta"
 
-- DNI TRANSPORTISTA: "12345678"
+- Ingresar DNI Transportista: "12345678"
 
-- Botón: Crear orden de preparación
+- Presionar Botón "Crear orden de preparación"
 
--Mensaje : "Orden creada satisfactoriamente" . ID de orden 17. Fecha de emisión, (fecha actual)"
+- Mensaje: "Orden creada satisfactoriamente. ID de orden 17. Fecha de emisión, (fecha actual)"
 
-- Cliente : "CAI S.R.L"
+- Cerrar mensaje.
 
-- Depósito : "Depósito ID 1. Av. Córdoba 2100, CABA"
+- Seleccionar Cliente : "CAI S.R.L"
 
-- Botón: continuar
+- Seleccionar Depósito : "Depósito ID 1. Av. Córdoba 2100, CABA"
+
+- Presionar Botón "Continuar"
 
 - Verificar productos disponibles:
 	.101	Cajas de aluminio	47

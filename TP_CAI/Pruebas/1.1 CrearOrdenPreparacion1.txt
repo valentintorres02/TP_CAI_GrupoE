@@ -1,12 +1,12 @@
 Orden preparación con un solo producto
 
-- Botón: "Crear orden de preparación"
+- Presionar Botón: "Crear orden de preparación"
 
-- Cliente : "CAI S.R.L"
+- Seleccionar Cliente: "CAI S.R.L"
 
-- Depósito : "Depósito ID 1. Av. Córdoba 2100, CABA"
+- Seleccionar Depósito: "Depósito ID 1. Av. Córdoba 2100, CABA"
 
-- Botón: continuar
+- Presionar Botón: "Continuar"
 
 - Productos disponibles:
 	.101	Cajas de aluminio	97
@@ -15,22 +15,22 @@ Orden preparación con un solo producto
 
 - Seleccionar: Producto ID "101" 
 
-- Cantidad: 50
+- Ingresar Cantidad: 50
 
 - Botón "Agregar Producto a la orden"
 
 - Ver Productos agregados:
 	.101	Cajas de aluminio	50
 
-- "Prioridad" : "Alta"
+- Seleccionar "Prioridad" : "Alta"
 
-- Fecha : "jueves, 12 de diciembre de 2024", 
+- Ingresar Fecha: "jueves, 12 de diciembre de 2024", 
 
-- DNI TRANSPORTISTA: "12345678"
+- Ingresar DNI Transportista: "12345678"
 
 - Botón: Crear orden de preparación
 
--Mensaje : "Orden creada satisfactoriamente" . ID de orden 17. Fecha de emisión, (fecha actual)"
+- Mensaje: "Orden creada satisfactoriamente. ID de orden 17. Fecha de emisión: (fecha actual)"
 
 - Cerrar el sistema
 
