@@ -1,54 +1,55 @@
--botón “Crear Orden de selección”
+Validaciones
 
--Botón “Crear orden de selección” 
+- Presionar botÃ³n ï¿½Crear Orden de selecciï¿½nï¿½
 
--Mensaje:”Al menos una orden de preparación debe ser agregada a la nueva orden de selección para que esta pueda ser creada
+- Presionar botÃ³n ï¿½Crear orden de selecciï¿½nï¿½ 
 
--botón “Crear Orden de selección”
+- Mensaje:ï¿½Al menos una orden de preparaciï¿½n debe ser agregada a la nueva orden de selecciï¿½n para que esta pueda ser creada
 
--Cliente “zaraza”
+- Presionar botÃ³n ï¿½Crear Orden de selecciï¿½nï¿½
 
---botón “Crear Orden de selección”
+- Ingresar Cliente ï¿½zarazaï¿½
 
-- Prioridad: “zaraza”
+- Presionar botÃ³n ï¿½Crear Orden de selecciï¿½nï¿½
 
---botón “Crear Orden de selección”
+- Ingresar Prioridad: ï¿½zarazaï¿½
+
+- Presionar botÃ³n ï¿½Crear Orden de selecciï¿½nï¿½
 
 - Borrar contenido de los filtros
 
-- Prioridad: “Alta”
+- Seleccionar Prioridad: ï¿½Altaï¿½
 
-- Cliente “CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.L”
+- Seleccionar Cliente ï¿½CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.Lï¿½
 
-- Fecha entrega : 28/10/2024
+- Ingresar Fecha entrega : 28/10/2024
 
-- Botón “Buscar”
+- Presionar Botï¿½n ï¿½Buscarï¿½
 
-- Órdenes de preparación pendientes
+- ï¿½rdenes de preparaciï¿½n pendientes
 
 ID,Prioridad,CUIT/CUIL Cliente,Fecha de Entrega:
 
- 6,Alta,20-34567345-3,19/9/2026 
+    6,Alta,20-34567345-3,19/9/2026 
 
-7,Alta,20-34567345-3,29/11/2024 
+    7,Alta,20-34567345-3,29/11/2024 
 
-9,Alta,20-34567345-3,7/11/2024
+    9,Alta,20-34567345-3,7/11/2024
 
 - Seleccionar: Orden ID 1
 
--Agregar a la orden de selección
+- Presionar Boton Agregar a la orden de selecciï¿½n
 
--Eliminar orden Id 1 de la orden de selección 
+- Eliminar orden Id 1 de la orden de selecciï¿½n 
 
--Seleccionar todas las órdenes de preparación pendientes y agregarlas.
+- Seleccionar todas las ï¿½rdenes de preparaciï¿½n pendientes y agregarlas.
 
--Seleccionar ordenes de preparación ID 2 y ID 3 y eliminarlas.
+- Seleccionar ordenes de preparaciï¿½n ID 2 y ID 3 y eliminarlas.
 
--Seleccionar ordenes de preparación ID 2 y ID 3 y agregarlas a la orden de selección.
+- Seleccionar ordenes de preparaciï¿½n ID 2 y ID 3 y agregarlas a la orden de selecciï¿½n.
 
--Seleccionar todas todas las órdenes de preparación seleccionadas en la orden de selección  actual y eliminar de la orden de selección
+- Seleccionar todas todas las ï¿½rdenes de preparaciï¿½n seleccionadas en la orden de selecciï¿½n  actual y eliminar de la orden de selecciï¿½n
 
--Botón “Crear orden de selección”
+- Presionar botÃ³n ï¿½Crear orden de selecciï¿½nï¿½
 
--Mensaje :”al menos una orden de preparación debe ser agregada a la nueva orden de 
-selección para que esta pueda ser creada”
+- Mensaje :ï¿½al menos una orden de preparaciï¿½n debe ser agregada a la nueva orden de selecciï¿½n para que esta pueda ser creadaï¿½

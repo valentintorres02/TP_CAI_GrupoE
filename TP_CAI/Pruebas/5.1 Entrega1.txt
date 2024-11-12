@@ -1,6 +1,10 @@
-- Botón: "Crear orden de entrega" 
+Crear orden de entrega
 
--Ver: Se registró correctamente la Orden de entrega 
+- Presionar Botï¿½n: "Crear orden de entrega" 
+
+- Presionar Botï¿½n: "Crear orden de entrega" 
+
+-Ver: Se registrï¿½ correctamente la Orden de entrega 
 
 -Cerrar el sistema
 

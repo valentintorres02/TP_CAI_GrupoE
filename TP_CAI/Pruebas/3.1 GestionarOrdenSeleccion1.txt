@@ -1,24 +1,24 @@
-Botón “Gestión Orden de selección”
+Gestionar orden de seleccion
 
-Botón: “Ver ítems a seleccionar”
+- Presionar Botï¿½n ï¿½Gestiï¿½n Orden de selecciï¿½nï¿½
 
-Mensaje:”No se ha seleccionado ninguna orden.Por favor seleccione una”
+- Presionar BotÃ³n ï¿½Ver ï¿½tems a seleccionarï¿½
 
-Botón: “Marcar como seleccionada”
+- Ver Mensaje:ï¿½No se ha seleccionado ninguna orden.Por favor seleccione unaï¿½
 
-Mensaje:”No se ha seleccionado ninguna orden.Por favor seleccione una”
+- Presionar BotÃ³n ï¿½Marcar como seleccionadaï¿½
 
-Seleccionar: Orden ID 1
+- Ver Mensaje:ï¿½No se ha seleccionado ninguna orden.Por favor seleccione unaï¿½
 
-Botón: “Marcar como seleccionada”
+- Seleccionar: Orden ID 1
 
-Mensaje: “Se seleccionó correctamente la selección de la orden de selección ID 1”
+- Presionar BotÃ³n ï¿½Marcar como seleccionadaï¿½
 
-Cerrar el sistema
+- Ver Mensaje: ï¿½Se seleccionï¿½ correctamente la selecciï¿½n de la orden de selecciï¿½n ID 1ï¿½
 
-Verificar
+- Cerrar el sistema
 
--  Verificar: OrdenSeleccion.JSON:
+Verificar: OrdenSeleccion.JSON:
  {
         "IDOrdenSeleccion": 1,
         "Estado": 1,

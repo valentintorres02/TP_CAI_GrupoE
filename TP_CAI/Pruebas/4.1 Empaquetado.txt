@@ -1,10 +1,12 @@
-Botón: “Empaquetado”
+Empaquetado
 
-Ver: Empaquetar Orden 10
+- Presionar Botï¿½n: ï¿½Empaquetadoï¿½
 
-Botón: “Empaquetar”
+- Ver: Empaquetar Orden 10
 
-Cerrar el sistema
+- Presionar Botï¿½n: ï¿½Empaquetarï¿½
+
+- Cerrar el sistema
 
 Verificar OrdenPreparacion.Json
    {

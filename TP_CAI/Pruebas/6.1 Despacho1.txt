@@ -1,34 +1,28 @@
--Seleccionar transportista DNI:24681357
+Despacho
+
+- Presionar Boton "Despacho"
+
+- Seleccionar Transportista DNI:24681357
+
+- Presionar Botï¿½n Seleccionar
+
+- Ver:
+
+    .6 Lista Para despachar ID02 10-11-24
 
 
--Botón Seleccionar
+- Presionar Botï¿½n Marcar como Listas para despacho
+
+- Ver: Ordenes marcadas como listas para despacho correctamente
+
+- Presionar Botï¿½n Marcar como despachadas y generar remito 
+
+- Ver: Ordenes despachadas correctamente
+
+- Cerrar el sistema
 
 
--Ver:
-
-
--. 6 Lista Para despachar ID02 10-11-24
-
-
--Botón Marcar como Listas para despacho
-
-
--Ver: Ordenes marcadas como listas para despacho correctamente
-
-
--Botón Marcar como despachadas y generar remito 
-
-
--Ver: Ordenes despachadas correctamente
-
-
--Ver sistema inicializado de 0
-
-
--Cerrar el sistema
-
-
--Verificar Remito.Json
+Verificar Remito.Json
 
 {
         "IDRemito": 1,
@@ -40,6 +34,7 @@
             
         ]
     }
+
 Verificar OrdenPreparacion.Json
  {
         "IDOrdenPreparacion": 6,

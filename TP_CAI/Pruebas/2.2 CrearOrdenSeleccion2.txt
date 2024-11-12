@@ -1,8 +1,8 @@
-seleccionando dos órdenes de preparación
+Seleccionando dos ï¿½rdenes de preparaciï¿½n
 
--botón “Crear Orden de selección”
+-botï¿½n ï¿½Crear Orden de selecciï¿½nï¿½
 
-- Órdenes de preparación pendientes
+- ï¿½rdenes de preparaciï¿½n pendientes
 
 . ID | Prioridad | CUIT/CUIL Cliente | Fecha de Entrega
 
@@ -13,23 +13,23 @@ seleccionando dos órdenes de preparación
  
 - Seleccionar: Orden ID 1 y ID 2
 
-- Botón: “Agregar a la Orden de Selección”
+- Botï¿½n: ï¿½Agregar a la Orden de Selecciï¿½nï¿½
 
-- Ver Órdenes de preparación seleccionada:
+- Ver ï¿½rdenes de preparaciï¿½n seleccionada:
 
 .1 | Alta | 20-34567345-3 | 28/10/2024
  2 | Media | 30-12345678-9 | 27/10/2024
 
 Seleccionar: Orden ID 1
 
-Botón: “Eliminar de la Orden de Selección”
+Botï¿½n: ï¿½Eliminar de la Orden de Selecciï¿½nï¿½
 
-Seleccionar el botón: “Seleccionar todo en órdenes de preparación pendientes”
+Seleccionar el botï¿½n: ï¿½Seleccionar todo en ï¿½rdenes de preparaciï¿½n pendientesï¿½
 
-Botón: “Agregar a la orden de seleccion”
+Botï¿½n: ï¿½Agregar a la orden de seleccionï¿½
 
 
-Ver Órdenes de preparación seleccionada:
+Ver ï¿½rdenes de preparaciï¿½n seleccionada:
 
  1 | Alta | 20-34567345-3 | 28/10/2024
 
@@ -41,9 +41,9 @@ Ver Órdenes de preparación seleccionada:
 
  
 
-- Botón: “Crear Orden de Selección”
+- Botï¿½n: ï¿½Crear Orden de Selecciï¿½nï¿½
 
-- Mensaje: “Orden creada Satisfactoriamente. ID de Orden: 4
+- Mensaje: ï¿½Orden creada Satisfactoriamente. ID de Orden: 4
 
 - Cerrar el sistema
 

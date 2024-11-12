@@ -1,15 +1,9 @@
--Escribir Transportista “Zaraza”
+Validaciones
 
--Ver: Por favor seleccione un transportista válido
+- Presionar Boton "Despacho"
 
--Seleccionar transportista DNI: 20456765
+- Escribir Transportista ï¿½Zarazaï¿½
 
--Botón Seleccionar
+- Ver: Por favor seleccione un transportista vï¿½lido
 
--Ver:
-
-. 19 PendienteDespacho 11 08/11/2024
-
--Botón Marcar como despachadas y generar remito 
-
--Ver: La orden seleccionada no está Lista para despachar
+- Cerrar el sistema

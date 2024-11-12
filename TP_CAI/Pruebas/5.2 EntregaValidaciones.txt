@@ -1,1 +1,15 @@
-Ver: No hay ordenes de preparaci�n para Entrega
+Validaciones
+
+- Presionar botón: "Crear orden de entrega" 
+
+- Presionar botón: "Crear orden de entrega" 
+
+- Ver: Se registr� correctamente la Orden de entrega 
+
+- Presionar Bot�n: "Volver al Menu Principal"
+
+- Presionar Bot�n: "Crear orden de Entrega"
+
+- Ver: "No hay ordenes de preparaci�n preparadas para agregar a la orden de entrega"
+
+- Cerrar el sistema
