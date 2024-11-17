@@ -139,7 +139,7 @@
             // 
             // IdOrden
             // 
-            IdOrden.Text = "ID";
+            IdOrden.Text = "ID de Orden";
             IdOrden.Width = 240;
             // 
             // MarcarComoSeleccionadaButton
@@ -174,7 +174,7 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "GestionOrdenSeleccionForm";
-            Text = "GestionOrdenSeleccionForm";
+            Text = "Gestion Orden de Selección";
             FormClosing += GestionOrdenSeleccionForm_FormClosing;
             Load += GestionOrdenSeleccionForm_Load;
             OrdenesGroup.ResumeLayout(false);

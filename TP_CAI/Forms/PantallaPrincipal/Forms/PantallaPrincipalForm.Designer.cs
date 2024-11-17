@@ -130,7 +130,7 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "PantallaPrincipalForm";
-            Text = "PantallaPrincipalForm";
+            Text = "Menú Principal";
             FormClosing += PantallaPrincipalForm_FormClosing;
             Load += PantallaPrincipalForm_Load;
             ResumeLayout(false);

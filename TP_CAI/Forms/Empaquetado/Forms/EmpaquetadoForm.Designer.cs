@@ -137,7 +137,7 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "EmpaquetadoForm";
-            Text = "Empaquetar";
+            Text = "Empaquetado";
             FormClosing += EmpaquetadoForm_FormClosing;
             Load += EmpaquetadoForm_Load;
             Productos.ResumeLayout(false);
