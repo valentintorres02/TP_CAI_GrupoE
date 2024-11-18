@@ -14,14 +14,14 @@ using System.ComponentModel;
 namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 {
 
-    internal class ConsultaOrdenesDePreparacionModel
+    internal class OrdenSeleccionModel
     {
         public List<OrdenPreparacion> OrdenesDePreparacionIniciales { get; private set; }
         public List<OrdenPreparacion> OrdenesDePreparacionFiltradas { get; private set; }
         public List<OrdenPreparacion> OrdenesDePreparacionAgregadas{ get; private set; }
         public List<Cliente> Clientes { get; private set; }
 
-        public ConsultaOrdenesDePreparacionModel() {
+        public OrdenSeleccionModel() {
             OrdenesDePreparacionIniciales = new List<OrdenPreparacion>();
             OrdenesDePreparacionFiltradas = new List<OrdenPreparacion>();
             OrdenesDePreparacionAgregadas = new List<OrdenPreparacion>();
@@ -102,7 +102,7 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
             return $"Orden Creada Satisfactoriamente. ID de Orden: {nuevaOrden.IDOrdenSeleccion}.";
         }
 
-        public void FiltrarOrdenes(PrioridadEnum? prioridad, string documentoCliente, DateTime? fechaEntrega)
+        public void FiltrarOrdenes(PrioridadEnum? prioridad, string documentoCliente, DateTime? fechaEntregaDesde, DateTime? fechaEntregaHasta)
         {
             // Iniciar la lista de órdenes filtradas
             var ordenesFiltradas = OrdenesDePreparacionIniciales.AsEnumerable();
@@ -119,10 +119,16 @@ namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
                 ordenesFiltradas = ordenesFiltradas.Where(o => o.DocumentoCliente.Equals(documentoCliente, StringComparison.OrdinalIgnoreCase));
             }
 
-            // Filtrar por fecha de entrega si se proporciona
-            if (fechaEntrega.HasValue)
+            // Filtrar por fecha de entrega desde si se proporciona
+            if (fechaEntregaDesde.HasValue)
             {
-                ordenesFiltradas = ordenesFiltradas.Where(o => o.FechaEntrega.Date == fechaEntrega.Value.Date);
+                ordenesFiltradas = ordenesFiltradas.Where(o => o.FechaEntrega.Date >= fechaEntregaDesde.Value.Date);
+            }
+
+            // Filtrar por fecha de entrega hasta si se proporciona
+            if (fechaEntregaHasta.HasValue)
+            {
+                ordenesFiltradas = ordenesFiltradas.Where(o => o.FechaEntrega.Date <= fechaEntregaHasta.Value.Date);
             }
 
             // Convertir a lista y asignar a OrdenesDePreparacionFiltradas

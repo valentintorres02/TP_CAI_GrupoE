@@ -145,6 +145,7 @@
             VolverButton.TabIndex = 14;
             VolverButton.Text = "Volver al Menú Principal";
             VolverButton.UseVisualStyleBackColor = true;
+            VolverButton.Click += VolverButton_Click;
             // 
             // ConsultaStockForm
             // 
@@ -159,6 +160,7 @@
             Controls.Add(label2);
             Name = "ConsultaStockForm";
             Text = "Consulta de Stock";
+            FormClosing += ConsultaStockForm_FormClosing;
             Load += ConsultaStockForm_Load;
             ProductosGroup.ResumeLayout(false);
             ProductosGroup.PerformLayout();

@@ -145,16 +145,19 @@
             // 
             // FechaEntrega
             // 
+            FechaEntrega.DisplayIndex = 4;
             FechaEntrega.Text = "Fecha de Entrega";
             FechaEntrega.Width = 130;
             // 
             // DocumentoCliente
             // 
+            DocumentoCliente.DisplayIndex = 3;
             DocumentoCliente.Text = "CUIT/CUIL Cliente";
             DocumentoCliente.Width = 240;
             // 
             // Prioridad
             // 
+            Prioridad.DisplayIndex = 2;
             Prioridad.Text = "Prioridad";
             Prioridad.Width = 100;
             // 
@@ -175,11 +178,13 @@
             // 
             // Deposito
             // 
+            Deposito.DisplayIndex = 5;
             Deposito.Text = "Deposito";
             Deposito.Width = 280;
             // 
             // Estado
             // 
+            Estado.DisplayIndex = 1;
             Estado.Text = "Estado";
             Estado.Width = 200;
             // 

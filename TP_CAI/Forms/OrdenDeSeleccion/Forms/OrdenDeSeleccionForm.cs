@@ -18,19 +18,20 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
 {
     public partial class OrdenDeSeleccionForm : Form
     {
-        private ConsultaOrdenesDePreparacionModel _ordenDeSeleccionModel;
+        private OrdenSeleccionModel _ordenDeSeleccionModel;
 
         public OrdenDeSeleccionForm()
         {
             InitializeComponent();
-            _ordenDeSeleccionModel = new ConsultaOrdenesDePreparacionModel();
+            _ordenDeSeleccionModel = new OrdenSeleccionModel();
         }
 
         private void OrdenDeSeleccionForm_Load(object sender, EventArgs e)
         {
             OrdenesPreparacionPendientesListView.FullRowSelect = true;
             OrdenesPreparacionSeleccionadasListView.FullRowSelect = true;
-            FechaEntregaDatePicker.Checked = false;
+            FechaEntregaDesdeDatePicker.Checked = false;
+            FechaEntregaHastaDatePicker.Checked = false;
 
             CargarPrioridadesCombobox();
             CargarClientesCombobox();
@@ -135,14 +136,20 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
             // Obtener el documento del cliente, validando que SelectedValue no sea nulo
             string documentoCliente = ClienteCombobox.SelectedValue?.ToString();
 
-            DateTime? fechaEntrega = null;
-            if (FechaEntregaDatePicker.Value != null && FechaEntregaDatePicker.Checked)
+            DateTime? fechaEntregaDesde = null;
+            if (FechaEntregaDesdeDatePicker.Value != null && FechaEntregaDesdeDatePicker.Checked)
             {
-                fechaEntrega = FechaEntregaDatePicker.Value.Date;
+                fechaEntregaDesde = FechaEntregaDesdeDatePicker.Value.Date;
+            }
+
+            DateTime? fechaEntregaHasta= null;
+            if (FechaEntregaHastaDatePicker.Value != null && FechaEntregaHastaDatePicker.Checked)
+            {
+                fechaEntregaHasta= FechaEntregaHastaDatePicker.Value.Date;
             }
 
             // Filtrar las órdenes en el modelo
-            _ordenDeSeleccionModel.FiltrarOrdenes(prioridadSeleccionada, documentoCliente, fechaEntrega);
+            _ordenDeSeleccionModel.FiltrarOrdenes(prioridadSeleccionada, documentoCliente, fechaEntregaDesde, fechaEntregaHasta);
 
             // Actualizar la lista de órdenes mostradas
             ActualizarOrdenesFiltradas();
