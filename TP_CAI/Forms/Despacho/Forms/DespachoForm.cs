@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP_CAI.Almacenes;
 using TP_CAI.Archivos.PantallaPrincipal.Forms;
 using TP_CAI.Forms.Despacho.Model;
 using static TP_CAI.Forms.Despacho.Model.DespachoModel;
@@ -34,6 +35,16 @@ namespace TP_CAI.Archivos.Despacho.Forms
         private void DespachoForm_Load(object sender, EventArgs e)
         {
             CargarTransportistasCombobox();
+        }
+
+        private static string ConvertirEstadoEnumAString(EstadoOrdenPreparacion estado)
+        {
+            return estado switch
+            {
+                EstadoOrdenPreparacion.ListaParaDespachar => "Lista para Despachar",
+                EstadoOrdenPreparacion.PendienteDeDespacho => "Pendiente de Despacho",
+                _ => estado.ToString()
+            };
         }
 
         private void CargarTransportistasCombobox()
@@ -91,7 +102,7 @@ namespace TP_CAI.Archivos.Despacho.Forms
                 var item = new ListViewItem(new[]
                   {
                         orden.Id.ToString(),
-                        orden.Estado.ToString(),
+                        ConvertirEstadoEnumAString(orden.Estado),
                         orden.IdOrdenEntrega.ToString(),
                         orden.FechaEntrega.ToString("dd/MM/yyyy"),
             });
