@@ -1,49 +1,42 @@
-Seleccionando dos �rdenes de preparaci�n
+Crear Orden de Selección - Seleccionando dos órdenes de preparación
 
--bot�n �Crear Orden de selecci�n�
+- Presionar Botón "Crear Orden de selección"
 
-- �rdenes de preparaci�n pendientes
+- Órdenes de Preparación pendientes
 
-. ID | Prioridad | CUIT/CUIL Cliente | Fecha de Entrega
-
- 1 | Alta | 20-34567345-3 | 28/10/2024
- 2 | Media | 30-12345678-9 | 27/10/2024
- 3 | Baja | 27-87654321-5 | 25/10/2024
- 4 | Alta | 33-56789012-4 | 21/10/2024
+  .ID | Prioridad | CUIT/CUIL Cliente | Fecha de Entrega
+    1 | Alta | 20-34567345-3 | 28/10/2024
+    2 | Media | 30-12345678-9 | 27/10/2024
+    3 | Baja | 27-87654321-5 | 25/10/2024
+    4 | Alta | 33-56789012-4 | 21/10/2024
  
 - Seleccionar: Orden ID 1 y ID 2
 
-- Bot�n: �Agregar a la Orden de Selecci�n�
+- Presionar Botón: "Agregar a la Orden de Selección"
 
-- Ver �rdenes de preparaci�n seleccionada:
+- Ver Órdenes de Preparación seleccionada:
+    1 | Alta | 20-34567345-3 | 28/10/2024
+    2 | Media | 30-12345678-9 | 27/10/2024
 
-.1 | Alta | 20-34567345-3 | 28/10/2024
- 2 | Media | 30-12345678-9 | 27/10/2024
+- Seleccionar: Orden ID 1
 
-Seleccionar: Orden ID 1
+- Presionar Botón: "Eliminar de la Orden de Selección"
 
-Bot�n: �Eliminar de la Orden de Selecci�n�
+- Presionar Botón: "Seleccionar todo" en Órdenes de Preparación pendientes
 
-Seleccionar el bot�n: �Seleccionar todo en �rdenes de preparaci�n pendientes�
+- Presionar Botón: "Agregar a la orden de seleccion"
 
-Bot�n: �Agregar a la orden de seleccion�
+- Ver Órdenes de Preparación seleccionadas:
+    1 | Alta | 20-34567345-3 | 28/10/2024
+    2 | Media | 30-12345678-9 | 27/10/2024
+    3 | Baja | 27-87654321-5 | 25/10/2024
+    4 | Alta | 33-56789012-4 | 21/10/2024
 
+- Presionar Botón: "Crear Orden de Selección"
 
-Ver �rdenes de preparaci�n seleccionada:
+- Mensaje: "Orden creada Satisfactoriamente. ID de Orden: 4"
 
- 1 | Alta | 20-34567345-3 | 28/10/2024
-
- 2 | Media | 30-12345678-9 | 27/10/2024
-
- 3 | Baja | 27-87654321-5 | 25/10/2024
-
- 4 | Alta | 33-56789012-4 | 21/10/2024
-
- 
-
-- Bot�n: �Crear Orden de Selecci�n�
-
-- Mensaje: �Orden creada Satisfactoriamente. ID de Orden: 4
+- Cerrar el mensaje
 
 - Cerrar el sistema
 

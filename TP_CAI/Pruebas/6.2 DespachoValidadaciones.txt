@@ -2,7 +2,7 @@ Validaciones
 
 - Presionar Boton "Despacho"
 
-- Escribir Transportista �Zaraza�
+- Escribir Transportista "zaraza"
 
 - Ver: Por favor seleccione un transportista v�lido
 

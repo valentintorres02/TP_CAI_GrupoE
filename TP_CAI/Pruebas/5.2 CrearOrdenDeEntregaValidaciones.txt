@@ -1,15 +1,17 @@
-Entrega Validaciones
+Crear orden de Entrega - Validaciones
 
 - Presionar botón: "Crear orden de entrega" 
 
 - Presionar botón: "Crear orden de entrega" 
 
-- Ver: Se registr� correctamente la Orden de entrega 
+- Ver mensaje: "Se registró correctamente la Orden de Entrega" 
 
-- Presionar Bot�n: "Volver al Menu Principal"
+- Presionar Botón: "Volver al Menu Principal"
 
-- Presionar Bot�n: "Crear orden de Entrega"
+- Presionar Botón: "Crear orden de Entrega"
 
-- Ver: "No hay ordenes de preparaci�n preparadas para agregar a la orden de entrega"
+- Ver: "No hay ordenes de preparación preparadas para agregar a la orden de entrega"
+
+- Cerrar el mensaje
 
 - Cerrar el sistema

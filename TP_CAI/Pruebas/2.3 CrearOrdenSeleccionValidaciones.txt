@@ -1,49 +1,57 @@
-Validaciones
+Crear Orden de Selección - Validaciones
 
-- Presionar botón �Crear Orden de selecci�n�
+- Presionar botón "Crear Orden de Selección"
 
-- Presionar botón �Crear orden de selecci�n� 
+- Presionar botón "Crear Orden de Selección" 
 
-- Mensaje:�Al menos una orden de preparaci�n debe ser agregada a la nueva orden de selecci�n para que esta pueda ser creada
+- Mensaje: "Al menos una orden de preparación debe ser agregada a la nueva orden de Selección para que esta pueda ser creada"
 
-- Ingresar Cliente �zaraza�
+- Cerrar mensaje
 
-- Presionar botón �Crear Orden de selecci�n�
+- Ingresar Cliente "zaraza"
 
-- Mensaje:�Al menos una orden de preparaci�n debe ser agregada a la nueva orden de selecci�n para que esta pueda ser creada
+- Presionar botón "Crear Orden de Selección"
 
-- Ingresar Prioridad: �zaraza�
+- Mensaje: "Al menos una orden de preparación debe ser agregada a la nueva orden de Selección para que esta pueda ser creada"
 
-- Presionar botón �Crear Orden de selecci�n�
+- Cerrar mensaje
 
-- Mensaje:�Al menos una orden de preparaci�n debe ser agregada a la nueva orden de selecci�n para que esta pueda ser creada
+- Ingresar Prioridad: "zaraza"
+
+- Presionar botón "Crear Orden de Selección"
+
+- Mensaje: "Al menos una orden de preparación debe ser agregada a la nueva orden de Selección para que esta pueda ser creada"
+
+- Cerrar mensaje
 
 - Borrar Ingreso de Cliente
 
 - Borrar Ingreso de Prioridad
 
-- Seleccionar Prioridad: �Alta�
+- Seleccionar Prioridad: "Alta"
 
-- Seleccionar Cliente �CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.L�
+- Seleccionar Cliente "CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.L"
 
-- Ingresar Fecha entrega : 28/10/2024
+- Ingresar Fecha entrega: 28/10/2024
 
-- Presionar Bot�n �Buscar�
+- Presionar Botón "Buscar"
 
-- �rdenes de preparaci�n pendientes
-
-ID,Prioridad,CUIT/CUIL Cliente,Fecha de Entrega:
-
-    1,Alta,20-34567345-3,28/10/2024 
+- Órdenes de Preparación pendientes
+    ID,Prioridad,CUIT/CUIL Cliente,Fecha de Entrega:
+    1 Alta 20-34567345-3 28/10/2024 
 
 - Seleccionar: Orden ID 1
 
-- Presionar Boton Agregar a la orden de selecci�n
+- Presionar Boton Agregar a la orden de Selección
 
 - Seleccionar: Orden ID 1 en la segund atabla
 
-- Eliminar orden Id 1 de la orden de selecci�n 
+- Eliminar orden Id 1 de la orden de Selección 
 
-- Presionar botón �Crear orden de selecci�n�
+- Presionar botón "Crear Orden de Selección"
 
-- Mensaje :�al menos una orden de preparaci�n debe ser agregada a la nueva orden de selecci�n para que esta pueda ser creada�
+- Mensaje: "Al menos una orden de preparación debe ser agregada a la nueva orden de Selección para que esta pueda ser creada"
+
+- Cerrar mensaje
+
+- Cerrar sistema

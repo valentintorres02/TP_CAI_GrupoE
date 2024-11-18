@@ -1,28 +1,29 @@
-Despacho
+Despacho - Marcar órdenes como despachadas y generar remito
 
 - Presionar Boton "Despacho"
 
-- Seleccionar Transportista DNI:24681357
+- Seleccionar Transportista DNI: 24681357
 
-- Presionar Bot�n Seleccionar
+- Presionar Botón "Seleccionar"
 
-- Ver:
+- Ver Ordenes de Despachar:
+    6 Lista Para Despachar 2 18-11-24
 
-    .6 Lista Para despachar ID02 10-11-24
+- Presionar Botón "Marcar como Listas para despacho"
 
+- Ver mensaje: "Ordenes marcadas como listas para despacho correctamente"
 
-- Presionar Bot�n Marcar como Listas para despacho
+- Cerrar mensaje
 
-- Ver: Ordenes marcadas como listas para despacho correctamente
+- Presionar Botón "Marcar como despachadas y generar remito" 
 
-- Presionar Bot�n Marcar como despachadas y generar remito 
+- Ver mensaje: "Ordenes despachadas correctamente"
 
-- Ver: Ordenes despachadas correctamente
+- Cerrar el mensaje
 
 - Cerrar el sistema
 
-
-Verificar Remito.Json
+Verificar Remito.JSON
 
 {
         "IDRemito": 1,
@@ -31,11 +32,10 @@ Verificar Remito.Json
         "DNITransportista": 24681357,
         "IDsOrdenesPreparacion": [
             6,
-            
         ]
     }
 
-Verificar OrdenPreparacion.Json
+Verificar OrdenPreparacion.JSON
  {
         "IDOrdenPreparacion": 6,
         "IDDeposito": 1,

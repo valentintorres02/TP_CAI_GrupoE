@@ -1,131 +1,161 @@
-Validaciones
+Crear Orden de PreparaciÃ³n - Validaciones
 
-- Presionar Botón: "Crear orden de preparación"
+- Presionar BotÃ³n: "Crear orden de preparaciÃ³n"
 
-- Presionar Boton: Continuar (con los campos vacios)
+- Presionar Boton: "Continuar" (con los campos vacios)
 
-- Mensaje: “Por favor Seleccione un cliente valido”
+- Mensaje: "Por favor Seleccione un cliente valido"
 
-- Escribir Cliente : “zaraza”
+- Cerrar mensaje
 
-- Mensaje: “Por favor Seleccione un cliente valido”
+- Escribir Cliente: "zaraza"
 
-- Cliente : "CAI S.R.L"
+- Mensaje: "Por favor Seleccione un cliente valido"
 
-- Escribir Deposito :”Zaraza”
+- Cerrar mensaje
 
-- Mensaje: "Por favor seleccione un deposito valido
+- Cliente: "CAI S.R.L"
 
-- Seleccionar Cliente : "CAI S.R.L"
-
-- Presionar Boton continuar
+- Escribir Deposito: "zaraza"
 
 - Mensaje: "Por favor seleccione un deposito valido"
 
-- Depósito : "Deposito ID 1. Av. Córdoba 2100, CABA"
+- Cerrar mensaje
 
-- Presionar Botón continuar
+- Seleccionar Cliente: "CAI S.R.L"
+
+- Presionar Boton "Continuar"
+
+- Mensaje: "Por favor seleccione un deposito valido"
+
+- Cerrar mensaje
+
+- Seleccione deposito: "Deposito ID 1. Av. CÃ³rdoba 2100, CABA"
+
+- Presionar BotÃ³n "Continuar"
 
 - Productos disponibles:
-	.101	Cajas de aluminio	97
-	.201	Tornillos de acero	295
-	.202	Cajas de plástico	120
+	101	Cajas de aluminio	97
+	201	Tornillos de acero	295
+	202	Cajas de plÃ¡stico	120
 
-- Presionar Boton: agregar producto
+- Presionar Boton: "Agregar producto"
 
-- Mensaje:  “Por favor, seleccionar un producto”.
+- Mensaje: "Por favor, seleccionar un producto".
+
+- Cerrar mensaje
 
 - Ingresar Cantidad: 20
 
-- Mensaje: “Por favor, seleccionar un producto”.
+- Presionar Boton: "Agregar producto"
+
+- Mensaje: "Por favor, seleccionar un producto".
+
+- Cerrar mensaje
 
 - Seleccionar: Producto ID "101" 
 
-- Presionar Boton: agregar producto
+- Presionar Boton "Agregar producto"
 
-- Mensaje:  "No pueden agregarse a la orden de preparación 0 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
+- Mensaje:  "No pueden agregarse a la orden de preparaciÃ³n 0 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
+
+- Cerrar mensaje
 
 - Ingresar Cantidad: 0
-- Presionar Boton: agregar producto
 
-- Mensaje:  "No pueden agregarse a la orden de preparación 0 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
+- Presionar Boton: "Agregar producto"
+
+- Mensaje:  "No pueden agregarse a la orden de preparaciÃ³n 0 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
+
+- Cerrar mensaje
 
 - Ingresar Cantidad: -1
 
-- Presionar Boton: agregar producto
+- Presionar Boton: "Agregar producto"
 
-- Mensaje:  "No pueden agregarse a la orden de preparación -1 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
+- Mensaje:  "No pueden agregarse a la orden de preparaciÃ³n -1 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
+
+- Cerrar mensaje
 
 - Ingresar Cantidad: 1000
 
-- Presionar Boton: agregar producto
+- Presionar Boton: "Agregar producto"
 
-- Mensaje:  "No pueden agregarse a la orden de preparación 1000 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
+- Mensaje:  "No pueden agregarse a la orden de preparaciÃ³n 1000 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
 
-- Ingresar Cantidad: “Cinco”
+- Cerrar mensaje
 
-- Presionar Boton: agregar producto
+- Ingresar Cantidad: "Cinco"
 
-- Mensaje:  "No pueden agregarse a la orden de preparación 0 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
+- Presionar Boton: "Agregar producto"
+
+- Mensaje:  "No pueden agregarse a la orden de preparaciÃ³n 0 unidades del producto Cajas de Aluminio ya que debe ser igual o superior a 1. Por favor intente con un valor igual o menor a 50 pero mayor que 0."
+
+- Cerrar mensaje
 
 - Ingresar Cantidad: 50
 
-- Presionar Botón "Agregar Producto a la orden"
+- Presionar BotÃ³n "Agregar Producto a la orden"
 
 - Ver Productos agregados:
-	.101	Cajas de aluminio	50
+	101	Cajas de aluminio	50
 
-- Presionar Botón: "Eliminar producto seleccionado de la orden", 
+- Presionar BotÃ³n: "Eliminar producto seleccionado de la orden", 
 
 - Productos agregados (Vacio)
 
 - Productos disponibles:
-	.101	Cajas de aluminio	97
-	.201	Tornillos de acero	295
-	.202	Cajas de plástico	120
+	101	Cajas de aluminio	97
+	201	Tornillos de acero	295
+	202	Cajas de plÃ¡stico	120
+
 - Seleccionar: Producto ID "101" 
 
 - Ingresar Cantidad: 50
 
-- Presionar Botón "Agregar Producto a la orden"
+- Presionar BotÃ³n "Agregar Producto a la orden"
 
 - Seleccionar: Producto ID "201" 
 
 - Ingresar Cantidad: 60
 
-- Presionar Botón "Agregar Producto a la orden"
+- Presionar BotÃ³n "Agregar Producto a la orden"
 
 - Ver Productos agregados:
-	.101	Cajas de aluminio	50
-	.201	Tornillos de acero	60
+	101	Cajas de aluminio	50
+	201	Tornillos de acero	60
 
-- Presionar Botón: "Eliminar todo”
+- Presionar BotÃ³n: "Eliminar todo"
 
 - Productos agregados (Vacio)
 
 - Productos disponibles:
-	.101	Cajas de aluminio	97
-	.201	Tornillos de acero	295
-	.202	Cajas de plástico	120
+	101	Cajas de aluminio	97
+	201	Tornillos de acero	295
+	202	Cajas de plÃ¡stico	120
 
 - Seleccionar: Producto ID "101" 
 
 - Ingresar Cantidad: 50
 
-- Presionar Botón "Agregar Producto a la orden"
+- Presionar BotÃ³n "Agregar Producto a la orden"
 
 - Ver Productos agregados:
-	.101	Cajas de aluminio	50
+	101	Cajas de aluminio	50
 
 - Presionar Boton: "Crear orden de preparacion" 
 
 - Mensaje: "Por favor complete el campo prioridad"
 
-- Ingresar "Prioridad" : "Alta"
+- Cerrar mensaje
+
+- Ingresar "Prioridad": "Alta"
 
 - Ingresar Fecha: "Lunes, 1 de enero de 2024"
 
-- Mensaje :"Elige una fecha válida. No pueden elegirse fechas pasadas"
+- Mensaje: "Elige una fecha vÃ¡lida. No pueden elegirse fechas pasadas"
+
+- Cerrar mensaje
 
 - Ingresar Fecha: "jueves, 12 de diciembre de 2024", 
 
@@ -133,11 +163,15 @@ Validaciones
 
 - Mensaje: "Por favor complete el campo DNI del transportista" 
 
+- Cerrar mensaje
+
 - Ingresar DNI Transportista: "123456"
 
 - Presionar Boton: "Crear orden de preparacion" 
 
 - Mensaje: "El DNI de transportista debe tener como minimo 7 digitos. Por favor ingrese un valor correcto."
+
+- Cerrar mensaje
 
 - Ingresar DNI Transportista: "Cinco"
 
@@ -145,27 +179,38 @@ Validaciones
 
 - Mensaje: "El DNI de transportista debe ser un numero valido. Por favor ingrese un valor correcto."
 
+- Cerrar mensaje
+
 - Ingresar DNI Transportista: "-1"
 
 - Presionar Boton: "Crear orden de preparacion" 
 
 - Mensaje: "El DNI de transportista debe tener como minimo 7 digitos. Por favor ingrese un valor correcto."
 
+- Cerrar mensaje
+
 - Ingresar DNI Transportista: "123456789"
 
 - Presionar Boton: "Crear orden de preparacion" 
 
-- Mensaje: "El DNI del transportista debe tener como máximo 8 dígitos. Por favor ingrese un valor correcto."
+- Mensaje: "El DNI del transportista debe tener como mÃ¡ximo 8 dÃ­gitos. Por favor ingrese un valor correcto."
+
+- Cerrar mensaje
 
 - Ingresar DNI Transportista: "-1234567"
 
-- Presionar Boton: "Crear orden de preparación" 
+- Presionar Boton: "Crear orden de preparaciÃ³n" 
 
-- Mensaje: "El DNI de Transportista no puede ser un número negativo o cero. Por favor ingrese un valor positivo."
+- Mensaje: "El DNI de Transportista no puede ser un nÃºmero negativo o cero. Por favor ingrese un valor positivo."
 
+- Cerrar mensaje
 
-- Ingresar DNI Transportista : "12345678"
+- Ingresar DNI Transportista: "12345678"
 
 - Presionar Boton: "Crear orden de preparacion" 
 
-- Mensaje : "Orden creada satisfactoriamente" . ID de orden 6. Fecha de emisión, (fecha actual)"
+- Mensaje: "Orden creada satisfactoriamente" . ID de orden 6. Fecha de emisiÃ³n, (fecha actual)"
+
+- Cerrar mensaje
+
+- Cerrar sistema

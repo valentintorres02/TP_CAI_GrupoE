@@ -1,13 +1,17 @@
-Gestionar orden de seleccion
+Gestionar orden de seleccion - Validaciones
 
-- Presionar Bot�n �Gesti�n Orden de selecci�n�
+- Presionar Botón "Gestión Orden de Selección"
 
-- Presionar Botón �Ver �tems a seleccionar�
+- Presionar Botón "Ver ítems a seleccionar"
 
-- Ver Mensaje:�No se ha seleccionado ninguna orden.Por favor seleccione una�
+- Ver Mensaje: "No se ha seleccionado ninguna orden.Por favor seleccione una"
 
-- Presionar Botón �Marcar como seleccionada�
+- Cerrar mensaje
 
-- Ver Mensaje:�No se ha seleccionado ninguna orden.Por favor seleccione una�
+- Presionar Botón "Marcar como seleccionada"
+
+- Ver Mensaje: "No se ha seleccionado ninguna orden.Por favor seleccione una"
+
+- Cerrar mensaje
 
 - Cerrar el sistema

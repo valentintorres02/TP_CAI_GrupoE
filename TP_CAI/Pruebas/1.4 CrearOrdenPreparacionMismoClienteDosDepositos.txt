@@ -1,4 +1,4 @@
-﻿Verificación del mismo cliente en dos depósitos diferentes.
+﻿Crear Orden de Preparación - Verificación del mismo cliente en dos depósitos diferentes.
 
 - Presionar Botón: "Crear orden de preparación"
 
@@ -9,9 +9,9 @@
 - Presionar Botón "Continuar"
 
 - Productos disponibles:
-	.101	Cajas de aluminio	97
-	.201	Tornillos de acero	295
-	.202	Cajas de plástico	120
+	101	Cajas de aluminio	97
+	201	Tornillos de acero	295
+	202	Cajas de plástico	120
 
 - Seleccionar: Producto ID "101" 
 
@@ -26,21 +26,20 @@
 - Presionar Botón "Agregar Producto a la orden"
 
 - Ver Productos agregados:
-	.101	Cajas de aluminio	50
-    .201	Tornillos de acero	60
+	101	Cajas de aluminio	50
+    201	Tornillos de acero	60
 
-- Seleccionar Prioridad : "Alta"
+- Seleccionar Prioridad: "Alta"
 
-- Fecha : "jueves, 12 de diciembre de 2024", 
+- Fecha: "jueves, 12 de diciembre de 2024", 
 
-- DNI TRANSPORTISTA: "12345678"
+- Ingresar DNI Transportista: "12345678"
 
 - Boton: Crear orden de preparacion
 
--Mensaje : "Orden creada satisfactoriamente" . ID de orden 17. Fecha de emisión, (fecha actual)"
+- Mensaje: "Orden creada satisfactoriamente" . ID de orden 17. Fecha de emisión, (fecha actual)"
 
-
-- Presionar Botón: "Crear orden de preparación"
+- Cerrar el mensaje
 
 - Seleccionar Cliente: "CAI S.R.L"
 
@@ -49,9 +48,9 @@
 - Presionar Botón: continuar
 
 - Productos disponibles:
-	.101	Cajas de aluminio	50
-	.201	Tornillos de acero	150
-	.202	Cajas de plástico	200
+	101	Cajas de aluminio	50
+	201	Tornillos de acero	150
+	202	Cajas de plástico	200
 
 - Seleccionar: Producto ID "101" 
 
@@ -66,18 +65,18 @@
 - Presionar Botón "Agregar Producto a la orden"
 
 - Ver Productos agregados:
-	.101	Cajas de aluminio	50
-    .201	Tornillos de acero	60
+	101	Cajas de aluminio	50
+    201	Tornillos de acero	60
 
-- Seleccionar Prioridad : "Alta"
+- Seleccionar Prioridad: "Alta"
 
-- Fecha : "jueves, 12 de diciembre de 2024", 
+- Fecha: "jueves, 12 de diciembre de 2024", 
 
-- DNI TRANSPORTISTA: "12345678"
+- Ingresar DNI Transportista: "12345678"
 
 - Presionar Botón: Crear orden de preparación
 
--Mensaje : "Orden creada satisfactoriamente" . ID de orden 18. Fecha de emisión, (fecha actual)"
+- Mensaje: "Orden creada satisfactoriamente" . ID de orden 18. Fecha de emisión, (fecha actual)"
 
 - Cerrar el sistema
 

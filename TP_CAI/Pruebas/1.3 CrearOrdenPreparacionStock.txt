@@ -1,44 +1,43 @@
-Verificar eliminaci�n de stock disponible
+Crear Orden de Preparación - Verificar resta de stock disponible
 
-
-- Presioanr Bot�n "Crear orden de preparaci�n"
+- Presioanr Botón "Crear orden de preparación"
 
 - Seleccionar Cliente: "CAI S.R.L"
 
-- Seleccionar Dep�sito: "Dep�sito ID 1. Av. C�rdoba 2100, CABA"
+- Seleccionar Depósito: "Depósito ID 1. Av. Córdoba 2100, CABA"
 
-- Presionar Bot�n "Continuar"
+- Presionar Botón "Continuar"
 
 - Productos disponibles:
-	.101	Cajas de aluminio	97
-	.201	Tornillos de acero	295
-	.202	Cajas de pl�stico	120
+	101	Cajas de aluminio	97
+	201	Tornillos de acero	295
+	202	Cajas de plástico	120
 
 - Seleccionar: Producto ID "101" 
 
 - Ingresar Cantidad: 50
 
-- Presionar Bot�n "Agregar Producto a la orden"
+- Presionar Botón "Agregar Producto a la orden"
 
-- Seleccionar Prioridad : "Alta"
+- Seleccionar Prioridad: "Alta"
 
 - Ingresar DNI Transportista: "12345678"
 
-- Presionar Bot�n "Crear orden de preparaci�n"
+- Presionar Botón "Crear orden de preparación"
 
-- Mensaje: "Orden creada satisfactoriamente. ID de orden 17. Fecha de emisi�n, (fecha actual)"
+- Mensaje: "Orden creada satisfactoriamente. ID de orden 17. Fecha de emisión, (fecha actual)"
 
 - Cerrar mensaje.
 
-- Seleccionar Cliente : "CAI S.R.L"
+- Seleccionar Cliente: "CAI S.R.L"
 
-- Seleccionar Dep�sito : "Dep�sito ID 1. Av. C�rdoba 2100, CABA"
+- Seleccionar Depósito: "Depósito ID 1. Av. Córdoba 2100, CABA"
 
-- Presionar Bot�n "Continuar"
+- Presionar Botón "Continuar"
 
 - Verificar productos disponibles:
-	.101	Cajas de aluminio	47
-	.201	Tornillos de acero	295
-	.202	Cajas de pl�stico	120
+	101	Cajas de aluminio	47
+	201	Tornillos de acero	295
+	202	Cajas de plástico	120
 
 - Cerrar el sistema

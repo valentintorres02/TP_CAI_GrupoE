@@ -1,56 +1,56 @@
-Orden de selección con una sola orden de preparación
+Crear Orden de SelecciÃ³n - Orden de selecciÃ³n con una sola orden de preparacion
 
-- Presionar Botón “Crear Orden de selección”
+- Presionar BotÃ³n "Crear Orden de selecciÃ³n"
 
-- Seleccionar Prioridad: “Alta”
+- Seleccionar Prioridad: "Alta"
 
-- Seleccionar Cliente “CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.L”
+- Seleccionar Cliente "CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.L"
 
-- Fecha entrega : 28/10/2024
+- Fecha entrega: 28/10/2024
 
-- Presionar Botón “Limpiar”
+- Presionar BotÃ³n "Limpiar"
 
 - Ver que se borraron los datos de Prioridad y Cliente.
 
-- Seleccionar Prioridad: “Alta”
+- Seleccionar Prioridad: "Alta"
 
-- Seleccionar Cliente “CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.L”
+- Seleccionar Cliente "CUIT/CUIL: 20-34567345-3. Nombre: CAI S.R.L"
 
-- Ingresar Fecha entrega : 28/10/2024
+- Ingresar Fecha entrega: 28/10/2024
 
-- Presionar Botón “Buscar”
+- Presionar BotÃ³n "Buscar"
 
-- Órdenes de preparación pendientes
-
-	.ID1  Alta  20-34567345-3   28/10/2024
+- Ã“rdenes de preparaciÃ³n pendientes
+	1  Alta  20-34567345-3   28/10/2024
 
 - Seleccionar: Orden ID 1
 
-- Presionar Botón: “Agregar a la Orden de Selección”
+- Presionar BotÃ³n: "Agregar a la Orden de SelecciÃ³n"
 
-- Ver Órdenes de preparación seleccionada:
+- Ver Ã³rdenes de preparaciÃ³n seleccionadas:
+	1  Alta  20-34567345-3   28/10/2024
 
-	.1  Alta  20-34567345-3   28/10/2024
+- Seleccionar: Orden ID 1
 
-Seleccionar: Orden ID 1
+- Presionar BotÃ³n: "Eliminar de la Orden de SelecciÃ³n"
 
-Botón: “Eliminar de la Orden de Selección”
+- Seleccionar: Orden ID 1
 
- Seleccionar: Orden ID 1
+- Presionar BotÃ³n: "Agregar a la Orden de SelecciÃ³n"
 
-Botón: “Agregar a la Orden de Selección”
+- Ver Ã³rdenes de preparaciÃ³n seleccionada
+    1  Alta  20-34567345-3   28/10/2024
 
-Ver Órdenes de preparación seleccionada
+- Presionar BotÃ³n: "Crear Orden de SelecciÃ³n"
 
-. 1  Alta  20-34567345-3   28/10/2024
+- Mensaje: "Orden creada Satisfactoriamente. ID de Orden: 4"
 
-- Presionar Botón: “Crear Orden de Selección”
-
-- Mensaje: “Orden creada Satisfactoriamente. ID de Orden: 4
+- Cerrar el mensaje
 
 - Cerrar el sistema
 
 -  Verificar: OrdenSeleccion.JSON:
+
 {
         "IDOrdenSeleccion": 4,
         "Estado": 0,
@@ -59,7 +59,7 @@ Ver Órdenes de preparación seleccionada
         ]
     }
 
-Verificar OrdenPreparacion.Json
+Verificar OrdenPreparacion.JSON
 {
         "IDOrdenPreparacion": 1,
         "IDDeposito": 1,

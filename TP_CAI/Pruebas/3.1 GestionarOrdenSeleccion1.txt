@@ -1,6 +1,6 @@
-Gestionar orden de seleccion
+Gestionar orden de seleccion - Marcar como seleccionada
 
-- Presionar Bot�n �Gesti�n Orden de selecci�n�
+- Presionar Botón "Gestión Orden de Selección"
 
 - Seleccionar: Orden ID 1
 
@@ -12,13 +12,15 @@ Gestionar orden de seleccion
     .   3-14-2       45           205       Rollos de papel
     .   9-10-14      5            205       Rollos de papel
 
-- Presionar Botón �Marcar como seleccionada�
+- Presionar Botón "Marcar como seleccionada"
 
-- Ver Mensaje: �Se seleccion� correctamente la selecci�n de la orden de selecci�n ID 1�
+- Ver Mensaje: "Se seleccionó correctamente la Selección de la orden de Selección ID 1"
+
+- Cerrar mensaje
 
 - Cerrar el sistema
 
-Verificar: OrdenSeleccion.JSON:
+- Verificar: OrdenSeleccion.JSON:
  {
         "IDOrdenSeleccion": 1,
         "Estado": 1,
@@ -27,7 +29,7 @@ Verificar: OrdenSeleccion.JSON:
         ]
     },
 
-Verificar OrdenPreparacion.Json
+- Verificar OrdenPreparacion.JSON
 
 {
         "IDOrdenPreparacion": 5,

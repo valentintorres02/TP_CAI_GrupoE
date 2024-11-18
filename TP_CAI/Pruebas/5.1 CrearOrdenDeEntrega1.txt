@@ -1,14 +1,21 @@
-Crear orden de entrega
+Crear orden de entrega - Creacion de Orden de Entrega
 
-- Presionar Bot�n: "Crear orden de entrega" 
+- Presionar Botón: "Crear orden de entrega" 
 
-- Presionar Bot�n: "Crear orden de entrega" 
+- Ver Ordenes de Preparación
+    ID Orden Fecha Entrega
+    8        21/10/2024 14:18:16
+    9        21/10/2024 14:18:16
 
--Ver: Se registr� correctamente la Orden de entrega 
+- Presionar Botón: "Crear orden de entrega" 
 
--Cerrar el sistema
+- Ver mensaje: "Se registró correctamente la Orden de Entrega" 
 
--Verificar OrdenEntrega.Json
+- Cerrar el mensaje
+
+- Cerrar el sistema
+
+- Verificar OrdenEntrega.JSON
  {
         "IDOrdenEntrega": 3,
         "Estado": 0,
@@ -20,7 +27,7 @@ Crear orden de entrega
         ]
     }
 
--Verificar OrdenPreparacion.Json
+- Verificar OrdenPreparacion.JSON
 
 {
         "IDOrdenPreparacion": 8,
@@ -39,7 +46,7 @@ Crear orden de entrega
         ]
     },
 
--Verificar OrdenPreparacion.Json
+- Verificar OrdenPreparacion.JSON
 
 {
         "IDOrdenPreparacion": 9,

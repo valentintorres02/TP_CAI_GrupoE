@@ -1,36 +1,36 @@
-Orden preparaci髇 con un solo producto
+Crear Orden de Preparaci贸n - Orden preparaci贸n con un solo producto
 
-- Presionar Bot髇: "Crear orden de preparaci髇"
+- Presionar Bot贸n: "Crear orden de preparaci贸n"
 
 - Seleccionar Cliente: "CAI S.R.L"
 
-- Seleccionar Dep髎ito: "Dep髎ito ID 1. Av. C髍doba 2100, CABA"
+- Seleccionar Dep贸sito: "Dep贸sito ID 1. Av. C贸rdoba 2100, CABA"
 
-- Presionar Bot髇: "Continuar"
+- Presionar Bot贸n: "Continuar"
 
 - Productos disponibles:
-	.101	Cajas de aluminio	97
-	.201	Tornillos de acero	295
-	.202	Cajas de pl醩tico	120
+	101	Cajas de aluminio	97
+	201	Tornillos de acero	295
+	202	Cajas de pl谩stico	120
 
 - Seleccionar: Producto ID "101" 
 
 - Ingresar Cantidad: 50
 
-- Bot髇 "Agregar Producto a la orden"
+- Presionar Bot贸n "Agregar Producto a la orden"
 
 - Ver Productos agregados:
-	.101	Cajas de aluminio	50
+	101	Cajas de aluminio	50
 
-- Seleccionar "Prioridad" : "Alta"
+- Seleccionar "Prioridad": "Alta"
 
 - Ingresar Fecha: "jueves, 12 de diciembre de 2024", 
 
 - Ingresar DNI Transportista: "12345678"
 
-- Bot髇: Crear orden de preparaci髇
+- Presionar Bot贸n: Crear orden de preparaci贸n
 
-- Mensaje: "Orden creada satisfactoriamente. ID de orden 17. Fecha de emisi髇: (fecha actual)"
+- Mensaje: "Orden creada satisfactoriamente. ID de orden 17. Fecha de emisi贸n: (fecha actual)"
 
 - Cerrar el sistema
 
