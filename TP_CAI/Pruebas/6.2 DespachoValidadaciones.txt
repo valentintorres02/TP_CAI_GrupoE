@@ -1,9 +1,30 @@
-Validaciones
+Despacho - Validaciones
 
 - Presionar Boton "Despacho"
 
 - Escribir Transportista "zaraza"
 
-- Ver: Por favor seleccione un transportista v�lido
+- Ver mensaje: "Por favor seleccione un transportista válido"
+
+- Cerrar mensaje
+
+- Seleccionar Transportista DNI: 13579246
+
+- Presionar Botón "Seleccionar"
+
+- Ver Ordenes de Despachar:
+    7 Pendiente de Despacho 1 18-11-24
+
+- Presionar Botón "Marcar como Listas para despacho"
+
+- Ver mensaje: "Ordenes marcadas como listas para despacho correctamente"
+
+- Cerrar mensaje
+
+- Presionar Botón "Marcar como Listas para despacho"
+
+- Ver mensaje: "No hay ninguna orden para marcar como lista para despachar"
+
+- Cerrar mensaje
 
 - Cerrar el sistema
