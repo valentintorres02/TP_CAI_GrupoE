@@ -30,7 +30,8 @@ namespace TP_CAI.Forms.ConsultaOrdenesDePreparacion.Forms
         private void ConsultaOrdenesDePreparacionForm_Load_1(object sender, EventArgs e)
         {
             OrdenesPreparacionPendientesListView.FullRowSelect = true;
-            FechaEntregaDatePicker.Checked = false;
+            FechaEntregaDesdeDatePicker.Checked = false;
+            FechaEntregaHastaDatePicker.Checked = false;
 
             CargarPrioridadesCombobox();
             CargarClientesCombobox();
@@ -143,7 +144,13 @@ namespace TP_CAI.Forms.ConsultaOrdenesDePreparacion.Forms
 
         }
 
-        private void BuscarButton_Click(object sender, EventArgs e)
+        private void VolverButton_Click_1(object sender, EventArgs e)
+        {
+            VolverAlMenu();
+            return;
+        }
+
+        private void BuscarButton_Click_1(object sender, EventArgs e)
         {
             // Obtener los valores de los filtros desde los controles de la interfaz de usuario
             PrioridadEnum? prioridadSeleccionada = null;
@@ -156,32 +163,32 @@ namespace TP_CAI.Forms.ConsultaOrdenesDePreparacion.Forms
             // Obtener el documento del cliente, validando que SelectedValue no sea nulo
             string documentoCliente = ClienteCombobox.SelectedValue?.ToString();
 
-            DateTime? fechaEntrega = null;
-            if (FechaEntregaDatePicker.Value != null && FechaEntregaDatePicker.Checked)
+            DateTime? fechaEntregaDesde= null;
+            if (FechaEntregaDesdeDatePicker.Value != null && FechaEntregaDesdeDatePicker.Checked)
             {
-                fechaEntrega = FechaEntregaDatePicker.Value.Date;
+                fechaEntregaDesde = FechaEntregaDesdeDatePicker.Value.Date;
+            }
+
+            DateTime? fechaEntregaHasta= null;
+            if (FechaEntregaHastaDatePicker.Value != null && FechaEntregaHastaDatePicker.Checked)
+            {
+                fechaEntregaHasta = FechaEntregaHastaDatePicker.Value.Date;
             }
 
             // Filtrar las órdenes en el modelo
-            _consultaOrdenesDePreparacionModel.FiltrarOrdenes(prioridadSeleccionada, documentoCliente, fechaEntrega);
+            _consultaOrdenesDePreparacionModel.FiltrarOrdenes(prioridadSeleccionada, documentoCliente, fechaEntregaDesde, fechaEntregaHasta);
 
             // Actualizar la lista de órdenes mostradas
             ActualizarOrdenesFiltradas();
         }
 
-        private void LimpiarFiltroButton_Click_1(object sender, EventArgs e)
+        private void LimpiarFiltroButton_Click(object sender, EventArgs e)
         {
             PrioridadCombobox.SelectedIndex = -1;
             ClienteCombobox.SelectedIndex = -1;
 
             _consultaOrdenesDePreparacionModel.ResetearFiltros();
             ActualizarOrdenesFiltradas();
-        }
-
-        private void VolverButton_Click_1(object sender, EventArgs e)
-        {
-            VolverAlMenu();
-            return;
         }
     }
 }
