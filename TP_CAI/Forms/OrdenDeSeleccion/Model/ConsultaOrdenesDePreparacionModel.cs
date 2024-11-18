@@ -14,14 +14,14 @@ using System.ComponentModel;
 namespace TP_CAI.Forms.OrdenDeSeleccion.Forms.Model
 {
 
-    internal class OrdenDeSeleccionModel
+    internal class ConsultaOrdenesDePreparacionModel
     {
         public List<OrdenPreparacion> OrdenesDePreparacionIniciales { get; private set; }
         public List<OrdenPreparacion> OrdenesDePreparacionFiltradas { get; private set; }
         public List<OrdenPreparacion> OrdenesDePreparacionAgregadas{ get; private set; }
         public List<Cliente> Clientes { get; private set; }
 
-        public OrdenDeSeleccionModel() {
+        public ConsultaOrdenesDePreparacionModel() {
             OrdenesDePreparacionIniciales = new List<OrdenPreparacion>();
             OrdenesDePreparacionFiltradas = new List<OrdenPreparacion>();
             OrdenesDePreparacionAgregadas = new List<OrdenPreparacion>();

@@ -18,12 +18,12 @@ namespace TP_CAI.Archivos.OrdenDeSeleccion.Forms
 {
     public partial class OrdenDeSeleccionForm : Form
     {
-        private OrdenDeSeleccionModel _ordenDeSeleccionModel;
+        private ConsultaOrdenesDePreparacionModel _ordenDeSeleccionModel;
 
         public OrdenDeSeleccionForm()
         {
             InitializeComponent();
-            _ordenDeSeleccionModel = new OrdenDeSeleccionModel();
+            _ordenDeSeleccionModel = new ConsultaOrdenesDePreparacionModel();
         }
 
         private void OrdenDeSeleccionForm_Load(object sender, EventArgs e)

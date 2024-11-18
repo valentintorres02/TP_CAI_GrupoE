@@ -39,6 +39,11 @@ namespace TP_CAI.Almacenes
             return ordenesPreparacion.FindAll(o => o.Estado == EstadoOrdenPreparacion.PendienteDeSeleccion);
         }
 
+        public static List<OrdenPreparacionEntidad> ObtenerTodasLasOrdenes()
+        {
+            return ordenesPreparacion;
+        }
+
         public static List<OrdenPreparacionEntidad> ObtenerOrdenesPendientesDeEmpaquetado()
         {
             return ordenesPreparacion.FindAll(o => o.Estado == EstadoOrdenPreparacion.PendienteDeEmpaquetado);

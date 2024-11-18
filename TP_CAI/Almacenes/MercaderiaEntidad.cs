@@ -16,5 +16,6 @@ namespace TP_CAI.Almacenes
 
 		//Es importante que un valor calculado sea un METODO.
 		public int CalcularTotalStock(int depositoId) => Ubicaciones.Where(s => s.IDDeposito == depositoId).Sum(s => s.Cantidad); 
+		public int CalcularTotalStockSinDeposito() => Ubicaciones.Sum(s => s.Cantidad); 
 	}
 }

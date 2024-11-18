@@ -7,6 +7,8 @@ using TP_CAI.Archivos.OrdenDePreparacion.Forms;
 using TP_CAI.Forms.OrdenDeEntrega.Forms;
 using TP_CAI.Forms.PantallaPrincipal.Model;
 using TP_CAI.Forms.GestionOrdenSeleccion.Forms;
+using TP_CAI.Forms.ConsultaStock.Forms;
+using TP_CAI.Forms.ConsultaOrdenesDePreparacion.Forms;
 
 namespace TP_CAI.Archivos.PantallaPrincipal.Forms
 {
@@ -68,6 +70,20 @@ namespace TP_CAI.Archivos.PantallaPrincipal.Forms
         private void PantallaPrincipalForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ConsultaDeStockButton_Click(object sender, EventArgs e)
+        {
+            ConsultaStockForm consultaStockForm = new ConsultaStockForm();
+            this.Hide();
+            consultaStockForm.Show();
+        }
+
+        private void ConsultaOrdenesDePreparacionButton_Click(object sender, EventArgs e)
+        {
+            ConsultaOrdenesDePreparacionForm consultaOrdenesDePreparacionForm = new ConsultaOrdenesDePreparacionForm();
+            this.Hide();
+            consultaOrdenesDePreparacionForm.Show();
         }
     }
 }

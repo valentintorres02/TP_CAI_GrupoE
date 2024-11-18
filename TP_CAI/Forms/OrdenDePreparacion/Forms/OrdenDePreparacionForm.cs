@@ -19,8 +19,6 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
     public partial class OrdenDePreparacionForm : Form
     {
         private OrdenDePreparacionModel _ordenDePreparacionModel;
-
-
         public OrdenDePreparacionForm()
         {
             InitializeComponent();
@@ -138,8 +136,6 @@ namespace TP_CAI.Archivos.OrdenDePreparacion.Forms
                 ProductosDisponiblesListView.Items.Add(item);
             }
         }
-
-
 
         private void AgregarProductoButton_Click(object sender, EventArgs e)
         {
