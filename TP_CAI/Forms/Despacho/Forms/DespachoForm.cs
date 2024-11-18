@@ -56,7 +56,6 @@ namespace TP_CAI.Archivos.Despacho.Forms
         {
             string documentoTransportista = "";
 
-
             if (TransportistasCombobox.SelectedValue != null)
             {
                 documentoTransportista = TransportistasCombobox.SelectedValue.ToString();
@@ -105,6 +104,10 @@ namespace TP_CAI.Archivos.Despacho.Forms
         private void SeleccionarTransportistaButton_Click(object sender, EventArgs e)
         {
             string documentoTransportista = ObtenerDocumentoTransportista();
+            if (documentoTransportista == null)
+            {
+                return;
+            }
             _despachoModel.CargarOrdenesPorTransportista(documentoTransportista);
             ActualizarTabla();
         }
