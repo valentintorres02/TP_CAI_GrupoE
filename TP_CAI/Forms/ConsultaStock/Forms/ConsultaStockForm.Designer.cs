@@ -47,17 +47,19 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(-115, 205);
+            label2.Location = new Point(-164, 342);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(44, 15);
+            label2.Size = new Size(65, 25);
             label2.TabIndex = 7;
             label2.Text = "Cliente";
             // 
             // ContinuarButton
             // 
-            ContinuarButton.Location = new Point(622, 9);
+            ContinuarButton.Location = new Point(889, 15);
+            ContinuarButton.Margin = new Padding(4, 5, 4, 5);
             ContinuarButton.Name = "ContinuarButton";
-            ContinuarButton.Size = new Size(420, 41);
+            ContinuarButton.Size = new Size(600, 68);
             ContinuarButton.TabIndex = 12;
             ContinuarButton.Text = "Continuar";
             ContinuarButton.UseVisualStyleBackColor = true;
@@ -66,9 +68,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(17, 15);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(44, 15);
+            label1.Size = new Size(65, 25);
             label1.TabIndex = 9;
             label1.Text = "Cliente";
             // 
@@ -76,9 +79,10 @@
             // 
             ClienteCombobox.FormattingEnabled = true;
             ClienteCombobox.Items.AddRange(new object[] { "GrupoE S.R.L. CUIT 20-44444444-4. ", "C.A.I S.A. CUIT 20-55555555-5" });
-            ClienteCombobox.Location = new Point(12, 27);
+            ClienteCombobox.Location = new Point(17, 45);
+            ClienteCombobox.Margin = new Padding(4, 5, 4, 5);
             ClienteCombobox.Name = "ClienteCombobox";
-            ClienteCombobox.Size = new Size(604, 23);
+            ClienteCombobox.Size = new Size(861, 33);
             ClienteCombobox.TabIndex = 8;
             // 
             // ProductosGroup
@@ -86,9 +90,11 @@
             ProductosGroup.Controls.Add(label4);
             ProductosGroup.Controls.Add(ProductosDisponiblesListView);
             ProductosGroup.Enabled = false;
-            ProductosGroup.Location = new Point(14, 56);
+            ProductosGroup.Location = new Point(20, 93);
+            ProductosGroup.Margin = new Padding(4, 5, 4, 5);
             ProductosGroup.Name = "ProductosGroup";
-            ProductosGroup.Size = new Size(1030, 510);
+            ProductosGroup.Padding = new Padding(4, 5, 4, 5);
+            ProductosGroup.Size = new Size(1471, 850);
             ProductosGroup.TabIndex = 13;
             ProductosGroup.TabStop = false;
             ProductosGroup.Text = "Productos";
@@ -96,18 +102,20 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(6, 19);
+            label4.Location = new Point(9, 32);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(279, 15);
+            label4.Size = new Size(424, 25);
             label4.TabIndex = 1;
             label4.Text = "Productos Disponibles en el Depósito Seleccionado:";
             // 
             // ProductosDisponiblesListView
             // 
             ProductosDisponiblesListView.Columns.AddRange(new ColumnHeader[] { IdProducto, DescripcionProducto, CantProducto, Deposito, Ubicacion });
-            ProductosDisponiblesListView.Location = new Point(6, 37);
+            ProductosDisponiblesListView.Location = new Point(9, 62);
+            ProductosDisponiblesListView.Margin = new Padding(4, 5, 4, 5);
             ProductosDisponiblesListView.Name = "ProductosDisponiblesListView";
-            ProductosDisponiblesListView.Size = new Size(1018, 467);
+            ProductosDisponiblesListView.Size = new Size(1453, 776);
             ProductosDisponiblesListView.TabIndex = 0;
             ProductosDisponiblesListView.UseCompatibleStateImageBehavior = false;
             ProductosDisponiblesListView.View = View.Details;
@@ -130,7 +138,7 @@
             // Deposito
             // 
             Deposito.Text = "Deposito";
-            Deposito.Width = 210;
+            Deposito.Width = 320;
             // 
             // Ubicacion
             // 
@@ -139,9 +147,10 @@
             // 
             // VolverButton
             // 
-            VolverButton.Location = new Point(588, 572);
+            VolverButton.Location = new Point(840, 953);
+            VolverButton.Margin = new Padding(4, 5, 4, 5);
             VolverButton.Name = "VolverButton";
-            VolverButton.Size = new Size(454, 47);
+            VolverButton.Size = new Size(649, 78);
             VolverButton.TabIndex = 14;
             VolverButton.Text = "Volver al Menú Principal";
             VolverButton.UseVisualStyleBackColor = true;
@@ -149,15 +158,16 @@
             // 
             // ConsultaStockForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1057, 628);
+            ClientSize = new Size(1510, 1047);
             Controls.Add(VolverButton);
             Controls.Add(ProductosGroup);
             Controls.Add(ContinuarButton);
             Controls.Add(label1);
             Controls.Add(ClienteCombobox);
             Controls.Add(label2);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "ConsultaStockForm";
             Text = "Consulta de Stock";
             FormClosing += ConsultaStockForm_FormClosing;
